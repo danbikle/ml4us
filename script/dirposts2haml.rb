@@ -1,4 +1,4 @@
-# ~/x611/script/dirposts2haml.rb
+# ~/ml4us/script/dirposts2haml.rb
 
 # I use this script to copy filenames from 
 # app/views/posts into app/views/posts/index.haml

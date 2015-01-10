@@ -1,7 +1,7 @@
-# ~/x611/script/hamlposts2questions.rb
+# ~/ml4us/script/hamlposts2questions.rb
 
 # This script should loop through 
-# ~/x611/app/views/posts/
+# ~/ml4us/app/views/posts/
 # and look for a question in each HAML file.
 
 # If I find a question,
@@ -12,7 +12,7 @@
 # The name of this 2nd HAML file should be built from the question.
 
 # Next, I should append the question-link to
-# ~/x611/app/views/questions/index.haml
+# ~/ml4us/app/views/questions/index.haml
 
 require 'tempfile'
 
