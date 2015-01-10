@@ -1,7 +1,7 @@
 # ~/ml4us/script/dirposts2haml.rb
 
 # I use this script to copy filenames from 
-# app/views/posts into app/views/posts/index.haml
+# app/views/posts into app/views/posts/_index.haml
 
 require 'tempfile'
 

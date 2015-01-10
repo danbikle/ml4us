@@ -12,7 +12,7 @@
 # The name of this 2nd HAML file should be built from the question.
 
 # Next, I should append the question-link to
-# ~/ml4us/app/views/questions/index.haml
+# ~/ml4us/app/views/questions/_index.haml
 
 require 'tempfile'
 

@@ -1,7 +1,7 @@
 # ~/ml4us/script/dirtags2haml.rb
 
 # I use this script to copy filenames from 
-# app/views/tags into app/views/posts/tags.haml
+# app/views/tags into app/views/posts/_tags.haml
 
 require 'tempfile'
 
