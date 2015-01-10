@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'syl/index'
+  root 'syl#index'
+  get 'syllabus' => 'syl#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
