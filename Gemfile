@@ -38,6 +38,9 @@ group :development, :test do
   gem 'rspec-expectations', '3.5'
   gem 'rspec-mocks',        '3.5'
   gem 'rspec-rails',        '3.5'
+  gem 'addressable',        '2.4.0'
+  gem 'xpath',              '2.0.0'
+  gem 'capybara',           '2.7.1'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
 end
