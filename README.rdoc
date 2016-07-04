@@ -1,4 +1,0 @@
-== README
-This Rails site powers the URL: http://www.ml4.us
-
-This site under construction.
