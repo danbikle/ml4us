@@ -26,6 +26,10 @@ This command line should run the above script:
 export PATH=${HOME}/ml4us/bin:$PATH
 bin/rails r script/seldemo.rb
 
+I found the above script at this URL:
+
+http://docs.seleniumhq.org/docs/03_webdriver.jsp
+
 The above script should start Chrome-browser and submit 'Cheese' to google.com
 
 I should see something like this in my shell:
