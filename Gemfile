@@ -32,6 +32,7 @@ gem 'jbuilder', '~> 2.5'
 
 
 group :development, :test do
+  # Needed by rspec-rails:
   gem 'diff-lcs',           '1.2.5'
   gem 'rspec-support',      '3.5'
   gem 'rspec-core',         '3.5'
@@ -41,6 +42,11 @@ group :development, :test do
   gem 'addressable',        '2.4.0'
   gem 'xpath',              '2.0.0'
   gem 'capybara',           '2.7.1'
+  gem 'rubyzip',            '1.2.0'
+  gem 'websocket',          '1.2.3'
+  gem 'childprocess',       '0.5.9'
+  gem 'selenium-webdriver', '2.53.4'
+  # Above needed by rspec-rails.
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
 end
