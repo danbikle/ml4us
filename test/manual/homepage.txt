@@ -1,0 +1,17 @@
+~/ml4us/test/manual/homepage.txt
+
+Given that I visit www.ml4.us
+Then I should see that the site is up
+
+2016-07-04: pass
+
+Given that I visit www.ml4.us
+And I see that the site is up
+Then I should see links:
+- ml4.us
+- /about
+- /blog
+- /contact
+- /cclasses/class01
+
+2016-07-04: fail
