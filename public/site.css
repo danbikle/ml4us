@@ -1,0 +1,50 @@
+
+.navbar-dark .navbar-nav .nav-link {
+    color: white;
+    padding-top:    9px;
+    padding-bottom: 5px;
+}
+
+body p{
+    font-family: sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    color: #003300;
+    font-weight: bold;
+}
+
+.my-bottom-nav {
+    background-color: #373a3c;
+}
+
+.my-bottom-nav a{
+    color: white;
+    font-size: 1.3rem;
+    line-height: 1.5;
+    margin-left: 33px;
+}
+
+.my-bottom-nav a:hover{
+    background-color: #EEEEEE;
+    color: #BB0000; 
+}
+
+div.syntax pre {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    color: #330000;
+    font-weight: bold;
+    border-radius: 15px;
+    padding-left:  11px;
+    background-color: #DDDDDD;
+}
+
+body li{
+    font-family: sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    color: #003300;
+    font-weight: bold;
+}
+
+
