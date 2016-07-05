@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get  'home/index'
+  root 'home#index'
   get 'cclasses/class01'
 
   get 'cclasses/class02'
@@ -10,7 +12,6 @@ Rails.application.routes.draw do
   get 'blog/index'
 
   get  'about/index'
-  root 'about#index'
 
   get 'about'   => 'about#index'
   get 'blog'    => 'blog#index'
