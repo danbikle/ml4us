@@ -1,17 +1,12 @@
 Rails.application.routes.draw do
   get  'home/index'
   root 'home#index'
-  get 'cclasses/class01'
-
-  get 'cclasses/class02'
-
-  get 'cclasses/class03'
-
-  get 'contact/index'
-
+  get 'about/index'
   get 'blog/index'
-
-  get  'about/index'
+  get 'cclasses/class01'
+  get 'cclasses/class02'
+  get 'cclasses/class03'
+  get 'contact/index'
 
   get 'about'   => 'about#index'
   get 'blog'    => 'blog#index'
