@@ -30,8 +30,9 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-
 group :development, :test do
+  # Useful:
+  gem 'sqlite3'
   # Needed by rspec-rails:
   gem 'diff-lcs',           '1.2.5'
   gem 'rspec-support',      '3.5'
