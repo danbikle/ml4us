@@ -34,3 +34,17 @@ rbenv global  2.3.1
 which gem
 gem install bundler
 ```
+
+* Next I cloned the repo which you are looking at:
+
+```bash
+cd ~
+git clone https://github.com/danbikle/ml4us
+```
+
+* Then I installed all of the Ruby software (called Gems) needed by ml4.us:
+
+```bash
+cd ~/ml4us
+bundle install
+```
