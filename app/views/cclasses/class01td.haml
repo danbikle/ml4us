@@ -7,9 +7,11 @@
   %a(href='http://www.google.com/search?q=Test+Driven+Development' target='x')
     http://www.google.com/search?q=Test+Driven+Development
 
-%p I see TDD as starting with an English statement which is False but should be True.
+%p I see TDD as starting with an English statement, or test, which is False but should be True.
 
-%p I make the statement True with a small piece of software.
+%p I make the test True with a small piece of software.
+
+%p The test 'drives' development of a small piece of software.
 
 %p For example, before I wrote the page which you are reading, I wrote this statement:
 
@@ -19,7 +21,32 @@
     http://www.ml4.us/cclasses/class01td
   should describe TDD.
 
-%p After I wrote the page, the above statement switched from False to True.
+%p After I wrote the page, the above test switched from False to True.
+
+%p
+  It is obvious, to me, that every test which drives development should start life as
+  an English statement.
+%p For many applications, I stop there.
+
+%p
+  For some applications, I will transform the English statement into syntax which
+  alerts me if a piece of software starts failing.
+%p For example I could start with this English statement:
+%p Everyday at 2pm the page http://www.ml4.us/cclasses/class01td should return a status of 200.
+
+%p I might then transform that English into software which uses syntax like this:
+
+.syntax
+  %pre
+    %code.bash /usr/bin/curl --head http://www.ml4.us/cclasses/class01td|head -1
+
+%p I see those as the big ideas behind TDD.
+
+%p
+  When I develop the software tests which drive the development of an app,
+  I often bump into many devilish details.
+
+%p Implementing TDD is not easy but the main ideas behind it are easy to understand.
 
 %p
   %a(href='class01')
