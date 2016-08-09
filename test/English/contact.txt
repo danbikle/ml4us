@@ -1,0 +1,16 @@
+contact10.txt
+
+Given that I load /contact
+I should see a photo of Dan
+And I should see contact information:
+bikle101@gmail.com
+And I should see a link to the class Forum:
+https://groups.google.com/forum/#!forum/dan101
+And I should see a link to Santa Clara Adult Education:
+http://www.santaclaraadulted.org/Page/628
+And those links should give me a result code of 200
+
+
+
+
+

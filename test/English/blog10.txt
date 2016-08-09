@@ -1,0 +1,7 @@
+blog10.txt
+
+Given that I load /blog
+I should see opinions
+And each entry should list an author and date
+
+
