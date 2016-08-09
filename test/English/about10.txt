@@ -1,0 +1,7 @@
+about10.txt
+
+Given that I load /about
+I should see a description of the Machine Learning Applications class
+And I should see a link to:
+http://www.santaclaraadulted.org/
+
