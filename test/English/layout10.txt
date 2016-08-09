@@ -1,0 +1,44 @@
+layout10.txt
+
+
+Given that I load any page
+At the bottom, I should see:
+&copy; ml4.us 1999-3000
+
+Given that I load
+/
+/about
+/blog
+/contact
+/class01
+/class02
+/class03
+I should see links across the top which I call the navbar:
+ml4.us
+About
+Blog
+Contact
+Class01
+Class02
+Class03
+dan101 Forum
+
+Given that I load
+/class01
+/class02
+/class03
+I should see links across the bottom which I call the navbar:
+ml4.us
+About
+Blog
+Contact
+Class01
+Class02
+Class03
+dan101 Forum
+
+Given that I load
+/about
+/blog
+/contact
+I should not see the navbar at the bottom.
