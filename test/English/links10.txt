@@ -1,0 +1,4 @@
+links10.txt
+
+Given that I load any page in the site
+Every link should return a status of 200

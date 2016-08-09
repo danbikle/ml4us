@@ -1,0 +1,7 @@
+classX.txt
+
+Given that I load any Class-page
+I should see 3 sections:
+Topics
+Questions
+Lab
