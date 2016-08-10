@@ -14,6 +14,9 @@ describe 'This should start Chrome', :js => true do
     visit '/about'
     visit '/blog'
     visit '/contact'
+    visit '/cclasses/class01'
+    visit '/cclasses/class02'
+    visit '/cclasses/class03'
     # I should briefly see Chrome; then it should exit.
   end
 end
