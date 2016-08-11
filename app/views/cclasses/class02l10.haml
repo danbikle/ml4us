@@ -75,57 +75,64 @@
     Create Folder
     .syntax
       %pre
-        %code.bash mkdir myFolder
-        %code.bash mkdir -p ~/anotherFolder/urFolder/someFolder/theirFolder
-        %code.bash mkdir /problemFolder
-        %code.bash mkdir /tmp/notaproblemFolder
+        %code.bash
+          mkdir myFolder
+          mkdir -p ~/anotherFolder/urFolder/someFolder/theirFolder
+          mkdir /problemFolder
+          mkdir /tmp/notaproblemFolder
 
   %li
     Copy Folder
     .syntax
       %pre
-        %code.bash rsync -av myFolder ~/anotherFolder/urFolder
-        %code.bash cp -R myFolder /tmp/notaproblemFolder
+        %code.bash
+	  rsync -av myFolder ~/anotherFolder/urFolder
+          cp -R myFolder /tmp/notaproblemFolder
   %li
     List Folder
     .syntax
       %pre
-        %code.bash ls myFolder
-        %code.bash ls -la myFolder
-        %code.bash ls -la ~
-        %code.bash ls -la /tmp
-        %code.bash ls -la /tmp/
-        %code.bash ls -la /
+        %code.bash
+	  ls myFolder
+          ls -la myFolder
+          ls -la ~
+          ls -la /tmp
+          ls -la /tmp/
+          ls -la /
 
   %li
     Update Folder
     .syntax
       %pre
-        %code.bash chmod 777 myFolder
-        %code.bash chmod 755 myFolder
-        %code.bash chmod 700 myFolder
-        %code.bash touch myFolder
+        %code.bash
+	  chmod 777 myFolder
+	  chmod 755 myFolder
+	  chmod 700 myFolder
+	  touch myFolder
 
   %li
     Delete Folder (Remove Folder)
     .syntax
       %pre
-        %code.bash rmdir  myFolder
-        %code.bash rm -rf myFolder
+        %code.bash
+	  rmdir  myFolder
+	  rm -rf myFolder
   
   %li
     Move Folder
     .syntax
       %pre
-        %code.bash mv ~/anotherFolder/urFolder/myFolder ~
-        %code.bash mv ~/myFolder /tmp
+        %code.bash
+	  mv ~/anotherFolder/urFolder/myFolder ~
+	  mv ~/myFolder /tmp
   %li
     Move myself to Folder
     .syntax
       %pre
-        %code.bash cd /tmp
-        %code.bash cd /
-        %code.bash cd ~
+        %code.bash
+	  cd /tmp
+	  cd /
+	  cd ~
   
   %li
     List where I am
@@ -133,8 +140,20 @@
       %pre
         %code.bash pwd
 
-  
-  
+%p For File, I list some Verb-Noun combinations below:
+
+%ul
+
+  %li
+    Create File (Be careful of vi)
+    .syntax
+      %pre
+        %code.bash
+	  touch myFile
+	  date > thatFile
+	  vi viFile.csv
+	  emacs hello.txt
+	
 %p
   %a(href='class01')
     Class01
