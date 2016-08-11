@@ -99,7 +99,9 @@
           ls -la /tmp
           ls -la /tmp/
           ls -la /
-
+          file /usr
+	  du -sh /usr
+	  df -h /usr
   %li
     Update Folder
     .syntax
@@ -173,6 +175,8 @@
           ls -l thatFile
           ls -l /tmp/aFile.txt
           ls -l /tmp/aFile.txt thatFile
+	  file /bin/bash
+	  du -sh /bin/bash
              
   %li
     Update File
@@ -204,7 +208,29 @@
         %code.bash
           mv /tmp/aFile.txt /tmp/ibeenMoved.txt
 
-          
+%p For File-System, I list one Verb-Noun combination below:
+%ul
+  %li
+    List File-System
+    .syntax
+      %pre
+        %code.bash
+          df -h
+          df -h .
+          df -h /
+          df -h /home
+          df -h /tmp
+
+%p That wraps up the discussion about what I call the Disk-nouns.
+
+%p I skipped discussing Disks and Volumes; Linux beginners rarely operate on Disks and Volumes.
+
+%p For Linux, the next set of nouns are what I call the CPU nouns:
+%ul
+  %li CPU-info
+  %li process
+
+
 %p
   %a(href='class01')
     Class01
