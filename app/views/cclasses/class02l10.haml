@@ -170,7 +170,23 @@
           ls -l thatFile
           ls -l /tmp/aFile.txt
           ls -l /tmp/aFile.txt thatFile
-	  
+             
+  %li
+    Update File
+    .syntax
+      %pre
+        %code.bash
+          touch thatFile
+          chmod 666 thatFile
+          chmod 755 thatFile
+          chmod 644 thatFile
+          chmod 600 thatFile
+          date > thatFile
+          date >> thatFile
+          echo Dan Was Here >> thatFile
+          sed -i '/Dan/s/Dan/Daniel/' thatFile
+
+          
 %p
   %a(href='class01')
     Class01
