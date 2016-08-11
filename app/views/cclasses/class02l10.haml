@@ -338,19 +338,22 @@
 %p For the above User-nouns, I list some Verb-Noun examples below:
 
 %ul
-  %li Create User
+  %li
+    Create User
     .syntax
       %pre
         %code.bash
           sudo useradd -m -s /bin/bash -G sudo bob
           sudo passwd bob
-  %li Create Postgres User
+  %li
+    Create Postgres User
     .syntax
       %pre
         %code.bash
           sudo apt-get install postgresql
           sudo passwd postgres
-  %li List User
+  %li
+    List User
     .syntax
       %pre
         %code.bash
@@ -359,20 +362,105 @@
           ls -l ~bob
           ls -l /root
 
-  %li Update User
+  %li
+    Update User
     .syntax
       %pre
         %code.bash
           sudo passwd bob
           echo 'export PATH=/home/bob/anaconda3/bin:${PATH}' >> ~bob/.bashrc
           usermod -G sudo ann
-  %li Delete User
+  %li
+    Delete User
     .syntax
       %pre
         %code.bash
           sudo userdel bob
           sudo rm -rf /home/bob
 
+%p On Linux, after User-nouns, I am interested in Software-Package-nouns:
+%p For Software-Package-nouns, I list some Verb-Noun examples below:
+
+%ul
+  %li
+    Update Packages
+    .syntax
+      %pre
+        %code.bash sudo apt-get update
+  %li
+    Upgrade Packages
+    .syntax
+      %pre
+        %code.bash sudo apt-get upgrade
+        
+  %li
+    Install Packages
+    .syntax
+      %pre
+        %code.bash sudo apt-get install aptitude
+                
+  %li
+    List Packages
+    .syntax
+      %pre
+        %code.bash
+          aptitude search perl5
+          aptitude search perl6
+          aptitude search perl7
+
+%p Any software which is installed with apt-get (or aptitude) should behave well.
+
+%p I see that software as permanently attached to my Linux instance.
+
+%p Also I see that software as owned by root and shared by all users in the instance.
+
+%p Three types of software which I want constrained to a specific user and not shared are listed below:
+
+%ul
+  %li Python
+  %li Ruby
+  %li Java
+
+%p Syntax to install bob's copy of Python is listed below:
+.syntax
+  %pre
+    %code.bash
+      sudo useradd -m -s /bin/bash bob
+      sudo passwd bob
+      ssh -AY bob@localhost
+      wget http://repo.continuum.io/archive/Anaconda3-4.1.1-Linux-x86_64.sh
+      bash Anaconda3-4.1.1-Linux-x86_64.sh
+      mv anaconda3/bin/curl anaconda3/bin/curl_ana
+      echo 'export PATH=${HOME}/anaconda3/bin:$PATH' >> ~/.bashrc
+      bash
+      python
+
+          
+%p Syntax to install bob's copy of Ruby 2.3.1 is listed below:
+.syntax
+  %pre
+    %code.bash ssh -AY bob@localhost
+    =render 'class01ova2'
+
+%p
+  To install Java, bob needs to download jdk-8u102-linux-x64.tar.gz from Oracle:
+  %a(href='http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html' target='x')
+    http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+  
+
+%p Syntax to install bob's copy of Java is listed below:
+.syntax
+  %pre
+    %code.bash
+      ssh -AY bob@localhost
+      tar zxf ~/Downloads/jdk-8u102-linux-x64.tar.gz
+      ln -s jdk1.8.0_102 jdk
+      echo 'export JAVA_HOME=${HOME}/jdk'       >> ~/.bashrc
+      echo 'export PATH=${JAVA_HOME}/bin:$PATH' >> ~/.bashrc
+      bash
+      java -version
+
 %p
   %a(href='class01')
     Class01
+    
