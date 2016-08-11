@@ -288,6 +288,44 @@
   %li Connected (True, False)
   %li Configuration (DHCP or Manual)
 
+%p For the above Network-nouns, usually the only verb I am interested in is: List.
+%ul
+  %li
+    List Interfaces
+    .syntax
+      %pre
+        %code.bash ifconfig
+
+  %li
+    List IP-Addresses
+    .syntax
+      %pre
+        %code.bash ifconfig
+
+  %li
+    List Netmask
+    .syntax
+      %pre
+        %code.bash ifconfig
+
+  %li
+    List DNS-Address
+    .syntax
+      %pre
+        %code.bash nmcli dev show 
+
+  %li
+    List Connected (True, False)
+    .syntax
+      %pre
+        %code.bash ping google.com
+
+  %li
+    List Configuration (DHCP or Manual)
+    .syntax
+      %pre
+        %code.bash nm-connection-editor
+
 %p
   %a(href='class01')
     Class01
