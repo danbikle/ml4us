@@ -86,14 +86,14 @@
     .syntax
       %pre
         %code.bash
-	  rsync -av myFolder ~/anotherFolder/urFolder
+          rsync -av myFolder ~/anotherFolder/urFolder
           cp -R myFolder /tmp/notaproblemFolder
   %li
     List Folder
     .syntax
       %pre
         %code.bash
-	  ls myFolder
+          ls myFolder
           ls -la myFolder
           ls -la ~
           ls -la /tmp
@@ -105,34 +105,34 @@
     .syntax
       %pre
         %code.bash
-	  chmod 777 myFolder
-	  chmod 755 myFolder
-	  chmod 700 myFolder
-	  touch myFolder
+          chmod 777 myFolder
+          chmod 755 myFolder
+          chmod 700 myFolder
+          touch myFolder
 
   %li
     Delete Folder (Remove Folder)
     .syntax
       %pre
         %code.bash
-	  rmdir  myFolder
-	  rm -rf myFolder
+          rmdir  myFolder
+          rm -rf myFolder
   
   %li
     Move Folder
     .syntax
       %pre
         %code.bash
-	  mv ~/anotherFolder/urFolder/myFolder ~
-	  mv ~/myFolder /tmp
+          mv ~/anotherFolder/urFolder/myFolder ~
+          mv ~/myFolder /tmp
   %li
     Move myself to Folder
     .syntax
       %pre
         %code.bash
-	  cd /tmp
-	  cd /
-	  cd ~
+          cd /tmp
+          cd /
+          cd ~
   
   %li
     List where I am
@@ -143,17 +143,34 @@
 %p For File, I list some Verb-Noun combinations below:
 
 %ul
-
   %li
     Create File (Be careful of vi)
     .syntax
       %pre
         %code.bash
-	  touch myFile
-	  date > thatFile
-	  vi viFile.csv
-	  emacs hello.txt
-	
+          touch myFile
+          date > thatFile
+
+  %li
+    Copy File
+    .syntax
+      %pre
+        %code.bash
+          cp thatFile urFile
+          cp -p urFile theirFile
+          cp thatFile /tmp/
+          cp thatFile /tmp/aFile.txt
+        
+  %li
+    List File
+    .syntax
+      %pre
+        %code.bash
+          ls thatFile
+          ls -l thatFile
+          ls -l /tmp/aFile.txt
+          ls -l /tmp/aFile.txt thatFile
+	  
 %p
   %a(href='class01')
     Class01
