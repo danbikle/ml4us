@@ -54,6 +54,7 @@
   %li Network-port
   %li User
   %li Software Packages
+  %li Security
   %li Display
 
 %p For Linux, and the above nouns, I interact with Disk the most often.
@@ -69,7 +70,7 @@
   
 %p Folder and File capture 99% more of my attention than Disk, Volume, and File-System.
 
-%p For Folder, I list some Verb-Noun combinations below:
+%p For Folder, I list Verb-Noun examples below:
 
 %ul
 
@@ -144,7 +145,7 @@
       %pre
         %code.bash pwd
 
-%p For File, I list some Verb-Noun combinations below:
+%p For File, I list Verb-Noun examples below:
 
 %ul
   %li
@@ -217,7 +218,7 @@
         %code.bash
           mv /tmp/aFile.txt /tmp/ibeenMoved.txt
 
-%p For File-System, I list one Verb-Noun combination below:
+%p For File-System, I list Verb-Noun examples below:
 %ul
   %li
     List File-System
@@ -334,6 +335,43 @@
   %li User
   %li Super-User
 
+%p For the above User-nouns, I list some Verb-Noun examples below:
+
+%ul
+  %li Create User
+    .syntax
+      %pre
+        %code.bash
+          sudo useradd -m -s /bin/bash -G sudo bob
+          sudo passwd bob
+  %li Create Postgres User
+    .syntax
+      %pre
+        %code.bash
+          sudo apt-get install postgresql
+          sudo passwd postgres
+  %li List User
+    .syntax
+      %pre
+        %code.bash
+          cat /etc/passwd
+          ls -l ~
+          ls -l ~bob
+          ls -l /root
+
+  %li Update User
+    .syntax
+      %pre
+        %code.bash
+          sudo passwd bob
+          echo 'export PATH=/home/bob/anaconda3/bin:${PATH}' >> ~bob/.bashrc
+          usermod -G sudo ann
+  %li Delete User
+    .syntax
+      %pre
+        %code.bash
+          sudo userdel bob
+          sudo rm -rf /home/bob
 
 %p
   %a(href='class01')
