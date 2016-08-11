@@ -48,18 +48,26 @@
 %p For computers in general I start with these nouns:
 
 %ul
-  %li CPU
-  %li RAM
-  %li Disk
-  %li Network-port
-  %li User
-  %li Software Packages
-  %li Security
-  %li Display
+  %li
+    %a(href='#disk') Disk
+  %li
+    %a(href='#cpu') Cpu
+  %li
+    %a(href='#ram') Ram
+  %li
+    %a(href='#network') Network-port
+  %li
+    %a(href='#user') User
+  %li
+    %a(href='#software') Software Packages
+  %li
+    %a(href='#security') Security
+  %li
+    %a(href='#display') Display
 
 %p For Linux, and the above nouns, I interact with Disk the most often.
 
-%p I sub-divide the Disk-noun like this:
+%p#disk I sub-divide the Disk-noun like this:
 
 %ul
   %li Disk
@@ -235,7 +243,7 @@
 
 %p I skipped discussing Disks and Volumes; Linux beginners rarely operate on Disks and Volumes.
 
-%p For Linux, the next set of nouns are what I call the CPU-nouns:
+%p#cpu For Linux, the next set of nouns are what I call the CPU-nouns:
 %ul
   %li CPU-info
   %li process
@@ -270,7 +278,7 @@
           kill 20162017
           kill -9 20162017
           
-%p On Linux, after Disk-nouns and CPU-nouns, I am interested in RAM.
+%p#ram On Linux, after Disk-nouns and CPU-nouns, I am interested in RAM.
 
 %p Usually I want to list RAM usage:
 %ul
@@ -281,7 +289,7 @@
         %code.bash
           gnome-system-monitor
 
-%p On Linux, after RAM, I am interested in Network-nouns:  
+%p#network On Linux, after RAM, I am interested in Network-nouns:  
 %ul
   %li Public Interface
   %li Private Interface
@@ -329,7 +337,7 @@
       %pre
         %code.bash nm-connection-editor
 
-%p On Linux, after Network-nouns, I am interested in User-nouns:
+%p#user On Linux, after Network-nouns, I am interested in User-nouns:
 
 %ul
   %li User
@@ -378,7 +386,7 @@
           sudo userdel bob
           sudo rm -rf /home/bob
 
-%p On Linux, after User-nouns, I am interested in Software-Package-nouns:
+%p#software On Linux, after User-nouns, I am interested in Software-Package-nouns:
 %p For Software-Package-nouns, I list some Verb-Noun examples below:
 
 %ul
@@ -461,6 +469,10 @@
       bash
       java -version
 
+%p
+  %a(href='class02l10')
+    Top
+    
 %p
   %a(href='class02')
     Class02
