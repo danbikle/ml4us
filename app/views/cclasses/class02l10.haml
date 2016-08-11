@@ -1,0 +1,140 @@
+%h2 Class02 Answer:
+%h2 How to get started with Linux?
+
+%p Now that we have Google, Linux is relatively easy to learn.
+
+%p Usually when I interact with Linux, I type commands at it and then read what it tells me.
+
+%p Usually this is an exchange of text.
+
+%p Google is perfectly suited for text search.
+
+%p If I am confused or need knowledge about Linux related information, I just send detailed English questions to Google.
+
+%p Millions of others are doing the same.
+
+%p As each year goes by, Google gets better and better at answering Linux questions.
+
+%p If Google fails me, I take time to type up a direct, comprehensive question to stackoverflow or AskUbuntu.com.
+
+%p I can offer some perspective on Linux which might speed your learning experience.
+
+%p The way to start learning the operation of many types of systems is to list nouns and verbs.
+
+%p I have fewer verbs than nouns so I list the verbs first:
+
+%ul
+  %li Create
+  %li Copy
+  %li List
+  %li Update
+  %li Delete
+  %li Install
+
+%p Those are the big 6, but we will encounter others.
+
+%p To understand my point here I will combine the first verb with a noun in a sentence:
+
+%p In Linux, I Create (that's the verb) a Folder (that's the noun) like this:
+.syntax
+  %pre
+    %code.bash mkdir myfolder
+
+%p So, to get started with Linux I need to memorize how to operate on about 10 nouns with about 6 verbs which is about 60 commands.
+
+%p That should be easier to learn than a foreign language which has a huge vocabulary and a complex grammar.
+
+
+%p For computers in general I start with these nouns:
+
+%ul
+  %li CPU
+  %li RAM
+  %li Disk
+  %li Network-port
+  %li Display
+
+%p For Linux, and the above nouns, I interact with Disk the most often.
+
+%p I sub-divide the Disk-noun like this:
+
+%ul
+  %li Disk
+  %li Volume
+  %li File-System
+  %li Folder
+  %li File
+  
+%p Folder and File capture 99% more of my attention than Disk, Volume, and File-System.
+
+%p For Folder, I list some Verb-Noun combinations below:
+
+%ul
+
+  %li
+    Create Folder
+    .syntax
+      %pre
+        %code.bash mkdir myFolder
+        %code.bash mkdir -p ~/anotherFolder/urFolder/someFolder/theirFolder
+        %code.bash mkdir /problemFolder
+        %code.bash mkdir /tmp/notaproblemFolder
+
+  %li
+    Copy Folder
+    .syntax
+      %pre
+        %code.bash rsync -av myFolder ~/anotherFolder/urFolder
+        %code.bash cp -R myFolder /tmp/notaproblemFolder
+  %li
+    List Folder
+    .syntax
+      %pre
+        %code.bash ls myFolder
+        %code.bash ls -la myFolder
+        %code.bash ls -la ~
+        %code.bash ls -la /tmp
+        %code.bash ls -la /tmp/
+        %code.bash ls -la /
+
+  %li
+    Update Folder
+    .syntax
+      %pre
+        %code.bash chmod 777 myFolder
+        %code.bash chmod 755 myFolder
+        %code.bash chmod 700 myFolder
+        %code.bash touch myFolder
+
+  %li
+    Delete Folder (Remove Folder)
+    .syntax
+      %pre
+        %code.bash rmdir  myFolder
+        %code.bash rm -rf myFolder
+  
+  %li
+    Move Folder
+    .syntax
+      %pre
+        %code.bash mv ~/anotherFolder/urFolder/myFolder ~
+        %code.bash mv ~/myFolder /tmp
+  %li
+    Move myself to Folder
+    .syntax
+      %pre
+        %code.bash cd /tmp
+        %code.bash cd /
+        %code.bash cd ~
+  
+  %li
+    List where I am
+    .syntax
+      %pre
+        %code.bash pwd
+
+  
+  
+%p
+  %a(href='class01')
+    Class01
