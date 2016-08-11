@@ -150,6 +150,8 @@
         %code.bash
           touch myFile
           date > thatFile
+          date > file2.txt
+          cat thatFile file2.txt > file3.txt
 
   %li
     Copy File
@@ -166,6 +168,7 @@
     .syntax
       %pre
         %code.bash
+          cat thatFile
           ls thatFile
           ls -l thatFile
           ls -l /tmp/aFile.txt
@@ -185,6 +188,21 @@
           date >> thatFile
           echo Dan Was Here >> thatFile
           sed -i '/Dan/s/Dan/Daniel/' thatFile
+       
+  %li
+    Delete File (Remove File)
+    .syntax
+      %pre
+        %code.bash
+          rm thatFile
+          rm -f otherFile
+   
+  %li
+    Move File
+    .syntax
+      %pre
+        %code.bash
+          mv /tmp/aFile.txt /tmp/ibeenMoved.txt
 
           
 %p
