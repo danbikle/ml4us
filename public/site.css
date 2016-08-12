@@ -13,6 +13,9 @@ body p{
     font-weight: bold;
 }
 
+
+body a:hover{ color: #BB0000; }
+
 .my-bottom-nav {
     background-color: #373a3c;
 }
@@ -46,5 +49,3 @@ body li{
     color: #003300;
     font-weight: bold;
 }
-
-
