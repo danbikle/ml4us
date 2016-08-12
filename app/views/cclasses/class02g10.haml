@@ -98,6 +98,22 @@
     %br/
     If I want to add code to a Repo, I fork it; otherwise I just clone it.
 
+  %li
+    Branch Repo
+    %br/
+    I Branch a Repo to get a Branch of a Repo:
+    .syntax
+      %pre
+        %code.bash
+          cd ~
+          git clone https://github.com/tensorflow/tensorflow
+          cd tensorflow
+          git checkout -b danbranch1
+          mkdir tensorflow/examples/tutorials/bikle
+          echo This folder should create demos by Dan > tensorflow/examples/tutorials/bikle/readme.txt
+    Above, I create a Branch called danbranch1.
+    %br/
+    The code in danbranch1 is separate from the code in the Branch called master.
 
 %p
   %a(href='class02') Class02
