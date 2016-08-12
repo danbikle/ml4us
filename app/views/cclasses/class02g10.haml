@@ -115,5 +115,21 @@
     %br/
     The code in danbranch1 is separate from the code in the Branch called master.
 
+  %li
+    Commit Repo
+    %br/
+    Commit is like the save button in an editor.
+    .syntax
+      %pre
+        %code.bash
+          mkdir ~/danapp2
+          cd    ~/danapp2
+          echo danapp2 should be an enhancement of danapp1. > readme.txt
+          git init
+          git add .
+          git commit -am 'danapp2 has enhanced danapp1'
+    When I Commit, I should give a reason for the commit.
+
+
 %p
   %a(href='class02') Class02
