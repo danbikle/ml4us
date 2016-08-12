@@ -134,7 +134,7 @@
   %li
     Fetch Repo
     %br/
-    I Fetch a Repo to access Commits in that Repo 
+    I Fetch a Repo to access Commits in that Repo:
     .syntax
       %pre
         %code.bash
@@ -151,7 +151,11 @@
           git commit -am Another_Enhancement
           cd ~/danapp11
           git fetch
-          
+    At this point danapp11 knows about Another_Enhancement in danapp10.
+    %br/
+    That commit, however, has not been Merged into danapp11 yet.
+    %br/
+    That Merge can happen next if I want.
 
 
 
