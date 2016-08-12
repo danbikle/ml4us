@@ -198,5 +198,20 @@
           git pull
     That Pull makes danapp12 identical to danapp10.
 
+  %li
+    Push Repo
+    %br/
+    I Push a Repo to copy Commits to a server:
+    .syntax
+      %pre
+        %code.bash
+          cd /tmp/
+          git clone git@github.com:danbikle/ml4us.git
+          cd ml4us
+          echo Hello >> README.md
+          git commit -am 'Dan was here.'
+          git push
+    That Push copies a Commit to the server.
+
 %p
   %a(href='class02') Class02
