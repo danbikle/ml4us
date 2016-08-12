@@ -584,6 +584,19 @@
       %pre
         %code.bash chmod 755 /home/bob/jdk/bin/java
 
+%p Linux always has a user named root who has many privileges.
+
+%p I can use sudo to ask root to run commands for me.
+
+%p In that case sudo is a verb.
+
+%p If root does what I ask then I have sudo privilege and in that case sudo is a noun.
+
+%p If I want to give sudo privilege to bob I should run a command like this:
+    .syntax
+      %pre
+        %code.bash sudo usermod -G sudo bob
+
 
 
 
