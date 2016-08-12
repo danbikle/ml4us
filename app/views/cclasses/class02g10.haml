@@ -47,12 +47,25 @@
 %ul
   %li
     Initialize Repo
+    %br/
+    I easily Initialize Repo with the git init command:
     .syntax
       %pre
         %code.bash
           mkdir ~/danapp1
           cd    ~/danapp1
           git init
+
+  %li
+    Clone Repo
+    %br/
+    I Clone a Repo to get a clone (copy) of a Repo:
+    .syntax
+      %pre
+        %code.bash
+          cd ~
+          git clone https://github.com/tensorflow/tensorflow
+    The above command gives me folder named tensorflow full of tensorflow software.
 
 %p
   %a(href='class02') Class02
