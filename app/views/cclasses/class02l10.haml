@@ -593,17 +593,37 @@
 %p If root does what I ask then I have sudo privilege and in that case sudo is a noun.
 
 %p If I want to give sudo privilege to bob I should run a command like this:
-    .syntax
-      %pre
-        %code.bash sudo usermod -G sudo bob
+.syntax
+  %pre
+    %code.bash sudo usermod -G sudo bob
+
+
+%p Another way to give sudo privilege to bob is login as root and run this command:
+.syntax
+  %pre
+    %code.bash usermod -G sudo bob
+
+%p I have three ways to login as root:
+.syntax
+  %pre
+    %code.bash su
+
+%p This way is more ... complete:
+.syntax
+  %pre
+    %code.bash su -
+    
+%p And, this way is more ... complete:
+.syntax
+  %pre
+    %code.bash ssh root@localhost
+    
 
 
 
 
 %p
-  %a(href='class02l10')
-    Top
+  %a(href='class02l10') Top
     
 %p
-  %a(href='class02')
-    Class02
+  %a(href='class02') Class02
