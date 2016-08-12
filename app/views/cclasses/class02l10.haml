@@ -491,6 +491,102 @@
 
 %p For Security-nouns, I list some Verb-Noun examples below:
 
+%ul
+  %li
+    Authenticate bob to login security
+    .syntax
+      %pre
+        %code.bash
+          ssh -AY bob@localhost
+  %li
+    List users logged in
+    .syntax
+      %pre
+        %code.bash w
+  %li
+    Exit bob login
+    .syntax
+      %pre
+        %code.bash exit
+  %li
+    Create my new password
+    .syntax
+      %pre
+        %code.bash passwd
+  %li
+    Create new password for bob
+    .syntax
+      %pre
+        %code.bash sudo passwd bob
+  %li
+    Update new password for bob
+    .syntax
+      %pre
+        %code.bash sudo passwd bob
+  %li
+    List Permissions of /home/bob/
+    .syntax
+      %pre
+        %code.bash ls -la /home/bob/
+  %li
+    List Permissions of /home/bob/.bashrc
+    .syntax
+      %pre
+        %code.bash ls -la /home/bob/.bashrc
+  %li
+    Create All Permissions of /home/bob/.bashrc
+    .syntax
+      %pre
+        %code.bash chmod 777 /home/bob/.bashrc
+  %li
+    Delete All Permissions of /home/bob/.bashrc
+    .syntax
+      %pre
+        %code.bash chmod 000 /home/bob/.bashrc
+  %li
+    Create Proper Permissions of /home/bob/.bashrc
+    .syntax
+      %pre
+        %code.bash chmod 644 /home/bob/.bashrc
+  %li
+    Update /home/bob/ to disable public readable
+    .syntax
+      %pre
+        %code.bash chmod 750 /home/bob/
+  %li
+    Update /home/bob/ to disable group readable
+    .syntax
+      %pre
+        %code.bash chmod 700 /home/bob/
+  %li
+    Update /home/bob/ to disable bob readable
+    .syntax
+      %pre
+        %code.bash chmod 000 /home/bob/
+  %li
+    Update /home/bob/ to enable bob writeable and readable
+    .syntax
+      %pre
+        %code.bash chmod 700 /home/bob/
+  %li
+    Update /home/bob/jdk/bin/java to disable bob executable
+    .syntax
+      %pre
+        %code.bash chmod 644 /home/bob/jdk/bin/java
+  %li
+    Update /home/bob/jdk/bin/java to enable bob executable
+    .syntax
+      %pre
+        %code.bash chmod 744 /home/bob/jdk/bin/java
+  %li
+    Update /home/bob/jdk/bin/java to enable public executable
+    .syntax
+      %pre
+        %code.bash chmod 755 /home/bob/jdk/bin/java
+
+
+
+
 %p
   %a(href='class02l10')
     Top
