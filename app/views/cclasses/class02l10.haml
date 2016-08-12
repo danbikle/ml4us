@@ -507,8 +507,8 @@
   %li ssh-folder
   %li public key
   %li private key
-  %li pem key
   %li authorized_keys
+  %li pem key
   %li key permissions
   %li iptables-firewall
   %li openssh-server
@@ -681,7 +681,87 @@
   %pre
     %code.bash sudo ssh dan@localhost
 
+%p A pem key is a private key I get from AWS.
 
+%p I like to keep my pem keys in ~dan/.ssh/
+
+%p To use a pem key I create a file called ~dan/.ssh/config
+
+%p I put syntax like this in the file:
+.syntax
+  %pre
+    =render 'class02ec22'
+
+%p Then I issue a simple shell command to login:
+.syntax
+  %pre
+    %code.bash ssh ub170
+
+%p Sometimes keys will fail due to improper permissions.
+
+%p If I suspect improper permissions on my keys, I issue commands like this:
+
+.syntax
+  %pre
+    %code.bash
+      cd ~/.ssh/
+      chmod 700 .
+      chmod 700 ..
+      chmod 600 authorized_keys
+      chmod 600 *.pem
+      chmod 600 id_rsa
+      chmod 644 id_rsa.pub
+
+%p The next noun in Linux security is iptables-firewall.
+
+%p I use iptables to prevent Linux from listening for certain types of network traffic.
+
+%p The less traffic I listen for, the more secure I should be.
+
+%p For iptables I rely on Ubuntu.com and Google:
+%p
+  %a(href='https://help.ubuntu.com/14.04/serverguide/firewall.html' target='x')
+    https://help.ubuntu.com/14.04/serverguide/firewall.html
+  
+%p
+  %a(href='http://www.google.com/search?q=Linux+iptables' target='x')
+    http://www.google.com/search?q=Linux+iptables
+%p  
+  %a(href='http://www.google.com/search?q=Linux+iptables+how+to' target='x')
+    http://www.google.com/search?q=Linux+iptables+how+to
+%p  
+  %a(href='http://www.google.com/search?q=Linux+iptables+Create' target='x')
+    http://www.google.com/search?q=Linux+iptables+Create
+%p  
+  %a(href='http://www.google.com/search?q=Linux+iptables+Copy' target='x')
+    http://www.google.com/search?q=Linux+iptables+Copy
+%p  
+  %a(href='http://www.google.com/search?q=Linux+iptables+List' target='x')
+    http://www.google.com/search?q=Linux+iptables+List
+%p  
+  %a(href='http://www.google.com/search?q=Linux+iptables+Update' target='x')
+    http://www.google.com/search?q=Linux+iptables+Update
+%p  
+  %a(href='http://www.google.com/search?q=Linux+iptables+Delete' target='x')
+    http://www.google.com/search?q=Linux+iptables+Delete
+%p  
+  %a(href='http://www.google.com/search?q=Linux+iptables+Troubleshoot' target='x')
+    http://www.google.com/search?q=Linux+iptables+Troubleshoot
+%p  
+  %a(href='http://www.google.com/search?q=Linux+iptables+ipv6' target='x')
+    http://www.google.com/search?q=Linux+iptables+ipv6
+  
+%p I use the openssh-server to make my Linux instance listen for ssh login.
+
+%p It is easy to install:
+.syntax
+  %pre
+    %code.bash sudo apt-get install openssh-server
+
+%p Sometimes I will reboot the instance after I install openssh-server:
+.syntax
+  %pre
+    %code.bash sudo shutdown -r now
 
 %p
   %a(href='class02l10') Top
