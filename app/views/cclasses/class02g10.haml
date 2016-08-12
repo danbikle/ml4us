@@ -131,5 +131,29 @@
     When I Commit, I should give a reason for the commit.
 
 
+  %li
+    Fetch Repo
+    %br/
+    I Fetch a Repo to access Commits in that Repo 
+    .syntax
+      %pre
+        %code.bash
+          mkdir ~/danapp10
+          cd    ~/danapp10
+          echo danapp10 should be an enhancement of danapp2. > readme.txt
+          git init
+          git add .
+          git commit -am 'danapp10 has enhanced danapp2'
+          cd ~
+          git clone danapp10 danapp11
+          cd ~/danapp10
+          echo danapp11 is a clone of danapp10 >> readme.txt
+          git commit -am Another_Enhancement
+          cd ~/danapp11
+          git fetch
+          
+
+
+
 %p
   %a(href='class02') Class02
