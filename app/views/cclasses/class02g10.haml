@@ -171,7 +171,7 @@
   %li
     Merge Repo (Branch)
     %br/
-    Another type of Merge is to Merge a Branch
+    Another type of Merge is to Merge a Branch:
     .syntax
       %pre
         %code.bash
@@ -182,6 +182,21 @@
           git checkout master
           git merge danbranch1
     That Merge makes master identical to danbranch1.
+
+  %li
+    Pull Repo
+    %br/
+    I Pull a Repo if I want to Fetch and Merge:
+    .syntax
+      %pre
+        %code.bash
+          git clone ~/danapp10 ~/danapp12
+          cd ~/danapp10
+          echo danapp10 more interesting. >> readme.txt
+          git commit -am 'I like this commit 2.'
+          cd ~/danapp12
+          git pull
+    That Pull makes danapp12 identical to danapp10.
 
 %p
   %a(href='class02') Class02
