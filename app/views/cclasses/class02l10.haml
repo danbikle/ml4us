@@ -153,6 +153,30 @@
       %pre
         %code.bash pwd
 
+%p Some folders are so important, they have short symbols:
+%ul
+  %li
+    Current Folder (Folder I am in now):
+    .syntax
+      %pre
+        %code.bash .
+  %li
+    Folder above me:
+    .syntax
+      %pre
+        %code.bash ..
+  %li
+    Home folder:
+    .syntax
+      %pre
+        %code.bash ~
+
+  %li
+    Root folder:
+    .syntax
+      %pre
+        %code.bash /
+
 %p For File, I list Verb-Noun examples below:
 
 %ul
@@ -618,7 +642,44 @@
   %pre
     %code.bash ssh root@localhost
     
+%p Also I can use su to login as bob:
+.syntax
+  %pre
+    %code.bash su - bob
 
+%p Usually on Linux every user has an ssh-folder:
+.syntax
+  %pre
+    %code.bash
+      su - bob
+      mkdir -p  ~/.ssh
+      chmod 755 ~/.ssh
+
+%p Usually on Linux every user has public key and private key.
+%p bob can create public key and private key:
+.syntax
+  %pre
+    %code.bash
+      su - bob
+      ssh-keygen -t rsa
+      ls -l .ssh/id_rsa
+      ls -l .ssh/id_rsa.pub
+
+%p The file .ssh/id_rsa is like a key I carry in my pocket. It should be private.
+
+%p
+  The file .ssh/id_rsa.pub is like a lock in my car door. It is exposed to the public.
+  The file .ssh/id_rsa.pub is called a public key.
+
+%p bob can give id_rsa.pub to dan and dan can add id_rsa.pub to ~dan/.ssh/authorized_keys:
+.syntax
+  %pre
+    %code.bash sudo cat ~bob/.ssh/id_rsa.pub >> ~dan/.ssh/authorized_keys
+
+%p Now bob has permission to login as dan:
+.syntax
+  %pre
+    %code.bash sudo ssh dan@localhost
 
 
 
