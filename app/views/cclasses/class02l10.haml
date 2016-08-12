@@ -497,23 +497,38 @@
 %p#security On Linux, after Software-nouns, I am interested in Security-nouns:
 
 %ul
-  %li login
-  %li password
-  %li user-permissions
-  %li group-permissions
-  %li public-permissions
-  %li sudo
-  %li su
-  %li ssh-folder
-  %li public key
-  %li private key
-  %li authorized_keys
-  %li pem key
-  %li key permissions
-  %li iptables-firewall
-  %li openssh-server
+  %li 
+    %a(href='#login') login
+  %li 
+    %a(href='#password') password
+  %li
+    %a(href='#user-permissions') user-permissions
+  %li
+    %a(href='#group-permissions') group-permissions
+  %li
+    %a(href='#public-permissions')public-permissions
+  %li
+    %a(href='#sudo') sudo
+  %li
+    %a(href='#su') su
+  %li
+    %a(href='#ssh-folder') ssh-folder
+  %li
+    %a(href='#publickey') public key
+  %li
+    %a(href='#privatekey') private key
+  %li
+    %a(href='#authorized_keys') authorized_keys
+  %li
+    %a(href='#pemkey') pem key
+  %li
+    %a(href='#keypermissions') key permissions
+  %li
+    %a(href='#iptables') iptables-firewall
+  %li
+    %a(href='#opensshserver') openssh-server
 
-%p For Security-nouns, I list some Verb-Noun examples below:
+%p#login For Security-nouns, I list some Verb-Noun examples below:
 
 %ul
   %li
@@ -532,7 +547,7 @@
     .syntax
       %pre
         %code.bash exit
-  %li
+  %li#password
     Create my new password
     .syntax
       %pre
@@ -547,7 +562,7 @@
     .syntax
       %pre
         %code.bash sudo passwd bob
-  %li
+  %li#userpermissions
     List Permissions of /home/bob/
     .syntax
       %pre
@@ -577,7 +592,7 @@
     .syntax
       %pre
         %code.bash chmod 750 /home/bob/
-  %li
+  %li#grouppermissions
     Update /home/bob/ to disable group readable
     .syntax
       %pre
@@ -602,13 +617,13 @@
     .syntax
       %pre
         %code.bash chmod 744 /home/bob/jdk/bin/java
-  %li
+  %li#publicpermissions
     Update /home/bob/jdk/bin/java to enable public executable
     .syntax
       %pre
         %code.bash chmod 755 /home/bob/jdk/bin/java
 
-%p Linux always has a user named root who has many privileges.
+%p#sudo Linux always has a user named root who has many privileges.
 
 %p I can use sudo to ask root to run commands for me.
 
@@ -627,7 +642,7 @@
   %pre
     %code.bash usermod -G sudo bob
 
-%p I have three ways to login as root:
+%p#su I have three ways to login as root:
 .syntax
   %pre
     %code.bash su
@@ -647,7 +662,7 @@
   %pre
     %code.bash su - bob
 
-%p Usually on Linux every user has an ssh-folder:
+%p#sshfolder Usually on Linux every user has an ssh-folder:
 .syntax
   %pre
     %code.bash
@@ -655,8 +670,8 @@
       mkdir -p  ~/.ssh
       chmod 755 ~/.ssh
 
-%p Usually on Linux every user has public key and private key.
-%p bob can create public key and private key:
+%p#publickey Usually on Linux every user has public key and private key.
+%p#privatekey bob can create public key and private key:
 .syntax
   %pre
     %code.bash
@@ -671,7 +686,7 @@
   The file .ssh/id_rsa.pub is like a lock in my car door. It is exposed to the public.
   The file .ssh/id_rsa.pub is called a public key.
 
-%p bob can give id_rsa.pub to dan and dan can add id_rsa.pub to ~dan/.ssh/authorized_keys:
+%p#authorized_keys bob can give id_rsa.pub to dan and dan can add id_rsa.pub to ~dan/.ssh/authorized_keys:
 .syntax
   %pre
     %code.bash sudo cat ~bob/.ssh/id_rsa.pub >> ~dan/.ssh/authorized_keys
@@ -681,7 +696,7 @@
   %pre
     %code.bash sudo ssh dan@localhost
 
-%p A pem key is a private key I get from AWS.
+%p#pemkey A pem key is a private key I get from AWS.
 
 %p I like to keep my pem keys in ~dan/.ssh/
 
@@ -697,7 +712,7 @@
   %pre
     %code.bash ssh ub170
 
-%p Sometimes keys will fail due to improper permissions.
+%p#keypermissions Sometimes keys will fail due to improper permissions.
 
 %p If I suspect improper permissions on my keys, I issue commands like this:
 
@@ -712,7 +727,7 @@
       chmod 600 id_rsa
       chmod 644 id_rsa.pub
 
-%p The next noun in Linux security is iptables-firewall.
+%p#iptables The next noun in Linux security is iptables-firewall.
 
 %p I use iptables to prevent Linux from listening for certain types of network traffic.
 
@@ -750,7 +765,9 @@
 %p  
   %a(href='http://www.google.com/search?q=Linux+iptables+ipv6' target='x')
     http://www.google.com/search?q=Linux+iptables+ipv6
-  
+
+%p#openssh The next noun in Linux security is openssh-server.
+
 %p I use the openssh-server to make my Linux instance listen for ssh login.
 
 %p It is easy to install:
