@@ -151,13 +151,37 @@
           git commit -am Another_Enhancement
           cd ~/danapp11
           git fetch
-    At this point danapp11 knows about Another_Enhancement in danapp10.
+    git fetch tells danapp11 about Another_Enhancement Commit in danapp10.
     %br/
-    That commit, however, has not been Merged into danapp11 yet.
+    That Commit, however, has not been Merged into danapp11 yet.
     %br/
     That Merge can happen next if I want.
 
+  %li
+    Merge Repo (Fetch)
+    %br/
+    After a Fetch, I Merge a Repo to merge a commit from another Repo:
+    .syntax
+      %pre
+        %code.bash
+          cd ~/danapp11
+          git merge
+    That Merge makes danapp11 identical to danapp10
 
+  %li
+    Merge Repo (Branch)
+    %br/
+    Another type of Merge is to Merge a Branch
+    .syntax
+      %pre
+        %code.bash
+          cd ~/danapp10
+          git checkout -b danbranch1
+          echo Use danapp10 to test Branches >> readme.txt
+          git commit -am 'I like this commit.'
+          git checkout master
+          git merge danbranch1
+    That Merge makes master identical to danbranch1.
 
 %p
   %a(href='class02') Class02
