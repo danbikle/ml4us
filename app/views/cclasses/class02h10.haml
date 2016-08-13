@@ -23,11 +23,28 @@
           heroku status
 
   %li
-    Use the client to create an app
+    Clone an existing app from github.com  
   %li
-    Clone an existing app from github.com
+    Download the heroku-client
+    .syntax
+      %pre
+        %code.bash
+          cd ~
+          git clone https://github.com/danbikle/ml4us class2app
   %li
-    Push the clone to heroku.com
+    Use the client to create an app:
+    .syntax
+      %pre
+        %code.bash
+          cd ~/class2app
+          heroku create class2app
+  %li
+    Push the clone to heroku.com:
+    .syntax
+      %pre
+        %code.bash
+          cd ~/class2app
+          git push heroku master
     
 %p
   %a(href='class02') Class02
