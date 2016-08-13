@@ -11,6 +11,17 @@
   
   %li
     Download the heroku-client
+    .syntax
+      %pre
+        %code.bash
+          cd ~
+          rm -rf heroku-client.tgz heroku-client
+          wget https://s3.amazonaws.com/assets.heroku.com/heroku-client/heroku-client.tgz
+          tar zxf heroku-client.tgz
+          echo 'export PATH=${HOME}/heroku-client/bin:${PATH}' >> ~/.bashrc
+          bash
+          heroku status
+
   %li
     Use the client to create an app
   %li
