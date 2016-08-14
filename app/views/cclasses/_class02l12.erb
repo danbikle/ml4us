@@ -1,0 +1,15 @@
+<code class='bash'>
+mkdir -p       ~/myetc/
+cp /etc/passwd ~/myetc/passwd
+cp /etc/group  ~/myetc/
+rsync -av /etc/init.d ~/myetc/
+ls -la    ~/myetc/
+ls -la    ~/myetc/
+ls -lat   ~/myetc/init.d
+ls -laS   ~/myetc/init.d
+chmod g-r ~/myetc/init.d
+chmod o-r ~/myetc/passwd
+chmod o+w ~/myetc/group 
+rm -f     ~/myetc/init.d/README
+mv ~/myetc/init.d/reboot ~/myetc/init.d/reboot.bak
+</code>
