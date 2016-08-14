@@ -1,0 +1,28 @@
+%h2 Class02 Lab Answer:
+
+%p This is an easy lab.
+
+%p The shell commands I used to do this lab are listed below:
+
+.syntax
+  %pre
+    %code.bash
+      sudo useradd -m -s /bin/bash -G sudo abe
+      sudo passwd abe
+      ssh -AY abe@localhost
+      git clone https://github.com/danbikle/spy611v2
+      git config --global user.email "abe@abe.xyz"
+      git config --global user.name   abe
+      git clone ~abe/spy611v2 ~abe/spy611v2clone
+      cd ~abe/spy611v2clone
+      git checkout -b abebranch1
+      echo 'abe was here' > ~abe/spy611v2clone/abe.txt
+      git add .
+      git commit -am  'abe said something'
+      git checkout master
+      cat ~abe/spy611v2clone/abe.txt
+      git merge abebranch1
+      cat ~abe/spy611v2clone/abe.txt
+%p
+  %a(href='class02#gitlab')
+    Class02 Lab (Security)
