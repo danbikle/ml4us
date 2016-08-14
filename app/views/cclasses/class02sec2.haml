@@ -1,0 +1,28 @@
+%h2 Class02 Lab Answer:
+
+%p This is an easy lab.
+
+%p The shell commands I used to do this lab are listed below:
+
+.syntax
+  %pre
+    %code.bash
+      sudo useradd -m -s /bin/bash -G sudo abe
+      sudo passwd abe
+      ssh -AY abe@localhost
+      ls -la ~abe/
+      sudo passwd root
+      ssh-keygen -t rsa
+      sudo useradd -m -s /bin/bash -G sudo ann
+      sudo mkdir -p ~ann/.ssh
+      sudo cat ~abe/.ssh/id_rsa.pub >> ~ann/.ssh/authorized_keys
+      sudo chown -R ann ~ann/.ssh
+      ssh -AY ann@localhost
+%hr/
+.syntax
+  %pre
+    =render 'class02sec3'
+
+%p
+  %a(href='class02#linuxlabs')
+    Class02 Lab (Security)
