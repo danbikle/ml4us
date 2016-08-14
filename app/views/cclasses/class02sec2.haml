@@ -15,8 +15,10 @@
       ssh-keygen -t rsa
       sudo useradd -m -s /bin/bash -G sudo ann
       sudo mkdir -p ~ann/.ssh
-      sudo cat ~abe/.ssh/id_rsa.pub >> ~ann/.ssh/authorized_keys
-      sudo chown -R ann ~ann/.ssh
+      sudo bash
+      cat ~abe/.ssh/id_rsa.pub >> ~ann/.ssh/authorized_keys
+      chown -R ann ~ann/.ssh
+      exit
       ssh -AY ann@localhost
 %hr/
 .syntax
