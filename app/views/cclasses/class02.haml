@@ -99,4 +99,16 @@
   %li Start an Ubuntu virtualbox and ssh into it.
   %li
     %a(href='/cclasses/class02sec1') Answer  
+  %li Create a user named abe with password and sudo.
+  %li sudo useradd -m -s /bin/bash -G sudo abe
+  %li sudo passwd abe
+  %li List permissions of all of abe's folders and files.
+  %li verify that abe can run sudo ls -la /root
+  %li Update abe's home folder so only abe can read and write to it.
+  %li As abe, change the password of root.
+  %li As abe, create a public-key and private-key
+  %li Create ann account if it does not exist.
+  %li Copy abe's public-key into a file which allows abe to login as ann.
+  %li As abe, login to ann account using abe private-key.
+  
   
