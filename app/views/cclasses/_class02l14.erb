@@ -1,0 +1,928 @@
+<code class='bash'>
+dan@pavlap:~ $ 
+dan@pavlap:~ $ 
+dan@pavlap:~ $ du -sh  ~/myetc/
+328K	/home/dan/myetc/
+
+
+
+dan@pavlap:~ $ df -h ~/myetc/
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sda2       905G  452G  408G  53% /
+
+
+
+dan@pavlap:~ $ 
+dan@pavlap:~ $ lspci
+00:00.0 Host bridge: Intel Corporation Sky Lake Host Bridge/DRAM Registers (rev 07)
+00:01.0 PCI bridge: Intel Corporation Sky Lake PCIe Controller (x16) (rev 07)
+00:02.0 VGA compatible controller: Intel Corporation Skylake Integrated Graphics (rev 06)
+00:04.0 Signal processing controller: Intel Corporation Skylake Processor Thermal Subsystem (rev 07)
+00:14.0 USB controller: Intel Corporation Sunrise Point-H USB 3.0 xHCI Controller (rev 31)
+00:14.2 Signal processing controller: Intel Corporation Sunrise Point-H Thermal subsystem (rev 31)
+00:15.0 Signal processing controller: Intel Corporation Sunrise Point-H LPSS I2C Controller #0 (rev 31)
+00:16.0 Communication controller: Intel Corporation Sunrise Point-H CSME HECI #1 (rev 31)
+00:17.0 SATA controller: Intel Corporation Sunrise Point-H SATA Controller [AHCI mode] (rev 31)
+00:1c.0 PCI bridge: Intel Corporation Sunrise Point-H PCI Express Root Port #5 (rev f1)
+00:1c.5 PCI bridge: Intel Corporation Sunrise Point-H PCI Express Root Port #6 (rev f1)
+00:1c.6 PCI bridge: Intel Corporation Sunrise Point-H PCI Express Root Port #7 (rev f1)
+00:1f.0 ISA bridge: Intel Corporation Sunrise Point-H LPC Controller (rev 31)
+00:1f.2 Memory controller: Intel Corporation Sunrise Point-H PMC (rev 31)
+00:1f.3 Audio device: Intel Corporation Sunrise Point-H HD Audio (rev 31)
+00:1f.4 SMBus: Intel Corporation Sunrise Point-H SMBus (rev 31)
+01:00.0 3D controller: NVIDIA Corporation GM107M [GeForce GTX 960M] (rev a2)
+07:00.0 Unassigned class [ff00]: Realtek Semiconductor Co., Ltd. RTS522A PCI Express Card Reader (rev 01)
+08:00.0 Network controller: Intel Corporation Wireless 7265 (rev 61)
+09:00.0 Ethernet controller: Realtek Semiconductor Co., Ltd. RTL8111/8168/8411 PCI Express Gigabit Ethernet Controller (rev 15)
+
+
+
+dan@pavlap:~ $ lshw
+WARNING: you should run this program as super-user.
+pavlap
+    description: Computer
+    width: 64 bits
+    capabilities: vsyscall32
+  *-core
+       description: Motherboard
+       physical id: 0
+     *-memory
+          description: System memory
+          physical id: 0
+          size: 11GiB
+     *-cpu
+          product: Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz
+          vendor: Intel Corp.
+          physical id: 1
+          bus info: cpu@0
+          size: 799MHz
+          capacity: 3500MHz
+          width: 64 bits
+          capabilities: fpu fpu_exception wp vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp x86-64 constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch epb intel_pt tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp cpufreq
+     *-pci
+          description: Host bridge
+          product: Sky Lake Host Bridge/DRAM Registers
+          vendor: Intel Corporation
+          physical id: 100
+          bus info: pci@0000:00:00.0
+          version: 07
+          width: 32 bits
+          clock: 33MHz
+        *-pci:0
+             description: PCI bridge
+             product: Sky Lake PCIe Controller (x16)
+             vendor: Intel Corporation
+             physical id: 1
+             bus info: pci@0000:00:01.0
+             version: 07
+             width: 32 bits
+             clock: 33MHz
+             capabilities: pci normal_decode bus_master cap_list
+             configuration: driver=pcieport
+             resources: irq:122 ioport:4000(size=4096) memory:a3000000-a40fffff ioport:90000000(size=301989888)
+           *-display UNCLAIMED
+                description: 3D controller
+                product: GM107M [GeForce GTX 960M]
+                vendor: NVIDIA Corporation
+                physical id: 0
+                bus info: pci@0000:01:00.0
+                version: a2
+                width: 64 bits
+                clock: 33MHz
+                capabilities: cap_list
+                configuration: latency=0
+                resources: memory:a3000000-a3ffffff memory:90000000-9fffffff memory:a0000000-a1ffffff ioport:4000(size=128) memory:a4000000-a407ffff
+        *-display
+             description: VGA compatible controller
+             product: Intel Corporation
+             vendor: Intel Corporation
+             physical id: 2
+             bus info: pci@0000:00:02.0
+             version: 06
+             width: 64 bits
+             clock: 33MHz
+             capabilities: vga_controller bus_master cap_list rom
+             configuration: driver=i915_bpo latency=0
+             resources: irq:131 memory:a2000000-a2ffffff memory:b0000000-bfffffff ioport:5000(size=64)
+        *-generic:0
+             description: Signal processing controller
+             product: Intel Corporation
+             vendor: Intel Corporation
+             physical id: 4
+             bus info: pci@0000:00:04.0
+             version: 07
+             width: 64 bits
+             clock: 33MHz
+             capabilities: bus_master cap_list
+             configuration: driver=proc_thermal latency=0
+             resources: irq:16 memory:a4420000-a4427fff
+        *-usb
+             description: USB controller
+             product: Sunrise Point-H USB 3.0 xHCI Controller
+             vendor: Intel Corporation
+             physical id: 14
+             bus info: pci@0000:00:14.0
+             version: 31
+             width: 64 bits
+             clock: 33MHz
+             capabilities: xhci bus_master cap_list
+             configuration: driver=xhci_hcd latency=0
+             resources: irq:126 memory:a4400000-a440ffff
+        *-generic:1 UNCLAIMED
+             description: Signal processing controller
+             product: Sunrise Point-H Thermal subsystem
+             vendor: Intel Corporation
+             physical id: 14.2
+             bus info: pci@0000:00:14.2
+             version: 31
+             width: 64 bits
+             clock: 33MHz
+             capabilities: bus_master cap_list
+             configuration: latency=0
+             resources: memory:a4432000-a4432fff
+        *-generic:2
+             description: Signal processing controller
+             product: Sunrise Point-H LPSS I2C Controller #0
+             vendor: Intel Corporation
+             physical id: 15
+             bus info: pci@0000:00:15.0
+             version: 31
+             width: 64 bits
+             clock: 33MHz
+             capabilities: bus_master cap_list
+             configuration: driver=intel-lpss latency=0
+             resources: irq:16 memory:a4433000-a4433fff
+        *-communication
+             description: Communication controller
+             product: Sunrise Point-H CSME HECI #1
+             vendor: Intel Corporation
+             physical id: 16
+             bus info: pci@0000:00:16.0
+             version: 31
+             width: 64 bits
+             clock: 33MHz
+             capabilities: bus_master cap_list
+             configuration: driver=mei_me latency=0
+             resources: irq:130 memory:a4434000-a4434fff
+        *-storage
+             description: SATA controller
+             product: Sunrise Point-H SATA Controller [AHCI mode]
+             vendor: Intel Corporation
+             physical id: 17
+             bus info: pci@0000:00:17.0
+             version: 31
+             width: 32 bits
+             clock: 66MHz
+             capabilities: storage ahci_1.0 bus_master cap_list
+             configuration: driver=ahci latency=0
+             resources: irq:128 memory:a4430000-a4431fff memory:a4437000-a44370ff ioport:5080(size=8) ioport:5088(size=4) ioport:5060(size=32) memory:a4435000-a44357ff
+        *-pci:1
+             description: PCI bridge
+             product: Sunrise Point-H PCI Express Root Port #5
+             vendor: Intel Corporation
+             physical id: 1c
+             bus info: pci@0000:00:1c.0
+             version: f1
+             width: 32 bits
+             clock: 33MHz
+             capabilities: pci normal_decode bus_master cap_list
+             configuration: driver=pcieport
+             resources: irq:123 ioport:6000(size=4096) memory:a4300000-a43fffff ioport:80100000(size=2097152)
+           *-generic
+                description: Unassigned class
+                product: Realtek Semiconductor Co., Ltd.
+                vendor: Realtek Semiconductor Co., Ltd.
+                physical id: 0
+                bus info: pci@0000:07:00.0
+                version: 01
+                width: 32 bits
+                clock: 33MHz
+                capabilities: bus_master cap_list
+                configuration: driver=rtsx_pci latency=0
+                resources: irq:127 memory:a4300000-a4300fff
+        *-pci:2
+             description: PCI bridge
+             product: Sunrise Point-H PCI Express Root Port #6
+             vendor: Intel Corporation
+             physical id: 1c.5
+             bus info: pci@0000:00:1c.5
+             version: f1
+             width: 32 bits
+             clock: 33MHz
+             capabilities: pci normal_decode bus_master cap_list
+             configuration: driver=pcieport
+             resources: irq:124 memory:a4200000-a42fffff
+           *-network DISABLED
+                description: Wireless interface
+                product: Wireless 7265
+                vendor: Intel Corporation
+                physical id: 0
+                bus info: pci@0000:08:00.0
+                logical name: wlo1
+                version: 61
+                serial: a4:02:b9:4c:78:4f
+                width: 64 bits
+                clock: 33MHz
+                capabilities: bus_master cap_list ethernet physical wireless
+                configuration: broadcast=yes driver=iwlwifi driverversion=4.4.0-31-generic firmware=16.242414.0 latency=0 link=no multicast=yes wireless=IEEE 802.11abgn
+                resources: irq:132 memory:a4200000-a4201fff
+        *-pci:3
+             description: PCI bridge
+             product: Sunrise Point-H PCI Express Root Port #7
+             vendor: Intel Corporation
+             physical id: 1c.6
+             bus info: pci@0000:00:1c.6
+             version: f1
+             width: 32 bits
+             clock: 33MHz
+             capabilities: pci normal_decode bus_master cap_list
+             configuration: driver=pcieport
+             resources: irq:125 ioport:3000(size=4096) memory:a4100000-a41fffff
+           *-network
+                description: Ethernet interface
+                product: RTL8111/8168/8411 PCI Express Gigabit Ethernet Controller
+                vendor: Realtek Semiconductor Co., Ltd.
+                physical id: 0
+                bus info: pci@0000:09:00.0
+                logical name: eno1
+                version: 15
+                serial: ec:8e:b5:4b:cf:c4
+                size: 1Gbit/s
+                capacity: 1Gbit/s
+                width: 64 bits
+                clock: 33MHz
+                capabilities: bus_master cap_list ethernet physical tp mii 10bt 10bt-fd 100bt 100bt-fd 1000bt 1000bt-fd autonegotiation
+                configuration: autonegotiation=on broadcast=yes driver=r8169 driverversion=2.3LK-NAPI duplex=full firmware=rtl8168h-2_0.0.2 02/26/15 ip=192.168.1.80 latency=0 link=yes multicast=yes port=MII speed=1Gbit/s
+                resources: irq:129 ioport:3000(size=256) memory:a4104000-a4104fff memory:a4100000-a4103fff
+        *-isa
+             description: ISA bridge
+             product: Sunrise Point-H LPC Controller
+             vendor: Intel Corporation
+             physical id: 1f
+             bus info: pci@0000:00:1f.0
+             version: 31
+             width: 32 bits
+             clock: 33MHz
+             capabilities: isa bus_master
+             configuration: latency=0
+        *-memory UNCLAIMED
+             description: Memory controller
+             product: Sunrise Point-H PMC
+             vendor: Intel Corporation
+             physical id: 1f.2
+             bus info: pci@0000:00:1f.2
+             version: 31
+             width: 32 bits
+             clock: 33MHz (30.3ns)
+             capabilities: bus_master
+             configuration: latency=0
+             resources: memory:a442c000-a442ffff
+        *-multimedia
+             description: Audio device
+             product: Sunrise Point-H HD Audio
+             vendor: Intel Corporation
+             physical id: 1f.3
+             bus info: pci@0000:00:1f.3
+             version: 31
+             width: 64 bits
+             clock: 33MHz
+             capabilities: bus_master cap_list
+             configuration: driver=snd_hda_intel latency=32
+             resources: irq:133 memory:a4428000-a442bfff memory:a4410000-a441ffff
+        *-serial UNCLAIMED
+             description: SMBus
+             product: Sunrise Point-H SMBus
+             vendor: Intel Corporation
+             physical id: 1f.4
+             bus info: pci@0000:00:1f.4
+             version: 31
+             width: 64 bits
+             clock: 33MHz
+             configuration: latency=0
+             resources: memory:a4436000-a44360ff ioport:5040(size=32)
+     *-scsi
+          physical id: 2
+          logical name: scsi3
+          capabilities: emulated
+        *-cdrom
+             description: DVD-RAM writer
+             product: DVDRW  GUD0N
+             vendor: hp
+             physical id: 0.0.0
+             bus info: scsi@3:0.0.0
+             logical name: /dev/cdrom
+             logical name: /dev/cdrw
+             logical name: /dev/dvd
+             logical name: /dev/dvdrw
+             logical name: /dev/sr0
+             version: PD00
+             capabilities: removable audio cd-r cd-rw dvd dvd-r dvd-ram
+             configuration: ansiversion=5 status=nodisc
+WARNING: output may be incomplete or inaccurate, you should run this program as super-user.
+
+
+
+
+dan@pavlap:~ $ 
+dan@pavlap:~ $  cat /proc/cpuinfo 
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 94
+model name	: Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz
+stepping	: 3
+microcode	: 0x84
+cpu MHz		: 1305.484
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 8
+core id		: 0
+cpu cores	: 4
+apicid		: 0
+initial apicid	: 0
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch epb intel_pt tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp
+bugs		:
+bogomips	: 5183.97
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 1
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 94
+model name	: Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz
+stepping	: 3
+microcode	: 0x84
+cpu MHz		: 1328.335
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 8
+core id		: 1
+cpu cores	: 4
+apicid		: 2
+initial apicid	: 2
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch epb intel_pt tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp
+bugs		:
+bogomips	: 5183.97
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 2
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 94
+model name	: Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz
+stepping	: 3
+microcode	: 0x84
+cpu MHz		: 1213.062
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 8
+core id		: 2
+cpu cores	: 4
+apicid		: 4
+initial apicid	: 4
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch epb intel_pt tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp
+bugs		:
+bogomips	: 5183.97
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 3
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 94
+model name	: Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz
+stepping	: 3
+microcode	: 0x84
+cpu MHz		: 972.765
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 8
+core id		: 3
+cpu cores	: 4
+apicid		: 6
+initial apicid	: 6
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch epb intel_pt tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp
+bugs		:
+bogomips	: 5183.97
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 4
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 94
+model name	: Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz
+stepping	: 3
+microcode	: 0x84
+cpu MHz		: 978.960
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 8
+core id		: 0
+cpu cores	: 4
+apicid		: 1
+initial apicid	: 1
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch epb intel_pt tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp
+bugs		:
+bogomips	: 5183.97
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 5
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 94
+model name	: Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz
+stepping	: 3
+microcode	: 0x84
+cpu MHz		: 1880.835
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 8
+core id		: 1
+cpu cores	: 4
+apicid		: 3
+initial apicid	: 3
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch epb intel_pt tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp
+bugs		:
+bogomips	: 5183.97
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 6
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 94
+model name	: Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz
+stepping	: 3
+microcode	: 0x84
+cpu MHz		: 1390.187
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 8
+core id		: 2
+cpu cores	: 4
+apicid		: 5
+initial apicid	: 5
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch epb intel_pt tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp
+bugs		:
+bogomips	: 5183.97
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 7
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 94
+model name	: Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz
+stepping	: 3
+microcode	: 0x84
+cpu MHz		: 1741.593
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 8
+core id		: 3
+cpu cores	: 4
+apicid		: 7
+initial apicid	: 7
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch epb intel_pt tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp
+bugs		:
+bogomips	: 5183.97
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+
+
+
+
+
+dan@pavlap:~ $ 
+dan@pavlap:~ $ top --help
+top: inappropriate '-help'
+Usage:
+  top -hv | -bcHiOSs -d secs -n max -u|U user -p pid(s) -o field -w [cols]
+dan@pavlap:~ $ 
+
+
+
+
+
+
+
+
+
+
+dan@pavlap:~ $ top -d 5 -n 1
+top - 17:57:33 up 3 days, 23:54,  2 users,  load average: 0.19, 0.31, 0.24
+Tasks: 320 total,   1 running, 319 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  1.4 us,  1.6 sy,  0.0 ni, 96.8 id,  0.3 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem : 12191024 total,   178580 free,  5853148 used,  6159296 buff/cache
+KiB Swap: 12470268 total, 12451716 free,    18552 used.  5463684 avail Mem 
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND                                                                                                                                
+28383 dan       20   0   49008   3880   3184 R  12.5  0.0   0:00.02 top                                                                                                                                    
+28064 dan       20   0 1228904 252232  71112 S   6.2  2.1 131:50.24 chrome                                                                                                                                 
+    1 root      20   0  185348   4812   3140 S   0.0  0.0   0:03.88 systemd                                                                                                                                
+    2 root      20   0       0      0      0 S   0.0  0.0   0:00.14 kthreadd                                                                                                                               
+    3 root      20   0       0      0      0 S   0.0  0.0   0:00.16 ksoftirqd/0                                                                                                                            
+    5 root       0 -20       0      0      0 S   0.0  0.0   0:00.00 kworker/0:0H                                                                                                                           
+    7 root      20   0       0      0      0 S   0.0  0.0   0:55.99 rcu_sched                                                                                                                              
+    8 root      20   0       0      0      0 S   0.0  0.0   0:00.00 rcu_bh                                                                                                                                 
+    9 root      rt   0       0      0      0 S   0.0  0.0   0:00.02 migration/0                                                                                                                            
+   10 root      rt   0       0      0      0 S   0.0  0.0   0:01.37 watchdog/0                                                                                                                             
+   11 root      rt   0       0      0      0 S   0.0  0.0   0:01.39 watchdog/1                                                                                                                             
+   12 root      rt   0       0      0      0 S   0.0  0.0   0:00.03 migration/1                                                                                                                            
+   13 root      20   0       0      0      0 S   0.0  0.0   0:00.57 ksoftirqd/1                                                                                                                            
+   15 root       0 -20       0      0      0 S   0.0  0.0   0:00.00 kworker/1:0H                                                                                                                           
+   16 root      rt   0       0      0      0 S   0.0  0.0   0:01.27 watchdog/2                                                                                                                             
+   17 root      rt   0       0      0      0 S   0.0  0.0   0:00.03 migration/2                                                                                                                            
+   18 root      20   0       0      0      0 S   0.0  0.0   0:00.11 ksoftirqd/2                                                                                                                            
+dan@pavlap:~ $ 
+dan@pavlap:~ $ 
+
+
+
+
+dan@pavlap:~ $ ps -ef|sort
+avahi      650     1  0 Aug09 ?        00:00:00 avahi-daemon: running [pavlap.local]
+avahi      679   650  0 Aug09 ?        00:00:00 avahi-daemon: chroot helper
+bob       4606     1  0 Aug11 ?        00:00:00 /lib/systemd/systemd --user
+bob       4607  4606  0 Aug11 ?        00:00:00 (sd-pam)
+bob       4660  4603  0 Aug11 ?        00:00:00 sshd: bob@pts/35
+bob       4664  4660  0 Aug11 pts/35   00:00:00 -bash
+bob       4714  4664  0 Aug11 pts/35   00:00:00 bash
+colord    1392     1  0 Aug09 ?        00:00:00 /usr/lib/colord/colord
+dan       1681     1  0 Aug09 ?        00:00:00 /lib/systemd/systemd --user
+dan       1684  1681  0 Aug09 ?        00:00:00 (sd-pam)
+dan       1690     1  0 Aug09 ?        00:00:02 /usr/bin/gnome-keyring-daemon --daemonize --login
+dan       1692  1131  0 Aug09 ?        00:00:00 /sbin/upstart --user
+dan       1772  1692  0 Aug09 ?        00:00:00 upstart-udev-bridge --daemon --user
+dan       1780  1692  0 Aug09 ?        00:00:10 dbus-daemon --fork --session --address=unix:abstract=/tmp/dbus-vyfNZUXGOP
+dan       1792  1692  0 Aug09 ?        00:00:00 /usr/lib/x86_64-linux-gnu/hud/window-stack-bridge
+dan       1816  1692  0 Aug09 ?        00:00:00 upstart-dbus-bridge --daemon --system --user --bus-name system
+dan       1818  1692  0 Aug09 ?        00:00:02 upstart-dbus-bridge --daemon --session --user --bus-name session
+dan       1821  1692  0 Aug09 ?        00:04:24 /usr/bin/ibus-daemon --daemonize --xim
+dan       1840  1692  0 Aug09 ?        00:00:00 /usr/lib/gvfs/gvfsd
+dan       1845  1692  0 Aug09 ?        00:00:00 /usr/lib/gvfs/gvfsd-fuse /run/user/1000/gvfs -f -o big_writes
+dan       1853  1821  0 Aug09 ?        00:00:00 /usr/lib/ibus/ibus-dconf
+dan       1854  1821  0 Aug09 ?        00:00:58 /usr/lib/ibus/ibus-ui-gtk3
+dan      18565  2281  0 Aug12 pts/37   00:00:00 /bin/bash --noediting -i
+dan       1857  1692  0 Aug09 ?        00:02:47 /usr/lib/ibus/ibus-x11 --kill-daemon
+dan       1872  1692  0 Aug09 ?        00:00:00 /usr/lib/at-spi2-core/at-spi-bus-launcher
+dan       1877  1872  0 Aug09 ?        00:00:01 /usr/bin/dbus-daemon --config-file=/etc/at-spi2/accessibility.conf --nofork --print-address 3
+dan       1879  1692  0 Aug09 ?        00:00:11 /usr/lib/at-spi2-core/at-spi2-registryd --use-gnome-session
+dan       1884  1692  0 Aug09 ?        00:00:09 gpg-agent --homedir /home/dan/.gnupg --use-standard-socket --daemon
+dan       1885  1821  0 Aug09 ?        00:01:11 /usr/lib/ibus/ibus-engine-simple
+dan       1891  1692  0 Aug09 ?        00:00:00 upstart-file-bridge --daemon --user
+dan       1895  1692  0 Aug09 ?        00:00:22 /usr/lib/x86_64-linux-gnu/bamf/bamfdaemon
+dan      18964  2281  0 Aug12 pts/38   00:00:00 /bin/bash --noediting -i
+dan      19028 18964  0 Aug12 pts/38   00:00:00 ssh -YA u111
+dan      19033  2281  0 Aug12 pts/39   00:00:00 /bin/bash --noediting -i
+dan       1909  1692  0 Aug09 ?        00:00:14 /usr/lib/x86_64-linux-gnu/hud/hud-service
+dan      19093 19033  0 Aug12 pts/39   00:00:24 ssh -AY tsds@u111
+dan       1911  1692  0 Aug09 ?        00:00:22 /usr/lib/unity-settings-daemon/unity-settings-daemon
+dan       1915  1692  0 Aug09 ?        00:57:13 compiz
+dan       1920  1692  0 Aug09 ?        00:00:00 /usr/lib/gnome-session/gnome-session-binary --session=ubuntu
+dan       1929  1692  0 Aug09 ?        00:00:32 /usr/lib/x86_64-linux-gnu/unity/unity-panel-service
+dan      19316  2281  0 Aug12 pts/40   00:00:00 /bin/bash --noediting -i
+dan       1955  1692  0 Aug09 ?        00:00:00 /usr/lib/dconf/dconf-service
+dan       1958  1911  0 Aug09 ?        00:00:11 syndaemon -i 1.0 -t -K -R
+dan      19606 19316  0 Aug12 pts/40   00:00:00 bash
+dan       1962  1692  0 Aug09 ?        00:00:31 /usr/bin/pulseaudio --start --log-target=syslog
+dan       1966  1692  0 Aug09 ?        00:00:00 /usr/lib/x86_64-linux-gnu/indicator-messages/indicator-messages-service
+dan       1967  1692  0 Aug09 ?        00:00:00 /usr/lib/x86_64-linux-gnu/indicator-bluetooth/indicator-bluetooth-service
+dan       1968  1692  0 Aug09 ?        00:00:01 /usr/lib/x86_64-linux-gnu/indicator-power/indicator-power-service
+dan       1971  1692  0 Aug09 ?        00:00:04 /usr/lib/x86_64-linux-gnu/indicator-datetime/indicator-datetime-service
+dan       1975  1692  0 Aug09 ?        00:00:09 /usr/lib/x86_64-linux-gnu/indicator-keyboard/indicator-keyboard-service --use-gtk
+dan       1977  1692  0 Aug09 ?        00:00:00 /usr/lib/x86_64-linux-gnu/indicator-sound/indicator-sound-service
+dan       1978  1692  0 Aug09 ?        00:00:09 /usr/lib/x86_64-linux-gnu/indicator-printers/indicator-printers-service
+dan       1979  1692  0 Aug09 ?        00:00:00 /usr/lib/x86_64-linux-gnu/indicator-session/indicator-session-service
+dan       2008  1692  0 Aug09 ?        00:00:00 /usr/lib/x86_64-linux-gnu/indicator-application/indicator-application-service
+dan       2024  1692  0 Aug09 ?        00:00:00 /usr/lib/evolution/evolution-source-registry
+dan       2052  1920  0 Aug09 ?        00:00:22 nautilus -n
+dan       2053  1920  0 Aug09 ?        00:00:22 /usr/bin/gnome-software --gapplication-service
+dan       2056  1920  0 Aug09 ?        00:00:09 /usr/lib/unity-settings-daemon/unity-fallback-mount-helper
+dan       2057  1920  0 Aug09 ?        00:00:09 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+dan       2058  1920  0 Aug09 ?        00:00:10 nm-applet
+dan       2075  1692  0 Aug09 ?        00:00:01 /usr/lib/gvfs/gvfs-udisks2-volume-monitor
+dan       2094  1692  0 Aug09 ?        00:00:00 /usr/lib/gvfs/gvfs-afc-volume-monitor
+dan       2100  1692  0 Aug09 ?        00:00:00 /usr/lib/gvfs/gvfs-gphoto2-volume-monitor
+dan       2110  1692  0 Aug09 ?        00:00:00 /usr/lib/gvfs/gvfs-goa-volume-monitor
+dan       2115  1692  0 Aug09 ?        00:00:00 /usr/lib/gvfs/gvfs-mtp-volume-monitor
+dan       2126  1692  0 Aug09 ?        00:00:00 /usr/lib/evolution/evolution-calendar-factory
+dan       2135  1692  0 Aug09 ?        00:00:00 /usr/lib/gvfs/gvfsd-trash --spawner :1.4 /org/gtk/gvfs/exec_spaw/0
+dan       2153  2126  0 Aug09 ?        00:00:00 /usr/lib/evolution/evolution-calendar-factory-subprocess --factory contacts --bus-name org.gnome.evolution.dataserver.Subprocess.Backend.Calendarx2126x2 --o
+dan       2163  1692  0 Aug09 ?        00:00:00 /usr/lib/evolution/evolution-addressbook-factory
+dan       2165  2126  0 Aug09 ?        00:00:00 /usr/lib/evolution/evolution-calendar-factory-subprocess --factory local --bus-name org.gnome.evolution.dataserver.Subprocess.Backend.Calendarx2126x3 --own-
+dan       2191  2163  0 Aug09 ?        00:00:00 /usr/lib/evolution/evolution-addressbook-factory-subprocess --factory local --bus-name org.gnome.evolution.dataserver.Subprocess.Backend.AddressBookx2163x2 
+dan       2276  1692  0 Aug09 ?        00:00:12 /usr/lib/x86_64-linux-gnu/notify-osd
+dan       2281  1692  0 Aug09 ?        00:07:00 /usr/bin/emacs24
+dan       2287  1692  0 Aug09 ?        00:00:00 /usr/lib/x86_64-linux-gnu/gconf/gconfd-2
+dan       2289  2281  0 Aug09 pts/17   00:00:00 /bin/bash --noediting -i
+dan       2349  1920  0 Aug09 ?        00:00:05 zeitgeist-datahub
+dan       2356  1692  0 Aug09 ?        00:00:00 /bin/sh -c /usr/lib/x86_64-linux-gnu/zeitgeist/zeitgeist-maybe-vacuum; /usr/bin/zeitgeist-daemon
+dan       2360  2356  0 Aug09 ?        00:00:00 /usr/bin/zeitgeist-daemon
+dan       2367  1692  0 Aug09 ?        00:00:00 /usr/lib/x86_64-linux-gnu/zeitgeist-fts
+dan      23793  2281  0 Aug10 pts/26   00:00:00 /bin/bash --noediting -i
+dan      23858  2281  0 Aug10 pts/27   00:00:00 /bin/bash --noediting -i
+dan       2398  2281  0 Aug09 pts/18   00:00:00 /bin/bash --noediting -i
+dan       2494  1920  0 Aug09 ?        00:00:16 update-notifier
+dan       2528  2281  0 Aug09 pts/2    00:00:00 /bin/bash --noediting -i
+dan       2590  1920  0 Aug09 ?        00:00:00 /usr/lib/x86_64-linux-gnu/deja-dup/deja-dup-monitor
+dan       2611  1692  5 Aug09 ?        05:03:19 /usr/lib/firefox/firefox
+dan      26833  2281  0 15:14 pts/41   00:00:00 /bin/bash --noediting -i
+dan       2753  2528  0 Aug09 pts/2    00:00:00 bash
+dan      27659  2281  0 Aug10 pts/28   00:00:00 /bin/bash --noediting -i
+dan      27890  1692  0 Aug10 ?        00:04:50 /opt/google/chrome/chrome
+dan      27897 27890  0 Aug10 ?        00:00:00 cat
+dan      27898 27890  0 Aug10 ?        00:00:00 cat
+dan      27901 27890  0 Aug10 ?        00:00:00 /opt/google/chrome/chrome --type=zygote
+dan      27902 27901  0 Aug10 ?        00:00:00 /opt/google/chrome/nacl_helper
+dan      27905 27901  0 Aug10 ?        00:00:00 /opt/google/chrome/chrome --type=zygote
+dan      27948 27890  0 Aug10 ?        00:00:27 /proc/self/exe --type=gpu-process --channel=27890.0.1850399991 --mojo-application-channel-token=8C866700569DF6258FB95AE4F915FC09 --enable-features=DocumentW
+dan      27959 27948  0 Aug10 ?        00:00:00 /proc/self/exe --type=gpu-process --channel=27890.0.1850399991 --mojo-application-channel-token=8C866700569DF6258FB95AE4F915FC09 --enable-features=DocumentW
+dan      28002 27905  0 Aug10 ?        00:04:07 /opt/google/chrome/chrome --type=renderer --enable-features=DocumentWriteEvaluator<DisallowFetchForDocWrittenScriptsInMainFrame,*PreconnectMore<PreconnectMo
+dan      28036  2281  0 17:29 pts/42   00:00:00 /bin/bash --noediting -i
+dan      28064 27905  2 Aug10 ?        02:11:50 /opt/google/chrome/chrome --type=renderer --enable-features=DocumentWriteEvaluator<DisallowFetchForDocWrittenScriptsInMainFrame,*PreconnectMore<PreconnectMo
+dan      28260  2281  0 Aug10 pts/29   00:00:00 /bin/bash --noediting -i
+dan      28276  6623 29 17:48 ?        00:02:48 /usr/lib/virtualbox/VirtualBox --comment ub16aug12d --startvm f3c5aa29-841b-4be5-9c40-99871bcea408 --no-startvm-errormsgbox
+dan      28385 28036  0 17:57 pts/42   00:00:00 ps -ef
+dan      28386 28036  0 17:57 pts/42   00:00:00 sort
+dan      28422  2281  0 Aug10 pts/30   00:00:00 /bin/bash --noediting -i
+dan      28482 28422  0 Aug10 pts/30   00:00:01 ssh -YA u111
+dan      28592  2281  0 Aug10 pts/31   00:00:00 /bin/bash --noediting -i
+dan       2909  2281  0 Aug09 pts/19   00:00:00 /bin/bash --noediting -i
+dan      29448  2281  0 Aug10 ?        00:00:00 /usr/bin/aspell -a -m -B --encoding=utf-8
+dan      29609  2281  0 Aug10 pts/32   00:00:00 /bin/bash --noediting -i
+dan       2969  2909  0 Aug09 pts/19   00:00:00 /bin/bash script/railss.bash
+dan       2970  2969  0 Aug09 pts/19   00:01:09 puma 3.4.0 (tcp://0.0.0.0:3000) [ml4us]
+dan       3045  1692  0 Aug09 ?        00:00:00 /usr/lib/gvfs/gvfsd-metadata
+dan      30464  1692  0 Aug10 ?        00:00:15 /usr/lib/gnome-terminal/gnome-terminal-server
+dan      30471 30464  0 Aug10 pts/33   00:00:00 bash
+dan      30552  1692  0 Aug10 ?        00:00:00 /usr/lib/x86_64-linux-gnu/unity-scope-home/unity-scope-home
+dan      30563  1692  0 Aug10 ?        00:00:06 /usr/bin/unity-scope-loader applications/applications.scope applications/scopes.scope commands.scope
+dan      30565  1692  0 Aug10 ?        00:00:00 /usr/lib/x86_64-linux-gnu/unity-lens-files/unity-files-daemon
+dan       3145  1692  0 Aug09 ?        00:00:00 /usr/lib/gvfs/gvfsd-network --spawner :1.4 /org/gtk/gvfs/exec_spaw/2
+dan       3173  1692  0 Aug09 ?        00:00:00 /usr/lib/gvfs/gvfsd-dnssd --spawner :1.4 /org/gtk/gvfs/exec_spaw/5
+dan       3474  2281  0 Aug09 pts/20   00:00:00 /bin/bash --noediting -i
+dan       3695 29609  0 Aug11 pts/32   00:00:01 ssh -YA u111
+dan       3930  2281  0 Aug11 pts/34   00:00:00 /bin/bash --noediting -i
+dan       4490  2281  0 Aug09 pts/21   00:00:00 /bin/bash --noediting -i
+dan       4590  2281  0 Aug09 pts/22   00:00:00 /bin/bash --noediting -i
+dan       4602  3930  0 Aug11 pts/34   00:00:01 ssh -AY bob@lh
+dan       5759  2281  0 Aug11 pts/36   00:00:00 /bin/bash --noediting -i
+dan       5987  2281  0 Aug09 pts/23   00:00:00 /bin/bash --noediting -i
+dan       6494  2281  0 Aug10 pts/24   00:00:00 /bin/bash --noediting -i
+dan       6597  1692  0 Aug10 ?        00:27:34 /usr/lib/virtualbox/VirtualBox /home/dan/vms/ubsmall2016_0809/ubsmall.vbox
+dan       6618  1692  0 Aug10 ?        00:15:00 /usr/lib/virtualbox/VBoxXPCOMIPCD
+dan       6623  1692  1 Aug10 ?        00:57:07 /usr/lib/virtualbox/VBoxSVC --auto-shutdown
+dan       6680  2281  0 Aug10 pts/25   00:00:00 /bin/bash --noediting -i
+message+   671     1  0 Aug09 ?        00:00:02 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation
+nobody    1139   699  0 Aug09 ?        00:00:03 /usr/sbin/dnsmasq --no-resolv --keep-in-foreground --no-hosts --bind-interfaces --pid-file=/var/run/NetworkManager/dnsmasq.pid --listen-address=127.0.1.1 --
+postgres  1035     1  0 Aug09 ?        00:00:04 /usr/lib/postgresql/9.5/bin/postgres -D /var/lib/postgresql/9.5/main -c config_file=/etc/postgresql/9.5/main/postgresql.conf
+postgres  1052  1035  0 Aug09 ?        00:00:00 postgres: checkpointer process   
+postgres  1053  1035  0 Aug09 ?        00:00:03 postgres: writer process   
+postgres  1054  1035  0 Aug09 ?        00:00:03 postgres: wal writer process   
+postgres  1055  1035  0 Aug09 ?        00:00:02 postgres: autovacuum launcher process   
+postgres  1056  1035  0 Aug09 ?        00:00:03 postgres: stats collector process   
+root      1000   817  1 Aug09 tty7     01:05:48 /usr/lib/xorg/Xorg -core :0 -seat seat0 -auth /var/run/lightdm/root/:0 -nolisten tcp vt7 -novtswitch
+root       100     2  0 Aug09 ?        00:00:00 [bioset]
+root         1     0  0 Aug09 ?        00:00:03 /sbin/init splash
+root       101     2  0 Aug09 ?        00:00:00 [bioset]
+root        10     2  0 Aug09 ?        00:00:01 [watchdog/0]
+root       102     2  0 Aug09 ?        00:00:00 [bioset]
+root      1023     1  0 Aug09 ?        00:00:00 /usr/sbin/sshd -D
+root      1031     1  0 Aug09 tty1     00:00:00 /sbin/agetty --noclear tty1 linux
+root       103     2  0 Aug09 ?        00:00:00 [bioset]
+root      1037     1  0 Aug09 ?        00:00:00 /sbin/wpa_supplicant -u -s -O /run/wpa_supplicant
+root      1043     2  0 Aug09 ?        00:00:00 [kworker/2:1H]
+root       105     2  0 Aug09 ?        00:00:00 [bioset]
+root       106     2  0 Aug09 ?        00:00:00 [bioset]
+root       107     2  0 Aug09 ?        00:00:00 [bioset]
+root       108     2  0 Aug09 ?        00:00:00 [bioset]
+root       109     2  0 Aug09 ?        00:00:00 [bioset]
+root       110     2  0 Aug09 ?        00:00:00 [bioset]
+root       111     2  0 Aug09 ?        00:00:00 [bioset]
+root      1117     2  0 Aug09 ?        00:00:03 [kworker/6:1H]
+root        11     2  0 Aug09 ?        00:00:01 [watchdog/1]
+root       112     2  0 Aug09 ?        00:00:00 [bioset]
+root      1130     2  0 Aug09 ?        00:00:00 [kworker/7:1H]
+root      1131   817  0 Aug09 ?        00:00:00 lightdm --session-child 12 19
+root       117     2  0 Aug09 ?        00:00:00 [ipv6_addrconf]
+root        12     2  0 Aug09 ?        00:00:00 [migration/1]
+root      1274     1  0 Aug09 ?        00:00:06 /usr/lib/upower/upowerd
+root       130     2  0 Aug09 ?        00:00:00 [deferwq]
+root       131     2  0 Aug09 ?        00:00:00 [charger_manager]
+root        13     2  0 Aug09 ?        00:00:00 [ksoftirqd/1]
+root      1395     2  0 Aug09 ?        00:00:00 [krfcommd]
+root        15     2  0 Aug09 ?        00:00:00 [kworker/1:0H]
+root     15229     2  0 Aug10 ?        00:00:00 [xfsalloc]
+root     15230     2  0 Aug10 ?        00:00:00 [xfs_mru_cache]
+root     15233     2  0 Aug10 ?        00:00:00 [jfsIO]
+root     15234     2  0 Aug10 ?        00:00:00 [jfsCommit]
+root     15235     2  0 Aug10 ?        00:00:00 [jfsCommit]
+root     15236     2  0 Aug10 ?        00:00:00 [jfsCommit]
+root     15237     2  0 Aug10 ?        00:00:00 [jfsCommit]
+root     15238     2  0 Aug10 ?        00:00:00 [jfsCommit]
+root     15239     2  0 Aug10 ?        00:00:00 [jfsCommit]
+root     15240     2  0 Aug10 ?        00:00:00 [jfsCommit]
+root     15241     2  0 Aug10 ?        00:00:00 [jfsCommit]
+root     15242     2  0 Aug10 ?        00:00:00 [jfsSync]
+root     15286     2  0 Aug10 ?        00:00:00 [bioset]
+root        16     2  0 Aug09 ?        00:00:01 [watchdog/2]
+root     16236     2  0 Aug12 ?        00:00:02 [kworker/7:1]
+root        17     2  0 Aug09 ?        00:00:00 [migration/2]
+root     17772     2  0 Aug12 ?        00:00:02 [kworker/5:0]
+root       180     2  0 Aug09 ?        00:00:00 [kpsmoused]
+root        18     2  0 Aug09 ?        00:00:00 [ksoftirqd/2]
+root       182     2  0 Aug09 ?        00:00:00 [scsi_eh_0]
+root       183     2  0 Aug09 ?        00:00:00 [scsi_tmf_0]
+root       184     2  0 Aug09 ?        00:00:00 [scsi_eh_1]
+root       185     2  0 Aug09 ?        00:00:00 [scsi_tmf_1]
+root       186     2  0 Aug09 ?        00:00:00 [scsi_eh_2]
+root       187     2  0 Aug09 ?        00:00:00 [scsi_tmf_2]
+root       188     2  0 Aug09 ?        00:00:00 [scsi_eh_3]
+root       189     2  0 Aug09 ?        00:00:00 [scsi_tmf_3]
+root       192     2  0 Aug09 ?        00:00:00 [rtsx_pci_sdmmc_]
+root       197     2  0 Aug09 ?        00:00:00 [bioset]
+root       198     2  0 Aug09 ?        00:00:00 [bioset]
+root         2     0  0 Aug09 ?        00:00:00 [kthreadd]
+root        20     2  0 Aug09 ?        00:00:00 [kworker/2:0H]
+root      2082     1  0 Aug09 ?        00:00:39 /usr/lib/udisks2/udisksd --no-debug
+root        21     2  0 Aug09 ?        00:00:01 [watchdog/3]
+root      2132     1  0 Aug09 ?        00:00:01 /usr/lib/x86_64-linux-gnu/fwupd/fwupd
+root        22     2  0 Aug09 ?        00:00:00 [migration/3]
+root       226     2  0 Aug09 ?        00:00:00 [kworker/0:1H]
+root       228     2  0 Aug09 ?        00:00:09 [jbd2/sda2-8]
+root       229     2  0 Aug09 ?        00:00:00 [ext4-rsv-conver]
+root        23     2  0 Aug09 ?        00:00:00 [ksoftirqd/3]
+root     24123     2  0 07:35 ?        00:00:01 [kworker/7:2]
+root        25     2  0 Aug09 ?        00:00:00 [kworker/3:0H]
+root     25604     2  0 11:54 ?        00:00:01 [kworker/0:0]
+root       260     1  0 Aug09 ?        00:00:04 /lib/systemd/systemd-journald
+root        26     2  0 Aug09 ?        00:00:01 [watchdog/4]
+root       264     2  0 Aug09 ?        00:00:00 [kauditd]
+root     26434     2  0 14:28 ?        00:00:00 [kworker/5:1]
+root     26932     2  0 15:21 ?        00:00:00 [kworker/0:1]
+root     26965     2  0 15:26 ?        00:00:00 [kworker/6:0]
+root        27     2  0 Aug09 ?        00:00:00 [migration/4]
+root     27545     2  0 15:53 ?        00:00:00 [kworker/2:1]
+root     27747     2  0 16:33 ?        00:00:00 [kworker/3:1]
+root     27856     2  0 17:01 ?        00:00:00 [kworker/2:0]
+root     27886     2  0 17:08 ?        00:00:01 [kworker/u16:0]
+root     27992     2  0 17:24 ?        00:00:00 [kworker/4:2]
+root     28166     2  0 17:39 ?        00:00:00 [kworker/u16:1]
+root        28     2  0 Aug09 ?        00:00:00 [ksoftirqd/4]
+root     28227     2  0 17:44 ?        00:00:00 [kworker/u16:2]
+root     28232     2  0 17:45 ?        00:00:00 [kworker/1:1]
+root     28248     2  0 17:47 ?        00:00:00 [kworker/3:2]
+root     28273     2  0 17:48 ?        00:00:00 [kworker/4:0]
+root     28329     2  0 17:49 ?        00:00:00 [kworker/6:2]
+root     28335     2  0 17:50 ?        00:00:00 [kworker/1:0]
+root     28347     2  0 17:53 ?        00:00:00 [kworker/u16:3]
+root     28351     2  0 17:54 ?        00:00:00 [kworker/4:1]
+root     28378     2  0 17:56 ?        00:00:00 [kworker/1:2]
+root       300     1  0 Aug09 ?        00:00:00 /lib/systemd/systemd-udevd
+root        30     2  0 Aug09 ?        00:00:00 [kworker/4:0H]
+root        31     2  0 Aug09 ?        00:00:01 [watchdog/5]
+root       313     2  0 Aug09 ?        00:00:00 [kworker/1:1H]
+root         3     2  0 Aug09 ?        00:00:00 [ksoftirqd/0]
+root        32     2  0 Aug09 ?        00:00:00 [migration/5]
+root        33     2  0 Aug09 ?        00:00:00 [ksoftirqd/5]
+root        35     2  0 Aug09 ?        00:00:00 [kworker/5:0H]
+root      3607     2  0 Aug09 ?        00:00:00 [dio/sda2]
+root        36     2  0 Aug09 ?        00:00:01 [watchdog/6]
+root        37     2  0 Aug09 ?        00:00:00 [migration/6]
+root       377     2  0 Aug09 ?        00:00:00 [kworker/5:1H]
+root       378     2  0 Aug09 ?        00:00:00 [kworker/4:1H]
+root        38     2  0 Aug09 ?        00:00:00 [ksoftirqd/6]
+root       390     2  0 Aug09 ?        00:00:00 [irq/130-mei_me]
+root       398     2  0 Aug09 ?        00:00:00 [cfg80211]
+root       401     2  0 Aug09 ?        00:00:00 [kmemstick]
+root        40     2  0 Aug09 ?        00:00:00 [kworker/6:0H]
+root       405     2  0 Aug09 ?        00:00:00 [irq/132-iwlwifi]
+root        41     2  0 Aug09 ?        00:00:01 [watchdog/7]
+root        42     2  0 Aug09 ?        00:00:00 [migration/7]
+root       426     2  0 Aug09 ?        00:00:00 [kworker/u17:0]
+root       427     2  0 Aug09 ?        00:00:00 [hci0]
+root       428     2  0 Aug09 ?        00:00:00 [hci0]
+root       430     2  0 Aug09 ?        00:00:00 [kworker/u17:2]
+root        43     2  0 Aug09 ?        00:00:00 [ksoftirqd/7]
+root        45     2  0 Aug09 ?        00:00:00 [kworker/7:0H]
+root      4603  1023  0 Aug11 ?        00:00:00 sshd: bob [priv]
+root        46     2  0 Aug09 ?        00:00:00 [kdevtmpfs]
+root        47     2  0 Aug09 ?        00:00:00 [netns]
+root       473     2  0 Aug09 ?        00:00:00 [kvm-irqfd-clean]
+root        48     2  0 Aug09 ?        00:00:00 [perf]
+root        49     2  0 Aug09 ?        00:00:00 [khungtaskd]
+root        50     2  0 Aug09 ?        00:00:00 [writeback]
+root        51     2  0 Aug09 ?        00:00:00 [ksmd]
+root         5     2  0 Aug09 ?        00:00:00 [kworker/0:0H]
+root        52     2  0 Aug09 ?        00:00:55 [khugepaged]
+root        53     2  0 Aug09 ?        00:00:00 [crypto]
+root        54     2  0 Aug09 ?        00:00:00 [kintegrityd]
+root        55     2  0 Aug09 ?        00:00:00 [bioset]
+root        56     2  0 Aug09 ?        00:00:00 [kblockd]
+root        57     2  0 Aug09 ?        00:00:00 [ata_sff]
+root        58     2  0 Aug09 ?        00:00:00 [md]
+root        59     2  0 Aug09 ?        00:00:00 [devfreq_wq]
+root        65     2  0 Aug09 ?        00:00:26 [kswapd0]
+root       652     1  0 Aug09 ?        00:00:05 /usr/lib/accountsservice/accounts-daemon
+root        66     2  0 Aug09 ?        00:00:00 [vmstat]
+root        67     2  0 Aug09 ?        00:00:00 [fsnotify_mark]
+root        68     2  0 Aug09 ?        00:00:00 [ecryptfs-kthrea]
+root       699     1  0 Aug09 ?        00:00:00 /usr/sbin/NetworkManager --no-daemon
+root       701     1  0 Aug09 ?        00:00:33 /usr/sbin/thermald --no-daemon --dbus-enable
+root       706     1  0 Aug09 ?        00:00:00 /lib/systemd/systemd-logind
+root       709     1  0 Aug09 ?        00:00:00 /usr/lib/bluetooth/bluetoothd
+root       718     1  0 Aug09 ?        00:00:00 /usr/sbin/cups-browsed
+root         7     2  0 Aug09 ?        00:00:56 [rcu_sched]
+root       725     1  0 Aug09 ?        00:00:00 /usr/sbin/ModemManager
+root       735     1  0 Aug09 ?        00:00:00 /usr/sbin/cron -f
+root       747     1  0 Aug09 ?        00:00:16 /usr/sbin/acpid
+root       787     1  0 Aug09 ?        00:00:21 /usr/sbin/irqbalance --pid=/var/run/irqbalance.pid
+root       817     1  0 Aug09 ?        00:00:00 /usr/sbin/lightdm
+root         8     2  0 Aug09 ?        00:00:00 [rcu_bh]
+root       824     1  0 Aug09 ?        00:00:00 /usr/lib/policykit-1/polkitd --no-debug
+root        84     2  0 Aug09 ?        00:00:00 [kthrotld]
+root        85     2  0 Aug09 ?        00:00:00 [acpi_thermal_pm]
+root        87     2  0 Aug09 ?        00:00:00 [bioset]
+root        88     2  0 Aug09 ?        00:00:00 [bioset]
+root        90     2  0 Aug09 ?        00:00:00 [bioset]
+root        91     2  0 Aug09 ?        00:00:00 [bioset]
+root         9     2  0 Aug09 ?        00:00:00 [migration/0]
+root        92     2  0 Aug09 ?        00:00:00 [bioset]
+root        93     2  0 Aug09 ?        00:00:00 [bioset]
+root        94     2  0 Aug09 ?        00:00:00 [bioset]
+root        95     2  0 Aug09 ?        00:00:00 [bioset]
+root       953     2  0 Aug09 ?        00:00:00 [iprt-VBoxWQueue]
+root       957     2  0 Aug09 ?        00:00:00 [iprt-VBoxTscThr]
+root        96     2  0 Aug09 ?        00:00:00 [bioset]
+root        97     2  0 Aug09 ?        00:00:00 [bioset]
+root        98     2  0 Aug09 ?        00:00:00 [bioset]
+root        99     2  0 Aug09 ?        00:00:00 [bioset]
+root       999     2  0 Aug09 ?        00:00:00 [kworker/3:1H]
+rtkit     1266     1  0 Aug09 ?        00:00:04 /usr/lib/rtkit/rtkit-daemon
+syslog     741     1  0 Aug09 ?        00:00:01 /usr/sbin/rsyslogd -n
+systemd+   552     1  0 Aug09 ?        00:00:00 /lib/systemd/systemd-timesyncd
+UID        PID  PPID  C STIME TTY          TIME CMD
+dan@pavlap:~ $ 
+dan@pavlap:~ $ 
+dan@pavlap:~ $ emacs &
+[1] 28387
+dan@pavlap:~ $ kill 28387
+dan@pavlap:~ $ 
+[1]+  Exit 15                 emacs
+dan@pavlap:~ $ 
+dan@pavlap:~ $
+</code>
