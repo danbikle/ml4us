@@ -1,0 +1,32 @@
+%h2 Class02 Lab Answer:
+%h2 Start an Ubuntu virtualbox and ssh into it.
+
+%p This is an easy lab.
+
+%p The shell commands I use to start an Ubuntu virtualbox look like this:
+
+.syntax
+  %pre
+    %code.bash
+      vboxmanage list vms
+      vboxmanage startvm ub16aug13
+
+%p After I start it I use its GUI to get its IP-address.
+
+%p Then I can login to it with syntax like this:
+
+.syntax
+  %pre
+    %code.bash
+      ssh -AY ann@192.168.1.28
+
+%p Then, any x-window type tool, emacs for example, will display on the host rather than the guest:
+
+%img(src='/class02/ss28.png')
+
+
+
+%p
+  %a(href='class02#lab')
+    Class02 Lab
+    
