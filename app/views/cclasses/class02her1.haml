@@ -1,0 +1,24 @@
+%h2 Class02 Lab Answer:
+
+%p This is an easy lab.
+
+%p The shell commands I used to do this lab are listed below:
+
+.syntax
+  %pre
+    %code.bash
+      sudo useradd -m -s /bin/bash -G sudo hal
+      sudo passwd hal
+      ssh -AY hal@localhost
+      git clone https://github.com/danbikle/spy611v2
+      wget https://s3.amazonaws.com/assets.heroku.com/heroku-client/heroku-client.tgz
+      tar zxf heroku-client.tgz
+      echo 'export PATH=${HOME}/heroku-client/bin:${PATH}' >> ~hal/.bashrc
+      export PATH=${HOME}/heroku-client/bin:${PATH}
+      heroku status
+      cd ~hal/spy611v2
+      heroku create halapp123
+      git push heroku master
+%p
+  %a(href='class02#gitlab')
+    Class02 Lab (Git)
