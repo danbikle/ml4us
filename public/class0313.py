@@ -53,7 +53,7 @@ ones_a  = np.array(ones_l).reshape((len(cp2016_df),1))
 # I should build xvals_a from column of ones then integers:
 xvals_a = np.hstack((ones_a,x_a))
 # I should transform the prices into a column vector of y-values:
-yvals_a = np.array(cp2016_df.cp).reshape((len(cp2016_df),1))
+yvals_a = np.array(cp2016_df.Close).reshape((len(cp2016_df),1))
 # I have X and Y, now implement Linear Algebra with NumPy:
 middle_a = np.linalg.pinv(np.matmul(xvals_a.T,xvals_a))
 rhs_a    = np.matmul(xvals_a.T,yvals_a)
@@ -71,6 +71,3 @@ cpdate2016_df.plot.line(title="GSPC 2016")
 plt.show()
 
 'bye'
-
-
-
