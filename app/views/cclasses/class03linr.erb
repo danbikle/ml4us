@@ -1,0 +1,23 @@
+<code class='bash'>
+I should show how to fit a line to two points.
+
+The two points which interest me are the first trading day in 2016 and the most recent trading day in 2016.
+
+mkdir -p ~/tmp/c3
+cd       ~/tmp/c3
+
+I should get prices from yahoo:
+
+TKRH='%5EGSPC'
+TKR='GSPC'
+rm -f ${TKR}.csv
+
+wget --output-document=/tmp/${TKR}.csv http://ichart.finance.yahoo.com/table.csv?s=${TKRH}
+echo 'cdate,cp'                                           > ${TKR}2.csv
+grep -v Date /tmp/${TKR}.csv|awk -F, '{print $1 "," $5}' >> ${TKR}2.csv
+
+I should plot all prices from 2016.
+
+
+
+</code>
