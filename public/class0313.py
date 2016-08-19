@@ -40,5 +40,37 @@ print(rmse_f)
 # Goog: How to Use Linear Algebra to fit a line
 # ref:
 # http://www.stat.purdue.edu/~jennings/stat514/stat512notes/topic3.pdf
+# It says:
+# yhat = x_input *( inverse(xvals_a.T * xvals_a) * xvals_a.T * yvals_a )
+# I need to convert above expression into Numpy.
+
+# I start by seeing the X-values as simple integers starting at 0:
+x_a     = np.array(range(len(cp2016_df))).reshape((len(cp2016_df),1))
+# Notice that I reshaped it into a column.
+# Above pdf asks me to pre-pend a column vector of ones:
+ones_l  = [1]*len(cp2016_df)
+ones_a  = np.array(ones_l).reshape((len(cp2016_df),1))
+# I should build xvals_a from column of ones then integers:
+xvals_a = np.hstack((ones_a,x_a))
+# I should transform the prices into a column vector of y-values:
+yvals_a = np.array(cp2016_df.cp).reshape((len(cp2016_df),1))
+# I have X and Y, now implement Linear Algebra with NumPy:
+middle_a = np.linalg.pinv(np.matmul(xvals_a.T,xvals_a))
+rhs_a    = np.matmul(xvals_a.T,yvals_a)
+b_a      = np.matmul(middle_a,rhs_a)
+
+# To get some values of the straight line, I will use xvals_a as x_input
+x_input = xvals_a
+yhat    = np.matmul(x_input,b_a)
+# I should add yhat to df so I can visualize the fit:
+cp2016_df['yhat'] = yhat
+cpdate2016_df     = cp2016_df.set_index(['cdate'])
+
+# I should plot
+cpdate2016_df.plot.line(title="GSPC 2016")
+plt.show()
+
+'bye'
+
 
 
