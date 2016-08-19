@@ -23,8 +23,10 @@ m_f = (cp2016_df.iloc[-1].Close-cp2016_df.iloc[0].Close) / len(cp2016_df)
 b_f = cp2016_df.iloc[0].Close
 pdb.set_trace()
 
+# I should collect points to plot straight line:
 sl_l = [ (m_f * x_i + b_f) for x_i in range(len(cp2016_df))]
 sl_l
+cp2016_df['sl'] = sl_l
 # Goog: In pandas how to convert column into index?
 cpdate2016_df = cp2016_df.set_index(['Date'])
 # Goog: In pandas how to plot?
