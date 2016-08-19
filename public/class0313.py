@@ -30,11 +30,10 @@ sl_l = [ (m_f * x_i + b_f) for x_i in range(len(cp2016_df))]
 
 # Add the points to the DataFrame:
 cp2016_df['sl'] = sl_l
-
 # Calculate squared errors:
-cp2016_df['sqe'] = (cp2016_df.Close - cp2016_df.sl)**2
+sqe_sr = (cp2016_df.Close - cp2016_df.sl)**2
 # Goog: How to calculate Root Mean Square of Errors?
-rmse_f = np.sqrt(np.mean(cp2016_df.sqe))
+rmse_f = np.sqrt(np.mean(sqe_sr))
 print(rmse_f)
 
 # Goog: How to Use Linear Algebra to fit a line
@@ -66,11 +65,13 @@ yhat    = np.matmul(x_input,b_a)
 cp2016_df['yhat'] = yhat
 
 
-date_cp_sl_yhat_df = cp2016_df[['Date','Close','sl','yhat']]
-cp_sl_yhat_df      = date_cp_sl_yhat_df.set_index(['Date'])
-
+# Calculate squared errors:
+fit_sqe_sr = (cp2016_df.Close - cp2016_df.yhat)**2
+fit_rmse_f = np.sqrt(np.mean(fit_sqe_sr))
+print(fit_rmse_f)
 # I should plot
-cp_sl_yhat_df.plot.line(title="GSPC 2016")
+cpdate2016_df = cp2016_df.set_index(['Date'])
+cpdate2016_df.plot.line(title="GSPC 2016")
 plt.show()
 
 'bye'
