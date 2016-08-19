@@ -32,7 +32,7 @@ cp2016_df['sl'] = sl_l
 
 # Calculate squared errors:
 cp2016_df['sqe'] = (cp2016_df.Close - cp2016_df.sl)**2
-
+# Goog: How to calculate Root Mean Square of Errors?
 rmse_f = np.sqrt(np.mean(cp2016_df.sqe))
 print(rmse_f)
 
