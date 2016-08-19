@@ -64,10 +64,13 @@ x_input = xvals_a
 yhat    = np.matmul(x_input,b_a)
 # I should add yhat to df so I can visualize the fit:
 cp2016_df['yhat'] = yhat
-cpdate2016_df     = cp2016_df.set_index(['cdate'])
+
+
+date_cp_sl_yhat_df = cp2016_df[['Date','Close','sl','yhat']]
+cp_sl_yhat_df      = date_cp_sl_yhat_df.set_index(['Date'])
 
 # I should plot
-cpdate2016_df.plot.line(title="GSPC 2016")
+cp_sl_yhat_df.plot.line(title="GSPC 2016")
 plt.show()
 
 'bye'
