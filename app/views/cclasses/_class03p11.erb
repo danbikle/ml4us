@@ -10,7 +10,7 @@ csvfile = 'http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC'
 # Goog: In pandas how to sort a dataframe?
 cp_df = pd.read_csv(csvfile).sort_values(['Date'])
 # Goog: In pandas how to filter?
-cp2016_sr = (cp_df.Date > '2016') & (cp_df.Date < '2017')
+cp2016_sr = (cp_df.Date > '2016') & (cp_df.Date &lt; '2017')
 cp2016_df = cp_df[['Date','Close']][cp2016_sr]
 
 # I should plot
