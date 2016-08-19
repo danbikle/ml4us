@@ -1,7 +1,9 @@
-# class0311.py
+# class0312.py
 
 # Use Pandas to plot prices of GSPC for 2016.
 # Plot a straight line from first price to last price.
+# Calculate RMSE for that line.
+
 import numpy  as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -28,10 +30,7 @@ sl_l = [ (m_f * x_i + b_f) for x_i in range(len(cp2016_df))]
 # Add the points to the DataFrame:
 cp2016_df['sl'] = sl_l
 
-# Goog: In pandas how to convert column into index?
-cpdate2016_df = cp2016_df.set_index(['Date'])
-# Goog: In pandas how to plot?
-cpdate2016_df.plot.line(title="GSPC 2016")
-plt.show()
-
-'bye'
+# Calculate squared errors:
+cp2016_df['sqe'] = (cp2016_df.Close - cp2016_df.sl)**2
+pdb.set_trace()
+cp2016_df.head()
