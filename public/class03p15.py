@@ -7,7 +7,7 @@
 
 import pandas as pd
 import numpy  as np
-
+import pdb
 csvfile   = 'http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC'
 cp_df     = pd.read_csv(csvfile).sort_values(['Date'])
 cp2016_sr = (cp_df.Date > '2016') & (cp_df.Date < '2017')
@@ -25,9 +25,16 @@ yvals_a  = colvec(cp2016_df.Close)
 middle_a = np.linalg.pinv(np.matmul(xvals_a.T,xvals_a))
 rhs_a    = np.matmul(xvals_a.T,yvals_a)
 beta_a   = np.matmul(middle_a,rhs_a)
+
 x_in_a   = xvals_a
+
 yhat_a   = np.matmul(x_in_a,beta_a)
-pdb.set_trace()
-yhat_a
+
+cp2016_df['yhat'] = yhat_a
+
+sqdiffe = (cp2016_df.Close - cp2016_df.yhat)**2
+print('RMSE between fitted line and closing price:')
+rmse_f = np.sqrt(np.mean(sqdiffe))
+print(rmse_f)
 
 'bye'
