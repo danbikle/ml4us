@@ -9,7 +9,12 @@ import pdb
 from datetime import datetime
 
 csvfile = 'http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC'
-cp_df   = pd.read_csv(csvfile)
+# Goog: In pandas how to sort a dataframe?
+cp_df     = pd.read_csv(csvfile).sort_values(['Date'])
+# Goog: In pandas how to filter?
+cp2016_sr = (cp_df.Date > '2016') & (cp_df.Date < '2017')
+cp2016_df = cp_df[['Date','Close']][cp2016_sr]
 pdb.set_trace()
-cp_df.head()
+cp2016_df.head()
+
 'bye'
