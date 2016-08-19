@@ -22,6 +22,7 @@ cp2016_df = cp_df[['Date','Close']][cp2016_sr]
 # y = mx + b
 # m, the slope is (y1-y0)/(x1-x0)
 # and b is the y intercept.
+# I simplify by seeing x-values as integers starting at 0 rather than dates:
 m_f = (cp2016_df.iloc[-1].Close-cp2016_df.iloc[0].Close) / len(cp2016_df)
 b_f = cp2016_df.iloc[0].Close
 
@@ -30,6 +31,7 @@ sl_l = [ (m_f * x_i + b_f) for x_i in range(len(cp2016_df))]
 
 # Add the points to the DataFrame:
 cp2016_df['sl'] = sl_l
+
 # Calculate squared errors:
 sqe_sr = (cp2016_df.Close - cp2016_df.sl)**2
 # Goog: How to calculate Root Mean Square of Errors?
@@ -43,7 +45,7 @@ print(rmse_f)
 # yhat = x_input *( inverse(xvals_a.T * xvals_a) * xvals_a.T * yvals_a )
 # I need to convert above expression into Numpy.
 
-# I start by seeing the X-values as simple integers starting at 0:
+# I simplify; X-values are simple integers starting at 0:
 x_a     = np.array(range(len(cp2016_df))).reshape((len(cp2016_df),1))
 # Notice that I reshaped it into a column.
 # Above pdf asks me to pre-pend a column vector of ones:
@@ -64,11 +66,11 @@ yhat    = np.matmul(x_input,b_a)
 # I should add yhat to df so I can visualize the fit:
 cp2016_df['yhat'] = yhat
 
-
 # Calculate squared errors:
 fit_sqe_sr = (cp2016_df.Close - cp2016_df.yhat)**2
 fit_rmse_f = np.sqrt(np.mean(fit_sqe_sr))
 print(fit_rmse_f)
+
 # I should plot
 cpdate2016_df = cp2016_df.set_index(['Date'])
 cpdate2016_df.plot.line(title="GSPC 2016")
