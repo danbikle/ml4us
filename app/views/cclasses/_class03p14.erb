@@ -40,8 +40,9 @@ yvals_l = [ yval(x_i) for x_i in range(len(cp2016_df))]
 # Add the points to the DataFrame:
 cp2016_df['sl'] = yvals_l
 
-# I should plot
+# To make a better plot I should convert X-values from integers to series of strings:
 cpdate2016_df = cp2016_df.set_index(['Date'])
+# I should plot Close (closing price), and straight line:
 cpdate2016_df.plot.line(title="GSPC 2016")
 plt.show()
 
