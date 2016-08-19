@@ -23,14 +23,20 @@ x_a = colvec(range(len(cp2016_df)))
 # Above pdf asks me to pre-pend a column vector of ones:
 ones_l  = [1]*len(cp2016_df)
 ones_a  = colvec(ones_l)
+
 # I should build xvals_a from column of ones then integers:
 xvals_a = np.hstack((ones_a,x_a))
+
 # I should transform the prices into a column vector of y-values:
 yvals_a = colvec(cp2016_df.Close)
+
 # I have X and Y, now implement Linear Algebra with NumPy:
 middle_a = np.linalg.pinv(np.matmul(xvals_a.T,xvals_a))
+
 rhs_a    = np.matmul(xvals_a.T,yvals_a)
+
 beta_a   = np.matmul(middle_a,rhs_a)
+# refer to http://www.ml4.us/class03/pdf1.png
 
 print('Beta for a line fitted to the GSPC prices is this:')
 print(beta_a)
