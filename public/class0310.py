@@ -14,7 +14,10 @@ cp_df     = pd.read_csv(csvfile).sort_values(['Date'])
 # Goog: In pandas how to filter?
 cp2016_sr = (cp_df.Date > '2016') & (cp_df.Date < '2017')
 cp2016_df = cp_df[['Date','Close']][cp2016_sr]
-pdb.set_trace()
-cp2016_df.head()
+# Goog: In pandas how to convert column into index?
+cpdate2016_df = cp2016_df.set_index(['Date'])
+# Goog: In pandas how to plot?
+cpdate2016_df.plot.line(title="GSPC 2016")
+plt.show()
 
 'bye'
