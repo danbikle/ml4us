@@ -1,0 +1,17 @@
+<code>
+cd ~/Downloads
+
+wget https://download.postgresql.org/pub/repos/yum/9.3/redhat/rhel-7-x86_64/pgdg-centos93-9.3-2.noarch.rpm
+
+rpm -iUvh pgdg-centos93-9.3-2.noarch.rpm
+
+yum install postgres postgres-contrib postgres-libs postgres-server postgres-plpython 
+
+systemctl enable postgresql
+
+/usr/pgsql-9.3/bin/postgresql93-setup initdb
+
+postgresql93 initdb
+
+systemctl start postgresql
+</code>
