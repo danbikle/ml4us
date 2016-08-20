@@ -9,19 +9,17 @@ yum update
 
 yum search postgresql93
 
-yum install postgres postgres-contrib postgres-libs postgres-server postgres-plpython 
+yum install postgresql93 postgresql93-contrib postgresql93-libs postgresql93-server postgresql93-plpython  postgresql93-python 
 
 systemctl enable postgresql-9.3
 
 /usr/pgsql-9.3/bin/postgresql93-setup initdb
 
-postgresql-setup initdb
-
 systemctl start postgresql-9.3
 
-CREATE USER madlib with login SUPERUSER password 'madlib';
+CREATE USER madlib WITH LOGIN SUPERUSER PASSWORD 'madlib';
 
-create database madlib;
+CREATE DATABASE madlib;
 
 sudo vi /var/lib/pgsql/data/pg_hba.conf
 
