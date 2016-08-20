@@ -14,4 +14,16 @@ systemctl enable postgresql
 postgresql93 initdb
 
 systemctl start postgresql
+
+CREATE USER madlib with login SUPERUSER password 'madlib';
+
+create database madlib;
+
+sudo vi /var/lib/pgsql/data/pg_hba.conf
+
+psql -d madlib -h 127.0.0.1 -U madlib
+
+/usr/local/madlib/bin/madpack -p postgres -c madlib@127.0.0.1/madlib install-check
+/usr/local/madlib/bin/madpack -p postgres -c madlib@127.0.0.1/madlib install
+
 </code>
