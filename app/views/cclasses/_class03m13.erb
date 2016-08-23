@@ -1,0 +1,34 @@
+<code class='sql'>
+--
+-- fillprices.sql
+--
+
+-- This script should Download S&amp;P 500 prices from Yahoo, load them into table called prices.
+
+-- Demo:
+-- ~ann/madlib_demos/psqlmad -af fillprices.sql
+
+DROP TABLE IF EXISTS prices;
+CREATE TABLE prices
+(
+cdate   date
+,openp  float
+,highp  float
+,lowp   float
+,closep float
+,volume float
+,adjp   float
+);
+
+COPY prices 
+(
+cdate   
+,openp  
+,highp  
+,lowp   
+,closep 
+,volume 
+,adjp   
+)
+FROM '/tmp/gspc.csv' WITH CSV HEADER;
+</code>

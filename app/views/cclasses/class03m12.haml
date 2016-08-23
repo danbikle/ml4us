@@ -1,13 +1,33 @@
 %h2 Class03 Answer:
 %h2 Download S&P 500 prices from Yahoo, load them into table called prices.
 
-%p I started this lab by calling wget:
+%p I started this lab by calling curl:
 
 .syntax
   %pre
     %code.bash
       cd ~
-      
+      curl http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC > /tmp/gspc.csv
+
+%p Next, I wrote a SQL script:
+.syntax
+  %pre
+    =render 'class03m13'
+
+%p Then, I ran the SQL script:
+.syntax
+  %pre
+    %code.bash  ~ann/madlib_demos/psqlmad -af fillprices.sql
+
+%p Be aware that when Postgres runs the COPY command it relies on the Postgres server process.
+
+%p That process needs the full path to the CSV file.
+
+%p Often when I work with the COPY command, I put the CSV file in /tmp.
+
+%p Then, the server can easily find the CSV file.
+
+
 %hr/
 %p
   %a(href='class03#lab')
