@@ -1,35 +1,46 @@
 <code>
-cd ~/Downloads
+cd ~/Desktop
 
 wget https://download.postgresql.org/pub/repos/yum/9.3/redhat/rhel-7-x86_64/pgdg-centos93-9.3-2.noarch.rpm
 
-rpm -iUvh pgdg-centos93-9.3-2.noarch.rpm
+sudo yum install pgdg-centos93-9.3-2.noarch.rpm
 
-yum update
+sudo yum update
 
 yum search postgresql93
 
-yum install postgresql93 postgresql93-contrib postgresql93-libs postgresql93-server postgresql93-plpython  postgresql93-python 
+sudo yum install postgresql93 postgresql93-contrib postgresql93-devel postgresql93-libs postgresql93-plpython  postgresql93-python  postgresql93-server
 
-systemctl enable postgresql-9.3
+sudo systemctl enable postgresql-9.3
 
-/usr/pgsql-9.3/bin/postgresql93-setup initdb
+sudo /usr/pgsql-9.3/bin/postgresql93-setup initdb
 
-systemctl start postgresql-9.3
+sudo systemctl start postgresql-9.3
+
+sudo su - postgres
+echo 'export PATH=/usr/pgsql-9.3/bin:$PATH' >> ~postgres/.bashrc
+psql
 
 CREATE USER madlib WITH LOGIN SUPERUSER PASSWORD 'madlib';
 
 CREATE DATABASE madlib;
 
-sudo vi /var/lib/pgsql/data/pg_hba.conf
+cd /var/lib/pgsql/data/
+sed -i '/^host/s/ident/md5/' pg_hba.conf
+sed -i '/128/s/md5/ident/'   pg_hba.conf
+
+/usr/pgsql-9.3/bin/pg_ctl reload
 
 psql -d madlib -h 127.0.0.1 -U madlib
 
+cd /tmp
 wget https://dist.apache.org/repos/dist/release/incubator/madlib/1.9-incubating/apache-madlib-1.9-incubating-bin-Linux.rpm
 
-yum install apache-madlib-1.9-incubating-bin-Linux.rpm --nogpgcheck
+sudo yum install apache-madlib-1.9-incubating-bin-Linux.rpm
 
 /usr/local/madlib/bin/madpack -p postgres -c madlib@127.0.0.1/madlib install-check
 /usr/local/madlib/bin/madpack -p postgres -c madlib@127.0.0.1/madlib install
+
+ssh ann@localhost
 
 </code>
