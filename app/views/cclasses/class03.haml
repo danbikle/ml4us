@@ -68,3 +68,17 @@
           SELECT COUNT(*)     FROM prices;
           SELECT MIN(cdate),MIN(closep),MIN(volume) FROM prices;
           SELECT MAX(closep),MAX(volume), AVG(closep),AVG(volume) FROM prices;
+
+  %li Write Pandas syntax which mimics the above SQL.
+  %li
+    %a(href='/cclasses/class03pd10') Answer
+  %li
+    Describe what this syntax does:
+    .syntax
+      %pre
+        %code.sql
+          SELECT * FROM prices WHERE cdate = (SELECT MAX(cdate) FROM prices);            
+          SELECT cdate,closep FROM prices WHERE cdate = (SELECT MAX(cdate)-1 FROM prices); 
+          SELECT cdate,closep FROM prices WHERE cdate > (SELECT MAX(cdate)-10 FROM prices);
+          
+
