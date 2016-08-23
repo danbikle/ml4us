@@ -58,3 +58,13 @@
   %li Download S&P 500 prices from Yahoo, load them into table called prices.
   %li
     %a(href='/cclasses/class03m12') Answer
+  %li
+    Describe what this syntax does:
+    .syntax
+      %pre
+        %code.sql
+          SELECT COUNT(cdate) FROM prices;
+          SELECT COUNT(lowp)  FROM prices;
+          SELECT COUNT(*)     FROM prices;
+          SELECT MIN(cdate),MIN(closep),MIN(volume) FROM prices;
+          SELECT MAX(closep),MAX(volume), AVG(closep),AVG(volume) FROM prices;
