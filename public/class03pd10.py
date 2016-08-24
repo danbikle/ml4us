@@ -12,11 +12,25 @@
 # Pandas can get data from the web:
 
 import pandas as pd
-import pdb
 
 prices_df = pd.read_csv('http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC')
-pdb.set_trace()
-prices_df.head()
+prices_df.columns = ['cdate','openp','highp','lowp','closep','volume','adjp']
+
+# Mimic
+# SELECT COUNT(cdate) FROM prices;
+print(len(prices_df.cdate))
+
+# Mimic
+# SELECT COUNT(lowp) FROM prices;
+print(len(prices_df.lowp))
+
+# Mimic
+# SELECT COUNT(*) FROM prices;
+print(len(prices_df))
+
+# Mimic
+# SELECT MIN(cdate),MIN(closep),MIN(volume) FROM prices;
+print(len(prices_df.cdate),len(prices_df.closep),len(prices_df.volume))
 
 'bye'
 
