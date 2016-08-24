@@ -32,4 +32,18 @@ max_10_sr = (pd.to_datetime(prices_df.cdate_s) > max_10)
 max_cp    = prices_df[['cdate_s','closep']][max_10_sr].closep.max()
 print(max_cp)
 
+# Mimic
+# CREATE TABLE prices2 AS SELECT cdate,openp,closep FROM prices WHERE cdate > '2016-08-08';
+
+# I should create a predicate:
+pred1_sr   = prices_df.cdate_s > '2016-08-08'
+# I should create another DF:
+prices2_df = prices_df.copy()[['cdate_s','openp','closep']][pred1_sr]
+
+# Mimic
+# CREATE TABLE prices3 AS SELECT cdate,openp,closep, closep - openp AS diff FROM prices2;
+
+prices3_df         = prices2_df.copy()
+prices3_df['diff'] = prices2_df.closep - prices2_df.openp
+
 'bye'
