@@ -31,7 +31,7 @@ print(len(prices_df))
 
 # Mimic
 # SELECT MIN(cdate),MIN(closep),MIN(volume) FROM prices;
-print(len(prices_df.cdate),len(prices_df.closep),len(prices_df.volume))
+print(prices_df.cdate.min(), prices_df.closep.min(), prices_df.volume.min())
 
 'bye'
 </code>

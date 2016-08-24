@@ -27,7 +27,6 @@ print(prices_df[max_sr])
 # Mimic
 # SELECT cdate,closep FROM prices WHERE cdate = (SELECT MAX(cdate)-1 FROM prices);
 
-from datetime import timedelta
 max_1_sr = (prices_df.cdate == (prices_df.cdate.max() - timedelta(days=1)))
 myrow    = prices_df[['cdate','closep']][max_1_sr]
 print(myrow)
