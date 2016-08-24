@@ -81,4 +81,7 @@
           SELECT cdate,closep FROM prices WHERE cdate = (SELECT MAX(cdate)-1 FROM prices); 
           SELECT cdate,closep FROM prices WHERE cdate > (SELECT MAX(cdate)-10 FROM prices);
           
+  %li Write Pandas syntax which mimics the above SQL.
+  %li
+    %a(href='/cclasses/class03pd13') Answer
 
