@@ -30,8 +30,11 @@ print(len(prices_df))
 
 # Mimic
 # SELECT MIN(cdate),MIN(closep),MIN(volume) FROM prices;
-
 print(prices_df.cdate.min(), prices_df.closep.min(), prices_df.volume.min())
-      
+
+# Mimic
+# SELECT MAX(closep),MAX(volume), AVG(closep),AVG(volume) FROM prices;
+print(prices_df.closep.max(),prices_df.volume.max(),prices_df.closep.mean(),prices_df.volume.mean())
+
 'bye'
 
