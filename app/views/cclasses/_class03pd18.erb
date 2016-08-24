@@ -1,0 +1,10 @@
+<code class='bash'>
+SELECT max(closep)     FROM
+  (SELECT cdate,closep FROM prices WHERE cdate > (SELECT MAX(cdate)-10 FROM prices)) iv;
+
+DROP   TABLE IF EXISTS prices2;
+CREATE TABLE prices2 AS SELECT cdate,openp,closep FROM prices WHERE cdate > '2016-08-08';
+
+DROP   TABLE IF EXISTS prices3;
+CREATE TABLE prices3 AS SELECT cdate,openp,closep, closep - openp AS diff FROM prices2;
+</code>
