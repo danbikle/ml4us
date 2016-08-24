@@ -4,29 +4,28 @@ dan@pavlap:~/ml4us/public $
 dan@pavlap:~/ml4us/public $ ~ann/madlib_demos/psqlmad
 
 SELECT * FROM prices WHERE cdate = (SELECT MAX(cdate) FROM prices);
-
    cdate    |    openp    |    highp    |    lowp     |   closep    |   volume   |    adjp     
 ------------+-------------+-------------+-------------+-------------+------------+-------------
- 2016-08-22 | 2181.580078 | 2185.149902 | 2175.959961 | 2182.639893 | 2777550000 | 2182.639893
+ 2016-08-23 | 2187.810059 | 2193.419922 | 2186.800049 | 2186.899902 | 3041490000 | 2186.899902
 (1 row)
 
 SELECT cdate,closep FROM prices WHERE cdate = (SELECT MAX(cdate)-1 FROM prices);
-
- cdate | closep 
--------+--------
-(0 rows)
-
-SELECT cdate,closep FROM prices WHERE cdate > (SELECT MAX(cdate)-10 FROM prices);
-
    cdate    |   closep    
 ------------+-------------
+ 2016-08-22 | 2182.639893
+(1 row)
+
+SELECT cdate,closep FROM prices WHERE cdate > (SELECT MAX(cdate)-10 FROM prices);
+   cdate    |   closep    
+------------+-------------
+ 2016-08-23 | 2186.899902
  2016-08-22 | 2182.639893
  2016-08-19 | 2183.870117
  2016-08-18 |  2187.02002
  2016-08-17 | 2182.219971
  2016-08-16 | 2178.149902
  2016-08-15 | 2190.149902
-(6 rows)
+(7 rows)
 
 dan@pavlap:~/ml4us/public $
 dan@pavlap:~/ml4us/public $
