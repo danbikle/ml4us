@@ -9,7 +9,6 @@
 import pandas as pd
 import numpy  as np
 from datetime import datetime
-import pdb
 
 # SQL lacks the ability to get data from the web.
 # Pandas can get data from the web:
@@ -31,6 +30,13 @@ from datetime import timedelta
 max_1_sr = (prices_df.cdate == (prices_df.cdate.max() - timedelta(days=1)))
 myrow    = prices_df[['cdate','closep']][max_1_sr]
 print(myrow)
+
+# Mimic
+# SELECT cdate,closep FROM prices WHERE cdate > (SELECT MAX(cdate)-10 FROM prices);
+
+max_10_sr = (prices_df.cdate > (prices_df.cdate.max() - timedelta(days=10)))
+myrows    = prices_df[['cdate','closep']][max_10_sr]
+print(myrows)
 
 'bye'
 
