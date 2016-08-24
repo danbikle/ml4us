@@ -1,4 +1,3 @@
-<code class='python'>
 # class03pd21.py
 
 # This script should mimic the SQL listed below:
@@ -34,4 +33,3 @@ max_cp    = prices_df[['cdate_s','closep']][max_10_sr].closep.max()
 print(max_cp)
 
 'bye'
-</code>
