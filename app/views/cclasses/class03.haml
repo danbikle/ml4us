@@ -125,20 +125,4 @@
     Describe what this syntax does:
     .syntax
       %pre
-        =render 'class03pd32'
-	
--- GROUP BY
-DROP   TABLE IF EXISTS prices4;
-CREATE TABLE prices4 AS 
-SELECT
-extract(year from cdate) yr
-,cdate
-,closep
-FROM prices
-WHERE extract(year from cdate) > 1999;
-
-SELECT yr, COUNT(yr) FROM prices4 GROUP BY yr;
-
--- GROUP BY ORDER BY
-SELECT yr, COUNT(yr) FROM prices4 GROUP BY yr ORDER BY yr;
-SELECT yr, COUNT(yr) FROM prices4 GROUP BY yr ORDER BY COUNT(yr);
+        =render 'class03pd36'
