@@ -55,9 +55,21 @@ yr_gb         = yr_df.groupby('yr')
 yr_gb_df = yr_gb.aggregate(len)
 print(yr_gb_df)
 
-# mimic
+# Mimic
 # SELECT yr, COUNT(yr) FROM prices4 GROUP BY yr ORDER BY yr;
 
+# The yr column is the index which I dont want.
+# I should get a new index so yr becomes a real column.
 
+yr_gb_df.reset_index(level=0, inplace=True)
+
+# Now that yr is a column I can sort by yr:
+yr_gb_df_sorted = yr_gb_df.sort_values(by=['yr'])
+print(yr_gb_df_sorted)
+
+# Mimic
+# SELECT yr, COUNT(yr) FROM prices4 GROUP BY yr ORDER BY COUNT(yr);
+yr_gb_df_sorted = yr_gb_df.sort_values(by=['yrcount'])
+print(yr_gb_df_sorted)
 
 'bye'
