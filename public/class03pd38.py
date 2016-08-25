@@ -48,4 +48,11 @@ print(prices4_df.head())
 # Mimic
 # SELECT yr, COUNT(yr) FROM prices4 GROUP BY yr;
 
+yr_df         = prices4_df[['yr','yr']]
+yr_df.columns = ['yr','yrcount']
+yr_gb         = yr_df.groupby('yr')
+
+yr_gb_df = yr_gb.aggregate(len)
+print(yr_gb_df)
+
 'bye'
