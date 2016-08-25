@@ -1,3 +1,4 @@
+<code class='python'>
 # class03pd26.py
 
 # This script should mimic the SQL listed below:
@@ -51,7 +52,7 @@ print(prices3_df)
 # AND    cdate NOT IN (SELECT cdate FROM prices3);
 
 # I should create the first predicate:
-pred_first_sr = (prices_df.cdate_s >= '2016-08-01') & (prices_df.cdate_s <= '2016-08-31')
+pred_first_sr = (prices_df.cdate_s >= '2016-08-01') & (prices_df.cdate_s &lt;= '2016-08-31')
 # I should create the 2nd predicate:
 pred_isin_sr  = prices_df.cdate_s.isin(prices3_df.cdate_s)
 pred_notin_sr = ~pred_isin_sr
@@ -76,3 +77,4 @@ prices3_df['diff'] = 0
 print(prices3_df)
 
 'bye'
+</code>

@@ -12,3 +12,6 @@ AND    cdate NOT IN (SELECT cdate FROM prices3);
 
 -- Update all rows of a column:
 UPDATE prices3 SET diff = 0;
+
+-- rpt:
+SELECT * FROM prices3;
