@@ -55,4 +55,9 @@ yr_gb         = yr_df.groupby('yr')
 yr_gb_df = yr_gb.aggregate(len)
 print(yr_gb_df)
 
+# mimic
+# SELECT yr, COUNT(yr) FROM prices4 GROUP BY yr ORDER BY yr;
+
+
+
 'bye'
