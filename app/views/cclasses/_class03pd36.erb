@@ -1,0 +1,14 @@
+<code class='sql'>
+CREATE TABLE prices4 AS 
+SELECT
+extract(year from cdate) yr
+,cdate
+,closep
+FROM prices
+WHERE extract(year from cdate) > 1999;
+
+SELECT yr, COUNT(yr) FROM prices4 GROUP BY yr;
+
+SELECT yr, COUNT(yr) FROM prices4 GROUP BY yr ORDER BY yr;
+SELECT yr, COUNT(yr) FROM prices4 GROUP BY yr ORDER BY COUNT(yr);
+</code>
