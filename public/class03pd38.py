@@ -42,9 +42,6 @@ prices4_df['cdate'] = pd.to_datetime(prices4_df.cdate_s)
 prices4_df['yr']    = prices4_df.cdate.dt.year
 prices4_df          = prices4_df[['yr','cdate','closep']]
 
-# I should report:
-print(prices4_df.head())
-
 # Mimic
 # SELECT yr, COUNT(yr) FROM prices4 GROUP BY yr;
 
@@ -59,8 +56,7 @@ print(yr_gb_df)
 # SELECT yr, COUNT(yr) FROM prices4 GROUP BY yr ORDER BY yr;
 
 # The yr column is the index which I dont want.
-# I should get a new index so yr becomes a real column.
-
+# I should get a new index so yr becomes a real column:
 yr_gb_df.reset_index(level=0, inplace=True)
 
 # Now that yr is a column I can sort by yr:
