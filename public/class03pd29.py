@@ -30,4 +30,11 @@ prices3_df.loc[row_sr, 'diff'] = 1
 # I should report:
 print(prices3_df)
 
+# Mimic
+# UPDATE prices3 SET diff = closep - openp;
+prices3_df['diff'] = prices3_df.closep - prices3_df.openp
+
+# I should report:
+print(prices3_df)
+
 'bye'
