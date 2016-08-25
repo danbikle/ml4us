@@ -40,10 +40,12 @@ pred_sr             = extract_sr.dt.year > 1999
 prices4_df          = prices_df.copy()[pred_sr]
 prices4_df['cdate'] = pd.to_datetime(prices4_df.cdate_s)
 prices4_df['yr']    = prices4_df.cdate.dt.year
-prices4_df = prices4_df[['yr','cdate','closep']]
+prices4_df          = prices4_df[['yr','cdate','closep']]
 
 # I should report:
 print(prices4_df.head())
 
+# Mimic
+# SELECT yr, COUNT(yr) FROM prices4 GROUP BY yr;
 
 'bye'
