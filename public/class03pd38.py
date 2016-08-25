@@ -21,6 +21,7 @@
 # Pandas can get data from the web:
 
 import pandas as pd
+from datetime import datetime
 
 prices_df = pd.read_csv('http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC')
 prices_df.columns = ['cdate_s','openp','highp','lowp','closep','volume','adjp']
@@ -33,13 +34,16 @@ prices_df.columns = ['cdate_s','openp','highp','lowp','closep','volume','adjp']
 # ,closep
 # FROM prices
 # WHERE extract(year from cdate) > 1999;
-import pdb
-pdb.set_trace()
 
-extract_sr = pd.to_datetime(prices_df.cdate_s)
-pred_sr = extract_sr.year > 1999
-prices4_df = prices_df.copy()[['cdate_s','closep']]
+extract_sr          = pd.to_datetime(prices_df.cdate_s)
+pred_sr             = extract_sr.dt.year > 1999
+prices4_df          = prices_df.copy()[pred_sr]
+prices4_df['cdate'] = pd.to_datetime(prices4_df.cdate_s)
+prices4_df['yr']    = prices4_df.cdate.dt.year
+prices4_df = prices4_df[['yr','cdate','closep']]
 
-pdb.set_trace()
+# I should report:
+print(prices4_df.head())
+
 
 'bye'
