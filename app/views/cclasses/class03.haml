@@ -103,7 +103,6 @@
   %li
     %a(href='/cclasses/class03pd24') Answer
 
-
   %li
     Describe what this syntax does:
     .syntax
@@ -113,3 +112,18 @@
   %li
     %a(href='/cclasses/class03pd29') Answer
   
+  %li
+    Describe what this syntax does:
+    .syntax
+      %pre
+      
+-- Delete a row:
+DELETE FROM prices3 WHERE cdate = '2016-08-01';
+
+-- Delete some rows:
+DELETE FROM prices3 WHERE cdate < '2016-08-10';
+
+-- Delete all rows:
+SELECT COUNT(*) FROM prices3; 
+DELETE          FROM prices3;
+SELECT COUNT(*) FROM prices3; 
