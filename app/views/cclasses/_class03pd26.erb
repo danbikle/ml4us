@@ -21,7 +21,6 @@
 # Pandas can get data from the web:
 
 import pandas as pd
-from datetime import datetime, timedelta
 
 prices_df = pd.read_csv('http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC')
 prices_df.columns = ['cdate_s','openp','highp','lowp','closep','volume','adjp']
