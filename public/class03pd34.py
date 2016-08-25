@@ -52,7 +52,7 @@ print(prices3_df)
 # -- Delete all rows:
 # DELETE FROM prices3;
 
-prices3_df  =   prices3_df.drop(prices3_df.index)
+prices3_df = prices3_df.drop(prices3_df.index)
 
 # I should report:
 print(prices3_df)
