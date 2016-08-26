@@ -1,0 +1,40 @@
+<code class='bash'>
+dan@pavlap:~/ml4us/public $
+dan@pavlap:~/ml4us/public $
+dan@pavlap:~/ml4us/public $ ~/madlib_demos/psqlmad -af j.sql
+CREATE TABLE prices5 AS 
+SELECT
+cdate
+,closep
+,AVG(closep)OVER(ORDER BY cdate ROWS BETWEEN 4 PRECEDING AND CURRENT ROW) mvgavg5day
+FROM prices
+WHERE cdate > '2016-08-01'
+ORDER BY cdate;
+SELECT 18
+SELECT * FROM prices5 WHERE cdate BETWEEN '2016-08-01' AND '2016-08-31' ORDER BY cdate;
+   cdate    |   closep    |    mvgavg5day    
+------------+-------------+------------------
+ 2016-08-02 | 2157.030029 |      2157.030029
+ 2016-08-03 | 2163.790039 |      2160.410034
+ 2016-08-04 |     2164.25 | 2161.69002266667
+ 2016-08-05 | 2182.870117 |    2166.98504625
+ 2016-08-08 | 2180.889893 |     2169.7660156
+ 2016-08-09 |  2181.73999 |     2174.7080078
+ 2016-08-10 |  2175.48999 |      2177.047998
+ 2016-08-11 | 2185.790039 |     2181.3560058
+ 2016-08-12 | 2184.050049 |     2181.5919922
+ 2016-08-15 | 2190.149902 |      2183.443994
+ 2016-08-16 | 2178.149902 |     2182.7259764
+ 2016-08-17 | 2182.219971 |     2184.0719726
+ 2016-08-18 |  2187.02002 |     2184.3179688
+ 2016-08-19 | 2183.870117 |     2184.2819824
+ 2016-08-22 | 2182.639893 |     2182.7799806
+ 2016-08-23 | 2186.899902 |     2184.5299806
+ 2016-08-24 | 2175.439941 |     2183.1739746
+ 2016-08-25 | 2172.469971 |     2180.2639648
+(18 rows)
+
+dan@pavlap:~/ml4us/public $ 
+dan@pavlap:~/ml4us/public $
+dan@pavlap:~/ml4us/public $
+</code>

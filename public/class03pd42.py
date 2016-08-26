@@ -22,11 +22,11 @@ import pandas as pd
 prices_df = pd.read_csv('http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC')
 prices_df.columns = ['cdate_s','openp','highp','lowp','closep','volume','adjp']
 
-pred_sr = (prices_df.cdate_s > '2016-08-01')
-prices5_df = prices_df[['cdate_s','closep']][pred_sr].sort_values(by=['cdate_s'])
-myr = prices5_df.rolling(window=5)
+prices5_df = prices_df[['cdate_s','closep']].sort_values(by=['cdate_s'])
+myr        = prices5_df.rolling(window=5)
 prices5_df['mvgavg5day'] = myr.mean().closep
-
-pred2_sr = (prices5_df.cdate_s >= '2016-08-01') & (prices5_df.cdate_s <= '2016-08-31')
-print(prices5_df[pred2_sr].sort_values(by=['cdate_s']))
+pred_sr    = (prices5_df.cdate_s > '2016-08-01')
+prices5_df =  prices5_df[pred_sr]
+pred2_sr   = (prices5_df.cdate_s >= '2016-08-01') & (prices5_df.cdate_s <= '2016-08-31')
+print(prices5_df[pred2_sr])
 'bye'
