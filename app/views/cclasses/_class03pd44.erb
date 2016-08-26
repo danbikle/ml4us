@@ -1,0 +1,14 @@
+<code class='python'>
+# class03pd44.py
+
+import pandas as pd
+
+prices_df = pd.read_csv('http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC')
+prices_df.columns = ['cdate_s','openp','highp','lowp','closep','volume','adjp']
+
+prices_df = prices_df.sort_values(by=['cdate_s'])
+
+print(prices_df.head())
+
+'bye'
+</code>
