@@ -1,0 +1,12 @@
+<code class='python'>
+# class03pd47.py
+
+import pandas as pd
+
+prices_df = pd.read_csv('http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC')
+prices_df.columns = ['cdate_s','openp','highp','lowp','closep','volume','adjp']
+
+pred_sr = (prices_df.cdate_s > '2016-07') & (prices_df.cdate_s &lt; '2016-08')
+s1_df   = prices_df[pred_sr][['cdate_s','closep']]
+print(s1_df)
+</code>
