@@ -13,6 +13,12 @@ print(s1_df)
 import pdb
 pdb.set_trace()
 
+# vis a push-down so top row becomes NaN:
 s2_df = s1_df.shift(1)
 s2_df
+
+# this work:
+s3_df = s1_df.shift(-1)
+s3_df
+
 'bye'
