@@ -5,7 +5,31 @@
   %pre
     =render 'class03pd48'  
 
-%p This is easy.
+%p I ran the above script and saw this:
+
+.syntax
+  %pre
+    =render 'class03pd49'
+
+%p I can see that the above script creates a column named pctlag1 from closep.
+
+%p Each time closep is observed, pctlag1 tells me how much closep has changed after the previous observation.
+
+%p Also the script creates a similar column named pctlead.
+
+%p I have two ways to understand pctlead.
+
+%p The easiest way is to see pctlead is that it is a shifted version of pctlag1.
+
+%p Or, today's pctlag1 is yesterday's pctlead.
+
+%p Another way to see it is as a one day look into the future, for each day in the past.
+
+%p Today, however, pctlead is unknown because closep for tomorrow is unknown.
+
+%p So the above script uses Pandas shift() to help me compute pctlag1 and pctlead.
+
+%p A way to compute pctlag1, pctlead using NumPy is displayed below:
 
 .syntax
   %pre
