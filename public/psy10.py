@@ -5,9 +5,6 @@
 # http://initd.org/psycopg/docs/usage.html
 
 import psycopg2
-import pdb
-
-pdb.set_trace()
 
 # Connect to an existing database
 conn = psycopg2.connect("dbname=madlib password=madlib user=madlib host=127.0.0.1")
@@ -15,6 +12,7 @@ conn = psycopg2.connect("dbname=madlib password=madlib user=madlib host=127.0.0.
 cur = conn.cursor()
 
 # Execute a command: this creates a new table
+cur.execute("drop TABLE if exists test;")
 cur.execute("CREATE TABLE test (id serial PRIMARY KEY, num integer, data varchar);")
 
 # Pass data to fill a query placeholders and let Psycopg perform
@@ -23,7 +21,7 @@ cur.execute("INSERT INTO test (num, data) VALUES (%s, %s)",(100, "abc'def"))
 
 # Query the database and obtain data as Python objects
 cur.execute("SELECT * FROM test;")
-cur.fetchone()
+print(cur.fetchone())
 
 # Make the changes to the database persistent
 conn.commit()
