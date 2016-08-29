@@ -1,5 +1,6 @@
-<code class='python'>
 # pct_laglead.py
+
+# This script should compute columns pctlag1 and pctlead from closep.
 
 import pandas as pd
 
@@ -20,4 +21,3 @@ s1_df['pctlead'] = pctlead
 print(s1_df)
 
 'bye'
-</code>
