@@ -24,7 +24,11 @@
 
 %p The above script does these tasks:
 %ul
-  %li Load http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC into a DataFrame: prices_df
+  %li
+    Load
+    %a(href='http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC' target='x')
+      http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC
+    into a DataFrame: prices_df
   %li Creates a SQLAlchemy engine to connect Pandas to Postgres
   %li Copies almost 17,000 rows from prices_df into table: prices
   %li Selects all rows from prices into DataFrame: prices2_df

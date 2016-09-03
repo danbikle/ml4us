@@ -17,9 +17,9 @@ prices_df.columns = ['cdate','openp','highp','lowp','closep','volume','adjp']
 # http://docs.sqlalchemy.org/en/latest/core/engines.html#postgresql
 
 # I should use sqlalchemy to connect to madlib role in Postgres:
-
 from sqlalchemy import create_engine
 engine = create_engine('postgresql://madlib:madlib@127.0.0.1:5432/madlib')
+# I assume madlib role has password 'madlib' and database named madlib.
 
 # I should write to a table named prices:
 prices_df.to_sql('prices',engine, index=False, if_exists='replace')
