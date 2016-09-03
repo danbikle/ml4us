@@ -8,9 +8,19 @@
   %li CSV data
   %li Postgres
 
-%p This is an easy lab.
+%p If I have Postgres installed, this is an easy lab.
+%p If I don't have Postgres installed, I install it with the help from the instructions at the URL listed below:
+%p
+  %a(href='https://github.com/danbikle/madlib_demos/blob/master/madlib_installation_steps.txt' target='x')
+    https://github.com/danbikle/madlib_demos/blob/master/madlib_installation_steps.txt
 
-%p I wrote this script:
+%p Another way to get a copy of Postgres running on my laptop is to use this VirtualBox instance:
+
+%p
+  %a(href='https://s3-us-west-2.amazonaws.com/ml4us/madlib2016a.ova' target='x')
+    https://s3-us-west-2.amazonaws.com/ml4us/madlib2016a.ova
+
+%p After I installed Postgres, using the above instructions, I wrote this script:
 
 .syntax
   %pre
@@ -32,7 +42,7 @@
   %li Creates a SQLAlchemy engine to connect Pandas to Postgres
   %li Copies almost 17,000 rows from prices_df into table: prices
   %li Selects all rows from prices into DataFrame: prices2_df
-
+  %li I call it the Pandas-Postgres-Round-Trip-Demo.
 %p
   %a(href='class03#psy')
     Class03 Lab
