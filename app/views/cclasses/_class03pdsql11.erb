@@ -1,7 +1,11 @@
 <code class='python'>
 # pdpost10.py
 
-# This script should copy gspc prices from web into a Postgres table.
+# This script should copy gspc prices from web into a DataFrame.
+# Next it copies the prices from DataFrame into Postgres table.
+# Finally, copies prices from the table into 2nd DataFrame.
+# Script assumes Postgres has role named madlib with password named madlib.
+# and database named madlib.
 
 import pandas as pd
 
