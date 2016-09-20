@@ -1,0 +1,24 @@
+%h2 Class04 Answer:
+%h2 On Linux install Oracle Java.
+
+%p
+  To install Java, I need to download jdk-8u102-linux-x64.tar.gz from Oracle:
+
+%p
+  %a(href='http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html' target='x')
+    http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+  
+
+%p
+  After the download, I install Java with the syntax listed below:
+
+.syntax
+  %pre
+    %code.bash
+      cd ~
+      tar zxf ~/Downloads/jdk-8u102-linux-x64.tar.gz
+      ln -s jdk1.8.0_102 jdk
+      echo 'export JAVA_HOME=${HOME}/jdk'       >> ~/.bashrc
+      echo 'export PATH=${JAVA_HOME}/bin:$PATH' >> ~/.bashrc
+      bash
+      java -version
