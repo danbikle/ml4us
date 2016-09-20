@@ -1,0 +1,25 @@
+%h2 Class04 Answer:
+%h2  Work through the first page of the Spark Quick-Start:
+
+%p
+  I found the Spark Tutorial at the URL listed below:
+%p
+  %a(href='http://spark.apache.org/docs/latest/quick-start.html' target='x')
+    http://spark.apache.org/docs/latest/quick-start.html
+
+%p I tried shell and Scala commands listed below:
+.syntax
+  %pre
+    %code.bash
+      cd ~/spark
+      bin/spark-shell
+      val textFile = sc.textFile("README.md")
+      textFile.count()
+      textFile.first()
+      val linesWithSpark = textFile.filter(line => line.contains("Spark"))
+      textFile.filter(line => line.contains("Spark")).count()
+
+
+%p
+  %a(href='class04#spark')
+    Class04 Lab

@@ -2,4 +2,23 @@
 %h2 On Linux install Oracle Apache Spark.
 
 %p
-  To install Apache Spark, I need to download a file:
+  To install Apache Spark, I used the syntax below to download a file:
+.syntax
+  %pre
+    %code.bash
+      cd ~/Downloads/
+      wget http://d3kbcqa49mib13.cloudfront.net/spark-2.0.0-bin-hadoop2.7.tgz
+%p After the download, I ran some shell commands:
+.syntax
+  %pre
+    %code.bash
+      cd ~
+      tar zxf ~/Downloads/spark-2.0.0-bin-hadoop2.7.tgz
+      ln -s spark-2.0.0-bin-hadoop2.7 spark
+      echo 'PATH=${HOME}/spark/bin:$PATH' >> ~/.bashrc
+      bash
+      
+%p
+  %a(href='class04#spark')
+    Class04 Lab
+      

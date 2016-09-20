@@ -2,13 +2,14 @@
 %h2 Test your installation of Java.
 
 %p
-  To test my installation of Java, I first try this shell command:
+  To test my installation of Java, I first tried this shell command:
 
 .syntax
   %pre
     %code.bash
       which java
-
+      echo $JAVA_HOME
+      
 %p I should see something like this:
 .syntax
   %pre
@@ -18,9 +19,14 @@
       dan@pavlap:~ $ which java
       \/home/dan/jdk/bin/java
       dan@pavlap:~ $ 
-      dan@pavlap:~ $
+      dan@pavlap:~ $ 
+      dan@pavlap:~ $ echo $JAVA_HOME
+      \/home/dan/jdk
+      dan@pavlap:~ $ 
+      dan@pavlap:~ $ 
+      dan@pavlap:~ $ 
 
-%p Next, I will try actually running a simple Java command:
+%p Next, I tried running a simple Java command:
 
 .syntax
   %pre
@@ -38,3 +44,7 @@
       Java HotSpot(TM) 64-Bit Server VM (build 25.102-b14, mixed mode)
       dan@pavlap:~ $ 
       dan@pavlap:~ $
+
+%p
+  %a(href='class04#java')
+    Class04 Lab
