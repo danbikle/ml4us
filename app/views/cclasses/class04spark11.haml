@@ -78,22 +78,22 @@
 .syntax
   %pre
     =render 'class04spark17'
-%hr/    
+%p I ran these shell commands:
 .syntax
   %pre
     %code.bash chmod u+x ~/bin/sbt
     echo 'export PATH=${HOME}/bin' >> ~/.bashrc
     bash
-%p Then, I used curl to get a jar file from the web:
+%p Then, I used wget to get a jar file from the web:
 
 .syntax
   %pre
     %code.bash
       cd ~/bin/
-      curl https://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/sbt-launch/0.13.12/sbt-launch.jar > sbt-launch.jar
+      wget https://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/sbt-launch/0.13.12/sbt-launch.jar
 
   
-%p Next, I ran a simple shell command:
+%p Next, I ran simple shell commands:
 
 .syntax
   %pre
