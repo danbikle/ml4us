@@ -49,3 +49,9 @@ body li{
     color: #003300;
     font-weight: bold;
 }
+.sbar890 {overflow: scroll; width: 890px; overflow-y: hidden;}
+.sbar950 {overflow: scroll; width: 950px; overflow-y: hidden;}
+.sbar999 {overflow: scroll; width: 999px; overflow-y: hidden;}
+.sbarv300 {width: 990px; height: 300px; overflow: scroll;}
+.zebra_it table tr:nth-child(odd) {
+  background-color: #DDDDDD; }
