@@ -1,0 +1,28 @@
+<code class='bash'>
+dan@pavlap:~/spark $ 
+dan@pavlap:~/spark $ bin/spark-submit examples/src/main/r/dataframe.R
+Loading required package: methods
+
+Attaching package: ‘SparkR’
+
+The following objects are masked from ‘package:stats’:
+
+    cov, filter, lag, na.omit, predict, sd, var, window
+
+The following objects are masked from ‘package:base’:
+
+    as.data.frame, colnames, colnames<-, drop, intersect, rank, rbind,
+    sample, subset, summary, transform, union
+
+Java ref type org.apache.spark.sql.SparkSession id 1 
+root
+ |-- name: string (nullable = true)
+ |-- age: double (nullable = true)
+root
+ |-- age: long (nullable = true)
+ |-- name: string (nullable = true)
+    name
+1 Justin
+dan@pavlap:~/spark $ 
+dan@pavlap:~/spark $
+</code>
