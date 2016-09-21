@@ -1,36 +1,16 @@
 <code class='bash'>
-dan@pavlap:~ $ cd ~
 dan@pavlap:~ $ 
-dan@pavlap:~ $ cd spark
-dan@pavlap:~/spark $ ll
-total 112
-drwxr-xr-x 12 dan dan  4096 Jul 19 14:28 ./
-drwxr-xr-x 62 dan dan  4096 Sep 20 15:26 ../
-drwxr-xr-x  2 dan dan  4096 Jul 19 14:28 bin/
-drwxr-xr-x  2 dan dan  4096 Jul 19 14:28 conf/
-drwxr-xr-x  5 dan dan  4096 Jul 19 14:28 data/
-drwxr-xr-x  4 dan dan  4096 Jul 19 14:28 examples/
-drwxr-xr-x  2 dan dan 12288 Jul 19 14:28 jars/
--rw-r--r--  1 dan dan 17811 Jul 19 14:28 LICENSE
-drwxr-xr-x  2 dan dan  4096 Jul 19 14:28 licenses/
--rw-r--r--  1 dan dan 24749 Jul 19 14:28 NOTICE
-drwxr-xr-x  6 dan dan  4096 Jul 19 14:28 python/
-drwxr-xr-x  3 dan dan  4096 Jul 19 14:28 R/
--rw-r--r--  1 dan dan  3828 Jul 19 14:28 README.md
--rw-r--r--  1 dan dan   120 Jul 19 14:28 RELEASE
-drwxr-xr-x  2 dan dan  4096 Jul 19 14:28 sbin/
-drwxr-xr-x  2 dan dan  4096 Jul 19 14:28 yarn/
-dan@pavlap:~/spark $ 
+dan@pavlap:~ $ cd ~/spark
 dan@pavlap:~/spark $ bin/spark-shell
 Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
 Setting default log level to "WARN".
 To adjust logging level use sc.setLogLevel(newLevel).
-16/09/20 15:50:09 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
-16/09/20 15:50:09 WARN Utils: Your hostname, pavlap resolves to a loopback address: 127.0.1.1; using 10.65.8.75 instead (on interface wlo1)
-16/09/20 15:50:09 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
-16/09/20 15:50:10 WARN SparkContext: Use an existing SparkContext, some configuration may not take effect.
-Spark context Web UI available at http://10.65.8.75:4040
-Spark context available as 'sc' (master = local[*], app id = local-1474411810233).
+16/09/20 16:56:59 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+16/09/20 16:56:59 WARN Utils: Your hostname, pavlap resolves to a loopback address: 127.0.1.1; using 192.168.4.151 instead (on interface wlo1)
+16/09/20 16:56:59 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
+16/09/20 16:57:01 WARN SparkContext: Use an existing SparkContext, some configuration may not take effect.
+Spark context Web UI available at http://192.168.4.151:4040
+Spark context available as 'sc' (master = local[*], app id = local-1474415820948).
 Spark session available as 'spark'.
 Welcome to
       ____              __
@@ -43,22 +23,58 @@ Using Scala version 2.11.8 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_102)
 Type in expressions to have them evaluated.
 Type :help for more information.
 
+scala> 
 scala> val textFile = sc.textFile("README.md")
 textFile: org.apache.spark.rdd.RDD[String] = README.md MapPartitionsRDD[1] at textFile at <console>:24
 
+scala> 
 scala> textFile.count()
 res0: Long = 99
 
+scala> 
 scala> textFile.first()
 res1: String = # Apache Spark
 
+scala> 
 scala> val linesWithSpark = textFile.filter(line => line.contains("Spark"))
 linesWithSpark: org.apache.spark.rdd.RDD[String] = MapPartitionsRDD[2] at filter at <console>:26
 
+scala> 
 scala> textFile.filter(line => line.contains("Spark")).count()
 res2: Long = 19
 
+scala> 
+scala> textFile.map(line => line.split(" ").size).reduce((a, b) => if (a > b) a else b)
+res3: Int = 22
+
+scala> 
+scala> import java.lang.Math
+import java.lang.Math
+
+scala> 
+scala> textFile.map(line => line.split(" ").size).reduce((a, b) => Math.max(a, b))
+res4: Int = 22
+
+scala> 
+scala> val wordCounts = textFile.flatMap(line => line.split(" ")).map(word => (word, 1)).reduceByKey((a, b) => a + b)
+wordCounts: org.apache.spark.rdd.RDD[(String, Int)] = ShuffledRDD[8] at reduceByKey at <console>:27
+
+scala> 
+scala> wordCounts.collect()
+res5: Array[(String, Int)] = Array((package,1), (this,1), (Version"](http://spark.apache.org/docs/latest/building-spark.html#specifying-the-hadoop-version),1), (Because,1), (Python,2), (cluster.,1), (its,1), ([run,1), (general,2), (have,1), (pre-built,1), (YARN,,1), (locally,2), (changed,1), (locally.,1), (sc.parallelize(1,1), (only,1), (Configuration,1), (This,2), (basic,1), (first,1), (learning,,1), ([Eclipse](https://cwiki.apache.org/confluence/display/SPARK/Useful+Developer+Tools#UsefulDeveloperTools-Eclipse),1), (documentation,3), (graph,1), (Hive,2), (several,1), (["Specifying,1), ("yarn",1), (page](http://spark.apache.org/documentation.html),1), ([params]`.,1), ([project,2), (prefer,1), (SparkPi,2), (<http://spark.apache.org/>,1), (engine,1), (version,1), (file,1), (documentation...
+scala> 
+scala> linesWithSpark.cache()
+res6: linesWithSpark.type = MapPartitionsRDD[2] at filter at <console>:26
+
+scala> 
+scala> linesWithSpark.count()
+res7: Long = 19
+
+scala> linesWithSpark.count()
+res8: Long = 19
+
+scala> 
 scala> :quit
 dan@pavlap:~/spark $ 
-dan@pavlap:~/spark $
+dan@pavlap:~/spark $ 
 </code>
