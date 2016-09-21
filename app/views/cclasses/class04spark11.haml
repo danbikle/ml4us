@@ -39,7 +39,7 @@
   %pre
     %code.bash ~/spark/conf/log4j.properties
 
-%p I create the file from this file:
+%p I created the file from this file:
 .syntax
   %pre
     %code.bash ~/spark/conf/log4j.properties.template
@@ -73,12 +73,25 @@
   %pre
     =render 'class04spark16'
 
+%p The quick-start shows that I need a utility named 'sbt'.
+
+%p But the quick-start fails to describe what sbt is or how to install it.
+
+%p After 10 minutes with Google I learned that I use sbt to compile scala scripts.
+
+%p Also I found a page which describes how to quickly install sbt:
+%p
+  %a(href='http://www.scala-sbt.org/0.13/docs/Manual-Installation.html' target='x')
+    http://www.scala-sbt.org/0.13/docs/Manual-Installation.html
+
 %p Next, I created a shell script in ~/bin/sbt
 
 .syntax
   %pre
     =render 'class04spark17'
+
 %p I ran these shell commands:
+
 .syntax
   %pre
     %code.bash chmod u+x ~/bin/sbt
@@ -91,7 +104,9 @@
     %code.bash
       cd ~/bin/
       wget https://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/sbt-launch/0.13.12/sbt-launch.jar
-  
+
+%p Those three steps installed sbt for me.
+
 %p Next, I ran simple shell commands:
 
 .syntax
@@ -105,7 +120,6 @@
 .syntax
   %pre.sbarv300
     =render 'class04spark18'
-
 
 %p Next, I ran simple shell commands:
 
