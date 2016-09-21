@@ -73,15 +73,33 @@
   %pre
     =render 'class04spark16'
 
-%p Next, I ran a simple shell command:
+%p Next, I created a shell script in ~/bin/sbt
 
+.syntax
+  %pre
+    =render 'class04spark17'
+%hr/    
+.syntax
+  %pre
+    %code.bash chmod u+x ~/bin/sbt
+    echo 'export PATH=${HOME}/bin' >> ~/.bashrc
+    bash
+%p Then, I used curl to get a jar file from the web:
 
 .syntax
   %pre
     %code.bash
-    cd ~/spark10/
-    sbt package
+      cd ~/bin/
+      curl https://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/sbt-launch/0.13.12/sbt-launch.jar > sbt-launch.jar
 
+  
+%p Next, I ran a simple shell command:
+
+.syntax
+  %pre
+    %code.bash
+      cd ~/spark10/
+      sbt package
 
 %p
   %a(href='class04#spark')
