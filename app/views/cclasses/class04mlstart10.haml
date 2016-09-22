@@ -43,6 +43,9 @@
   %li Self-Contained Documentation
   %li ParamMap
   %li spark.mllib Package
+  %li maxIter
+  %li regParam
+  %li threshold
 
 %p While reading, I looked for discussion about how the above nouns combine with these verbs:
 %ul
@@ -65,7 +68,18 @@
   %li Abstract
   %li Split
   %li Call
+  %li Save
+  %li Load
+  %li Put
+%p I used the above three lists to create simple questions which I then answered:
 
+%ul
+  %li Q: In MLlib, How to create an algorithm?
+  %li
+    A: One way to create an algorithm is to create a Transformer.
+    For example I can use a type of Transformer called a Model to
+    read a DataFrame of features and output a DataFrame with a column of predictions.
+  
 %p
   %a(href='class04')
     Class04
