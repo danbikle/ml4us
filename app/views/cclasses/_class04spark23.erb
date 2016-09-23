@@ -1,0 +1,145 @@
+<code class='bash'>
+dan@pavlap:~ $ 
+dan@pavlap:~ $ 
+dan@pavlap:~ $ ~/spark/bin/spark-shell &lt; /tmp/ml_examp1.scala
+Spark context Web UI available at http://192.168.1.80:4040
+Spark context available as 'sc' (master = local[*], app id = local-1474600049784).
+Spark session available as 'spark'.
+Welcome to
+      ____              __
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  '_/
+   /___/ .__/\_,_/_/ /_/\_\   version 2.0.0
+      /_/
+         
+Using Scala version 2.11.8 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_102)
+Type in expressions to have them evaluated.
+Type :help for more information.
+
+scala> import org.apache.spark.ml.classification.LogisticRegression
+
+scala> import org.apache.spark.ml.linalg.{Vector, Vectors}
+
+scala> import org.apache.spark.ml.param.ParamMap
+
+scala> import org.apache.spark.sql.Row
+
+scala> 
+scala> 
+scala>      |      |      |      |      | training: org.apache.spark.sql.DataFrame = [label: double, features: vector]
+
+scala> 
+scala> 
+scala> lr: org.apache.spark.ml.classification.LogisticRegression = logreg_acbaf8239a6e
+
+scala> 
+scala> LogisticRegression parameters:
+elasticNetParam: the ElasticNet mixing parameter, in range [0, 1]. For alpha = 0, the penalty is an L2 penalty. For alpha = 1, it is an L1 penalty (default: 0.0)
+featuresCol: features column name (default: features)
+fitIntercept: whether to fit an intercept term (default: true)
+labelCol: label column name (default: label)
+maxIter: maximum number of iterations (>= 0) (default: 100)
+predictionCol: prediction column name (default: prediction)
+probabilityCol: Column name for predicted class conditional probabilities. Note: Not all models output well-calibrated probability estimates! These probabilities should be treated as confidences, not precise probabilities (default: probability)
+rawPredictionCol: raw prediction (a.k.a. confidence) column name (default: rawPrediction)
+regParam: regularization parameter (>= 0) (default: 0.0)
+standardization: whether to standardize the training features before fitting the model (default: true)
+threshold: threshold in binary classification prediction, in range [0, 1] (default: 0.5)
+thresholds: Thresholds in multi-class classification to adjust the probability of predicting each class. Array must have length equal to the number of classes, with values >= 0. The class with largest value p/t is predicted, where p is the original probability of that class and t is the class' threshold (undefined)
+tol: the convergence tolerance for iterative algorithms (default: 1.0E-6)
+weightCol: weight column name. If this is not set or empty, we treat all instance weights as 1.0 (undefined)
+
+
+scala> 
+scala> 
+scala> res1: lr.type = logreg_acbaf8239a6e
+
+scala> 
+scala> 
+scala> model1: org.apache.spark.ml.classification.LogisticRegressionModel = logreg_acbaf8239a6e
+
+scala> 
+scala> 
+scala> 
+scala> 
+scala> Model 1 was fit using parameters: {
+	logreg_acbaf8239a6e-elasticNetParam: 0.0,
+	logreg_acbaf8239a6e-featuresCol: features,
+	logreg_acbaf8239a6e-fitIntercept: true,
+	logreg_acbaf8239a6e-labelCol: label,
+	logreg_acbaf8239a6e-maxIter: 10,
+	logreg_acbaf8239a6e-predictionCol: prediction,
+	logreg_acbaf8239a6e-probabilityCol: probability,
+	logreg_acbaf8239a6e-rawPredictionCol: rawPrediction,
+	logreg_acbaf8239a6e-regParam: 0.01,
+	logreg_acbaf8239a6e-standardization: true,
+	logreg_acbaf8239a6e-threshold: 0.5,
+	logreg_acbaf8239a6e-tol: 1.0E-6
+}
+
+scala> 
+scala> 
+scala> 
+scala> 
+scala> 
+scala>      | paramMap: org.apache.spark.ml.param.ParamMap =
+{
+	logreg_acbaf8239a6e-maxIter: 30,
+	logreg_acbaf8239a6e-regParam: 0.1,
+	logreg_acbaf8239a6e-threshold: 0.55
+}
+
+scala> 
+scala> 
+scala> paramMap2: org.apache.spark.ml.param.ParamMap =
+{
+	logreg_acbaf8239a6e-probabilityCol: myProbability
+}
+
+scala> paramMapCombined: org.apache.spark.ml.param.ParamMap =
+{
+	logreg_acbaf8239a6e-maxIter: 30,
+	logreg_acbaf8239a6e-probabilityCol: myProbability,
+	logreg_acbaf8239a6e-regParam: 0.1,
+	logreg_acbaf8239a6e-threshold: 0.55
+}
+
+scala> 
+scala> 
+scala> 
+scala> model2: org.apache.spark.ml.classification.LogisticRegressionModel = logreg_acbaf8239a6e
+
+scala> Model 2 was fit using parameters: {
+	logreg_acbaf8239a6e-elasticNetParam: 0.0,
+	logreg_acbaf8239a6e-featuresCol: features,
+	logreg_acbaf8239a6e-fitIntercept: true,
+	logreg_acbaf8239a6e-labelCol: label,
+	logreg_acbaf8239a6e-maxIter: 30,
+	logreg_acbaf8239a6e-predictionCol: prediction,
+	logreg_acbaf8239a6e-probabilityCol: myProbability,
+	logreg_acbaf8239a6e-rawPredictionCol: rawPrediction,
+	logreg_acbaf8239a6e-regParam: 0.1,
+	logreg_acbaf8239a6e-standardization: true,
+	logreg_acbaf8239a6e-threshold: 0.55,
+	logreg_acbaf8239a6e-tol: 1.0E-6
+}
+
+scala> 
+scala> 
+scala> 
+scala>      |      |      |      | test: org.apache.spark.sql.DataFrame = [label: double, features: vector]
+
+scala> 
+scala> 
+scala> 
+scala> 
+scala> 
+scala> ([-1.0,1.5,1.3], 1.0) -> prob=[0.05707304171034024,0.9429269582896597], prediction=1.0
+([3.0,2.0,-0.1], 0.0) -> prob=[0.9238522311704105,0.07614776882958951], prediction=0.0
+([0.0,2.2,-1.5], 1.0) -> prob=[0.10972776114779462,0.8902722388522054], prediction=1.0
+
+scala> :quit
+dan@pavlap:~ $ 
+dan@pavlap:~ $ 
+dan@pavlap:~ $
+</code>
