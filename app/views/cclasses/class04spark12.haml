@@ -1,0 +1,37 @@
+%h2 Class04 Answer:
+%h2 Run the first example listed in this URL:
+%p
+  %a(href='http://spark.apache.org/docs/latest/ml-pipeline.html#example-estimator-transformer-and-param' target='x')
+    http://spark.apache.org/docs/latest/ml-pipeline.html#example-estimator-transformer-and-param
+
+%p The syntax in the first example fills only a page.
+
+%p The author of the example, though, neglects to give information on how to run it.
+
+%p I ran the example by copying the syntax into a file: /tmp/ml_examp1.scala
+
+%p Then I enhanced some of the method calls so they did not span lines.
+
+%p For example, this call:
+
+.syntax
+  %pre
+    =render 'class04spark13'
+
+%p Becomes, this call:
+
+.syntax
+  %pre
+    =render 'class04spark22'
+
+  
+%p Next I ran the example with a simple shell command:
+
+.syntax
+  %pre
+    %code.bash ~/spark/spark-shell < /tmp/ml_examp1.scala
+      
+%p
+  %a(href='class04#spark')
+    Class04 Lab
+      
