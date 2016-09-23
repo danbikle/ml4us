@@ -80,6 +80,22 @@
     For example I can use a type of Transformer called a Model to
     read a DataFrame of features and output a DataFrame with a column of predictions.
   
+  %li Q: In MLlib, How to create a DataFrame?
+  %li A: I created my first DataFrame using syntax I found at the URL listed below:
+  %li
+    %a(href='http://spark.apache.org/docs/latest/ml-pipeline.html#example-estimator-transformer-and-param' target='x')
+      http://spark.apache.org/docs/latest/ml-pipeline.html#example-estimator-transformer-and-param
+  %li
+    .syntax
+      %pre
+        %code.scala
+          val training = spark.createDataFrame(Seq(
+          (1.0, Vectors.dense(0.0, 1.1, 0.1)),
+          (0.0, Vectors.dense(2.0, 1.0, -1.0)),
+          (0.0, Vectors.dense(2.0, 1.3, 1.0)),
+          (1.0, Vectors.dense(0.0, 1.2, -0.5))
+          )).toDF("label", "features")
+  
 %p
   %a(href='class04')
     Class04
