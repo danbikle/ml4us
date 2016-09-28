@@ -1,0 +1,43 @@
+<code class='bash'>
+dan@pavlap:/tmp $ 
+dan@pavlap:/tmp $ 
+dan@pavlap:/tmp $ spark-shell -i logr12.scala
+Spark context Web UI available at http://192.168.1.80:4040
+Spark context available as 'sc' (master = local[*], app id = local-1475037649146).
+Spark session available as 'spark'.
+Loading logr12.scala...
+import org.apache.spark.sql.SQLContext
+import org.apache.spark.ml.classification.LogisticRegression
+import org.apache.spark.ml.linalg.{Vector, Vectors}
+import org.apache.spark.ml.param.ParamMap
+import org.apache.spark.sql.Row
+import sys.process._
+warning: there was one feature warning; re-run with -feature for details
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 1181k    0 1181k    0     0  1589k      0 --:--:-- --:--:-- --:--:-- 1588k
+res2: Int = 0
+warning: there was one deprecation warning; re-run with -deprecation for details
+sqlContext: org.apache.spark.sql.SQLContext = org.apache.spark.sql.SQLContext@25f7cc38
+dp10df: org.apache.spark.sql.DataFrame = [Date: timestamp, Open: double ... 5 more fields]
++-----------+--------------------+--------------------+----------+-----------+
+|count(Date)|           min(Date)|           max(Date)|min(Close)| max(Close)|
++-----------+--------------------+--------------------+----------+-----------+
+|      16793|1950-01-03 00:00:...|2016-09-27 00:00:...|     16.66|2190.149902|
++-----------+--------------------+--------------------+----------+-----------+
+
+
+Welcome to
+      ____              __
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  '_/
+   /___/ .__/\_,_/_/ /_/\_\   version 2.0.0
+      /_/
+         
+Using Scala version 2.11.8 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_102)
+Type in expressions to have them evaluated.
+Type :help for more information.
+
+scala> 
+scala>
+</code>
