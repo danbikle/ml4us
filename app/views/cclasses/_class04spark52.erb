@@ -1,3 +1,85 @@
 <code class='bash'>
+dan@pavlap:/tmp $ 
+dan@pavlap:/tmp $ 
+dan@pavlap:/tmp $ spark-shell -i logr12.scala
+Spark context Web UI available at http://192.168.1.80:4040
+Spark context available as 'sc' (master = local[*], app id = local-1475042025479).
+Spark session available as 'spark'.
+Loading logr12.scala...
+import org.apache.spark.sql.SQLContext
+import org.apache.spark.ml.classification.LogisticRegression
+import org.apache.spark.ml.linalg.{Vector, Vectors}
+import org.apache.spark.ml.param.ParamMap
+import org.apache.spark.sql.Row
+import org.apache.spark.sql.functions._
+import sys.process._
+warning: there was one feature warning; re-run with -feature for details
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 1181k    0 1181k    0     0  1736k      0 --:--:-- --:--:-- --:--:-- 1738k
+res2: Int = 0
+warning: there was one deprecation warning; re-run with -deprecation for details
+sqlContext: org.apache.spark.sql.SQLContext = org.apache.spark.sql.SQLContext@3c4059a
+dp10df: org.apache.spark.sql.DataFrame = [Date: timestamp, Open: double ... 5 more fields]
++-----------+--------------------+--------------------+----------+-----------+
+|count(Date)|           min(Date)|           max(Date)|min(Close)| max(Close)|
++-----------+--------------------+--------------------+----------+-----------+
+|      16793|1950-01-03 00:00:...|2016-09-27 00:00:...|     16.66|2190.149902|
++-----------+--------------------+--------------------+----------+-----------+
 
+sqls: String = SELECT Date,Close,LEAD(Close,1)OVER(ORDER BY Date) leadp FROM tab ORDER BY Date
+dp11df: org.apache.spark.sql.DataFrame = [Date: timestamp, Close: double ... 1 more field]
+sqls: String = SELECT Date,Close,100*(leadp-Close)/Close pctlead FROM tab ORDER BY Date
+dp12df: org.apache.spark.sql.DataFrame = [Date: timestamp, Close: double ... 1 more field]
+sqls: String = SELECT Date, Close, pctlead
+sqls: String = SELECT Date, Close, pctlead,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) AS mavg2
+sqls: String = SELECT Date, Close, pctlead,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) AS mavg2,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 3 PRECEDING AND CURRENT ROW) AS mavg3
+sqls: String = SELECT Date, Close, pctlead,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) AS mavg2,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 3 PRECEDING AND CURRENT ROW) AS mavg3,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 4 PRECEDING AND CURRENT ROW) AS mavg4
+sqls: String = SELECT Date, Close, pctlead,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) AS mavg2,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 3 PRECEDING AND CURRENT ROW) AS mavg3,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 4 PRECEDING AND CURRENT ROW) AS mavg4,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 5 PRECEDING AND CURRENT ROW) AS mavg5
+sqls: String = SELECT Date, Close, pctlead,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) AS mavg2,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 3 PRECEDING AND CURRENT ROW) AS mavg3,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 4 PRECEDING AND CURRENT ROW) AS mavg4,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 5 PRECEDING AND CURRENT ROW) AS mavg5,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 6 PRECEDING AND CURRENT ROW) AS mavg6
+sqls: String = SELECT Date, Close, pctlead,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) AS mavg2,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 3 PRECEDING AND CURRENT ROW) AS mavg3,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 4 PRECEDING AND CURRENT ROW) AS mavg4,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 5 PRECEDING AND CURRENT ROW) AS mavg5,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 6 PRECEDING AND CURRENT ROW) AS mavg6,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 7 PRECEDING AND CURRENT ROW) AS mavg7
+sqls: String = SELECT Date, Close, pctlead,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) AS mavg2,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 3 PRECEDING AND CURRENT ROW) AS mavg3,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 4 PRECEDING AND CURRENT ROW) AS mavg4,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 5 PRECEDING AND CURRENT ROW) AS mavg5,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 6 PRECEDING AND CURRENT ROW) AS mavg6,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 7 PRECEDING AND CURRENT ROW) AS mavg7,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 8 PRECEDING AND CURRENT ROW) AS mavg8
+sqls: String = SELECT Date, Close, pctlead,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) AS mavg2,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 3 PRECEDING AND CURRENT ROW) AS mavg3,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 4 PRECEDING AND CURRENT ROW) AS mavg4,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 5 PRECEDING AND CURRENT ROW) AS mavg5,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 6 PRECEDING AND CURRENT ROW) AS mavg6,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 7 PRECEDING AND CURRENT ROW) AS mavg7,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 8 PRECEDING AND CURRENT ROW) AS mavg8,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 9 PRECEDING AND CURRENT ROW) AS mavg9
+sqls: String = SELECT Date, Close, pctlead,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) AS mavg2,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 3 PRECEDING AND CURRENT ROW) AS mavg3,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 4 PRECEDING AND CURRENT ROW) AS mavg4,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 5 PRECEDING AND CURRENT ROW) AS mavg5,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 6 PRECEDING AND CURRENT ROW) AS mavg6,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 7 PRECEDING AND CURRENT ROW) AS mavg7,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 8 PRECEDING AND CURRENT ROW) AS mavg8,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 9 PRECEDING AND CURRENT ROW) AS mavg9 FROM tab ORDER BY Date
+dp13df: org.apache.spark.sql.DataFrame = [Date: timestamp, Close: double ... 9 more fields]
+sqls: String = SELECT Date, Close, pctlead
+sqls: String = SELECT Date, Close, pctlead,(mavg2-LAG(mavg2,1)OVER(ORDER BY Date))/mavg2 AS slp2
+sqls: String = SELECT Date, Close, pctlead,(mavg2-LAG(mavg2,1)OVER(ORDER BY Date))/mavg2 AS slp2 ,(mavg3-LAG(mavg3,1)OVER(ORDER BY Date))/mavg3 AS slp3
+sqls: String = SELECT Date, Close, pctlead,(mavg2-LAG(mavg2,1)OVER(ORDER BY Date))/mavg2 AS slp2 ,(mavg3-LAG(mavg3,1)OVER(ORDER BY Date))/mavg3 AS slp3 ,(mavg3-LAG(mavg4,1)OVER(ORDER BY Date))/mavg3 AS slp4
+sqls: String = SELECT Date, Close, pctlead,(mavg2-LAG(mavg2,1)OVER(ORDER BY Date))/mavg2 AS slp2 ,(mavg3-LAG(mavg3,1)OVER(ORDER BY Date))/mavg3 AS slp3 ,(mavg3-LAG(mavg4,1)OVER(ORDER BY Date))/mavg3 AS slp4 ,(mavg3-LAG(mavg5,1)OVER(ORDER BY Date))/mavg3 AS slp5
+sqls: String = SELECT Date, Close, pctlead,(mavg2-LAG(mavg2,1)OVER(ORDER BY Date))/mavg2 AS slp2 ,(mavg3-LAG(mavg3,1)OVER(ORDER BY Date))/mavg3 AS slp3 ,(mavg3-LAG(mavg4,1)OVER(ORDER BY Date))/mavg3 AS slp4 ,(mavg3-LAG(mavg5,1)OVER(ORDER BY Date))/mavg3 AS slp5 ,(mavg3-LAG(mavg6,1)OVER(ORDER BY Date))/mavg3 AS slp6
+sqls: String = SELECT Date, Close, pctlead,(mavg2-LAG(mavg2,1)OVER(ORDER BY Date))/mavg2 AS slp2 ,(mavg3-LAG(mavg3,1)OVER(ORDER BY Date))/mavg3 AS slp3 ,(mavg3-LAG(mavg4,1)OVER(ORDER BY Date))/mavg3 AS slp4 ,(mavg3-LAG(mavg5,1)OVER(ORDER BY Date))/mavg3 AS slp5 ,(mavg3-LAG(mavg6,1)OVER(ORDER BY Date))/mavg3 AS slp6 ,(mavg3-LAG(mavg7,1)OVER(ORDER BY Date))/mavg3 AS slp7
+sqls: String = SELECT Date, Close, pctlead,(mavg2-LAG(mavg2,1)OVER(ORDER BY Date))/mavg2 AS slp2 ,(mavg3-LAG(mavg3,1)OVER(ORDER BY Date))/mavg3 AS slp3 ,(mavg3-LAG(mavg4,1)OVER(ORDER BY Date))/mavg3 AS slp4 ,(mavg3-LAG(mavg5,1)OVER(ORDER BY Date))/mavg3 AS slp5 ,(mavg3-LAG(mavg6,1)OVER(ORDER BY Date))/mavg3 AS slp6 ,(mavg3-LAG(mavg7,1)OVER(ORDER BY Date))/mavg3 AS slp7 ,(mavg3-LAG(mavg8,1)OVER(ORDER BY Date))/mavg3 AS slp8
+sqls: String = SELECT Date, Close, pctlead,(mavg2-LAG(mavg2,1)OVER(ORDER BY Date))/mavg2 AS slp2 ,(mavg3-LAG(mavg3,1)OVER(ORDER BY Date))/mavg3 AS slp3 ,(mavg3-LAG(mavg4,1)OVER(ORDER BY Date))/mavg3 AS slp4 ,(mavg3-LAG(mavg5,1)OVER(ORDER BY Date))/mavg3 AS slp5 ,(mavg3-LAG(mavg6,1)OVER(ORDER BY Date))/mavg3 AS slp6 ,(mavg3-LAG(mavg7,1)OVER(ORDER BY Date))/mavg3 AS slp7 ,(mavg3-LAG(mavg8,1)OVER(ORDER BY Date))/mavg3 AS slp8 ,(mavg3-LAG(mavg9,1)OVER(ORDER BY Date))/mavg3 AS slp9
+sqls: String = SELECT Date, Close, pctlead,(mavg2-LAG(mavg2,1)OVER(ORDER BY Date))/mavg2 AS slp2 ,(mavg3-LAG(mavg3,1)OVER(ORDER BY Date))/mavg3 AS slp3 ,(mavg3-LAG(mavg4,1)OVER(ORDER BY Date))/mavg3 AS slp4 ,(mavg3-LAG(mavg5,1)OVER(ORDER BY Date))/mavg3 AS slp5 ,(mavg3-LAG(mavg6,1)OVER(ORDER BY Date))/mavg3 AS slp6 ,(mavg3-LAG(mavg7,1)OVER(ORDER BY Date))/mavg3 AS slp7 ,(mavg3-LAG(mavg8,1)OVER(ORDER BY Date))/mavg3 AS slp8 ,(mavg3-LAG(mavg9,1)OVER(ORDER BY Date))/mavg3 AS slp9  FROM tab ORDER BY Date
+dp14df: org.apache.spark.sql.DataFrame = [Date: timestamp, Close: double ... 9 more fields]
+training_period: String = " WHERE Date BETWEEN'1986-01-01'AND'2016-01-01' "
+sqls: String = "SELECT AVG(pctlead) FROM tab WHERE Date BETWEEN'1986-01-01'AND'2016-01-01' "
+class_df: org.apache.spark.sql.DataFrame = [avg(pctlead): double]
+class_boundry: Double = 0.03667703897236846
+pctlead2label: org.apache.spark.sql.expressions.UserDefinedFunction = UserDefinedFunction(<function1>,DoubleType,Some(List(FloatType)))
+dp15df: org.apache.spark.sql.DataFrame = [Date: timestamp, Close: double ... 10 more fields]
+fill_vec: org.apache.spark.sql.expressions.UserDefinedFunction = UserDefinedFunction(<function8>,org.apache.spark.ml.linalg.VectorUDT@3bfc3ba7,Some(List(FloatType, FloatType, FloatType, FloatType, FloatType, FloatType, FloatType, FloatType)))
+dp16df: org.apache.spark.sql.DataFrame = [Date: timestamp, Close: double ... 11 more fields]
+lr: org.apache.spark.ml.classification.LogisticRegression = logreg_40871c50b71f
+res9: lr.type = logreg_40871c50b71f
+
+Welcome to
+      ____              __
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  '_/
+   /___/ .__/\_,_/_/ /_/\_\   version 2.0.0
+      /_/
+         
+Using Scala version 2.11.8 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_102)
+Type in expressions to have them evaluated.
+Type :help for more information.
+
+scala> 
+
+scala> 
+
+scala> :quit
+dan@pavlap:/tmp $ 
+dan@pavlap:/tmp $ 
 </code>
