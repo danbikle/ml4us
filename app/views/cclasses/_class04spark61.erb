@@ -1,3 +1,115 @@
 <code class='bash'>
+dan@pavlap:/tmp $ 
+dan@pavlap:/tmp $ 
+dan@pavlap:/tmp $ spark-shell -i logr12.scala
+Spark context Web UI available at http://192.168.1.80:4040
+Spark context available as 'sc' (master = local[*], app id = local-1475043621594).
+Spark session available as 'spark'.
+Loading logr12.scala...
+import org.apache.spark.sql.SQLContext
+import org.apache.spark.ml.classification.LogisticRegression
+import org.apache.spark.ml.linalg.{Vector, Vectors}
+import org.apache.spark.ml.param.ParamMap
+import org.apache.spark.sql.Row
+import org.apache.spark.sql.functions._
+import sys.process._
+warning: there was one feature warning; re-run with -feature for details
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 1181k    0 1181k    0     0  1700k      0 --:--:-- --:--:-- --:--:-- 1703k
+res2: Int = 0
+warning: there was one deprecation warning; re-run with -deprecation for details
+sqlContext: org.apache.spark.sql.SQLContext = org.apache.spark.sql.SQLContext@3c4059a
+dp10df: org.apache.spark.sql.DataFrame = [Date: timestamp, Open: double ... 5 more fields]
++-----------+--------------------+--------------------+----------+-----------+
+|count(Date)|           min(Date)|           max(Date)|min(Close)| max(Close)|
++-----------+--------------------+--------------------+----------+-----------+
+|      16793|1950-01-03 00:00:...|2016-09-27 00:00:...|     16.66|2190.149902|
++-----------+--------------------+--------------------+----------+-----------+
 
+sqls: String = SELECT Date,Close,LEAD(Close,1)OVER(ORDER BY Date) leadp FROM tab ORDER BY Date
+dp11df: org.apache.spark.sql.DataFrame = [Date: timestamp, Close: double ... 1 more field]
+sqls: String = SELECT Date,Close,100*(leadp-Close)/Close pctlead FROM tab ORDER BY Date
+dp12df: org.apache.spark.sql.DataFrame = [Date: timestamp, Close: double ... 1 more field]
+sqls: String = SELECT Date, Close, pctlead
+sqls: String = SELECT Date, Close, pctlead,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) AS mavg2
+sqls: String = SELECT Date, Close, pctlead,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) AS mavg2,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 3 PRECEDING AND CURRENT ROW) AS mavg3
+sqls: String = SELECT Date, Close, pctlead,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) AS mavg2,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 3 PRECEDING AND CURRENT ROW) AS mavg3,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 4 PRECEDING AND CURRENT ROW) AS mavg4
+sqls: String = SELECT Date, Close, pctlead,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) AS mavg2,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 3 PRECEDING AND CURRENT ROW) AS mavg3,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 4 PRECEDING AND CURRENT ROW) AS mavg4,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 5 PRECEDING AND CURRENT ROW) AS mavg5
+sqls: String = SELECT Date, Close, pctlead,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) AS mavg2,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 3 PRECEDING AND CURRENT ROW) AS mavg3,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 4 PRECEDING AND CURRENT ROW) AS mavg4,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 5 PRECEDING AND CURRENT ROW) AS mavg5,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 6 PRECEDING AND CURRENT ROW) AS mavg6
+sqls: String = SELECT Date, Close, pctlead,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) AS mavg2,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 3 PRECEDING AND CURRENT ROW) AS mavg3,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 4 PRECEDING AND CURRENT ROW) AS mavg4,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 5 PRECEDING AND CURRENT ROW) AS mavg5,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 6 PRECEDING AND CURRENT ROW) AS mavg6,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 7 PRECEDING AND CURRENT ROW) AS mavg7
+sqls: String = SELECT Date, Close, pctlead,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) AS mavg2,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 3 PRECEDING AND CURRENT ROW) AS mavg3,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 4 PRECEDING AND CURRENT ROW) AS mavg4,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 5 PRECEDING AND CURRENT ROW) AS mavg5,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 6 PRECEDING AND CURRENT ROW) AS mavg6,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 7 PRECEDING AND CURRENT ROW) AS mavg7,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 8 PRECEDING AND CURRENT ROW) AS mavg8
+sqls: String = SELECT Date, Close, pctlead,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) AS mavg2,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 3 PRECEDING AND CURRENT ROW) AS mavg3,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 4 PRECEDING AND CURRENT ROW) AS mavg4,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 5 PRECEDING AND CURRENT ROW) AS mavg5,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 6 PRECEDING AND CURRENT ROW) AS mavg6,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 7 PRECEDING AND CURRENT ROW) AS mavg7,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 8 PRECEDING AND CURRENT ROW) AS mavg8,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 9 PRECEDING AND CURRENT ROW) AS mavg9
+sqls: String = SELECT Date, Close, pctlead,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) AS mavg2,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 3 PRECEDING AND CURRENT ROW) AS mavg3,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 4 PRECEDING AND CURRENT ROW) AS mavg4,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 5 PRECEDING AND CURRENT ROW) AS mavg5,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 6 PRECEDING AND CURRENT ROW) AS mavg6,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 7 PRECEDING AND CURRENT ROW) AS mavg7,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 8 PRECEDING AND CURRENT ROW) AS mavg8,AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 9 PRECEDING AND CURRENT ROW) AS mavg9 FROM tab ORDER BY Date
+dp13df: org.apache.spark.sql.DataFrame = [Date: timestamp, Close: double ... 9 more fields]
+sqls: String = SELECT Date, Close, pctlead
+sqls: String = SELECT Date, Close, pctlead,(mavg2-LAG(mavg2,1)OVER(ORDER BY Date))/mavg2 AS slp2
+sqls: String = SELECT Date, Close, pctlead,(mavg2-LAG(mavg2,1)OVER(ORDER BY Date))/mavg2 AS slp2 ,(mavg3-LAG(mavg3,1)OVER(ORDER BY Date))/mavg3 AS slp3
+sqls: String = SELECT Date, Close, pctlead,(mavg2-LAG(mavg2,1)OVER(ORDER BY Date))/mavg2 AS slp2 ,(mavg3-LAG(mavg3,1)OVER(ORDER BY Date))/mavg3 AS slp3 ,(mavg3-LAG(mavg4,1)OVER(ORDER BY Date))/mavg3 AS slp4
+sqls: String = SELECT Date, Close, pctlead,(mavg2-LAG(mavg2,1)OVER(ORDER BY Date))/mavg2 AS slp2 ,(mavg3-LAG(mavg3,1)OVER(ORDER BY Date))/mavg3 AS slp3 ,(mavg3-LAG(mavg4,1)OVER(ORDER BY Date))/mavg3 AS slp4 ,(mavg3-LAG(mavg5,1)OVER(ORDER BY Date))/mavg3 AS slp5
+sqls: String = SELECT Date, Close, pctlead,(mavg2-LAG(mavg2,1)OVER(ORDER BY Date))/mavg2 AS slp2 ,(mavg3-LAG(mavg3,1)OVER(ORDER BY Date))/mavg3 AS slp3 ,(mavg3-LAG(mavg4,1)OVER(ORDER BY Date))/mavg3 AS slp4 ,(mavg3-LAG(mavg5,1)OVER(ORDER BY Date))/mavg3 AS slp5 ,(mavg3-LAG(mavg6,1)OVER(ORDER BY Date))/mavg3 AS slp6
+sqls: String = SELECT Date, Close, pctlead,(mavg2-LAG(mavg2,1)OVER(ORDER BY Date))/mavg2 AS slp2 ,(mavg3-LAG(mavg3,1)OVER(ORDER BY Date))/mavg3 AS slp3 ,(mavg3-LAG(mavg4,1)OVER(ORDER BY Date))/mavg3 AS slp4 ,(mavg3-LAG(mavg5,1)OVER(ORDER BY Date))/mavg3 AS slp5 ,(mavg3-LAG(mavg6,1)OVER(ORDER BY Date))/mavg3 AS slp6 ,(mavg3-LAG(mavg7,1)OVER(ORDER BY Date))/mavg3 AS slp7
+sqls: String = SELECT Date, Close, pctlead,(mavg2-LAG(mavg2,1)OVER(ORDER BY Date))/mavg2 AS slp2 ,(mavg3-LAG(mavg3,1)OVER(ORDER BY Date))/mavg3 AS slp3 ,(mavg3-LAG(mavg4,1)OVER(ORDER BY Date))/mavg3 AS slp4 ,(mavg3-LAG(mavg5,1)OVER(ORDER BY Date))/mavg3 AS slp5 ,(mavg3-LAG(mavg6,1)OVER(ORDER BY Date))/mavg3 AS slp6 ,(mavg3-LAG(mavg7,1)OVER(ORDER BY Date))/mavg3 AS slp7 ,(mavg3-LAG(mavg8,1)OVER(ORDER BY Date))/mavg3 AS slp8
+sqls: String = SELECT Date, Close, pctlead,(mavg2-LAG(mavg2,1)OVER(ORDER BY Date))/mavg2 AS slp2 ,(mavg3-LAG(mavg3,1)OVER(ORDER BY Date))/mavg3 AS slp3 ,(mavg3-LAG(mavg4,1)OVER(ORDER BY Date))/mavg3 AS slp4 ,(mavg3-LAG(mavg5,1)OVER(ORDER BY Date))/mavg3 AS slp5 ,(mavg3-LAG(mavg6,1)OVER(ORDER BY Date))/mavg3 AS slp6 ,(mavg3-LAG(mavg7,1)OVER(ORDER BY Date))/mavg3 AS slp7 ,(mavg3-LAG(mavg8,1)OVER(ORDER BY Date))/mavg3 AS slp8 ,(mavg3-LAG(mavg9,1)OVER(ORDER BY Date))/mavg3 AS slp9
+sqls: String = SELECT Date, Close, pctlead,(mavg2-LAG(mavg2,1)OVER(ORDER BY Date))/mavg2 AS slp2 ,(mavg3-LAG(mavg3,1)OVER(ORDER BY Date))/mavg3 AS slp3 ,(mavg3-LAG(mavg4,1)OVER(ORDER BY Date))/mavg3 AS slp4 ,(mavg3-LAG(mavg5,1)OVER(ORDER BY Date))/mavg3 AS slp5 ,(mavg3-LAG(mavg6,1)OVER(ORDER BY Date))/mavg3 AS slp6 ,(mavg3-LAG(mavg7,1)OVER(ORDER BY Date))/mavg3 AS slp7 ,(mavg3-LAG(mavg8,1)OVER(ORDER BY Date))/mavg3 AS slp8 ,(mavg3-LAG(mavg9,1)OVER(ORDER BY Date))/mavg3 AS slp9  FROM tab ORDER BY Date
+dp14df: org.apache.spark.sql.DataFrame = [Date: timestamp, Close: double ... 9 more fields]
+training_period: String = " WHERE Date BETWEEN'1986-01-01'AND'2016-01-01' "
+sqls: String = "SELECT AVG(pctlead) FROM tab WHERE Date BETWEEN'1986-01-01'AND'2016-01-01' "
+class_df: org.apache.spark.sql.DataFrame = [avg(pctlead): double]
+class_boundry: Double = 0.03667703897236846
+pctlead2label: org.apache.spark.sql.expressions.UserDefinedFunction = UserDefinedFunction(&lt;function1>,DoubleType,Some(List(FloatType)))
+dp15df: org.apache.spark.sql.DataFrame = [Date: timestamp, Close: double ... 10 more fields]
+fill_vec: org.apache.spark.sql.expressions.UserDefinedFunction = UserDefinedFunction(&lt;function8>,org.apache.spark.ml.linalg.VectorUDT@3bfc3ba7,Some(List(FloatType, FloatType, FloatType, FloatType, FloatType, FloatType, FloatType, FloatType)))
+dp16df: org.apache.spark.sql.DataFrame = [Date: timestamp, Close: double ... 11 more fields]
+lr: org.apache.spark.ml.classification.LogisticRegression = logreg_68424d63239c
+res9: lr.type = logreg_68424d63239c
+train_df: org.apache.spark.sql.DataFrame = [Date: timestamp, Close: double ... 11 more fields]
+model1: org.apache.spark.ml.classification.LogisticRegressionModel = logreg_68424d63239c
+test_period: String = " WHERE Date BETWEEN'2016-01-01'AND'2017-01-01' "
+test_df: org.apache.spark.sql.DataFrame = [Date: timestamp, Close: double ... 11 more fields]
++--------------------+-----------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+-----+--------------------+
+|                Date|      Close|             pctlead|                slp2|                slp3|                slp4|                slp5|                slp6|                slp7|                slp8|                slp9|label|            features|
++--------------------+-----------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+-----+--------------------+
+|2016-01-04 00:00:...|2012.660034|  0.2012226074739071|-0.01073537606776...|-0.00534743276541...|-0.00539133944284...|-0.00568896220096964|-0.00413672368288...|-0.00188574002278...|7.107253923982056E-4|0.001014853239223...|  1.0|[-0.0107353758066...|
+|2016-01-05 00:00:...|2016.709961|   -1.31153966170151|-0.00768117327974...|-0.00757682758108...|-0.00825719954784...|-0.00907866190259...|-0.00989717920793...|-0.00895514394892...|-0.00724908158844...|-0.00511733443533...|  0.0|[-0.0076811732724...|
+|2016-01-06 00:00:...| 1990.26001| -2.3700443039098174|-0.00891748013672...|-0.00906547565030...|-0.01344989560781...|-0.01456552802127...| -0.0156805935110853|-0.01672151967465558|-0.01613554809321...|-0.01478279774321...|  0.0|[-0.0089174797758...|
+|2016-01-07 00:00:...|1943.089966|  -1.083837463447639|-0.01169233062130...|-0.01266526706543...|-0.01743425260533...|-0.02186942857476...|-0.02346866483104...|-0.02495003023132...|-0.02628639772256...|-0.02608356111434...|  0.0|[-0.0116923302412...|
+|2016-01-08 00:00:...|1922.030029| 0.08532723085774163| -0.0161697331205065|-0.01151282637665...|-0.01692536088579...|-0.02217836018398...|-0.02701934027014...|-0.02926161895950077|-0.03125911048562852|-0.03302478720680819|  1.0|[-0.0161697324365...|
+|2016-01-11 00:00:...|1923.670044|  0.7802798638371875|-0.01150326157130...|-0.01196031860110...|-0.01655085777685047|-0.02229191361083...|-0.02781922213156...|-0.03292883152653442|-0.03565402749516805|-0.03806506027533...|  1.0|[-0.0115032615140...|
+|2016-01-12 00:00:...|1938.680054| -2.4965452602732516|-7.62382814264678...|-0.00667488264325...|-0.01412336944517...|-0.01873963077055...| -0.0243500371891839|-0.02981440888508915|-0.03492719882252589|-0.03788587766456...|  0.0|[-7.6238281326368...|
+|2016-01-13 00:00:...|1890.280029|   1.669590564139637|-0.00551921456778...|-0.00688107824015...|-0.01296786103580...|-0.01932331642733741|-0.02356138390627579|-0.02877780370865...| -0.0339596532589159|-0.03888692647409007|  1.0|[-0.0055192145518...|
+|2016-01-14 00:00:...|1921.839966|  -2.159909812178397|-3.18230156570840...|-2.47656186937738...|-0.00257086213913...|-0.00836583211027...|-0.01447451674330...|-0.01879217310802...|-0.02396183442481...|-0.02910975927885...|  0.0|[-3.1823015888221...|
+|2016-01-15 00:00:...|1880.329956|0.053182155440808176|-0.01025043671921...|-0.00567938011429...|-0.00603712590007...|-0.00811544995644...|-0.01313211910650...|-0.01862765074200838|-0.02266608143194...|-0.02753642101003637|  1.0|[-0.0102504370734...|
+|2016-01-19 00:00:...|1881.329956| -1.1693855152753438|-0.00157474675677...|-0.00757218967334...|-0.00925035227591...|-0.01022476833904...|-0.01250971557029...|-0.01733746182386...|-0.02264451122386...|-0.02667625876126...|  0.0|[-0.0015747467987...|
+|2016-01-20 00:00:...|1859.329956|  0.5195438264643328|-0.01112081883581...|-0.00410324423076...|-0.00890092130905...|-0.01077272559348...|-0.01198548464335...|-0.01429107753619...|-0.01886370621257...|-0.02392446314864...|  1.0|[-0.0111208185553...|
+|2016-01-21 00:00:...| 1868.98999|  2.0283700930896904|-0.00202151046823...|-0.00705609053721...|-0.00754448389332...|-0.01217805945133...|-0.01434260652720...|-0.01585653623262367|-0.01828370295850...|-0.02274453758617...|  1.0|[-0.0020215103868...|
+|2016-01-22 00:00:...|1906.900024| -1.5637981868314241|0.004537545674548078|0.003534875476326...|-0.00171700225862...|-0.00241910311410...|-0.00660010528042...|-0.00873739283934...|-0.01030275551744...|-0.01267576924759...|  0.0|[0.00453754561021...|
+|2016-01-25 00:00:...|1877.079956|   1.414433568220359|0.003139942383242405|-5.65738860517375E-4|-6.92727879778853...|-0.00446112459967...|-0.00475220692277...|-0.00819190395833...|-0.00997919815422...|-0.01132170925519...|  1.0|[0.00313994241878...|
+|2016-01-26 00:00:...|1903.630005| -1.0863483946818713|0.006090434310959558|0.005862431403880208|0.005517834679346097|0.005376326628519991|0.002136270835595...|0.001794465572461...|-0.00131804975924...|-0.00301352426691...|  0.0|[0.00609043426811...|
+|2016-01-27 00:00:...|1882.949951|  0.5528577110863419|-0.00422872724918...|0.001843979985366...|0.004995137944840255|0.005158580738652765|0.005350805949006116|0.002753433256749...|0.002586041976192...|-1.05146885663650...|  1.0|[-0.0042287274263...|
+|2016-01-28 00:00:...|1893.359985|  2.4760217481832956|0.002866232595609...|-0.00179171673285...|7.119150502880275E-4|0.003233193683888605| 0.00337056385850841|0.003539755136891...|0.001230056205874...|0.001052793496436...|  1.0|[0.00286623253487...|
+|2016-01-29 00:00:...| 1940.23999|-0.04432364060283344|0.006404209789805157| 0.00828852265588326|0.006436067736469...|0.008517732860342528|0.010729031413620999| 0.01094396986096571|0.011169468874258643|0.009170916386856269|  0.0|[0.00640420988202...|
+|2016-02-01 00:00:...|1939.380005| -1.8743091042644822| 0.00977485704012443|0.004669582966693833|0.007591765066272985|0.006943200562058...|0.009309495431207114|0.011715102320468134|0.012308979004131002|0.012836327433206148|  0.0|[0.00977485720068...|
++--------------------+-----------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+-----+--------------------+
+only showing top 20 rows
+
+
+Welcome to
+      ____              __
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  '_/
+   /___/ .__/\_,_/_/ /_/\_\   version 2.0.0
+      /_/
+         
+Using Scala version 2.11.8 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_102)
+Type in expressions to have them evaluated.
+Type :help for more information.
+
+scala> 
+
+scala> 
+
+scala> :quit
+dan@pavlap:/tmp $ 
+dan@pavlap:/tmp $ 
 </code>
