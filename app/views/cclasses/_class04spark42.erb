@@ -61,9 +61,23 @@ sqls=sqls++",(mavg3-LAG(mavg8,1)OVER(ORDER BY Date))/mavg3 AS slp8 "
 sqls=sqls++",(mavg3-LAG(mavg9,1)OVER(ORDER BY Date))/mavg3 AS slp9 "
 sqls=sqls++" FROM tab ORDER BY Date"
 
-val dp14df=spark.sql(sqls)
+val dp14df=spark.sql(sqls);dp14df.createOrReplaceTempView("tab")
 
-dp14df.show
+// For Class Boundry, I should get avg of pctlead over training period.
+
+val training_period = " WHERE Date BETWEEN'1986-01-01'AND'2016-01-01' "
+
+var sqls = "SELECT AVG(pctlead) FROM tab"++training_period
+
+val class_df = spark.sql(sqls)
+
+val class_boundry = class_df.first()(0).asInstanceOf[Double]
+
+class_df.show
+
+println('class_boundry: ')
+
+println(class_boundry)
 
 // UNDER CONSTRUCTION
 
