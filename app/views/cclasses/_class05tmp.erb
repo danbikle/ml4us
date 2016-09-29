@@ -1,0 +1,61 @@
+<code class='bash'>
+
+I should study my syntax.us pages.
+
+I should study the tensorflow page.
+
+I found this page:
+https://www.tensorflow.org/versions/r0.10/get_started/os_setup.html#download-and-setup
+
+It says:
+The GPU version works best with Cuda Toolkit 7.5 and cuDNN v5. 
+
+I used google to look for cuda 7.5
+
+I found it:
+
+https://developer.nvidia.com/cuda-75-downloads-archive
+
+http://developer.download.nvidia.com/compute/cuda/7.5/Prod/docs/sidebar/CUDA_Quick_Start_Guide.pdf
+
+I downloaded deb file local
+
+It came with these instructions:
+
+Download Target Installer for Linux Ubuntu 14.04 x86_64
+cuda-repo-ubuntu1404-7-5-local_7.5-18_amd64.deb (md5sum: 5cf65b8139d70270d9234d5ff4d697c7)
+
+Installation Instructions:
+
+    `sudo dpkg -i cuda-repo-ubuntu1404-7-5-local_7.5-18_amd64.deb`
+    `sudo apt-get update`
+    `sudo apt-get install cuda`
+
+For further information, see the Installation Guide for Linux and the CUDA Quick Start Guide.
+
+Also I got this:
+cudnn-7.0-linux-x64-v4.0-prod.tgz
+
+lspci | grep -i nvidia
+
+I installed many packages I use in developement:
+
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install autoconf bison build-essential libssl-dev libyaml-dev \
+libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3       \
+libgdbm-dev libsqlite3-dev gitk postgresql postgresql-server-dev-all  \
+libpq-dev emacs wget curl chromium-browser openssh-server aptitude    \
+ruby ruby-dev sqlite3 r-base r-base-dev
+
+Next, I installed Anaconda Python:
+
+cd ~/Downloads
+curl -o Anaconda3-4.2.0-Linux-x86_64.sh https://repo.continuum.io/archive/Anaconda3-4.2.0-Linux-x86_64.sh
+
+bash Anaconda3-4.2.0-Linux-x86_64.sh
+
+gcc --version
+
+
+</code>
