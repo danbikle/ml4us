@@ -3,6 +3,29 @@
 
 %p Installing Ubuntu 14.04 is usually an easy task.
 
+%p I start by buying a blank 8GB USB stick.
+
+%p Next I insert the stick into the USB port and then make note of device-path of the stick.
+
+%p Then I download a copy of the Ubuntu 14.04 Desktop ISO file:
+
+%p
+  %a(href='http://releases.ubuntu.com/14.04/ubuntu-14.04.4-desktop-amd64.iso' target='x')
+    ubuntu-14.04.4-desktop-amd64.iso
+.syntax
+  %pre
+    %code.bash
+      cd ~/Downloads
+      rm -f ubuntu-14.04.4-desktop-amd64.iso
+      wget http://releases.ubuntu.com/14.04/ubuntu-14.04.4-desktop-amd64.iso
+%p Next I copy the ISO file into the USB device path:
+.syntax
+  %pre
+    %code.bash
+      sudo dd if=ubuntu-14.04.4-desktop-amd64.iso of=/dev/sdb5
+
+%p Then I boot the laptop off the USB drive.
+
 %p
   %a(href='class05#gpu')
     Class05 Lab
