@@ -39,7 +39,18 @@
   %a(href='https://ub101.herokuapp.com/' target='x')
     https://ub101.herokuapp.com/
   
+%p After I install Ubuntu, I run a large shell command to enhance the installation:
+.syntax
+  %pre
+    %code.bash
+      sudo apt-get update
+      sudo apt-get upgrade
+      sudo apt-get install autoconf bison build-essential libssl-dev libyaml-dev \
+      libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3       \
+      libgdbm-dev libsqlite3-dev gitk postgresql postgresql-server-dev-all  \
+      libpq-dev emacs wget curl openssh-server aptitude ruby ruby-dev sqlite3
 
 %p
   %a(href='class05#gpu')
     Class05 Lab
+
