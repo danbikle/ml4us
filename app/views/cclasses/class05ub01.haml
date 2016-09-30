@@ -49,7 +49,11 @@
       libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3       \
       libgdbm-dev libsqlite3-dev gitk postgresql postgresql-server-dev-all  \
       libpq-dev emacs wget curl openssh-server aptitude ruby ruby-dev sqlite3
-      sudo shutdown -r now # I should reboot now.
+%p After that I should reboot:
+.syntax
+  %pre
+    %code.bash
+      sudo shutdown -r now
 
 %p
   %a(href='class05#gpu')
