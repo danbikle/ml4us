@@ -1,0 +1,40 @@
+%h2 Class05 Answer:
+%h2 Download correct version of cuDNN
+
+%p I loaded the URL listed below:
+%p
+  %a(href='https://developer.nvidia.com/rdp/cudnn-download' target='x')
+    https://developer.nvidia.com/rdp/cudnn-download
+  
+%p The above page demanded that I create a developer account.
+%p So, I did that.
+
+%p After login, the page gave me a choice:
+%ul
+  %li
+    cudnn-7.0-linux-x64-v4.0-prod.tgz
+  %li
+    cudnn-7.5-linux-x64-v5.1-rc.tgz
+%p Do I want cuDNN 4.0 or cuDNN 5.1?
+%p cuDNN 4.0 seemed the better choice due to TensorFlow Requirements page:
+%p
+  %a(href='https://www.tensorflow.org/versions/r0.10/get_started/os_setup.html#requirements' target='x')
+    https://www.tensorflow.org/versions/r0.10/get_started/os_setup.html#requirements
+  
+%p After the download I had a file which looked like this:
+
+.syntax
+  %pre
+    %code.bash
+      dan@pavlap:~/dl $ 
+      dan@pavlap:~/dl $ ll cudnn*
+      \-rw-rw-r-- 1 dan dan 85697754 Jul 25 12:57 cudnn-7.0-linux-x64-v4.0-prod.tgz
+      dan@pavlap:~/dl $ 
+      dan@pavlap:~/dl $ du -sh cudnn*
+      82M	cudnn-7.0-linux-x64-v4.0-prod.tgz
+      dan@pavlap:~/dl $ 
+      dan@pavlap:~/dl $
+
+%p
+  %a(href='class05#gpu')
+    Class05 Lab
