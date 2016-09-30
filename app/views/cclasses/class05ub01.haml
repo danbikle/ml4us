@@ -54,6 +54,13 @@
   %pre
     %code.bash
       sudo shutdown -r now
+%p After the reboot I should verify that Ubuntu can see the GPU:
+.syntax
+  %pre
+    %code.bash
+      lspci|grep -i nvidia
+      
+
 
 %p
   %a(href='class05#gpu')
