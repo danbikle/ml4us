@@ -1,11 +1,30 @@
 %h2 Class05 Answer:
 %h2 Install Ubuntu 14.04 on GPU host.
 
-%p Installing Ubuntu 14.04 is usually an easy task.
+%p You need a Ubuntu 14.04 Linux-startup USB-stick:
+.rotate90img
+  %img(src='/class05cuda/IMG_0121.JPG')
 
-%p I start by buying a blank 8GB USB stick.
+%p If you don't have one, create one.
+
+%p If you cannot get access to a Linux laptop or desktop you might be able to use a Mac to create a startup USB-stick:
+%p
+  %a(href='http://www.google.com/search?q=On+Mac+How+To+Create+Linux+Startup+USB' target='x')
+    http://www.google.com/search?q=On+Mac+How+To+Create+Linux+Startup+USB
+
+%p If you only have windows, you might be able to create a Linux-startup USB-stick:
+%p
+  %a(href='http://www.google.com/search?q=On+Windows+How+To+Create+Linux+Startup+USB' target='x')
+    http://www.google.com/search?q=On+Windows+How+To+Create+Linux+Startup+USB
+
+%p If you have access to a Linux laptop or desktop which already has Linux (Ubuntu hopefully) installed, follow the directions below.
+
+%p I start by buying a blank 8GB USB-stick.
 
 %p Next I insert the stick into the USB port and then make note of device-path of the stick.
+
+%p I can get that path from the GUI-disk-utility:
+%img(src='/class05/guidisk.png')
 
 %p Then I download a copy of the Ubuntu 14.04 Desktop ISO file:
 
@@ -26,6 +45,7 @@
 
 %p
   Another way to copy the ISO file onto the USB drive is to use a Linux utility called the Startup-Disk-Creator:
+%img(src='/class05/guidisk.png')
 %p
   %a(href='http://www.google.com/search?q=Ubuntu+Startup+Disk+Creator' target='x')
     http://www.google.com/search?q=Ubuntu+Startup+Disk+Creator
@@ -34,11 +54,17 @@
 
 %p After the laptop boots I interact with a simple wizard-UI to install Ubuntu onto the laptop.
 
+%p I have photos of me installing Ubuntu 14.04 onto an Acer Laptop on 2016-10-03:
+%p
+  %a(href='class05win2ubu14') Photos of Replacing Windows10 with Ubuntu 14
+
+
 %p I have photos of me going through this process to install Ubuntu 16.04 onto an HP Laptop during the summer of 2016:
 %p
   %a(href='https://ub101.herokuapp.com/' target='x')
     https://ub101.herokuapp.com/
-  
+%p The above photos will be useful in 2017, perhaps, after the default TensorFlow-Cuda installation runs on Ubuntu 16.04 rather than 14.04.
+
 %p After I install Ubuntu, I run a large shell command to enhance the installation:
 .syntax
   %pre
