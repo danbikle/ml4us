@@ -55,3 +55,5 @@ body li{
 .sbarv300 {width: 990px; height: 300px; overflow: scroll;}
 .zebra_it table tr:nth-child(odd) {
   background-color: #DDDDDD; }
+
+.rotate90img>img{margin: 122px; display:block; width: 900px; transform: rotate(90deg);}
