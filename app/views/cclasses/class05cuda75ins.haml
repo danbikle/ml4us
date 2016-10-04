@@ -1,0 +1,106 @@
+%h2 Class05 Answer:
+%h2 Install Cuda 7.5 on your Ubuntu 14.04 GPU host
+
+%p I started this lab by studying content at this URL:
+%p
+  %a(href='http://developer.download.nvidia.com/compute/cuda/7.5/Prod/docs/sidebar/CUDA_Quick_Start_Guide.pdf' target='x')
+    CUDA_75_Quick_Start_Guide.pdf
+
+%p Next, I enhanced my copy of Ubuntu with a large shell command:
+
+.syntax
+  %pre
+    %code.bash
+      sudo apt-get update
+      sudo apt-get upgrade
+      sudo apt-get install autoconf bison build-essential libssl-dev libyaml-dev \
+      libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3       \
+      libgdbm-dev libsqlite3-dev gitk postgresql postgresql-server-dev-all  \
+      libpq-dev emacs wget curl chromium-browser openssh-server aptitude    \
+      ruby ruby-dev sqlite3 linux-headers-$(uname -r)
+
+%p Next, I enhanced my copy of Ubuntu with more shell commands:
+
+.syntax
+  %pre
+    %code.bash
+      sudo echo 'blacklist nouveau'         >  /etc/modprobe.d/blacklist-nouveau.conf
+      sudo echo 'options nouveau modeset=0' >> /etc/modprobe.d/blacklist-nouveau.conf
+
+
+%p Next, I rebooted my laptop:
+
+.syntax
+  %pre
+    %code.bash sudo shutdown -r now
+
+%p Next, I verified that Ubuntu could see the GPU:
+
+.syntax
+  %pre
+    %code.bash lspci | grep -i nvidia
+
+%p Next, I located my download of the Cuda 7.5 software:
+
+.syntax
+  %pre
+    %code.bash
+      cd ~/Downloads/
+      ls -la cuda-repo-ubuntu1404-7-5-local_7.5-18_amd64.deb
+
+%p Note that the above software is available at the URL listed below:
+
+%p
+  %a(href='https://developer.nvidia.com/cuda-downloads' target='x')
+    https://developer.nvidia.com/cuda-downloads
+  
+
+%p Next, I ran shell commands to install Cuda 7.5:
+
+.syntax
+  %pre
+    %code.bash
+      sudo dpkg -i cuda-repo-ubuntu1404-7-5-local_7.5-18_amd64.deb
+      sudo apt-get update
+      sudo apt-get install cuda
+
+%p Next, I ran shell commands to enhance my account so it could use Cuda 7.5:
+
+.syntax
+  %pre
+    %code.bash
+      echo 'export CUDA_HOME=/usr/local/cuda' >> .bashrc
+      echo 'export PATH=${CUDA_HOME}/bin:$PATH' >> .bashrc
+      echo 'export PATH=${HOME}/py35/bin:$PATH' >> .bashrc
+      echo 'export LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${LD_LIBRARY_PATH}' >> .bashrc
+
+%p Next, I rebooted my laptop:
+
+.syntax
+  %pre
+    %code.bash sudo shutdown -r now
+
+%p Next, I ran shell commands to verify that Cuda 7.5 was operable:
+
+.syntax
+  %pre
+    %code.bash
+      cd /usr/local/cuda/
+      rsync -a samples ~/
+      cd ~/samples/
+      make
+      ll ~/samples/bin/x86_64/linux/release/
+      cd ~/samples/bin/x86_64/linux/release/
+      ./deviceQuery
+
+%p I saw this:
+
+.syntax
+  %pre
+    =render 'class05cudaDeviceQuery'
+    
+
+
+%p
+  %a(href='class05#gpu')
+    Class05 Lab
