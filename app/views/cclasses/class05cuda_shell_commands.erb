@@ -1,0 +1,159 @@
+<code class='bash'>
+
+lspci | grep -i nvidia
+
+I saw this:
+
+dan@acer1:~ $ 
+dan@acer1:~ $ lspci | grep -i nvidia
+01:00.0 3D controller: NVIDIA Corporation GM107M [GeForce GTX 950M] (rev a2)
+dan@acer1:~ $ 
+dan@acer1:~ $ 
+
+
+
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install autoconf bison build-essential libssl-dev libyaml-dev \
+libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3       \
+libgdbm-dev libsqlite3-dev gitk postgresql postgresql-server-dev-all  \
+libpq-dev emacs wget curl chromium-browser openssh-server aptitude    \
+ruby ruby-dev sqlite3
+
+sudo shutdown -r now
+
+sudo echo 'blacklist nouveau'         >  /etc/modprobe.d/blacklist-nouveau.conf
+sudo echo 'options nouveau modeset=0' >> /etc/modprobe.d/blacklist-nouveau.conf
+
+sudo shutdown -r now
+
+download cuda-repo-ubuntu1404-7-5-local_7.5-18_amd64.deb
+
+from:
+https://developer.nvidia.com/cuda-downloads
+
+sudo dpkg -i cuda-repo-ubuntu1404-7-5-local_7.5-18_amd64.deb
+
+sudo apt-get update
+sudo apt-get install cuda
+
+
+echo 'export CUDA_HOME=/usr/local/cuda' >> .bashrc
+echo 'export PATH=${CUDA_HOME}/bin:$PATH' >> .bashrc
+echo 'export PATH=${HOME}/py35/bin:$PATH' >> .bashrc
+echo 'export LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${LD_LIBRARY_PATH}' >> .bashrc
+
+cd /usr/local/cuda/
+rsync -a samples ~/
+
+cd ~/samples/
+make
+
+ll ~/samples/bin/x86_64/linux/release/
+
+cd ~/samples/bin/x86_64/linux/release/
+
+./deviceQuery
+
+
+
+dan@acer1:~/samples/bin/x86_64/linux/release $ 
+dan@acer1:~/samples/bin/x86_64/linux/release $ ./deviceQuery
+./deviceQuery Starting...
+
+ CUDA Device Query (Runtime API) version (CUDART static linking)
+
+Detected 1 CUDA Capable device(s)
+
+Device 0: "GeForce GTX 950M"
+  CUDA Driver Version / Runtime Version          7.5 / 7.5
+  CUDA Capability Major/Minor version number:    5.0
+  Total amount of global memory:                 2048 MBytes (2147352576 bytes)
+  ( 5) Multiprocessors, (128) CUDA Cores/MP:     640 CUDA Cores
+  GPU Max Clock rate:                            1124 MHz (1.12 GHz)
+  Memory Clock rate:                             1001 Mhz
+  Memory Bus Width:                              128-bit
+  L2 Cache Size:                                 2097152 bytes
+  Maximum Texture Dimension Size (x,y,z)         1D=(65536), 2D=(65536, 65536), 3D=(4096, 4096, 4096)
+  Maximum Layered 1D Texture Size, (num) layers  1D=(16384), 2048 layers
+  Maximum Layered 2D Texture Size, (num) layers  2D=(16384, 16384), 2048 layers
+  Total amount of constant memory:               65536 bytes
+  Total amount of shared memory per block:       49152 bytes
+  Total number of registers available per block: 65536
+  Warp size:                                     32
+  Maximum number of threads per multiprocessor:  2048
+  Maximum number of threads per block:           1024
+  Max dimension size of a thread block (x,y,z): (1024, 1024, 64)
+  Max dimension size of a grid size    (x,y,z): (2147483647, 65535, 65535)
+  Maximum memory pitch:                          2147483647 bytes
+  Texture alignment:                             512 bytes
+  Concurrent copy and kernel execution:          Yes with 1 copy engine(s)
+  Run time limit on kernels:                     Yes
+  Integrated GPU sharing Host Memory:            No
+  Support host page-locked memory mapping:       Yes
+  Alignment requirement for Surfaces:            Yes
+  Device has ECC support:                        Disabled
+  Device supports Unified Addressing (UVA):      Yes
+  Device PCI Domain ID / Bus ID / location ID:   0 / 1 / 0
+  Compute Mode:
+     &lt; Default (multiple host threads can use ::cudaSetDevice() with device simultaneously) >
+
+deviceQuery, CUDA Driver = CUDART, CUDA Driver Version = 7.5, CUDA Runtime Version = 7.5, NumDevs = 1, Device0 = GeForce GTX 950M
+Result = PASS
+dan@acer1:~/samples/bin/x86_64/linux/release $ 
+dan@acer1:~/samples/bin/x86_64/linux/release $ 
+dan@acer1:~/samples/bin/x86_64/linux/release $
+
+I found the cuDNN software at this URL:
+
+https://developer.nvidia.com/rdp/cudnn-download
+
+
+I got this cuDNN software.
+Notice that it has v4.0 in the name:
+
+cudnn-7.0-linux-x64-v4.0-prod.tgz
+
+Then:
+
+cd ~/Downloads
+mkdir tmp
+cd tmp
+tar zxf ../cudnn-7.0-linux-x64-v4.0-prod.tgz
+su
+rsync -av cuda/include/ /usr/local/cuda/include/
+rsync -av cuda/lib64/   /usr/local/cuda/lib64
+
+
+cd ${HOME}/Downloads
+
+wget https://www.python.org/ftp/python/3.5.2/Python-3.5.2.tgz
+
+tar zxf Python-3.5.2.tgz
+cd      Python-3.5.2
+
+./configure --prefix=${HOME}/py35
+
+make
+
+make install
+
+cd ${HOME}/py35/bin
+
+ln -s python3 python
+
+export PATH=${HOME}/py35/bin:$PATH
+
+cd ~/Downloads
+
+/usr/bin/curl https://bootstrap.pypa.io/get-pip.py > get-pip.py
+
+python get-pip.py
+
+export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-0.9.0-cp35-cp35m-linux_x86_64.whl
+pip install --upgrade $TF_BINARY_URL
+
+${HOME}/py35/bin/python
+import tensorflow as tf
+
+</code>
