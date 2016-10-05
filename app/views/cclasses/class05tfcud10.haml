@@ -17,14 +17,14 @@
       wget https://www.python.org/ftp/python/3.5.2/Python-3.5.2.tgz
       tar zxf Python-3.5.2.tgz
       cd      Python-3.5.2
-      ./configure --prefix=${HOME}/py35
+      \./configure --prefix=${HOME}/py35
       make
       make install
       cd ${HOME}/py35/bin
       ln -s python3 python
       export PATH=${HOME}/py35/bin:$PATH
       cd ~/Downloads
-      /usr/bin/curl https://bootstrap.pypa.io/get-pip.py > get-pip.py
+      \/usr/bin/curl https://bootstrap.pypa.io/get-pip.py > get-pip.py
       python get-pip.py
 
 %p Next, I installed an appropriate (older) version of TensorFlow:
