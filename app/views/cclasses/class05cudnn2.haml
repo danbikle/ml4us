@@ -1,0 +1,42 @@
+%h2 Class05 Answer:
+%h2 Install cuDNN your Ubuntu 14.04 GPU host
+
+%p This was an easy lab.
+
+%p I downloaded cudnn-7.0-linux-x64-v4.0-prod.tgz after I registered at the page listed below:
+%p
+  %a(href='https://developer.nvidia.com/rdp/cudnn-download' target='x')
+    https://developer.nvidia.com/rdp/cudnn-download
+  
+%p The above page demanded that I create a developer account.
+%p So, I did that.
+
+%p After the download I had a file which looked like this:
+
+.syntax
+  %pre
+    %code.bash
+      dan@pavlap:~/Downloads $ 
+      dan@pavlap:~/Downloads $ ll cudnn*
+      \-rw-rw-r-- 1 dan dan 85697754 Jul 25 12:57 cudnn-7.0-linux-x64-v4.0-prod.tgz
+      dan@pavlap:~/Downloads $ 
+      dan@pavlap:~/Downloads $ du -sh cudnn*
+      82M       cudnn-7.0-linux-x64-v4.0-prod.tgz
+      dan@pavlap:~/Downloads $ 
+      dan@pavlap:~/Downloads $
+%p Next, I issued some shell commands:
+
+.syntax
+  %pre
+    %code.bash
+      cd ~/Downloads
+      mkdir tmp
+      cd tmp
+      tar zxf ../cudnn-7.0-linux-x64-v4.0-prod.tgz
+      su
+      rsync -av cuda/include/ /usr/local/cuda/include/
+      rsync -av cuda/lib64/   /usr/local/cuda/lib64
+
+%p
+  %a(href='class05#gpu')
+    Class05 Lab
