@@ -42,7 +42,7 @@
   %li Install Cuda 7.5 on your Ubuntu 14.04 GPU host.
   %li
     %a(href='/cclasses/class05cuda75ins') Answer
-  %li Test    Cuda 7.5 on your Ubuntu 14.04 GPU host.
+  %li Test Cuda 7.5 on your Ubuntu 14.04 GPU host.
   %li
     %a(href='/cclasses/class05cuda75test') Answer
    

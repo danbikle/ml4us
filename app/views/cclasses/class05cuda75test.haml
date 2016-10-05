@@ -1,0 +1,25 @@
+%h2 Class05 Answer:
+%h2 Test Cuda 7.5 on your Ubuntu 14.04 GPU host
+
+%p This was an easy lab, because I had actually done the steps after I had installed Cuda:
+
+.syntax
+  %pre
+    %code.bash
+      cd /usr/local/cuda/
+      rsync -a samples ~/
+      cd ~/samples/
+      make
+      ll ~/samples/bin/x86_64/linux/release/
+      cd ~/samples/bin/x86_64/linux/release/
+      \./deviceQuery
+
+%p I saw this:
+
+.syntax
+  %pre
+    =render 'class05cudaDeviceQuery'
+
+%p
+  %a(href='class05#gpu')
+    Class05 Lab
