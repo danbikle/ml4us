@@ -1,0 +1,54 @@
+%h2 Class05 Answer:
+%h2 Install TensorFlow with Cuda support
+
+%p I did this lab and it required some knowledge.
+
+%p The first thing I learned was that I lacked the ability to install TensorFlow with Cuda support into an installation of Anaconda.
+
+%p So, I removed anaconda with this shell command:
+.syntax
+  %pre
+    %code.bash rm -rf ~/anaconda3/
+%p Next, I installed Python from source with the shell commands listed below:
+.syntax
+  %pre
+    %code.bash
+      cd ${HOME}/Downloads
+      wget https://www.python.org/ftp/python/3.5.2/Python-3.5.2.tgz
+      tar zxf Python-3.5.2.tgz
+      cd      Python-3.5.2
+      ./configure --prefix=${HOME}/py35
+      make
+      make install
+      cd ${HOME}/py35/bin
+      ln -s python3 python
+      export PATH=${HOME}/py35/bin:$PATH
+      cd ~/Downloads
+      /usr/bin/curl https://bootstrap.pypa.io/get-pip.py > get-pip.py
+      python get-pip.py
+
+%p Next, I installed an appropriate (older) version of TensorFlow:
+.syntax
+  %pre
+    %code.bash
+      cd ${HOME}/Downloads
+      wget https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-0.9.0-cp35-cp35m-linux_x86_64.whl
+      pip install --upgrade tensorflow-0.9.0-cp35-cp35m-linux_x86_64.whl
+
+%p Next, I tested it with two command lines:
+
+.syntax
+  %pre
+    %code.bash
+      ${HOME}/py35/bin/python
+      import tensorflow as tf
+
+%p I saw this:
+
+.syntax
+  %pre
+    =render 'class05tfcud11'
+
+%p
+  %a(href='class05#gpu')
+    Class05 Lab
