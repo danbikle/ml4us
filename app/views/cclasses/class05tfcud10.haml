@@ -22,7 +22,8 @@
       make install
       cd ${HOME}/py35/bin
       ln -s python3 python
-      export PATH=${HOME}/py35/bin:$PATH
+      export      PATH=${HOME}/py35/bin:$PATH
+      eco 'export PATH=${HOME}/py35/bin:$PATH' >> ~/.bashrc
       cd ~/Downloads
       \/usr/bin/curl https://bootstrap.pypa.io/get-pip.py > get-pip.py
       python get-pip.py
@@ -49,7 +50,7 @@
   %pre
     =render 'class05tfcud11'
 
-%p Next, I installed more packages:
+%p Next, using shell commands, I installed more packages:
 
 .syntax
   %pre
