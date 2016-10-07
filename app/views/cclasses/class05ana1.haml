@@ -1,0 +1,18 @@
+%h2 Class05 Answer:
+%h2 Install Anaconda (Unless you did the GPU Lab)
+
+%p This is an easy lab.
+
+%p I did this lab by typing in some shell commands:
+.syntax
+  %pre
+    %code.bash
+      cd ${HOME}/Downloads
+      wget https://repo.continuum.io/archive/Anaconda3-4.2.0-Linux-x86_64.sh
+      bash Anaconda3-4.2.0-Linux-x86_64.sh
+      cd ~/anaconda3/bin
+      mv curl curl_ana
+      echo 'export PATH=${HOME}/anaconda3/bin:$PATH' >> ~/.bashrc  
+%p
+  %a(href='class05#tf1')
+    Class05 Lab
