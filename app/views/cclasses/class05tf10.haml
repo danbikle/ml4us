@@ -30,6 +30,24 @@
   %pre
     =render 'class05tf12'
 
+%p The idea of the above demo is to generate 100 random x_data values.
+
+%p Then generate y_data from x_data using this expression:
+
+%p y_data = x_data * 0.1 + 0.3
+
+%p After that we have 100 points to create a scatter-plot.
+
+%p We should then use TensorFlow to fit a line to that scatter-plot.
+
+%p TensorFlow assumes the line has this form:
+
+%p y = w0 + w1*x
+
+%p TensorFlow uses an error-minimization loop to calculate that w0 is 0.0999999 and w1 is 0.30000007.
+
+%p According to the output, TensorFlow gets close to the correct answer after 60 iterations of the loop.
+
 %p
   %a(href='class05#tf1')
     Class05 Lab
