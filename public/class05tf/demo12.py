@@ -60,27 +60,31 @@ for step in range(5):
     tf_b = sess.run(b)
     tf_y = sess.run(y)
     tf_loss = sess.run(loss)
-    print('tf_loss:')
-    print(tf_loss)
     w_l.append(tf_W)
     b_l.append(tf_b)
     l_l.append(tf_loss)
+print('W:')
 print([f_f[0] for f_f in w_l])
+print('b:')
 print([f_f[0] for f_f in b_l])
+print('loss:')
 print(l_l)
 
 # I should create lists to collect artifacts of optimizer:
 dw_l = []
 db_l = []
 dl_l = []
-pdb.set_trace()
 for i_i in range(len(w_l)-1):
   print(i_i)
-  dw_l.append(w_l[i_i+1]-w_l[i_i])
-  db_l.append(b_l[i_i+1]-b_l[i_i])
-  dl_l.append(l_l[i_i+1]-l_l[i_i])
+  dw_l.append(w_l[i_i+1][0]-w_l[i_i][0])
+  db_l.append(b_l[i_i+1][0]-b_l[i_i][0])
+  dl_l.append(l_l[i_i+1]   -l_l[i_i])
 print(dw_l)
 print(db_l)
 print(dl_l)
-  
+gw_a = np.array(dl_l)/np.array(dw_l)
+gb_a = np.array(dl_l)/np.array(db_l)
+print(gw_a)
+print(gb_a)
+
 'bye'
