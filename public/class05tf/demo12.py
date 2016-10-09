@@ -54,7 +54,7 @@ b_l = []
 l_l = []
 
 # Fit the line.
-for step in range(5):
+for step in range(9):
     sess.run(train)
     tf_W = sess.run(W)
     tf_b = sess.run(b)
