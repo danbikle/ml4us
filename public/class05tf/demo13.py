@@ -62,4 +62,16 @@ for i_i in range(len(w_l)-1):
 gw_a = np.array(dl_l)/np.array(dw_l)
 gb_a = np.array(dl_l)/np.array(db_l)
 
+# I should plot w_l:
+import matplotlib
+import matplotlib.pyplot as plt
+plt.plot(range(len(w_l)),w_l)
+#plt.show()
+
+# I should plot b_l:
+plt.plot(range(len(b_l)),b_l)
+plt.grid(True)
+plt.show()
+
+
 'bye'
