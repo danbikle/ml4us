@@ -65,8 +65,8 @@ for step in range(5):
     w_l.append(tf_W)
     b_l.append(tf_b)
     l_l.append(tf_loss)
-print(w_l)
-print(b_l)
+print([f_f[0] for f_f in w_l])
+print([f_f[0] for f_f in b_l])
 print(l_l)
 
 # I should create lists to collect artifacts of optimizer:
@@ -79,5 +79,8 @@ for i_i in range(len(w_l)-1):
   dw_l.append(w_l[i_i+1]-w_l[i_i])
   db_l.append(b_l[i_i+1]-b_l[i_i])
   dl_l.append(l_l[i_i+1]-l_l[i_i])
+print(dw_l)
+print(db_l)
+print(dl_l)
   
 'bye'
