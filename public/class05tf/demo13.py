@@ -72,6 +72,12 @@ plt.plot(range(len(w_l)),w_l)
 plt.plot(range(len(b_l)),b_l)
 plt.grid(True)
 plt.show()
+plt.close()
 
+# I should plot l_l:
+plt.plot(range(len(l_l)),l_l)
+plt.grid(True)
+plt.show()
+plt.close()
 
 'bye'
