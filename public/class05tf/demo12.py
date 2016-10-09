@@ -63,8 +63,10 @@ for step in range(5):
     w_l.append(tf_W)
     b_l.append(tf_b)
     l_l.append(tf_loss)
+print('W should be 0.1')
 print('W:')
 print([f_f[0] for f_f in w_l])
+print('b should be 0.3')
 print('b:')
 print([f_f[0] for f_f in b_l])
 print('loss:')
@@ -75,16 +77,20 @@ dw_l = []
 db_l = []
 dl_l = []
 for i_i in range(len(w_l)-1):
-  print(i_i)
   dw_l.append(w_l[i_i+1][0]-w_l[i_i][0])
   db_l.append(b_l[i_i+1][0]-b_l[i_i][0])
   dl_l.append(l_l[i_i+1]   -l_l[i_i])
+print('dw_l: ')
 print(dw_l)
+print('db_l: ')
 print(db_l)
+print('dl_l: ')
 print(dl_l)
 gw_a = np.array(dl_l)/np.array(dw_l)
 gb_a = np.array(dl_l)/np.array(db_l)
+print('gw_a: ')
 print(gw_a)
+print('gb_a: ')
 print(gb_a)
 
 'bye'
