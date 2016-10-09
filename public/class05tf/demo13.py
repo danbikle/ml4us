@@ -62,6 +62,10 @@ for i_i in range(len(w_l)-1):
 gw_a = np.array(dl_l)/np.array(dw_l)
 gb_a = np.array(dl_l)/np.array(db_l)
 
+pdb.set_trace()
+len(w_l)
+len(gw_a)
+
 # I should plot w_l:
 import matplotlib
 import matplotlib.pyplot as plt
@@ -76,6 +80,18 @@ plt.close()
 
 # I should plot l_l:
 plt.plot(range(len(l_l)),l_l)
+plt.grid(True)
+plt.show()
+plt.close()
+
+# I should plot gw_a:
+gw_l = [0.0] + gw_a.tolist()
+plt.plot(range(len(gw_l)),gw_l)
+
+# I should plot gb_a:
+gb_l = [0.0] + gb_a.tolist()
+plt.plot(range(len(gb_l)),gb_l)
+
 plt.grid(True)
 plt.show()
 plt.close()
