@@ -66,16 +66,19 @@ pdb.set_trace()
 len(w_l)
 len(gw_a)
 
-# I should plot w_l:
+# I should plot artifacts of optimizer:
 import matplotlib
+# Order is important here.
+# Do not move the next import:
 import matplotlib.pyplot as plt
-plt.plot(range(len(w_l)),w_l)
-#plt.show()
+plt.figure(figsize=(15,10))
+plt.grid(True)
 
+# I should plot w_l:
+plt.plot(range(len(w_l)),w_l)
 # I should plot b_l:
 plt.plot(range(len(b_l)),b_l)
-plt.grid(True)
-plt.show()
+plt.savefig('wb.png')
 plt.close()
 
 # I should plot l_l:
@@ -85,11 +88,11 @@ plt.show()
 plt.close()
 
 # I should plot gw_a:
-gw_l = [0.0] + gw_a.tolist()
+gw_l = gw_a.tolist() + [gw_a[-1]]
 plt.plot(range(len(gw_l)),gw_l)
 
 # I should plot gb_a:
-gb_l = [0.0] + gb_a.tolist()
+gb_l = gb_a.tolist() + [gb_a[-1]]
 plt.plot(range(len(gb_l)),gb_l)
 
 plt.grid(True)
