@@ -8,9 +8,10 @@
 import tensorflow as tf
 import numpy      as np
 
-# Create phony x, y data points in NumPy, y = x * 0.1 + 0.3
-x_data = np.random.rand(5).astype(np.float32)
-y_data = x_data * 0.1 + 0.3
+# Create phony x, y data points in NumPy, y = x * 0.1 + 0.3 + noise
+pts_i  = 20
+x_data = np.random.rand(pts_i).astype(np.float32)
+y_data = x_data * 0.1 + 0.3 + 0.05*np.random.rand(pts_i)
 
 # Try to find values for W and b that compute y_data = W * x_data + b
 # (We know that W should be 0.1 and b 0.3, but TensorFlow will
@@ -48,7 +49,9 @@ for step in range(9):
     l_l.append(tf_loss)
     # Now I should change W,b:
     sess.run(train)
-
+print('I calculate W to be: '+str(tf_W))
+print('I calculate b to be: '+str(tf_b))
+print('yhat is '+str(tf_W[0])+' * x_data +'+str(tf_b[0]))
 
 # I should create lists to collect artifacts of optimizer:
 dw_l = []
@@ -86,10 +89,34 @@ matplotlib.use('Agg')
 # Do not move the next import:
 import matplotlib.pyplot as plt
 plt.figure(figsize=(9,6))
-plt.grid(True)
 
-opt_df.W.plot.line(title="W vs calls to optimizer")
+opt_df[['W','b']].plot.line(title="W,b vs calls to optimizer")
+plt.grid(True)
 plt.savefig('w.png')
+plt.close()
+
+opt_df[1:].loss.plot.line(title="loss vs calls to optimizer")
+plt.savefig('loss.png')
+plt.close()
+
+opt_df[['dw','db']].plot.line(title="dW,db vs calls to optimizer")
+plt.grid(True)
+plt.savefig('dwdb.png')
+plt.close()
+
+opt_df[['dL/dw','dL/db']].plot.line(title="dL/dW,dL/db vs calls to optimizer")
+plt.grid(True)
+plt.savefig('dldwdb.png')
+plt.close()
+
+# I should plot y_data vs x_data
+plt.scatter(x_data,y_data,c='b')
+# I should plot yhat too:
+yhat_a = tf_W * x_data + tf_b
+plt.plot(x_data,yhat_a,c='g')
+plt.title('y_data vs x_data (blue) and yhat vs x_data (green)')
+plt.grid(True)
+plt.savefig('yvsx.png')
 plt.close()
 
 'bye'
