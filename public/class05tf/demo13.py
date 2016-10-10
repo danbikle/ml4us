@@ -62,10 +62,6 @@ for i_i in range(len(w_l)-1):
 gw_a = np.array(dl_l)/np.array(dw_l)
 gb_a = np.array(dl_l)/np.array(db_l)
 
-pdb.set_trace()
-len(w_l)
-len(gw_a)
-
 # I should plot artifacts of optimizer:
 import matplotlib
 # Order is important here.
@@ -74,29 +70,16 @@ import matplotlib.pyplot as plt
 plt.figure(figsize=(15,10))
 plt.grid(True)
 
-# I should plot w_l:
-plt.plot(range(len(w_l)),w_l)
-# I should plot b_l:
-plt.plot(range(len(b_l)),b_l)
-plt.savefig('wb.png')
-plt.close()
-
 # I should plot l_l:
-plt.plot(range(len(l_l)),l_l)
-plt.grid(True)
-plt.show()
-plt.close()
 
 # I should plot gw_a:
 gw_l = gw_a.tolist() + [gw_a[-1]]
-plt.plot(range(len(gw_l)),gw_l)
 
 # I should plot gb_a:
 gb_l = gb_a.tolist() + [gb_a[-1]]
-plt.plot(range(len(gb_l)),gb_l)
 
-plt.grid(True)
-plt.show()
-plt.close()
-
+import pandas as pd
+opt_d  = {'w_l':w_l}
+opt_df = pd.DataFrame(opt_d)
+pdb.set_trace()
 'bye'
