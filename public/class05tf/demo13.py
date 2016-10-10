@@ -58,28 +58,38 @@ for i_i in range(len(w_l)-1):
   dw_l.append(w_l[i_i+1]-w_l[i_i])
   db_l.append(b_l[i_i+1]-b_l[i_i])
   dl_l.append(l_l[i_i+1]   -l_l[i_i])
+# I should make dw_l, db_l, dl_l same length as w_l
+dw_l.append(0.0)
+db_l.append(0.0)
+dl_l.append(0.0)
 # I should collect dL/dW, dL/db:
 gw_a = np.array(dl_l)/np.array(dw_l)
 gb_a = np.array(dl_l)/np.array(db_l)
+gw_l = gw_a.tolist()
+gb_l = gb_a.tolist()
+
+import pandas as pd
+opt_d       = {'W':w_l}
+opt_df      = pd.DataFrame(opt_d)
+opt_df['b'] = b_l
+opt_df['loss'] = l_l
+opt_df['dw'] = dw_l
+opt_df['db'] = db_l
+opt_df['dL'] = dl_l
+opt_df['dL/dw'] = gw_l
+opt_df['dL/db'] = gb_l
 
 # I should plot artifacts of optimizer:
 import matplotlib
+matplotlib.use('Agg')
 # Order is important here.
 # Do not move the next import:
 import matplotlib.pyplot as plt
-plt.figure(figsize=(15,10))
+plt.figure(figsize=(9,6))
 plt.grid(True)
 
-# I should plot l_l:
+opt_df.W.plot.line(title="W vs calls to optimizer")
+plt.savefig('w.png')
+plt.close()
 
-# I should plot gw_a:
-gw_l = gw_a.tolist() + [gw_a[-1]]
-
-# I should plot gb_a:
-gb_l = gb_a.tolist() + [gb_a[-1]]
-
-import pandas as pd
-opt_d  = {'w_l':w_l}
-opt_df = pd.DataFrame(opt_d)
-pdb.set_trace()
 'bye'
