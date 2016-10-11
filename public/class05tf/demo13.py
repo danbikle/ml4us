@@ -2,6 +2,9 @@
 
 # This script should help me study ...
 # https://www.tensorflow.org/versions/r0.11/get_started/index.html
+# Ref:
+# http://ml4.us/cclasses/class05tf18
+
 # Demo:
 # ~/anaconda3/bin/python demo13.py
 
@@ -9,9 +12,10 @@ import tensorflow as tf
 import numpy      as np
 
 # Create phony x, y data points in NumPy, y = x * 0.1 + 0.3 + noise
-pts_i  = 20
-x_data = np.random.rand(pts_i).astype(np.float32)
-y_data = x_data * 0.1 + 0.3 + 0.05*np.random.rand(pts_i)
+pts_i   = 20
+noise_a = 0.05*np.random.rand(pts_i)
+x_data  = np.random.rand(pts_i).astype(np.float32)
+y_data  = x_data * 0.1 + 0.3 + noise_a
 
 # Try to find values for W and b that compute y_data = W * x_data + b
 # (We know that W should be 0.1 and b 0.3, but TensorFlow will
@@ -37,7 +41,6 @@ w_l = []
 b_l = []
 l_l = []
 
-import pdb
 # Fit the line.
 for step in range(9):
     tf_W = sess.run(W)
@@ -60,7 +63,7 @@ dl_l = []
 for i_i in range(len(w_l)-1):
   dw_l.append(w_l[i_i+1]-w_l[i_i])
   db_l.append(b_l[i_i+1]-b_l[i_i])
-  dl_l.append(l_l[i_i+1]   -l_l[i_i])
+  dl_l.append(l_l[i_i+1]-l_l[i_i])
 # I should make dw_l, db_l, dl_l same length as w_l
 dw_l.append(0.0)
 db_l.append(0.0)
@@ -72,13 +75,13 @@ gw_l = gw_a.tolist()
 gb_l = gb_a.tolist()
 
 import pandas as pd
-opt_d       = {'W':w_l}
-opt_df      = pd.DataFrame(opt_d)
-opt_df['b'] = b_l
-opt_df['loss'] = l_l
-opt_df['dw'] = dw_l
-opt_df['db'] = db_l
-opt_df['dL'] = dl_l
+opt_d           = {'W':w_l}
+opt_df          = pd.DataFrame(opt_d)
+opt_df['b']     = b_l
+opt_df['loss']  = l_l
+opt_df['dw']    = dw_l
+opt_df['db']    = db_l
+opt_df['dL']    = dl_l
 opt_df['dL/dw'] = gw_l
 opt_df['dL/db'] = gb_l
 
