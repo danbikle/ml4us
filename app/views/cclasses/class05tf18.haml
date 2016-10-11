@@ -4,14 +4,48 @@
 %p I started this lab by finding an example of optimizer.minimize(loss).
 
 %p I found one at the "GET STARTED" URL listed below:
+%p
   %a(href='https://www.tensorflow.org/versions/r0.11/get_started/index.html' target='x')
     https://www.tensorflow.org/versions/r0.11/get_started/index.html
-  
+
 %p I copied the above example into a file:
 
 .syntax
   %pre
     =render 'class05tf19'
+  
+%p I enhanced the above file:
+
+.syntax
+  %pre
+    =render 'class05tf20'
+
+%p I ran the above script:
+.syntax
+  %pre
+    =render 'class05tf21'
+
+%p The above script built some visualizations of behavior of optimizer.minimize(loss):
+
+%img(src='/class05tf/loss.png')
+%img(src='/class05tf/dwdb.png')
+%img(src='/class05tf/dldwdb.png')
+%img(src='/class05tf/w.png')
+%img(src='/class05tf/yvsx.png')
+
+%p Q: What is 'loss'?
+
+%p A: I see 'loss' as loss of information.
+
+%p The above green line contains information about the blue dots in the scatter plot.
+
+%p When I move the green line away from the dots, the line loses its predictive power.
+
+%p Or to describe it differently, the line loses information.
+
+%p When I move the line back into the dots, so that it fits the dots as best possible, then the loss of information is at a minimum.
+
+%p To say it more concisely, "A fitted line gives minimum loss".
 
 %p
   %a(href='class05#tf1')
