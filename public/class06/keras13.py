@@ -6,6 +6,9 @@
 # http://blog.fastforwardlabs.com/post/139921712388/hello-world-in-keras-or-scikit-learn-versus
 # https://archive.ics.uci.edu/ml/machine-learning-databases/iris/
 
+# Demo:
+# ./keras_theano.bash keras13.py
+
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
