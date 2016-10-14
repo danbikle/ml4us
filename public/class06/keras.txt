@@ -112,3 +112,66 @@ Next I downloaded the iris.csv data:
 
 I wrote a simple script to use it.
 
+ooooooooo
+
+
+I configure keras to use TF by editing this file:
+~/.keras/keras.json
+
+I see this:
+
+{
+    "floatx": "float32",
+    "epsilon": 1e-07,
+    "image_dim_ordering": "th",
+    "backend": "theano"
+}
+
+I changed it to this:
+
+{
+    "image_dim_ordering": "tf",
+    "epsilon": 1e-07,
+    "floatx": "float32",
+    "backend": "tensorflow"
+}
+
+You can also define the environment variable KERAS_BACKEND and this will override what is defined in your config file :
+
+KERAS_BACKEND=tensorflow python -c "from keras import backend"
+Using TensorFlow backend.
+
+
+gives me error:
+
+dan@pavlap:~/ml4us/public/class06 $ 
+dan@pavlap:~/ml4us/public/class06 $ ~/anaconda3/bin/python keras12.py
+Using TensorFlow backend.
+accuracy:
+0.967834979693
+[[ 0.44605422  0.23215543  0.32179031]
+ [ 0.26224244  0.30527031  0.43248719]
+ [ 0.32907647  0.28003377  0.39088982]
+ [ 0.45620856  0.22441371  0.31937766]]
+[[ 1.  0.  0.]
+ [ 0.  0.  1.]
+ [ 0.  1.  0.]
+ [ 1.  0.  0.]]
+[[ 0.25766754  0.30106917  0.44126332]
+ [ 0.28815684  0.30885178  0.40299132]
+ [ 0.47812131  0.21262509  0.30925354]
+ [ 0.24794428  0.32044142  0.43161428]
+ [ 0.45696774  0.22602746  0.31700471]]
+[[ 0.  0.  1.]
+ [ 0.  1.  0.]
+ [ 1.  0.  0.]
+ [ 0.  0.  1.]
+ [ 1.  0.  0.]]
+Exception ignored in: <bound method BaseSession.__del__ of <tensorflow.python.client.session.Session object at 0x7f301ac0e208>>
+Traceback (most recent call last):
+  File "/home/dan/anaconda3/lib/python3.5/site-packages/tensorflow/python/client/session.py", line 522, in __del__
+  File "/home/dan/anaconda3/lib/python3.5/site-packages/tensorflow/python/client/session.py", line 518, in close
+AttributeError: 'NoneType' object has no attribute 'raise_exception_on_not_ok_status'
+dan@pavlap:~/ml4us/public/class06 $ 
+dan@pavlap:~/ml4us/public/class06 $
+
