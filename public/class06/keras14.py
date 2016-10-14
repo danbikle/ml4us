@@ -33,5 +33,12 @@ for slope_i in slopes_a:
   slope_sr       = 100.0 * (rollx.mean().cp - rollx.mean().cp.shift(1))/rollx.mean().cp
   gspc_df[col_s] = slope_sr
 
+# I should generate Date features:
+dt_sr = pd.to_datetime(gspc_df.cdate)
+dow_l = [float(dt.strftime('%w' ))/100.0 for dt in dt_sr]
+moy_l = [float(dt.strftime('%-m'))/100.0 for dt in dt_sr]
+gspc_df['dow'] = dow_l
+gspc_df['moy'] = moy_l
+
 'bye'
   
