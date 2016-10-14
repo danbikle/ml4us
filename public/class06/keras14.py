@@ -13,11 +13,11 @@ import numpy  as np
 import pdb
 
 # I should get prices:
-gspc_df = pd.read_csv('http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC')[['Date','Close']]
-gspc_df.columns = ['cdate','cp']
+data_df = pd.read_csv('http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC')[['Date','Close']]
+data_df.columns = ['cdate','cp']
 
 # I should compute pctlead:
-gspc_df['pctlead'] = (100.0 * (gspc_df.cp.shift(-1) - gspc_df.cp) / gspc_df.cp).fillna(0)
+data_df['pctlead'] = (100.0 * (data_df.cp.shift(-1) - data_df.cp) / data_df.cp).fillna(0)
 
 # ref:
 # http://www.ml4.us/cclasses/class03pd41
@@ -28,17 +28,17 @@ gspc_df['pctlead'] = (100.0 * (gspc_df.cp.shift(-1) - gspc_df.cp) / gspc_df.cp).
 slopes_a  = [2,3,4,5,6,7,8,9]
 
 for slope_i in slopes_a:
-  rollx          = gspc_df.rolling(window=slope_i)
+  rollx          = data_df.rolling(window=slope_i)
   col_s          = 'slope'+str(slope_i)
   slope_sr       = 100.0 * (rollx.mean().cp - rollx.mean().cp.shift(1))/rollx.mean().cp
-  gspc_df[col_s] = slope_sr
+  data_df[col_s] = slope_sr
 
 # I should generate Date features:
-dt_sr = pd.to_datetime(gspc_df.cdate)
+dt_sr = pd.to_datetime(data_df.cdate)
 dow_l = [float(dt.strftime('%w' ))/100.0 for dt in dt_sr]
 moy_l = [float(dt.strftime('%-m'))/100.0 for dt in dt_sr]
-gspc_df['dow'] = dow_l
-gspc_df['moy'] = moy_l
+data_df['dow'] = dow_l
+data_df['moy'] = moy_l
 
 'bye'
   
