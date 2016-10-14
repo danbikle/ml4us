@@ -44,6 +44,7 @@ data_df['moy'] = moy_l
 trainsize     = 25
 testyear_i    = 2016
 train_end_i   = testyear_i
+train_end_s   = str(train_end_i)
 train_start_i = train_end_i - trainsize
 train_start_s = str(train_start_i)
 # train and test observations should not overlap:
