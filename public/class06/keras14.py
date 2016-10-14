@@ -13,8 +13,11 @@ import numpy  as np
 import pdb
 
 # I should get prices:
-data_df = pd.read_csv('http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC')[['Date','Close']]
-data_df.columns = ['cdate','cp']
+prices_df = pd.read_csv('http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC')[['Date','Close']]
+prices_df.columns = ['cdate','cp']
+
+# I should sort by cdate, ascending.
+data_df = prices_df.copy().sort_values(by=['cdate'])
 
 # I should compute pctlead:
 data_df['pctlead'] = (100.0 * (data_df.cp.shift(-1) - data_df.cp) / data_df.cp).fillna(0)
@@ -53,12 +56,19 @@ test_start_s  = str(test_start_i)
 test_end_i    = test_start_i+1
 test_end_s    = str(test_end_i)
 
-feat_df  = data_df.copy()
-train_sr = (feat_df.cdate > train_start_s) & (feat_df.cdate < train_end_s)
-test_sr  = (feat_df.cdate > test_start_s)  & (feat_df.cdate < test_end_s)
-train_df = feat_df[train_sr]
-test_df  = feat_df[test_sr]
+train_sr = (data_df.cdate > train_start_s) & (data_df.cdate < train_end_s)
+test_sr  = (data_df.cdate > test_start_s)  & (data_df.cdate < test_end_s)
+train_df = data_df[train_sr]
+test_df  = data_df[test_sr]
+# I should now have split data_df into train_df and test_df
 
+import pdb
+pdb.set_trace()
+train_df.head()
+train_df.tail()
+# I should convert df to np-array:
+x_train_a = np.array(train_df)[:,3:]
+y_train_a = np.array(train_df.pctlead)
 
 
 'bye'
