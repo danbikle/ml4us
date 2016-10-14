@@ -1,0 +1,67 @@
+~/ml4us/public/class06/keras.txt
+
+A place to start with keras:
+
+https://github.com/fchollet/keras
+
+How to install keras into anaconda?
+
+I tried this:
+
+conda install -c conda-forge keras
+
+It worked!
+
+I saw this:
+
+
+dan@pavlap:~/ml4us/public/class06 $ 
+dan@pavlap:~/ml4us/public/class06 $ 
+dan@pavlap:~/ml4us/public/class06 $ conda install -c conda-forge keras
+Using Anaconda API: https://api.anaconda.org
+Fetching package metadata .........
+Solving package specifications: ..........
+
+Package plan for installation in environment /home/dan/anaconda3:
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    theano-0.8.2               |           py35_0         3.7 MB  conda-forge
+    keras-1.0.7                |           py35_0         422 KB  conda-forge
+    ------------------------------------------------------------
+                                           Total:         4.1 MB
+
+The following NEW packages will be INSTALLED:
+
+    keras:  1.0.7-py35_0 conda-forge
+    theano: 0.8.2-py35_0 conda-forge
+
+Proceed ([y]/n)? 
+
+Fetching packages ...
+theano-0.8.2-p 100% || Time: 0:00:01   2.59 MB/s
+keras-1.0.7-py 100% || Time: 0:00:00 829.93 kB/s
+Extracting packages ...
+[      COMPLETE      ]|| 100%
+Linking packages ...
+[      COMPLETE      ]|| 100%
+dan@pavlap:~/ml4us/public/class06 $ 
+dan@pavlap:~/ml4us/public/class06 $ 
+dan@pavlap:~/ml4us/public/class06 $
+
+dan@pavlap:~/ml4us/public/class06 $ 
+dan@pavlap:~/ml4us/public/class06 $ 
+dan@pavlap:~/ml4us/public/class06 $ python
+Python 3.5.2 |Anaconda 4.2.0 (64-bit)| (default, Jul  2 2016, 17:53:06) 
+[GCC 4.4.7 20120313 (Red Hat 4.4.7-1)] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import keras
+Using Theano backend.
+>>> 
+>>> 
+>>>
+
+I'd prefer that it use TF instead of Theano but I will ignore Theano during my initial learning.
+
