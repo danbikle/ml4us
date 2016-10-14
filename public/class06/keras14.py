@@ -13,7 +13,8 @@ import numpy  as np
 import pdb
 
 # I should get prices:
-gspc_df = pd.read_csv('http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC')
+gspc_df = pd.read_csv('http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC')[['Date','Close']]
+gspc_df.columns = ['cdate','cp']
 
 # I should compute pctlead:
 gspc_df['pctlead'] = (100.0 * (gspc_df.cp.shift(-1) - gspc_df.cp) / gspc_df.cp).fillna(0)
