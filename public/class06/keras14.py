@@ -52,6 +52,12 @@ test_start_s  = str(test_start_i)
 test_end_i    = test_start_i+1
 test_end_s    = str(test_end_i)
 
+feat_df  = data_df.copy()
+train_sr = (feat_df.cdate > train_start_s) & (feat_df.cdate < train_end_s)
+test_sr  = (feat_df.cdate > test_start_s)  & (feat_df.cdate < test_end_s)
+train_df = feat_df[train_sr]
+test_df  = feat_df[test_sr]
+
 
 
 'bye'
