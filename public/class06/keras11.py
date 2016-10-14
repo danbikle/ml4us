@@ -32,9 +32,9 @@ import numpy  as np
 import pdb
 iris1_df = pd.read_csv('iris.csv', header=None, names=['f1','f2','f3','f4','label'])
 
-c1_df = iris1_df.copy()[(iris1_df.label == 'Iris-setosa')]
+c1_df = iris1_df.copy()[(iris1_df.label == 'Iris-setosa'    )]
 c2_df = iris1_df.copy()[(iris1_df.label == 'Iris-versicolor')]
-c3_df = iris1_df.copy()[(iris1_df.label == 'Iris-virginica')]
+c3_df = iris1_df.copy()[(iris1_df.label == 'Iris-virginica' )]
 
 # I should change the label from a string to an integer:
 c1_df['label'] = 1
