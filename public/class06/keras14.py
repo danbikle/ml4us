@@ -62,13 +62,15 @@ train_df = data_df[train_sr]
 test_df  = data_df[test_sr]
 # I should now have split data_df into train_df and test_df
 
-import pdb
-pdb.set_trace()
-train_df.head()
-train_df.tail()
 # I should convert df to np-array:
 x_train_a = np.array(train_df)[:,3:]
 y_train_a = np.array(train_df.pctlead)
+
+# I should 1-hot-encode class from y_train_a:
+class_train_a = (y_train_a > np.mean(y_train_a))
+y1h_l = [[0,1] if y_b else [1,0] for y_b in class_train_a]
+
+# I should learn:
 
 
 'bye'
