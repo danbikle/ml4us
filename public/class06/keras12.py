@@ -39,4 +39,10 @@ accuracy = model.evaluate(test_X, test_y_ohe, verbose=0)
 print('accuracy:')
 print(accuracy)
 
+print(model.predict(train_X[:4]))
+print(train_y_ohe[:4])
+print(model.predict(test_X[:5]))
+print(test_y_ohe[:5])
+
+
 'bye'
