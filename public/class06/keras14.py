@@ -78,6 +78,7 @@ xshape_i = len(x_train_a[0])
 yshape_i = len(y1h_l[0])
 model.add(Dense(xshape_i, input_shape=(xshape_i,)))
 
+# model.add(Activation('relu'))
 model.add(Activation('sigmoid'))
 model.add(Dense(yshape_i))
 model.add(Activation('softmax'))
@@ -112,5 +113,9 @@ eff_keras14_f                 = np.sum(eff_sr)
 print('keras14-Effectiveness:')
 print(eff_keras14_f)
 
+# I should try to save the model to be used later:
+model.save_weights('model.hdf5')
+with open('model.json', 'w') as f:
+  f.write(model.to_json())
 'bye'
   
