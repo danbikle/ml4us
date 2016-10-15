@@ -85,7 +85,6 @@ model.add(Activation('softmax'))
 model.compile(loss='categorical_crossentropy', optimizer='adam')
 model.fit(x_train_a, y1h_l, verbose=0, batch_size=1)
 
-pdb.set_trace()
 # I should get test data:
 x_test_a = np.array(test_df)[:,3:]
 y_test_a = np.array(test_df.pctlead)
@@ -96,6 +95,22 @@ ytest1h_l = [[0,1] if y_b else [1,0] for y_b in class_test_a]
 accuracy = model.evaluate(x_test_a, ytest1h_l, verbose=0)
 print('accuracy:')
 print(accuracy)
+
+predictions_a  = model.predict(x_test_a)[:,1]
+predictions_df = test_df.copy()
+predictions_df['pred_keras14'] = predictions_a.reshape(len(predictions_a),1)
+
+# I should report long-only-effectiveness:
+eff_lo_f = np.sum(predictions_df.pctlead)
+print('Long-Only-Effectiveness:')
+print(eff_lo_f)
+
+# I should report keras14-Effectiveness:
+eff_sr     = predictions_df.pctlead * np.sign(predictions_df.pred_keras14 - 0.5)
+predictions_df['eff_keras14'] = eff_sr
+eff_keras14_f                 = np.sum(eff_sr)
+print('keras14-Effectiveness:')
+print(eff_keras14_f)
 
 'bye'
   
