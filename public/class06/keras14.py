@@ -88,6 +88,10 @@ model.fit(x_train_a, y1h_l, verbose=0, batch_size=1)
 pdb.set_trace()
 # I should get test data:
 x_test_a = np.array(test_df)[:,3:]
+y_test_a = np.array(test_df.pctlead)
+# I should 1-hot-encode class from y_train_a:
+class_test_a = (y_test_a > np.mean(y_train_a))
+ytest1h_l = [[0,1] if y_b else [1,0] for y_b in class_test_a]
 
 accuracy = model.evaluate(x_test_a, ytest1h_l, verbose=0)
 
