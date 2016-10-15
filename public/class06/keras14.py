@@ -94,6 +94,8 @@ class_test_a = (y_test_a > np.mean(y_train_a))
 ytest1h_l = [[0,1] if y_b else [1,0] for y_b in class_test_a]
 
 accuracy = model.evaluate(x_test_a, ytest1h_l, verbose=0)
+print('accuracy:')
+print(accuracy)
 
 'bye'
   
