@@ -72,6 +72,24 @@ y1h_l = [[0,1] if y_b else [1,0] for y_b in class_train_a]
 
 # I should learn:
 
+# I should use Keras API to create a neural network model:
+model    = Sequential()
+xshape_i = len(x_train_a[0])
+yshape_i = len(y1h_l[0])
+model.add(Dense(xshape_i, input_shape=(xshape_i,)))
+
+model.add(Activation('sigmoid'))
+model.add(Dense(yshape_i))
+model.add(Activation('softmax'))
+
+model.compile(loss='categorical_crossentropy', optimizer='adam')
+model.fit(x_train_a, y1h_l, verbose=0, batch_size=1)
+
+pdb.set_trace()
+# I should get test data:
+x_test_a = np.array(test_df)[:,3:]
+
+accuracy = model.evaluate(x_test_a, ytest1h_l, verbose=0)
 
 'bye'
   
