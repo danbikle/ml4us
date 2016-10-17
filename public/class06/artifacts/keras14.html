@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <script src="keras-js/lib/weblas.js"></script>
+    <script src="keras-js/dist/keras.js"></script>
+<script>
+const model = new KerasJS.Model({
+  filepaths: {
+    model:    'model.json',
+    weights:  'model_weights.buf',
+    metadata: 'model_metadata.json'
+  }
+  gpu: true
+})
+'bye'
+</script>
+
+    
+  </head>
+  <body>
+  hello
+  </body>
+</html>
+  
