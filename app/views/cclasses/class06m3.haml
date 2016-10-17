@@ -1,0 +1,41 @@
+%h2 Class06 Answer:
+%h2 Operate iris_model in Python
+
+%p This was an easy lab. First, I ran a script:
+
+.syntax
+  %pre
+    =render 'class06m4'
+
+%p The above script should use comments to declare what I want to happen.
+
+%p Next, it should use ./keras_theano.bash to ensure that Keras will use Theano when I run learn_iris.py
+
+%p Then, while learn_iris.py runs, it operates on iris_model by creating it.
+
+%p Next, learn_iris.py trains iris_model and tests that iris_model can issue reasonable predictions.
+
+%p Then, learn_iris.py uses some files to save the iris_model:
+%ul
+  %li iris_model.json
+  %li iris_model.hdf5
+  %li iris_model_weights.buf
+  %li iris_model_metadata.json
+
+%p So, I ran learn_iris.py which created the above files.
+
+%p I next operated on iris_model by creating it from the above files.
+
+%p This type of creation is very light-weight compared to how learn_iris.py created iris_model.
+
+%p The script which creates iris_model from the above files is: load_iris_model.bash
+
+%p That shell script uses ./keras_theano.bash to ensure that Keras will use Theano when I run load_iris_model.py
+
+%p The above Python script copies iris_model into loaded_model.
+
+%p Then it uses loaded_model to issue a prediction.
+
+%p
+  %a(href='class06#iris')
+    Class06 Lab
