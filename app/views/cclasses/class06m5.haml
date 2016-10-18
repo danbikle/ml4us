@@ -39,7 +39,35 @@
 %img(src='/class06/iris27.png')
 %hr/
 
+%p I clicked the predict-button and watched control flow to line 32:
 
+%img(src='/class06/iris28.png')
+%hr/
+
+%p I stepped through the code and watched the 3-predictions appear in an object named: outputData:
+
+%img(src='/class06/iris29.png')
+%hr/
+
+%p I watched D3.js wrap those 3-predictions in HTML-li-elements and send them to iris2.html for display:
+
+%img(src='/class06/iris30.png')
+%hr/
+
+%img(src='/class06/iris31.png')
+%hr/
+
+%p I use this list to describe what happened:
+
+%ul
+  %li I collected feature values of a flower in four form fields.
+  %li I clicked predict.
+  %li Control passed to handleClick(event) in iris2.js
+  %li JavaScript copied the feature values from iris2.html
+  %li JavaScript created a new model from KerasJS.Model()
+  %li The model was initialized from three files served from the webserver.
+  %li The model issued a prediction.
+  %li D3.js copied the prediction into iris2.html
 
 %p
   %a(href='class06#iris')
