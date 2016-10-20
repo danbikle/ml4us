@@ -23,7 +23,7 @@ sort gspc.csv|awk -F, '{print $1"," $5}'|grep -v Date >> gspc2.csv
 python genf.py SLOPES='[2,3,4,5,6,7,8,9]'
 # The above call should give me feat.csv
 
-# I should should load a model from JSON and HDF5.
+# I should load a model from JSON and HDF5.
 # Then, I should predict:
 ./keras_theano.bash load_keras1model.py
 
