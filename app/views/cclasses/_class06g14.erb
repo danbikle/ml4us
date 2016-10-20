@@ -1,0 +1,205 @@
+<code class='python'>
+# learn_tst_rpt.py
+
+# This script should learn from observations in feat.csv
+
+# Then it should test its learned models on observations later than the training observations.
+
+# Next it should report effectiveness of the models.
+
+# Demo:
+# ./keras_theano.bash learn_tst_rpt.py TRAINSIZE=25 TESTYEAR=2016
+
+# Above demo will train from 25 years of observations and predict each day of 2016
+
+import numpy  as np
+import pandas as pd
+import pdb
+
+# I should use epoch_i to push model training harder.
+# A large epoch_i gives a model which is accurate on the training data.
+# A small epoch_i gives me a model quicker.
+epoch_i = 400
+
+# I should check cmd line args
+import sys
+if (len(sys.argv) != 3):
+  print('You typed something wrong:')
+  print('Demo:')
+  print("python genf.py TRAINSIZE=25 TESTYEAR=2016")
+  sys.exit()
+
+# I should get cmd line args:
+trainsize     = int(sys.argv[1].split('=')[1])
+testyear_s    =     sys.argv[2].split('=')[1]
+train_end_i   = int(testyear_s)
+train_end_s   =     testyear_s
+train_start_i = train_end_i - trainsize
+train_start_s = str(train_start_i)
+# train and test observations should not overlap:
+test_start_i  = train_end_i
+test_start_s  = str(test_start_i)
+test_end_i    = test_start_i+1
+test_end_s    = str(test_end_i)
+
+feat_df  = pd.read_csv('feat.csv')
+train_sr = (feat_df.cdate > train_start_s) & (feat_df.cdate &lt; train_end_s)
+test_sr  = (feat_df.cdate > test_start_s)  & (feat_df.cdate &lt; test_end_s)
+train_df = feat_df[train_sr]
+test_df  = feat_df[test_sr]
+
+# I should get training data:
+xtrain_a = np.array(train_df)[:,3:]
+ytrain_a = np.array(train_df.pctlead)
+
+# I should get classification from ytrain_a:
+class_train_a   = (ytrain_a > np.mean(ytrain_a))
+class_train1h_l = [[0,1] if cl else [1,0] for cl in class_train_a]
+# [0,1] means up-observation
+# [1,0] means down-observation
+ytrain1h_a = np.array(class_train1h_l)
+
+#
+# I should build a Keras model:
+from keras.models      import Sequential
+from keras.layers      import Dense, Dropout, Activation
+# I should use Keras API to create a neural network model.
+# Ref:
+# https://keras.io/getting-started/sequential-model-guide
+
+# I should look at the last observation to see number of inputs
+input_i = len(xtrain_a[-1])
+
+# I should look at the last observation to see number of outputs:
+output_i = len(ytrain1h_a[-1])
+# These are classification models.
+# The number of outputs should be the number of classes I want to predict.
+# Usually for stockmarket, the number of classes is 2 (below-mean, above-mean).
+
+# I should collect predictions in a DF:
+predictions_df = test_df.copy()
+
+# I should get test data:
+xtest_a = np.array(test_df)[:,3:]
+ytest_a = np.array(test_df.pctlead)
+
+keras1_model = Sequential()
+keras1_model.add(Dense(input_i, input_shape=(input_i,)))
+keras1_model.add(Activation('relu'))
+keras1_model.add(Dense(output_i))
+keras1_model.add(Activation('softmax'))
+keras1_model.compile(loss='categorical_crossentropy', optimizer='adam')
+keras1_model.fit(xtrain_a, ytrain1h_a, batch_size=1, nb_epoch=epoch_i)
+# It should be able to predict now:
+keras1_a = keras1_model.predict(xtest_a)[:,1]
+
+keras2_model = Sequential()
+keras2_model.add(Dense(input_i, input_shape=(input_i,)))
+keras2_model.add(Activation('relu'))
+# I should enhance by inserting a hidden layer of input_i neurons.
+# I should enhance by adding 20% Dropout.
+keras2_model.add(Dropout(0.2))
+keras2_model.add(Dense(input_i))
+keras2_model.add(Activation('relu'))
+keras2_model.add(Dropout(0.2))
+# Enhancement finished.
+keras2_model.add(Dense(output_i))
+keras2_model.add(Activation('softmax'))
+keras2_model.compile(loss='categorical_crossentropy', optimizer='adam')
+keras2_model.fit(xtrain_a, ytrain1h_a, batch_size=1, nb_epoch=epoch_i)
+# It should be able to predict now:
+keras2_a = keras2_model.predict(xtest_a)[:,1]
+
+# I should collect the predictions:
+predictions_df['keras1'] = keras1_a.tolist()
+predictions_df['keras2'] = keras2_a.tolist()
+
+# I should create a CSV to report from:
+predictions_df.to_csv('gspc_predictions'+testyear_s+'.csv', float_format='%4.5f', index=False)
+
+# I should report long-only-effectiveness:
+eff_lo_f = np.sum(predictions_df.pctlead)
+print('Long-Only-Effectiveness:')
+print(eff_lo_f)
+
+# I should report keras1-model-effectiveness:
+eff_sr     = predictions_df.pctlead * np.sign(predictions_df.keras1 - 0.5)
+predictions_df['eff_keras1'] = eff_sr
+eff_logr_f                 = np.sum(eff_sr)
+print('keras1-Effectiveness:')
+print(eff_logr_f)
+
+# I should report keras2-model-effectiveness:
+eff_sr     = predictions_df.pctlead * np.sign(predictions_df.keras2 - 0.5)
+predictions_df['eff_keras2'] = eff_sr
+eff_logr_f                 = np.sum(eff_sr)
+print('keras2-Effectiveness:')
+print(eff_logr_f)
+
+# I should plot rgb vis:
+
+import matplotlib
+matplotlib.use('Agg')
+# Order is important here.
+# Do not move the next import:
+import matplotlib.pyplot as plt
+
+rgb0_df          = predictions_df[:-1][['cdate','cp']]
+rgb0_df['cdate'] = pd.to_datetime(rgb0_df['cdate'], format='%Y-%m-%d')
+rgb0_df.columns  = ['cdate','Long Only']
+
+# I should create effectiveness-line for keras1 predictions.
+
+# I have two simple rules:
+# 1. If blue line moves 1%, then model-line moves 1%.
+# 2. If model is True, model-line goes up.
+len_i       = len(rgb0_df)
+blue_l      = [cp for cp in predictions_df.cp]
+
+pred_keras1_l = [pred_keras1 for pred_keras1 in predictions_df.keras1]
+keras1_l      = [blue_l[0]]
+for row_i in range(len_i):
+  blue_delt = blue_l[row_i+1]-blue_l[row_i]
+  keras1_delt = np.sign(pred_keras1_l[row_i]-0.5) * blue_delt
+  keras1_l.append(keras1_l[row_i]+keras1_delt)
+rgb0_df['keras1'] = keras1_l[:-1]
+
+# keras2 now:
+pred_keras2_l = [pred_keras2 for pred_keras2 in predictions_df.keras2]
+keras2_l      = [blue_l[0]]
+for row_i in range(len_i):
+  blue_delt = blue_l[row_i+1]-blue_l[row_i]
+  keras2_delt = np.sign(pred_keras2_l[row_i]-0.5) * blue_delt
+  keras2_l.append(keras2_l[row_i]+keras2_delt)
+rgb0_df['keras2'] = keras2_l[:-1]
+
+rgb1_df = rgb0_df.set_index(['cdate'])
+rgb1_df.plot.line(title="RGB Effectiveness Visualization "+testyear_s, figsize=(11,7))
+plt.grid(True)
+plt.savefig('rgb'+testyear_s+'.png')
+plt.close()
+
+# I should save models.
+import encoder
+# ref:
+# https://github.com/transcranial/keras-js#usage
+
+keras1_model.save_weights('keras1_model'+testyear_s+'.hdf5')
+with open('keras1_model'+testyear_s+'.json', 'w') as f:
+  f.write(keras1_model.to_json())
+enc = encoder.Encoder('keras1_model'+testyear_s+'.hdf5')
+enc.serialize()
+enc.save()
+print('keras1_model saved as: keras1_model.hdf5 and keras1_model.json')
+
+keras2_model.save_weights('keras2_model'+testyear_s+'.hdf5')
+with open('keras2_model'+testyear_s+'.json', 'w') as f:
+  f.write(keras2_model.to_json())
+enc = encoder.Encoder('keras2_model'+testyear_s+'.hdf5')
+enc.serialize()
+enc.save()
+print('keras2_model saved as: keras2_model.hdf5 and keras2_model.json')
+
+'bye'
+</code>
+
