@@ -7,18 +7,23 @@
 # Demo:
 # R -f hm11.r
 
-# I should get GSPC dates and prices:
-gspc0_df = read.csv('http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC')
+# # I should get GSPC dates and prices:
+# gspc0_df = read.csv('http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC')
+# 
+# # I should identify each row by Date instead of an integer:
+# # row.names(gspc0_df) = gspc0_df$Date
+# 
+# # I should order by Date:
+# gspc1_df = gspc0_df[order(gspc0_df$Date),]
+# 
+# head(gspc1_df)
+# 
+# # I should write the df to a csv:
+# write.csv(gspc1_df,'gspc1_df.csv', row.names=FALSE)
 
-# I should identify each row by Date instead of an integer:
-# row.names(gspc0_df) = gspc0_df$Date
+gspc2_df = read.csv('gspc1_df.csv')
 
-# I should order by Date:
-gspc1_df = gspc0_df[order(gspc0_df$Date),]
-
-head(gspc1_df)
-
-# I should write the df to a csv:
-write.csv(gspc1_df,'gspc1_df.csv')
+head(gspc2_df)
+tail(gspc2_df)
 
 'bye'
