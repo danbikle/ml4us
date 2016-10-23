@@ -7,7 +7,8 @@
 # R -f hm10.r
 
 # I should load nba data:
-nba <- read.csv("http://datasets.flowingdata.com/ppg2008.csv", sep=",")
+#nba <- read.csv("http://datasets.flowingdata.com/ppg2008.csv", sep=",")
+nba <- read.csv("ppg2008.csv", sep=",")
 # I should order by PTS column:
 nba <- nba[order(nba$PTS),]
 
