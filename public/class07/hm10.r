@@ -18,4 +18,11 @@ row.names(nba) <- nba$Name
 # I should remove the Name column which is the first column:
 nba = nba[,2:20]
 
-nba
+# I should convert nba to a matrix:
+nba_matrix = data.matrix(nba)
+
+# I should call heatmap():
+#hm10 = heatmap(nba_matrix)
+hm10 = heatmap(nba_matrix, Rowv=NA, Colv=NA, col = cm.colors(256), scale="column", margins=c(5,10))
+
+
