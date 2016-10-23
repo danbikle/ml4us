@@ -22,7 +22,10 @@ nba = nba[,2:20]
 nba_matrix = data.matrix(nba)
 
 # I should call heatmap():
-#hm10 = heatmap(nba_matrix)
-hm10 = heatmap(nba_matrix, Rowv=NA, Colv=NA, col = cm.colors(256), scale="column", margins=c(5,10))
+# hm10 = heatmap(nba_matrix)
+# hm11 = heatmap(nba_matrix, Rowv=NA, Colv=NA, col = cm.colors(256), scale="column", margins=c(5,10))
+
+hm12 = heatmap(nba_matrix, Rowv=NA, Colv=NA, col = heat.colors(256), scale="column", margins=c(5,10))
+
 
 
