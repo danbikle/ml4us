@@ -27,7 +27,7 @@ nba_matrix = data.matrix(nba)
 
 png('hm10.png',width=800, units='px', pointsize=22, height=1100)
 
-hm12 = heatmap(nba_matrix, Rowv=NA, Colv=NA, col = heat.colors(256), scale="column")#, margins=c(5,10))
+hm12 = heatmap(nba_matrix, Rowv=NA, Colv=NA, col = terrain.colors(256), scale="column")#, margins=c(5,10))
 
 dev.off()
 
