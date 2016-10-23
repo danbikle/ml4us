@@ -12,4 +12,10 @@ nba <- read.csv("ppg2008.csv", sep=",")
 # I should order by PTS column:
 nba <- nba[order(nba$PTS),]
 
+# I should identify each row by Name instead of an integer:
+row.names(nba) <- nba$Name
+
+# I should remove the Name column which is the first column:
+nba = nba[,2:20]
+
 nba
