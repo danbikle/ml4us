@@ -23,7 +23,11 @@
 
 gspc2_df = read.csv('gspc1_df.csv')
 
-head(gspc2_df)
-tail(gspc2_df)
+gspc3_df = data.frame(gspc2_df$Date,gspc2_df$Close)
+
+colnames(gspc3_df) = c('cdate','cp')
+
+head(gspc3_df)
+tail(gspc3_df)
 
 'bye'
