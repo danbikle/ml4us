@@ -30,13 +30,12 @@ colnames(gspc3_df) = c('cdate','cp')
 # I should compute pctlead,pctlag1 from cp
 len_i            = length(gspc3_df$cp)
 last_f           = gspc3_df$cp[len_i]
-gspc3_df$leadp   = c(gspc3_df$cp, last_f)[1:len_i+1]
-gspc3_df$pctlead = 100 * (gspc3_df$leadp - gspc3_df$cp) / gspc3_df$cp
+leadp_v          = c(gspc3_df$cp, last_f)[1:len_i+1]
+gspc3_df$pctlead = 100 * (leadp_v - gspc3_df$cp) / gspc3_df$cp
 gspc3_df$pctlag1 = c(0, gspc3_df$pctlead)[1:len_i]
 
 # I should get Day-of-Week, Month-of-Year from cdate:
-gspc3_df$dow = format(as.Date(gspc3_df$cdate),"%w")
-# I should convert moy to integer so I can sort it:
+gspc3_df$dow = strtoi(format(as.Date(gspc3_df$cdate),"%w" ))
 gspc3_df$moy = strtoi(format(as.Date(gspc3_df$cdate),"%-m"))
 
 # I should get rows after 1990-01-01:
