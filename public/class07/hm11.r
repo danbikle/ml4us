@@ -41,7 +41,15 @@ gspc3_df$pctlag1 = c(0, gspc3_df$pctlead)[1:len_i]
 gspc3_df$dow = format(as.Date(gspc3_df$cdate),"%w")
 gspc3_df$moy = format(as.Date(gspc3_df$cdate),"%-m")
 
-head(gspc3_df)
-tail(gspc3_df)
+# I should get rows after 1990-01-01:
+pred_v = (as.Date(gspc3_df$cdate) > '1990-01-01')
+tail(pred_v)
+gspc4_df = gspc3_df[ pred_v , ]
+
+head(gspc4_df)
+tail(gspc4_df)
+
+# I should aggregate.
+
 
 'bye'
