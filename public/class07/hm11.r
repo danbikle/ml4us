@@ -77,13 +77,15 @@ wed = dowmoy1_df[(dowmoy1_df$dow == 3),3]
 thu = dowmoy1_df[(dowmoy1_df$dow == 4),3]
 fri = dowmoy1_df[(dowmoy1_df$dow == 5),3]
 
-
 hm1_df = data.frame(mon,tue,wed,thu,fri)
-hm1_df
 
-#dowmoy_sum_matrix = data.matrix(dowmoy_df)
-#dowmoy_sum_matrix
+hm1_x = data.matrix(hm1_df)
+hm1_x
 
+png('hm11.png',width=800, units='px', pointsize=22, height=1100)
 
+hm11 = heatmap(hm1_x, Rowv=NA, Colv=NA, scale="column",col = rainbow(8, start=0, end=2/6)  )
+
+dev.off()
 
 'bye'
