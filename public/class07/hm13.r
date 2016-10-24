@@ -45,13 +45,21 @@ gspc4_df = gspc3_df[ pred_v , ]
 
 # I should use aggregate() to sum(pctlead) groupby Month-of-Year, Day-of-Week:
 moydow0_df = aggregate(pctlead ~ moydow, gspc4_df, sum)
-head(moydow0_df)
 
-bbyyee
-# I should use better colnames:
-colnames(moydow0_df) = c('moydow','sum_pctlead')
+# I should order by moydow:
+moydow1_df            = moydow0_df[order(moydow0_df$moydow),]
+moydow1_df$pl2        = moydow1_df$pctlead
+row.names(moydow1_df) = moydow1_df$moydow
+head(moydow1_df)
+
+# I should get a matrix for the heatmap:
+moydow_matrix = data.matrix(moydow1_df)[,2:3]
+moydow_matrix
+
+# I should show a heatmap:
+png('moydow.png')#,width=400, units='px', pointsize=22, height=3100)
+moydow = heatmap(moydow_matrix, Rowv=NA, Colv=NA, scale="column",col = rainbow(8, start=0, end=2/6)  )
+dev.off()
 
 
-# Above DF is long and skinny.
-# The days are vertically stacked.
 'bye'
