@@ -48,6 +48,9 @@ moydow1_df            = moydow0_df[order(moydow0_df$moydow,decreasing=TRUE),]
 moydow1_df$o          = moydow1_df$pctlead
 row.names(moydow1_df) = moydow1_df$moydow
 
+# I should report:
+moydow1_df[order(moydow1_df$moydow),1:2]
+
 # I should get a matrix for the heatmap:
 moydow_matrix = data.matrix(moydow1_df)[,2:3]
 
