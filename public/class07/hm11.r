@@ -30,4 +30,20 @@ colnames(gspc3_df) = c('cdate','cp')
 head(gspc3_df)
 tail(gspc3_df)
 
+# I should compute pctlead from cp
+cp_v   = gspc3_df$cp
+len_i  = length(cp_v)
+last_f = cp_v[len_i]
+lead_v = c(cp_v, last_f)[2:len_i]
+diff_v = lead_v - cp_v
+
+pctlead_v = 100.0*diff_v / cp_v
+head(cp_v)
+head(lead_v)
+head(diff_v)
+head(pctlead_v)
+tail(pctlead_v)
+
+
+
 'bye'
