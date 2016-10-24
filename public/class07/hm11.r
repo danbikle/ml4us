@@ -30,17 +30,18 @@ colnames(gspc3_df) = c('cdate','cp')
 head(gspc3_df)
 tail(gspc3_df)
 
-# I should compute pctlead from cp
+# I should compute pctlead,pctlag1 from cp
 len_i            = length(gspc3_df$cp)
 last_f           = gspc3_df$cp[len_i]
 gspc3_df$leadp   = c(gspc3_df$cp, last_f)[1:len_i+1]
 gspc3_df$pctlead = 100 * (gspc3_df$leadp - gspc3_df$cp) / gspc3_df$cp
+gspc3_df$pctlag1 = c(0, gspc3_df$pctlead)[1:len_i]
 
-# I should compute pctlag1 from pctlead
+# I should get Day-of-Week, Month-of-Year from cdate:
+gspc3_df$dow = format(as.Date(gspc3_df$cdate),"%w")
+gspc3_df$moy = format(as.Date(gspc3_df$cdate),"%-m")
 
-first_f = 0.0
-gspc3_df$pctlag1 = c(first_f, gspc3_df$pctlead)[1:len_i]
-
+head(gspc3_df)
 tail(gspc3_df)
 
 'bye'
