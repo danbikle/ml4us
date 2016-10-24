@@ -49,7 +49,22 @@ gspc4_df = gspc3_df[ pred_v , ]
 head(gspc4_df)
 tail(gspc4_df)
 
-# I should aggregate.
+# I should use aggregate() to sum(pctlead) groupby Month-of-Year:
+agg_moy = aggregate(pctlead ~ moy, gspc4_df, sum)
+print('Sum of pctlead groupby Month-of-Year:')
+print(agg_moy)
+
+# I should use aggregate() to sum(pctlead) groupby Day-of-Week:
+agg_dow = aggregate(pctlead ~ dow, gspc4_df, sum)
+print('Sum of pctlead groupby Day-of-Week:')
+print(agg_dow)
+
+# I should use aggregate() to sum(pctlead) groupby Day-of-Week and Month-of-Year:
+agg_dowmoy = aggregate(gspc4_df$pctlead, by=list(dow=gspc4_df$dow,moy=gspc4_df$moy),sum)
+
+colnames(agg_dowmoy) = c('dow','moy','sum_pctlead')
+
+print(agg_dowmoy)
 
 
 'bye'
