@@ -1,11 +1,11 @@
-# hm13.r
+# hm14.r
 
 # This script should generate a heatmap from GSPC dates and prices.
 # Ref:
 # http://www.tsds4.us/cclasses/class07bk20
 
 # Demo:
-# R -f hm13.r
+# R -f hm14.r
 
 # # I should get GSPC dates and prices:
 # gspc0_df = read.csv('http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC')
@@ -66,19 +66,21 @@ moydow_x             = data.matrix(moydow_df)
 # I should report:
 moydow_x
 
+# I should create vectors full of color strings:
+library(gplots)
+
 col5_v  = rainbow(5, start=0, end=2/6)
 col60_v = rainbow(nrow(moydow_x), start=0, end=2/6)
 
 # I should write the heatmap to png file:
-png('moydow.png',width=800,height=2400)
-hm13 = heatmap(moydow_x
+png('hm14.png',width=1800,height=2800)
+hm14 = heatmap.2(moydow_x
+  ,dendrogram='none'
   ,scale='column'
   ,Rowv=NA
   ,Colv=NA
   ,col=col5_v
-  ,RowSideColors=col60_v
-  ,cexCol=2.5
-  ,cexRow=1.8)
+  )
 dev.off()
 
 'bye'
