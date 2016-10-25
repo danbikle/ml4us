@@ -10,6 +10,7 @@
 
 library(gplots)
 
+png('hm_sof1.png',width=800,height=900)
 heatmap.2(x=matrix(rnorm(20*10), nrow=10), Rowv=NULL,Colv=NULL, 
           col = rev(rainbow(20*10, start = 0/6, end = 4/6)), 
           scale="none",
@@ -25,3 +26,6 @@ heatmap.2(x=matrix(rnorm(20*10), nrow=10), Rowv=NULL,Colv=NULL,
           key.par=list(mar=c(3.5,0,3,0)),
           # lmat -- added 2 lattice sections (5 and 6) for padding
           lmat=rbind(c(5, 4, 2), c(6, 1, 3)), lhei=c(2.5, 5), lwid=c(1, 10, 1))
+dev.off()
+
+'bye'
