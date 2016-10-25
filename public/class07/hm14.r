@@ -7,6 +7,9 @@
 # Demo:
 # R -f hm14.r
 
+# I should do this once (similar to pip install):
+# install.packages("gplots", repos="http://cran.us.r-project.org")
+
 # # I should get GSPC dates and prices:
 # gspc0_df = read.csv('http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC')
 # 

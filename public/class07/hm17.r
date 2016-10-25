@@ -1,9 +1,9 @@
-# hm16.r
+# hm17.r
 
 # This script should show a nice demo of a heatmap in R.
 
 # Demo:
-# R -f hm16.r
+# R -f hm17.r
 
 # ref:
 # http://stackoverflow.com/questions/24621070/heatmap-2-with-color-key-on-top
@@ -78,22 +78,25 @@ col60_v = rainbow(row_i, start=0, end=2/6)
 
 # I should write the heatmap to png file:
 
-png('hm16.png',width=800,height=1900)
+png('hm17.png',width=800,height=2900)
 heatmap.2(x=moydow_x, Rowv=NULL,Colv=NULL, 
-          col = rev(rainbow(20*10, start = 0/6, end = 4/6)), 
-          scale="none",
-          margins=c(3,0), # ("margin.Y", "margin.X")
-          trace='none', 
-          symkey=FALSE, 
-          symbreaks=FALSE, 
-          dendrogram='none',
-          density.info='histogram', 
-          denscol="black",
-          keysize=1, 
-          #( "bottom.margin", "left.margin", "top.margin", "left.margin" )
-          key.par=list(mar=c(3.5,0,3,0)),
-          # lmat -- added 2 lattice sections (5 and 6) for padding
-          lmat=rbind(c(5, 4, 2), c(6, 1, 3)), lhei=c(2.5, 5), lwid=c(1, 10, 1))
+  col = rev(rainbow(20*10, start = 0/6, end = 4/6)), 
+  scale="none",
+  margins=c(3,0), # ("margin.Y", "margin.X")
+  trace='none', 
+  symkey=FALSE, 
+  symbreaks=FALSE, 
+  dendrogram='none',
+  density.info='histogram', 
+  denscol="black",
+  keysize=1, 
+  #( "bottom.margin", "left.margin", "top.margin", "left.margin" )
+  key.par=list(mar=c(3.5,0,3,0)),
+  # lmat -- added 2 lattice sections (5 and 6) for padding
+  lmat=rbind(c(5, 4, 2), c(6, 1, 3)), lhei=c(0.8, 5), lwid=c(1, 10, 1)
+  ,cexCol=1.5
+  ,cexRow=1.8
+)
 dev.off()
 
 'bye'
