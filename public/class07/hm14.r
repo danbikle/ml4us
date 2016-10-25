@@ -68,18 +68,22 @@ moydow_x
 
 # I should create vectors full of color strings:
 library(gplots)
-
+row_i = nrow(moydow_x)
 col5_v  = rainbow(5, start=0, end=2/6)
-col60_v = rainbow(nrow(moydow_x), start=0, end=2/6)
+col60_v = rainbow(row_i, start=0, end=2/6)
 
 # I should write the heatmap to png file:
-png('hm14.png',width=1800,height=2800)
+png('hm14.png',width=1800,height=3800)
 hm14 = heatmap.2(moydow_x
+  ,colsep=c(1,2)
+  ,rowsep=c(1:row_i)
   ,dendrogram='none'
   ,scale='column'
   ,Rowv=NA
   ,Colv=NA
   ,col=col5_v
+  ,cexCol=1.5
+  ,cexRow=1.8
   )
 dev.off()
 
