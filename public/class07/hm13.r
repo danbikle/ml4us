@@ -66,4 +66,14 @@ moydow_x             = data.matrix(moydow_df)
 # I should report:
 moydow_x
 
+col5_v = rainbow(5, start=0, end=2/6)
+col2_v = rainbow(2, start=0, end=2/6)
+col12_v = rainbow(12, start=0, end=2/6)
+col60_v = rainbow(60, start=0, end=2/6)
+
+# I should write the heatmap to png file:
+png('moydow.png')
+hm13 = heatmap(moydow_x, scale='column', Rowv=NA, Colv=NA, col=col5_v, RowSideColors = col60_v)
+dev.off()
+
 'bye'
