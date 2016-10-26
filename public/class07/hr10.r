@@ -84,7 +84,7 @@ write.csv(model1_df,csv_s, row.names=FALSE)
 
 my_yr_test_i    = 2016
 my_month_s      = '10'
-my_day_ofweek_s = '5'
+my_day_ofweek_s = '3'
 my_pctlag_f     = -0.17
 
 # I should transform the above 4 prediction inputs:
