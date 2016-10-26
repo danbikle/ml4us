@@ -78,7 +78,6 @@ col60_v = rainbow(row_i, start=0, end=2/6)
 
 # I should prep the layout for the heatmap.
 
-
 # A default heatmap layout has 4 things:
 # - Color Key, which is like a legend
 # - Column Dendrogram, which I usually dont want
@@ -106,7 +105,16 @@ lmat_x = rbind(c(margin_left5_i, colorKey_i, colDendro_i)
 
 lmat_x
 
-stophere
+# The above layout has 2 rows and 3 columns.
+# I should specify height of each row:
+row1height_f = 0.8
+row2height_f = 5.0
+lhei_v       = c(row1height_f,row2height_f)
+# I should specify width of each column:
+col1width_f = 1.0
+col2width_f = 10.0
+col3width_f = 1.0
+lwid_v      = c(col1width_f, col2width_f, col3width_f)
 
 # I should write the heatmap to png file:
 
@@ -121,10 +129,10 @@ heatmap.2(x=moydow_x, Rowv=NULL,Colv=NULL,
   dendrogram='none',
   density.info='histogram', 
   denscol="black",
-  keysize=1, 
+  keysize=1
   #( "bottom.margin", "left.margin", "top.margin", "left.margin" )
-  key.par=list(mar=c(3.5,0,3,0)),
-  lmat=rbind(c(5, 4, 2), c(6, 1, 3)), lhei=c(0.8, 5), lwid=c(1, 10, 1)
+  ,key.par=list(mar=c(3.5,0,3,0))
+  ,lmat=lmat_x, lhei=lhei_v, lwid=lwid_v
   ,cexCol=1.5
   ,cexRow=1.8
 )
