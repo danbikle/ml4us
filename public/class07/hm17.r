@@ -2,6 +2,11 @@
 
 # This script should show a nice demo of a heatmap in R.
 
+# The heatmap helps me see how pctlead depends on three independent features:
+# Day-of-Week
+# Month-of-Year
+# pctlag1
+
 # Demo:
 # R -f hm17.r
 
@@ -66,9 +71,6 @@ moydow_df = data.frame(pctlead_after_down_pctlag,pctlead_after_up_pctlag)
 # I should prepare df for feeding it to heatmap():
 row.names(moydow_df) = moydow1_d_df$moydow
 moydow_x             = data.matrix(moydow_df)
-
-# I should report:
-moydow_x
 
 # I should create vectors full of color strings:
 library(gplots)
@@ -152,5 +154,13 @@ heatmap.2(x=moydow_x, Rowv=NULL,Colv=NULL
   ,notecex  = 1.8
 )
 dev.off()
+
+# I should report:
+moydow_x
+
+# The above matrix helps me see how pctlead depends on three independent features:
+# Day-of-Week
+# Month-of-Year
+# pctlag1
 
 'bye'
