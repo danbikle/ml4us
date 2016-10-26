@@ -19,15 +19,11 @@ row.names(nba) <- nba$Name
 nba = nba[,2:20]
 
 # I should convert nba to a matrix:
-nba_matrix = data.matrix(nba)
-
-# I should call heatmap():
-# hm10 = heatmap(nba_matrix)
-# hm11 = heatmap(nba_matrix, Rowv=NA, Colv=NA, col = cm.colors(256), scale="column", margins=c(5,10))
+nba_x = data.matrix(nba)
 
 png('hm10.png',width=800, units='px', pointsize=22, height=1100)
 
-hm12 = heatmap(nba_matrix, Rowv=NA, Colv=NA, scale="column",col = rainbow(8, start=0, end=2/6)  )
+heatmap(nba_x, Rowv=NA, Colv=NA, scale="column")
 
 dev.off()
 
