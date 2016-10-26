@@ -136,7 +136,7 @@ heatmap.2(x=moydow_x, Rowv=NULL,Colv=NULL
   #( "bottom.margin", "left.margin", "top.margin", "right.margin" )
   ,key.par =list(mar=c(3.5,0,3,0))
   ,lmat    =lmat_x, lhei=lhei_v, lwid=lwid_v
-  ,cexCol  =4.0
+  ,cexCol  =2.0
   ,cexRow  =2.0
   # I should separate the cells:
   ,sepcolor='white'
@@ -145,6 +145,7 @@ heatmap.2(x=moydow_x, Rowv=NULL,Colv=NULL
   ,colsep  =c(1:2)
   #,labCol  = 'pctlag1_down/up'
   ,xlab  = 'pctlag1_down/up'
+  ,main  = 'Pctlead Dependence on 2 Types of Pctlag(Down/Up)'
 )
 dev.off()
 
