@@ -51,3 +51,27 @@ train_size_i = 25 # years
 # I should use yr_test_i and train_size_i to get yr_train_end_i yr_train_start_i
 yr_train_end_i = 2015
 yr_train_start_i = yr_test_i - train_size_i
+
+# I should constrain the training data.
+yr_v = strtoi(format(as.Date(gspc3_df$cdate),"%Y" ))
+head(yr_v)
+tail(yr_v)
+pred1_v = (yr_v >= yr_train_start_i)
+pred2_v = (yr_v <= yr_train_end_i)
+
+head(pred1_v)
+tail(pred1_v)
+head(pred2_v)
+tail(pred2_v)
+
+head(gspc3_df)
+tail(gspc3_df)
+# FAIL train2_df = train1_df[ pred2_v , ]
+
+pred3_v = (pred1_v & pred2_v)
+head(pred3_v)
+tail(pred3_v)
+train1_df = gspc3_df[ pred3_v , ]
+
+head(train1_df)
+tail(train1_df)
