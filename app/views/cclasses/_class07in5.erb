@@ -1,0 +1,78 @@
+<code class='bash'>
+dan@e80:~/ml4us/public/class07 $ 
+dan@e80:~/ml4us/public/class07 $ R
+
+R version 3.2.3 (2015-12-10) -- "Wooden Christmas-Tree"
+Copyright (C) 2015 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> ?data.frame
+data.frame                package:base                 R Documentation
+
+Data Frames
+
+Description:
+
+     This function creates data frames, tightly coupled collections of
+     variables which share many of the properties of matrices and of
+     lists, used as the fundamental data structure by most of R's
+     modeling software.
+
+Usage:
+
+     data.frame(..., row.names = NULL, check.rows = FALSE,
+                check.names = TRUE,
+                stringsAsFactors = default.stringsAsFactors())
+     
+     default.stringsAsFactors()
+     
+Arguments:
+
+     ...: these arguments are of either the form ‘value’ or ‘tag =
+          value’.  Component names are created based on the tag (if
+          present) or the deparsed argument itself.
+
+row.names: ‘NULL’ or a single integer or character string specifying a
+          column to be used as row names, or a character or integer
+          vector giving the row names for the data frame.
+
+check.rows: if ‘TRUE’ then the rows are checked for consistency of
+          length and names.
+
+check.names: logical.  If ‘TRUE’ then the names of the variables in the
+          data frame are checked to ensure that they are syntactically
+          valid variable names and are not duplicated.  If necessary
+          they are adjusted (by ‘make.names’) so that they are.
+
+stringsAsFactors: logical: should character vectors be converted to
+          factors?  The ‘factory-fresh’ default is ‘TRUE’, but this can
+          be changed by setting ‘options(stringsAsFactors = FALSE)’.
+
+Details:
+
+     A data frame is a list of variables of the same number of rows
+     with unique row names, given class ‘"data.frame"’.  If no
+     variables are included, the row names determine the number of
+     rows.
+
+     The column names should be non-empty, and attempts to use empty
+     names will have unsupported results.  Duplicate column names are
+     allowed, but you need to use ‘check.names = FALSE’ for
+     ‘data.frame’ to generate such a data frame.  However, not all
+     operations on data frames will preserve duplicated column names:
+</code>
+
