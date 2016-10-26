@@ -1,0 +1,148 @@
+<code class='R'>
+dan@e80:~/ml4us/public/class07 $ 
+dan@e80:~/ml4us/public/class07 $ 
+dan@e80:~/ml4us/public/class07 $ R -f hm11.r
+
+R version 3.2.3 (2015-12-10) -- "Wooden Christmas-Tree"
+Copyright (C) 2015 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> # hm11.r
+> 
+> # This script should generate a heatmap from GSPC dates and prices.
+> # Ref:
+> # http://www.tsds4.us/cclasses/class07bk20
+> 
+> # The heatmap helps me see how pctlead depends on two independent features:
+> # Day-of-Week
+> # Month-of-Year
+> 
+> # Demo:
+> # R -f hm11.r
+> 
+> # I should get GSPC dates and prices:
+> gspc0_df = read.csv('http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC')
+> 
+> # I should identify each row by Date instead of an integer:
+> # row.names(gspc0_df) = gspc0_df$Date
+> 
+> # I should order by Date:
+> gspc1_df = gspc0_df[order(gspc0_df$Date),]
+> 
+> head(gspc1_df)
+            Date  Open  High   Low Close  Volume Adj.Close
+16813 1950-01-03 16.66 16.66 16.66 16.66 1260000     16.66
+16812 1950-01-04 16.85 16.85 16.85 16.85 1890000     16.85
+16811 1950-01-05 16.93 16.93 16.93 16.93 2550000     16.93
+16810 1950-01-06 16.98 16.98 16.98 16.98 2010000     16.98
+16809 1950-01-09 17.08 17.08 17.08 17.08 2520000     17.08
+16808 1950-01-10 17.03 17.03 17.03 17.03 2160000     17.03
+> tail(gspc1_df)
+        Date    Open    High     Low   Close     Volume Adj.Close
+6 2016-10-18 2138.31 2144.38 2135.49 2139.60 3170000000   2139.60
+5 2016-10-19 2140.81 2148.44 2138.15 2144.29 3362670000   2144.29
+4 2016-10-20 2142.51 2147.18 2133.44 2141.34 3337170000   2141.34
+3 2016-10-21 2139.43 2142.63 2130.09 2141.16 3448850000   2141.16
+2 2016-10-24 2148.50 2154.79 2146.91 2151.33 3357320000   2151.33
+1 2016-10-25 2149.72 2151.44 2141.93 2143.16 3751340000   2143.16
+> 
+> # I should write the df to a csv:
+> write.csv(gspc1_df,'gspc1_df.csv', row.names=FALSE)
+> 
+> gspc2_df = read.csv('gspc1_df.csv')
+> 
+> gspc3_df = data.frame(gspc2_df$Date,gspc2_df$Close)
+> 
+> colnames(gspc3_df) = c('cdate','cp')
+> 
+> # I should compute pctlead,pctlag1 from cp
+> len_i            = length(gspc3_df$cp)
+> last_f           = gspc3_df$cp[len_i]
+> leadp_v          = c(gspc3_df$cp, last_f)[1:len_i+1]
+> gspc3_df$pctlead = 100 * (leadp_v - gspc3_df$cp) / gspc3_df$cp
+> gspc3_df$pctlag1 = c(0, gspc3_df$pctlead)[1:len_i]
+> 
+> # I should get Day-of-Week, Month-of-Year from cdate:
+> gspc3_df$dow = strtoi(format(as.Date(gspc3_df$cdate),"%w" ))
+> gspc3_df$moy = strtoi(format(as.Date(gspc3_df$cdate),"%-m"))
+> 
+> # I should get rows after 1990-01-01:
+> pred_v   = (as.Date(gspc3_df$cdate) > '1990-01-01')
+> gspc4_df = gspc3_df[ pred_v , ]
+> 
+> # I should save this data for other scripts:
+> write.csv(gspc4_df,'gspc4.csv', row.names=FALSE)
+> 
+> # I should use aggregate() to sum(pctlead) groupby Day-of-Week and Month-of-Year:
+> dowmoy0_df = aggregate(gspc4_df$pctlead, by=list(dow=gspc4_df$dow,moy=gspc4_df$moy),sum)
+> 
+> # I should use better colnames:
+> colnames(dowmoy0_df) = c('dow','moy','sum_pctlead')
+> 
+> # I should order by dow:
+> dowmoy1_df = dowmoy0_df[order(dowmoy0_df$dow),]
+> 
+> # Above DF is long and skinny.
+> # The days are vertically stacked.
+> # I should slice out each day:
+> mon = dowmoy1_df[(dowmoy1_df$dow == 1),3]
+> tue = dowmoy1_df[(dowmoy1_df$dow == 2),3]
+> wed = dowmoy1_df[(dowmoy1_df$dow == 3),3]
+> thu = dowmoy1_df[(dowmoy1_df$dow == 4),3]
+> fri = dowmoy1_df[(dowmoy1_df$dow == 5),3]
+> 
+> # I should horizontally stack the days:
+> hm1_df = data.frame(mon,tue,wed,thu,fri)
+> 
+> # I should build a matrix for a heatmap:
+> hm1_x = data.matrix(hm1_df)
+> 
+> png('hm11.png',width=800, units='px', pointsize=22, height=1100)
+> 
+> heatmap(hm1_x, Rowv=NA, Colv=NA, scale="column",col = rainbow(8, start=0, end=2/6)  )
+> 
+> dev.off()
+null device 
+          1 
+> 
+> # I should report:
+> hm1_x
+             mon         tue        wed          thu        fri
+ [1,]  3.9259168  10.2799976   6.211388 -19.76414361 -1.5533449
+ [2,]  0.0859592   8.5398310  -3.707984  -2.51337698 -2.1340697
+ [3,] 18.1831402   0.6233832  16.019169   0.63561986 11.3990860
+ [4,] 26.9621384  11.4455504  26.316193 -17.07379785  1.5748529
+ [5,] -4.2157192   1.9402680  -7.784404  -0.03023186 25.1305472
+ [6,]  8.6069499   4.9275005   7.319400 -12.60708727 -6.9570541
+ [7,] -7.3040503  11.2986880  15.196830  -6.18765971 -1.6729310
+ [8,] -8.9237111  22.3993831 -26.498914  -2.55415891 -8.1719336
+ [9,]  4.1634926  -5.3708326 -14.469302   5.26510129 -1.2790157
+[10,]  2.9528339 -21.7622476  22.658652  19.71254830 25.9943580
+[11,]  8.1394019   2.0856991  12.273589  10.54511110  0.7817601
+[12,] 17.9599033  10.3807180 -11.341248  16.90130243 16.5684240
+> 
+> # The above matrix helps me see how pctlead depends on two independent features:
+> # Day-of-Week
+> # Month-of-Year
+> 
+> 'bye'
+[1] "bye"
+> 
+dan@e80:~/ml4us/public/class07 $ 
+dan@e80:~/ml4us/public/class07 $ 
+dan@e80:~/ml4us/public/class07 $ 
+</code>
