@@ -55,8 +55,8 @@ moydow0_d_df = aggregate(pctlead ~ moydow, gspc4_df[down_v,], sum)
 moydow0_u_df = aggregate(pctlead ~ moydow, gspc4_df[up_v,  ], sum)
 
 # I should order by moydow descending:
-moydow1_d_df   = moydow0_d_df[order(moydow0_d_df$moydow,decreasing=TRUE),]
-moydow1_u_df   = moydow0_u_df[order(moydow0_u_df$moydow,decreasing=TRUE),]
+moydow1_d_df   = moydow0_d_df[order(moydow0_d_df$moydow),]
+moydow1_u_df   = moydow0_u_df[order(moydow0_u_df$moydow),]
 
 # I should hstack them:
 d_pctlead = moydow1_d_df$pctlead
@@ -116,25 +116,29 @@ col2width_f = 10.0
 col3width_f = 1.0
 lwid_v      = c(col1width_f, col2width_f, col3width_f)
 
+# I should specify available colors and how they sort:
+#color_v = rev(rainbow(20*10, start = 0/6, end = 4/6))
+color_v = rev(rainbow(30, start = 0/6, end = 4/6))
 # I should write the heatmap to png file:
 
 png('hm17.png',width=800,height=2900)
-heatmap.2(x=moydow_x, Rowv=NULL,Colv=NULL, 
-  col = rev(rainbow(20*10, start = 0/6, end = 4/6)), 
-  scale="none",
-  margins=c(3,0), # ("margin.Y", "margin.X")
-  trace='none', 
-  symkey=FALSE, 
-  symbreaks=FALSE, 
-  dendrogram='none',
-  density.info='histogram', 
-  denscol="black",
-  keysize=1
-  #( "bottom.margin", "left.margin", "top.margin", "left.margin" )
+heatmap.2(x=moydow_x, Rowv=NULL,Colv=NULL
+  ,col = color_v
+  ,scale="none"
+  ,margins=c(19.0,0.0) # ("margin.Y", "margin.X")
+  ,trace='none' 
+  ,symkey=FALSE 
+  ,symbreaks=FALSE 
+  ,dendrogram='none'
+  ,density.info='histogram' 
+  ,denscol="black"
+  ,keysize=1
+  # For color-key at the top:
+  #( "bottom.margin", "left.margin", "top.margin", "right.margin" )
   ,key.par=list(mar=c(3.5,0,3,0))
   ,lmat=lmat_x, lhei=lhei_v, lwid=lwid_v
-  ,cexCol=1.5
-  ,cexRow=1.8
+  ,cexCol=4.0
+  ,cexRow=2.0
 )
 dev.off()
 
