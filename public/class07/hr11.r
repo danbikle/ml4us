@@ -8,8 +8,7 @@
 # Demo:
 # R -f hr11.r
 
-
-# I should try to get a prediction.
+# I should try to get a prediction from these inputs:
 
 my_yr_test_i    = 2016
 my_month_s      = '10'
