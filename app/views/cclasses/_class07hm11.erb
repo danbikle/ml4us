@@ -1,0 +1,59 @@
+<code class='bash'>
+dan@e80:~/ml4us/public/class07 $ 
+dan@e80:~/ml4us/public/class07 $ 
+dan@e80:~/ml4us/public/class07 $ R -f hm10.r
+
+R version 3.2.3 (2015-12-10) -- "Wooden Christmas-Tree"
+Copyright (C) 2015 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> # hm10.r
+> 
+> # Ref:
+> # https://flowingdata.com/2010/01/21/how-to-make-a-heatmap-a-quick-and-easy-solution/
+> 
+> # Demo:
+> # R -f hm10.r
+> 
+> # I should load nba data:
+> #nba = read.csv("http://datasets.flowingdata.com/ppg2008.csv", sep=",")
+> nba = read.csv("ppg2008.csv", sep=",")
+> # I should order by PTS column:
+> nba = nba[order(nba$PTS),]
+> 
+> # I should identify each row by Name instead of an integer:
+> row.names(nba) = nba$Name
+> 
+> # I should remove the Name column which is the first column:
+> nba = nba[,2:20]
+> 
+> # I should convert nba to a matrix:
+> nba_x = data.matrix(nba)
+> 
+> png('hm10.png',width=800, units='px', pointsize=22, height=1100)
+> 
+> heatmap(nba_x, Rowv=NA, Colv=NA, scale="column")
+> 
+> dev.off()
+null device 
+          1 
+> 
+dan@e80:~/ml4us/public/class07 $ 
+dan@e80:~/ml4us/public/class07 $ 
+dan@e80:~/ml4us/public/class07 $ 
+</code>
+
