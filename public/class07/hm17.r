@@ -28,9 +28,9 @@
 # head(gspc1_df)
 # 
 # # I should write the df to a csv:
-# write.csv(gspc1_df,'gspc1_df.csv', row.names=FALSE)
+# write.csv(gspc1_df,'gspc1.csv', row.names=FALSE)
 
-gspc2_df           = read.csv('gspc1_df.csv')
+gspc2_df           = read.csv('gspc1.csv')
 gspc3_df           = data.frame(gspc2_df$Date,gspc2_df$Close)
 colnames(gspc3_df) = c('cdate','cp')
 
