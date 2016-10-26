@@ -20,6 +20,18 @@ create_model = function(yr_i, size_i) {
   return(TRUE)
 }
 
+# I should get prices:
+
+# I should get GSPC dates and prices:
+gspc0_df = read.csv('http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC')
+# I should order by Date:
+gspc1_df = gspc0_df[order(gspc0_df$Date),]
+# I should only use Date and Closing Price:
+gspc3_df = data.frame(gspc1_df$Date,gspc1_df$Close)
+colnames(gspc3_df) = c('cdate','cp')
+write.csv(gspc3_df,'gspc3.csv', row.names=FALSE)
+tail(gspc3_df)
+
 create_model(my_yr_i,model_size_i)
 
 
