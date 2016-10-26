@@ -59,9 +59,9 @@ moydow1_d_df   = moydow0_d_df[order(moydow0_d_df$moydow),]
 moydow1_u_df   = moydow0_u_df[order(moydow0_u_df$moydow),]
 
 # I should hstack them:
-d_pctlead = moydow1_d_df$pctlead
-u_pctlead = moydow1_u_df$pctlead
-moydow_df = data.frame(d_pctlead,u_pctlead)
+pctlead_after_down_pctlag = moydow1_d_df$pctlead
+pctlead_after_up_pctlag   = moydow1_u_df$pctlead
+moydow_df = data.frame(pctlead_after_down_pctlag,pctlead_after_up_pctlag)
 
 # I should prepare df for feeding it to heatmap():
 row.names(moydow_df) = moydow1_d_df$moydow
@@ -120,11 +120,11 @@ lwid_v      = c(col1width_f, col2width_f, col3width_f)
 color_v = rev(rainbow(30, start = 0/6, end = 4/6))
 # I should write the heatmap to png file:
 
-png('hm17.png',width=800,height=2900)
+png('hm17.png',width=800,height=2500)
 heatmap.2(x=moydow_x, Rowv=NULL,Colv=NULL
   ,col    = color_v
   ,scale  ="none"
-  ,margins=c(19.0,0.0) # ("margin.Y", "margin.X")
+  ,margins=c(25.0,0.0) # ("margin.Y", "margin.X")
   ,trace='none' # turns off unneeded trace lines inside the heat map
   ,symkey      =FALSE 
   ,symbreaks   =FALSE 
@@ -143,9 +143,12 @@ heatmap.2(x=moydow_x, Rowv=NULL,Colv=NULL
   ,sepwidth=c(0.1, 0.1)
   ,rowsep  =c(1:row_i)
   ,colsep  =c(1:2)
-  #,labCol  = 'pctlag1_down/up'
-  ,xlab  = 'pctlag1_down/up'
-  ,main  = 'Pctlead Dependence on 2 Types of Pctlag(Down/Up)'
+  # FAIL: ,labCol = 'pctlag1_down/up'
+  ,xlab = 'Pctlead Dependence on 2 Types of Pctlag(Down/Up)'
+  # FAIL: ,main  = 'Pctlead After 2 Types of Pctlag(Down/Up)'
+  #  ,cellnote = matrix(rnorm(2*12*5),nrow=(12*5))
+  ,cellnote = round(moydow_x,1)
+  ,notecol  = 'black'
 )
 dev.off()
 
