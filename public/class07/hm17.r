@@ -138,10 +138,13 @@ heatmap.2(x=moydow_x, Rowv=NULL,Colv=NULL
   ,lmat    =lmat_x, lhei=lhei_v, lwid=lwid_v
   ,cexCol  =4.0
   ,cexRow  =2.0
+  # I should separate the cells:
   ,sepcolor='white'
   ,sepwidth=c(0.1, 0.1)
   ,rowsep  =c(1:row_i)
   ,colsep  =c(1:2)
+  #,labCol  = 'pctlag1_down/up'
+  ,xlab  = 'pctlag1_down/up'
 )
 dev.off()
 
