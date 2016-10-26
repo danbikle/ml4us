@@ -4,6 +4,10 @@
 # Ref:
 # http://www.tsds4.us/cclasses/class07bk20
 
+# The heatmap helps me see how pctlead depends on two independent features:
+# Day-of-Week
+# Month-of-Year
+
 # Demo:
 # R -f hm11.r
 
@@ -71,8 +75,15 @@ hm1_x = data.matrix(hm1_df)
 
 png('hm11.png',width=800, units='px', pointsize=22, height=1100)
 
-hm11 = heatmap(hm1_x, Rowv=NA, Colv=NA, scale="column",col = rainbow(8, start=0, end=2/6)  )
+heatmap(hm1_x, Rowv=NA, Colv=NA, scale="column",col = rainbow(8, start=0, end=2/6)  )
 
 dev.off()
+
+# I should report:
+hm1_x
+
+# The above matrix helps me see how pctlead depends on two independent features:
+# Day-of-Week
+# Month-of-Year
 
 'bye'
