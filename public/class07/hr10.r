@@ -70,10 +70,14 @@ up_v   = (train_df$pctlag1 >=0)
 mdown_df = aggregate(pctlead ~ moydow, train_df[down_v,], sum)
 mup_df   = aggregate(pctlead ~ moydow, train_df[up_v,]  , sum)
 # I should hstack them so I can use features to look up pctlead:
-pctlead_after_down_pctlag = mdown_df$pctlead
-pctlead_after_up_pctlag   = mup_df$pctlead
+pctlead_after_down_pctlag = round(mdown_df$pctlead,2)
+pctlead_after_up_pctlag   = round(mup_df$pctlead  ,2)
 moydow                    = mup_df$moydow
 model1_df = data.frame(moydow, pctlead_after_down_pctlag, pctlead_after_up_pctlag)
 
-head(model1_df)
-tail(model1_df)
+# The model is ready for use.
+# I should write it to CSV so a predictor function can ask for predictions later:
+write.csv(model1_df,'model1.csv', row.names=FALSE)
+
+'bye'
+
