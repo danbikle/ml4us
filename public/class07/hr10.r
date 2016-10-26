@@ -80,5 +80,31 @@ model1_df = data.frame(moydow, pctlead_after_down_pctlag, pctlead_after_up_pctla
 csv_s = paste('model',yr_test_i,'.csv',sep='')
 write.csv(model1_df,csv_s, row.names=FALSE)
 
+# I should demo how to get a prediction from the model.
+
+my_yr_test_i    = 2016
+my_month_s      = '10'
+my_day_ofweek_s = '5'
+my_pctlag_f     = -0.17
+
+# I should transform the above 4 prediction inputs:
+
+csv_s      = paste('model',my_yr_test_i,'.csv',sep='' )
+moydow_s   = paste(my_month_s,my_day_ofweek_s ,sep='_')
+
+my_model_l = read.csv(csv_s)
+pred_v     = (my_model_l$moydow == moydow_s)
+
+if (my_pctlag_f < 0) {
+  prediction_f = my_model_l[pred_v,2]
+  } else {
+  prediction_f = my_model_l[pred_v,3]
+}
+
+# I should show the model row:
+my_model_l[pred_v,]
+# I should show the prediction:
+prediction_f
+
 'bye'
 
