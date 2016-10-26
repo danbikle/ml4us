@@ -36,42 +36,44 @@ leadp_v          = c(gspc3_df$cp, last_f)[1:len_i+1]
 gspc3_df$pctlead = 100 * (leadp_v - gspc3_df$cp) / gspc3_df$cp
 gspc3_df$pctlag1 = c(0, gspc3_df$pctlead)[1:len_i]
 
-# I should get Day-of-Week, Month-of-Year from cdate:
-moy_v = format(as.Date(gspc3_df$cdate),"%-m")
-dow_v = format(as.Date(gspc3_df$cdate),"%w" )
-
-# I should concatenate moy_v, dow_v.
-# I should get strings like this: '01_2' which corresponds to January_Tuesday.
-moydow_v = format(as.Date(gspc3_df$cdate),"%m_%w")
-
 # I should pick the test year which then helps me constrain the training years.
 yr_test_i    = 2016
 train_size_i = 25 # years
 
 # I should use yr_test_i and train_size_i to get yr_train_end_i yr_train_start_i
-yr_train_end_i = 2015
+yr_train_end_i   = 2015
 yr_train_start_i = yr_test_i - train_size_i
 
 # I should constrain the training data.
-yr_v = strtoi(format(as.Date(gspc3_df$cdate),"%Y" ))
-head(yr_v)
-tail(yr_v)
-pred1_v = (yr_v >= yr_train_start_i)
-pred2_v = (yr_v <= yr_train_end_i)
+yr_v     = strtoi(format(as.Date(gspc3_df$cdate),"%Y" ))
+pred1_v  = (yr_v >= yr_train_start_i)
+pred2_v  = (yr_v <= yr_train_end_i)
+pred3_v  = (pred1_v & pred2_v)
+train_df = gspc3_df[ pred3_v , ]
 
-head(pred1_v)
-tail(pred1_v)
-head(pred2_v)
-tail(pred2_v)
+head(train_df)
+tail(train_df)
 
-head(gspc3_df)
-tail(gspc3_df)
-# FAIL train2_df = train1_df[ pred2_v , ]
+# I should build a model from train_df.
 
-pred3_v = (pred1_v & pred2_v)
-head(pred3_v)
-tail(pred3_v)
-train1_df = gspc3_df[ pred3_v , ]
+# I should get strings like this: '01_2' which corresponds to January_Tuesday.
+train_df$moydow = format(as.Date(train_df$cdate),"%m_%w")
 
-head(train1_df)
-tail(train1_df)
+#row.names(train_df) = train_df$moydow
+
+# I should get rows where pctlag1 < 0:
+down_v = (train_df$pctlag1 < 0)
+# I should get rows where pctlag1 >= 0:
+up_v   = (train_df$pctlag1 >=0)
+
+# I should use aggregate() to sum(pctlead) groupby Month-of-Year, Day-of-Week:
+mdown_df = aggregate(pctlead ~ moydow, train_df[down_v,], sum)
+mup_df   = aggregate(pctlead ~ moydow, train_df[up_v,]  , sum)
+# I should hstack them:
+pctlead_after_down_pctlag = mdown_df$pctlead
+pctlead_after_up_pctlag   = mup_df$pctlead
+model1_df = data.frame(pctlead_after_down_pctlag, pctlead_after_up_pctlag)
+row.names(model1_df) = mup_df$moydow
+
+head(model1_df)
+tail(model1_df)
