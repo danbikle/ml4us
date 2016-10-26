@@ -69,11 +69,11 @@ up_v   = (train_df$pctlag1 >=0)
 # I should use aggregate() to sum(pctlead) groupby Month-of-Year, Day-of-Week:
 mdown_df = aggregate(pctlead ~ moydow, train_df[down_v,], sum)
 mup_df   = aggregate(pctlead ~ moydow, train_df[up_v,]  , sum)
-# I should hstack them:
+# I should hstack them so I can use features to look up pctlead:
 pctlead_after_down_pctlag = mdown_df$pctlead
 pctlead_after_up_pctlag   = mup_df$pctlead
-model1_df = data.frame(pctlead_after_down_pctlag, pctlead_after_up_pctlag)
-row.names(model1_df) = mup_df$moydow
+moydow                    = mup_df$moydow
+model1_df = data.frame(moydow, pctlead_after_down_pctlag, pctlead_after_up_pctlag)
 
 head(model1_df)
 tail(model1_df)
