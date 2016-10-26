@@ -149,6 +149,7 @@ heatmap.2(x=moydow_x, Rowv=NULL,Colv=NULL
   #  ,cellnote = matrix(rnorm(2*12*5),nrow=(12*5))
   ,cellnote = round(moydow_x,1)
   ,notecol  = 'black'
+  ,notecex  = 1.8
 )
 dev.off()
 
