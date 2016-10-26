@@ -84,7 +84,7 @@ col60_v = rainbow(row_i, start=0, end=2/6)
 # - Column Dendrogram, which I usually dont want
 # - Row Dendrogram,    which I usually dont want
 # - Heatmap,           which I always want
-# A default heatmap layout is controlled by 4 integers: 1,2,3,4
+# A default heatmap layout is controlled by 4 integers: 4,3,2,1
 # I use variables instead of integers:
 colorKey_i  = 4
 colDendro_i = 3
@@ -95,8 +95,10 @@ margin_left5_i = 5
 margin_left6_i = 6
 
 # I want the layout to look like this:
-# margin_left5 colorKey colDendro(unused)
-# margin_left6 heatmap  rowDendro(unused)
+# -----------------------------------------------
+# | margin_left5 | colorKey | colDendro(unused) |
+# | margin_left6 | heatmap  | rowDendro(unused) |
+# -----------------------------------------------
 
 # I should use above integers to create a layout_matrix:
 lmat_x = rbind(c(margin_left5_i, colorKey_i, colDendro_i)
