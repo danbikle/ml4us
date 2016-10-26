@@ -76,6 +76,36 @@ row_i = nrow(moydow_x)
 col5_v  = rainbow(5, start=0, end=2/6)
 col60_v = rainbow(row_i, start=0, end=2/6)
 
+# I should prep the layout for the heatmap.
+
+
+# A default heatmap layout has 4 things:
+# - Color Key, which is like a legend
+# - Column Dendrogram, which I usually dont want
+# - Row Dendrogram,    which I usually dont want
+# - Heatmap,           which I always want
+# A default heatmap layout is controlled by 4 integers: 1,2,3,4
+# I use variables instead of integers:
+colorKey_i  = 4
+colDendro_i = 3
+rowDendro_i = 2
+heatmap_i   = 1
+# I like to add margins and each margin needs an integer:
+margin_left5_i = 5
+margin_left6_i = 6
+
+# I want the layout to look like this:
+# margin_left5 colorKey colDendro(unused)
+# margin_left6 heatmap  rowDendro(unused)
+
+# I should use above integers to create a layout_matrix:
+lmat_x = rbind(c(margin_left5_i, colorKey_i, colDendro_i)
+              ,c(margin_left6_i, heatmap_i,  rowDendro_i))
+
+lmat_x
+
+stophere
+
 # I should write the heatmap to png file:
 
 png('hm17.png',width=800,height=2900)
@@ -92,7 +122,6 @@ heatmap.2(x=moydow_x, Rowv=NULL,Colv=NULL,
   keysize=1, 
   #( "bottom.margin", "left.margin", "top.margin", "left.margin" )
   key.par=list(mar=c(3.5,0,3,0)),
-  # lmat -- added 2 lattice sections (5 and 6) for padding
   lmat=rbind(c(5, 4, 2), c(6, 1, 3)), lhei=c(0.8, 5), lwid=c(1, 10, 1)
   ,cexCol=1.5
   ,cexRow=1.8
