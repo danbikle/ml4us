@@ -117,7 +117,6 @@ col3width_f = 1.0
 lwid_v      = c(col1width_f, col2width_f, col3width_f)
 
 # I should specify available colors and how they sort:
-#color_v = rev(rainbow(20*10, start = 0/6, end = 4/6))
 color_v = rev(rainbow(30, start = 0/6, end = 4/6))
 # I should write the heatmap to png file:
 
@@ -139,6 +138,7 @@ heatmap.2(x=moydow_x, Rowv=NULL,Colv=NULL
   ,lmat=lmat_x, lhei=lhei_v, lwid=lwid_v
   ,cexCol=4.0
   ,cexRow=2.0
+  ,trace="none"        # turns off trace lines inside the heat map
 )
 dev.off()
 
