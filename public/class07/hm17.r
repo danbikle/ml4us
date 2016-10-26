@@ -72,7 +72,7 @@ moydow_x
 
 # I should create vectors full of color strings:
 library(gplots)
-row_i = nrow(moydow_x)
+row_i = nrow(moydow_x) # number of rows (should be 12 x 5)
 col5_v  = rainbow(5, start=0, end=2/6)
 col60_v = rainbow(row_i, start=0, end=2/6)
 
@@ -122,23 +122,26 @@ color_v = rev(rainbow(30, start = 0/6, end = 4/6))
 
 png('hm17.png',width=800,height=2900)
 heatmap.2(x=moydow_x, Rowv=NULL,Colv=NULL
-  ,col = color_v
-  ,scale="none"
+  ,col    = color_v
+  ,scale  ="none"
   ,margins=c(19.0,0.0) # ("margin.Y", "margin.X")
-  ,trace='none' 
-  ,symkey=FALSE 
-  ,symbreaks=FALSE 
-  ,dendrogram='none'
+  ,trace='none' # turns off unneeded trace lines inside the heat map
+  ,symkey      =FALSE 
+  ,symbreaks   =FALSE 
+  ,dendrogram  ='none'
   ,density.info='histogram' 
-  ,denscol="black"
-  ,keysize=1
+  ,denscol     ="black"
+  ,keysize     =1
   # For color-key at the top:
   #( "bottom.margin", "left.margin", "top.margin", "right.margin" )
-  ,key.par=list(mar=c(3.5,0,3,0))
-  ,lmat=lmat_x, lhei=lhei_v, lwid=lwid_v
-  ,cexCol=4.0
-  ,cexRow=2.0
-  ,trace="none"        # turns off trace lines inside the heat map
+  ,key.par =list(mar=c(3.5,0,3,0))
+  ,lmat    =lmat_x, lhei=lhei_v, lwid=lwid_v
+  ,cexCol  =4.0
+  ,cexRow  =2.0
+  ,sepcolor='white'
+  ,sepwidth=c(0.1, 0.1)
+  ,rowsep  =c(1:row_i)
+  ,colsep  =c(1:2)
 )
 dev.off()
 
