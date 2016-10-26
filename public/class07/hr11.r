@@ -1,6 +1,6 @@
 # hr11.r
 
-# This script should build a heuristic pctlead-model from pctlag1, and date-features
+# This script should demo how to create a function which gets a prediction.
 
 # Ref:
 # http://www.ml4.us/cclasses/class07#hr
