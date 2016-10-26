@@ -77,7 +77,8 @@ model1_df = data.frame(moydow, pctlead_after_down_pctlag, pctlead_after_up_pctla
 
 # The model is ready for use.
 # I should write it to CSV so a predictor function can ask for predictions later:
-write.csv(model1_df,'model1.csv', row.names=FALSE)
+csv_s = paste('model',yr_test_i,'.csv',sep='')
+write.csv(model1_df,csv_s, row.names=FALSE)
 
 'bye'
 
