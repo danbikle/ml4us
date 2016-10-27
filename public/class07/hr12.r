@@ -8,10 +8,6 @@
 # Demo:
 # R -f hr12.r
 
-# I should try to generate a model from these inputs:
-my_yr_i      = 2015
-model_size_i = 25 # years
-
 create_model = function(yr_i, size_i) {
   # I should load prices from CSV:
   gspc3_df = read.csv('gspc3.csv')
@@ -75,8 +71,21 @@ get_prices = function(){
   # gspc3.csv
 }
 
+
+# I should try to generate a model from these inputs:
+my_yr_i      = 2015
+model_size_i = 25 # years
+
 # get_prices()
 create_model(my_yr_i,model_size_i)
+
+# I should use a loop to create many models:
+
+for (yr_i in c(2000:2016))
+{
+  fn_s = create_model(yr_i,model_size_i)
+  print(fn_s)
+}
 
 'bye'
 
