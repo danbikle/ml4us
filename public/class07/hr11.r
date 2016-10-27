@@ -23,7 +23,7 @@ get_prediction = function(yr_test_i, month_s, day_ofweek_i, pctlag_f){
   my_model_l = read.csv(csv_s)
   # I should get a row from model
   pred_v     = (my_model_l$moydow == moydow_s)
-  if (my_pctlag_f < 0) {
+  if (pctlag_f < 0) {
     # I should get a cell from row
     prediction_f = my_model_l[pred_v,2]
     } else {
