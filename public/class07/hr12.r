@@ -71,16 +71,11 @@ get_prices = function(){
   # gspc3.csv
 }
 
-
-# I should try to generate a model from these inputs:
-my_yr_i      = 2015
-model_size_i = 25 # years
-
+# I should get prices:
 # get_prices()
-create_model(my_yr_i,model_size_i)
 
 # I should use a loop to create many models:
-
+model_size_i = 25 # years
 for (yr_i in c(2000:2016))
 {
   fn_s = create_model(yr_i,model_size_i)
