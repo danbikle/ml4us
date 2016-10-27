@@ -23,7 +23,7 @@ create_model = function(yr_i, size_i) {
   yr_train_start_i = yr_i - size_i
   
   # I should constrain the training data.
-  yr_v     = strtoi(format(as.Date(gspc3_df$cdate),"%Y" ))
+  yr_v     = strtoi(format(as.Date(gspc3_df$cdate),"%Y"))
   pred1_v  = (yr_v >= yr_train_start_i)
   pred2_v  = (yr_v <= yr_train_end_i)
   pred3_v  = (pred1_v & pred2_v)
