@@ -33,7 +33,16 @@ tail(train_df)
 
 # I should generate labels from pctlead:
 
-labels_v = (train_df$pctlead > median(train_df$pctlead))
-tail(labels_v)
+train_df$labels = (train_df$pctlead > median(train_df$pctlead))
+tail(train_df)
+
+# Now I should learn:
+mymodel = glm(labels ~ pctlag1 + moy + dow, data=train_df, family='binomial')
+mymodel
+
+# The above model assumes that each label relies somewhat on pctlag1,moy, and dow
+# The model returns the probability that label is TRUE
+# If the probability is above 0.51 I consider that a bullish prediction.
+# If the probability is below 0.49 I consider that a bearish prediction.
 
 'bye'
