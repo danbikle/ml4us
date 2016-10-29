@@ -13,7 +13,7 @@ create_model = function(yr_i, size_i) {
   # I should load features from CSV:
   feat_df = read.csv('feat.csv')
 
-  # I should use compute end, start:
+  # I should use yr_i to compute end, start:
   yr_train_end_i   = yr_i - 1
   yr_train_start_i = yr_i - size_i
   

@@ -22,7 +22,7 @@ get_prices = function(){
   # gspc3.csv
 }
 
-# get_prices()
+get_prices()
 # I should compute pctlead,pctlag1 from cp
 gspc3_df         = read.csv('gspc3.csv')
 len_i            = length(gspc3_df$cp)
@@ -33,6 +33,11 @@ gspc3_df$pctlag1 = c(0, gspc3_df$pctlead)[1:len_i]
 
 # I should get moydow:
 gspc3_df$moydow = format(as.Date(gspc3_df$cdate),"%m_%w")
+# I should get moy:
+gspc3_df$moy = format(as.Date(gspc3_df$cdate),"%-m")
+
+# I should get dow:
+gspc3_df$dow = format(as.Date(gspc3_df$cdate),"%w")
 
 write.csv(gspc3_df,'feat.csv', row.names=FALSE)
 
