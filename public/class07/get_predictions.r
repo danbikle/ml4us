@@ -18,8 +18,14 @@ feat_df = read.csv('feat.csv')
 
 dates_v = tail(feat_df$cdate)
 
-for (dt in dates_v){
-  print(dt)
+for (dt_s in dates_v){
+  print(dt_s)
+  # I should get value of YYYY so I can locate modelYYYY.csv
+  # I should get value of pctlag from feat_df using dt_s.
+  yr_s  = format(as.Date(dt_s),"%Y")
+  csv_s = paste('model',yr_s,'.csv', sep='')
+  print(csv_s)
+  stophere
 }
 
 'bye'
