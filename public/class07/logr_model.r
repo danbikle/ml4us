@@ -57,5 +57,7 @@ test_df$eff = (0.5 - test_df$prediction) * test_df$pctlead
 tail(test_df)
 
 # I should write predictions to CSV
+csv_s = paste('predictions',yr_test,'.csv',sep='')
+write.csv(test_df,csv_s, row.names=FALSE)
 
 'bye'
