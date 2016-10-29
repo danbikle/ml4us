@@ -31,4 +31,9 @@ size_i = 25
   
 tail(train_df)
 
+# I should generate labels from pctlead:
+
+labels_v = (train_df$pctlead > median(train_df$pctlead))
+tail(labels_v)
+
 'bye'
