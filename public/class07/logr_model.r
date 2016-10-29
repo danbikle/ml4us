@@ -73,9 +73,11 @@ for (yr_i in c(2000:2016)){
   csv_s = paste('predictions',yr_i,'.csv',sep='')
   p_df = read.csv(csv_s)
   sum_eff_long_i = sum_eff_long_i + sum(p_df$pctlead)
+  sum_eff_logr_i = sum_eff_logr_i + sum(p_df$eff)
 }
 
 sum_eff_long_i
+sum_eff_logr_i
 
 
 'bye'
