@@ -8,14 +8,18 @@
 # http://www.ml4.us/cclasses/class07#hr
 
 # Demo:
-# R -f get_predictions
+# R -f get_predictions.r
 
-get_prediction = function(dt){
+get_prediction = function(dt_s){
   return(1.1)
 }
 
 feat_df = read.csv('feat.csv')
 
-tail(feat_df$cdate)
+dates_v = tail(feat_df$cdate)
+
+for (dt in dates_v){
+  print(dt)
+}
 
 'bye'
