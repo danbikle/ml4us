@@ -8,14 +8,6 @@
 # Demo:
 # R -f logr_model.r
 
-# I should load features from CSV:
-feat_df = read.csv('feat.csv')
-
-tail(feat_df)
-
-yr_i = 2016
-size_i = 25
-
 train_test_logr = function(feat_df,yr_i,size_i){
   # This function should train and then test using Logistic Regression and data in feat_df.
   
@@ -63,7 +55,13 @@ train_test_logr = function(feat_df,yr_i,size_i){
   return(csv_s)
 } # train_test_logr = function(feat_df,yr_i,size_i)
 
-pf_s = train_test_logr(feat_df,yr_i,size_i)
-print(pf_s)
+# I should load features from CSV:
+feat_df = read.csv('feat.csv')
+size_i  = 25
+
+for (yr_i in c(2000:2016)){
+  pf_s = train_test_logr(feat_df,yr_i,size_i)
+  print(pf_s)
+}
 
 'bye'
