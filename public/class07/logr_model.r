@@ -53,7 +53,9 @@ tail(test_df)
 
 predictions_v = predict(mymodel,test_df, type='response')
 test_df$prediction = predictions_v
+test_df$eff = (0.5 - test_df$prediction) * test_df$pctlead
 tail(test_df)
 
+# I should write predictions to CSV
 
 'bye'
