@@ -34,15 +34,26 @@ tail(train_df)
 # I should generate labels from pctlead:
 
 train_df$labels = (train_df$pctlead > median(train_df$pctlead))
-tail(train_df)
+
 
 # Now I should learn:
 mymodel = glm(labels ~ pctlag1 + moy + dow, data=train_df, family='binomial')
-mymodel
 
 # The above model assumes that each label relies somewhat on pctlag1,moy, and dow
 # The model returns the probability that label is TRUE
 # If the probability is above 0.51 I consider that a bullish prediction.
 # If the probability is below 0.49 I consider that a bearish prediction.
+
+# I should load test data
+yr_test     = yr_i
+yr_test_v   = strtoi(format(as.Date(feat_df$cdate),"%Y"))
+pred_test_v = (yr_test_v == yr_test)
+test_df     = feat_df[pred_test_v , ]
+tail(test_df)
+
+predictions_v = predict(mymodel,test_df, type='response')
+test_df$prediction = predictions_v
+tail(test_df)
+
 
 'bye'
