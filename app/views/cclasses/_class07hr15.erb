@@ -18,7 +18,9 @@ long_only_eff_f = sum(predictions_df$pctlead)
 print('long_only_eff:')
 print(long_only_eff_f)
 
-# I should calculate Model Effectiveness
+# I should calculate Model Effectiveness.
+# Logic should be:
+# If prediction has same sign as pctlead, that prediction is effective:
 predictions_df$effectiveness = sign(predictions_df$prediction) * predictions_df$pctlead
 
 # I should report Model Effectiveness:
