@@ -1,0 +1,42 @@
+%h2 Class07 Answer:
+%h2 Build a Logistic Regression model from pctlag1, and date-features.
+
+%p I started this lab by writing a script which gets prices from Yaho and then builds features.
+
+%p The features are the same features I used to build heatmaps:
+
+%ul
+  %li pctlag1
+  %li Month-of-Year
+  %li Day-of-Week
+
+%p The script looks like this:
+.syntax
+  %pre
+    =render 'class07hr11'
+
+%p I ran it:
+.syntax
+  %pre
+    =render 'class07hr12'
+
+%p Next, I wrote a script to create Logistic Regression models for a series of years.
+%p The script then uses the models to generate predictions for each year.
+%p The predictions are stored in CSV files with names like predictions2016.csv.
+%p Then, the predictions are aggregated so I can sum the effectivness of the models.
+%p The script is listed below:
+
+.syntax
+  %pre
+    =render 'class07logr11'
+
+%p I ran it:
+.syntax
+  %pre
+    =render 'class07logr12'
+
+%p I can see from the above output that ...
+
+%p
+  %a(href='class07#hr')
+    Class07 Lab
