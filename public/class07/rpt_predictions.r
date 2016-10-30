@@ -1,12 +1,15 @@
 # rpt_predictions.r
 
-# This script should report the effectiveness of predictions in predictions.csv
+# This script should read predictions.csv and report 
+# -Long-Only Effectiveness
+# -Model Effectiveness
+# -Long-Only Accuracy
+# -Model Accuracy
 
 # Demo:
 # R -f rpt_predictions.r
 
 # I should read predictions.csv
-
 predictions_df = read.csv('predictions.csv')
 
 # I should report Long-Only Effectiveness:
