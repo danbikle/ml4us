@@ -1,0 +1,46 @@
+<code class='R'>
+# genf.r
+
+# This script should create feat.csv full of features from dates and prices from Yahoo.
+
+# Ref:
+# http://www.ml4.us/cclasses/class07#hr
+
+# Demo:
+# R -f genf.r
+
+get_prices = function(){
+  # I should get GSPC dates and prices:
+  gspc0_df = read.csv('http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC')
+  # I should order by Date:
+  gspc1_df = gspc0_df[order(gspc0_df$Date),]
+  # I should only use Date and Closing Price:
+  gspc3_df = data.frame(gspc1_df$Date,gspc1_df$Close)
+  colnames(gspc3_df) = c('cdate','cp')
+  write.csv(gspc3_df,'gspc3.csv', row.names=FALSE)
+  tail(gspc3_df)
+  # I should now see a new CSV:
+  # gspc3.csv
+}
+
+get_prices()
+# I should compute pctlead,pctlag1 from cp
+gspc3_df         = read.csv('gspc3.csv')
+len_i            = length(gspc3_df$cp)
+last_f           = gspc3_df$cp[len_i]
+leadp_v          = c(gspc3_df$cp, last_f)[1:len_i+1]
+gspc3_df$pctlead = 100 * (leadp_v - gspc3_df$cp) / gspc3_df$cp
+gspc3_df$pctlag1 = c(0, gspc3_df$pctlead)[1:len_i]
+
+# I should get moydow:
+gspc3_df$moydow = format(as.Date(gspc3_df$cdate),"%m_%w")
+# I should get moy:
+gspc3_df$moy = format(as.Date(gspc3_df$cdate),"%-m")
+
+# I should get dow:
+gspc3_df$dow = format(as.Date(gspc3_df$cdate),"%w")
+
+write.csv(gspc3_df,'feat.csv', row.names=FALSE)
+
+'bye'
+</code>

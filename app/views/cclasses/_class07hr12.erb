@@ -1,0 +1,80 @@
+<code class='bash'>
+dan@e80:~/ml4us/public/class07 $ 
+dan@e80:~/ml4us/public/class07 $ 
+dan@e80:~/ml4us/public/class07 $ R -f genf.r
+
+R version 3.2.3 (2015-12-10) -- "Wooden Christmas-Tree"
+Copyright (C) 2015 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> # genf.r
+> 
+> # This script should create feat.csv full of features from dates and prices from Yahoo.
+> 
+> # Ref:
+> # http://www.ml4.us/cclasses/class07#hr
+> 
+> # Demo:
+> # R -f genf.r
+> 
+> get_prices = function(){
++   # I should get GSPC dates and prices:
++   gspc0_df = read.csv('http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC')
++   # I should order by Date:
++   gspc1_df = gspc0_df[order(gspc0_df$Date),]
++   # I should only use Date and Closing Price:
++   gspc3_df = data.frame(gspc1_df$Date,gspc1_df$Close)
++   colnames(gspc3_df) = c('cdate','cp')
++   write.csv(gspc3_df,'gspc3.csv', row.names=FALSE)
++   tail(gspc3_df)
++   # I should now see a new CSV:
++   # gspc3.csv
++ }
+> 
+> get_prices()
+           cdate      cp
+16811 2016-10-21 2141.16
+16812 2016-10-24 2151.33
+16813 2016-10-25 2143.16
+16814 2016-10-26 2139.43
+16815 2016-10-27 2133.04
+16816 2016-10-28 2126.41
+> # I should compute pctlead,pctlag1 from cp
+> gspc3_df         = read.csv('gspc3.csv')
+> len_i            = length(gspc3_df$cp)
+> last_f           = gspc3_df$cp[len_i]
+> leadp_v          = c(gspc3_df$cp, last_f)[1:len_i+1]
+> gspc3_df$pctlead = 100 * (leadp_v - gspc3_df$cp) / gspc3_df$cp
+> gspc3_df$pctlag1 = c(0, gspc3_df$pctlead)[1:len_i]
+> 
+> # I should get moydow:
+> gspc3_df$moydow = format(as.Date(gspc3_df$cdate),"%m_%w")
+> # I should get moy:
+> gspc3_df$moy = format(as.Date(gspc3_df$cdate),"%-m")
+> 
+> # I should get dow:
+> gspc3_df$dow = format(as.Date(gspc3_df$cdate),"%w")
+> 
+> write.csv(gspc3_df,'feat.csv', row.names=FALSE)
+> 
+> 'bye'
+[1] "bye"
+> 
+dan@e80:~/ml4us/public/class07 $ 
+dan@e80:~/ml4us/public/class07 $ 
+dan@e80:~/ml4us/public/class07 $ 
+</code>
