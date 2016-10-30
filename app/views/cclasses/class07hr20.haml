@@ -1,0 +1,30 @@
+%h2 Class07 Answer:
+%h2 Build a heuristic pctlead model from pctlag1, and date-features
+
+%p I started this lab by writing a script which gets prices from Yaho and then builds features.
+
+%p The features are the same features I used to build heatmaps:
+
+%ul
+  %li pctlag1
+  %li Month-of-Year
+  %li Day-of-Week
+
+%p The script looks like this:
+.syntax
+  %pre
+    =render 'class07hr11'
+
+%p I ran it:
+.syntax
+  %pre
+    =render 'class07hr12'
+
+%p Next, I wrote a script to build a series of models for a series of years:
+.syntax
+  %pre
+    =render 'class07hr13'
+
+%p
+  %a(href='class07#hr')
+    Class07 Lab
