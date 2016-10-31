@@ -72,14 +72,18 @@ for (yr_i in c(2000:2016)){
   sum_all_i           = sum_all_i      + length(p_df$accurate)
 }
 
-sum_eff_long_f
-sum_eff_logr_f
+print('Long-Only Effectiveness:')
+print(sum_eff_long_f)
 
+print('Logistic-Regression Effectiveness:')
+print(sum_eff_logr_f)
 
-print('Long-Only accuracy:')
-100.0 * sum_long_accuracy_i / sum_all_i
+print('Long-Only Accuracy:')
+acc_long_f = 100.0 * sum_long_accuracy_i / sum_all_i
+print(acc_long_f)
 
+print('Logistic-Regression Accuracy:')
 acc_logr_f = 100.0 * sum_accuracy_i / sum_all_i
-acc_logr_f
+print(acc_logr_f)
 
 'bye'
