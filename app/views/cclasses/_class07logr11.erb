@@ -58,27 +58,34 @@ for (yr_i in c(2000:2016)){
 }
 
 # I should report effectiveness, accuracy:
-sum_eff_logr_f = 0
-sum_eff_long_f = 0
-sum_accuracy_i = 0
-sum_all_i      = 0
+sum_eff_long_f      = 0
+sum_eff_logr_f      = 0
+sum_long_accuracy_i = 0
+sum_accuracy_i      = 0
+sum_all_i           = 0
 for (yr_i in c(2000:2016)){
   csv_s = paste('predictions',yr_i,'.csv',sep='')
   p_df = read.csv(csv_s)
-  sum_eff_long_f = sum_eff_long_f + sum(p_df$pctlead)
-  sum_eff_logr_f = sum_eff_logr_f + sum(p_df$eff)
-  sum_accuracy_i = sum_accuracy_i +    sum(p_df$accurate)
-  sum_all_i      = sum_all_i      + length(p_df$accurate)
+  sum_eff_long_f      = sum_eff_long_f + sum(p_df$pctlead)
+  sum_eff_logr_f      = sum_eff_logr_f + sum(p_df$eff)
+  sum_long_accuracy_i = sum_long_accuracy_i + sum((p_df$pctlead > 0))
+  sum_accuracy_i      = sum_accuracy_i + sum(p_df$accurate)
+  sum_all_i           = sum_all_i      + length(p_df$accurate)
 }
 
-sum_eff_long_f
-sum_eff_logr_f
+print('Long-Only Effectiveness:')
+print(sum_eff_long_f)
 
-sum_accuracy_i
-sum_all_i
+print('Logistic-Regression Effectiveness:')
+print(sum_eff_logr_f)
 
+print('Long-Only Accuracy:')
+acc_long_f = 100.0 * sum_long_accuracy_i / sum_all_i
+print(acc_long_f)
+
+print('Logistic-Regression Accuracy:')
 acc_logr_f = 100.0 * sum_accuracy_i / sum_all_i
-acc_logr_f
+print(acc_logr_f)
 
 'bye'
 </code>
