@@ -22,11 +22,7 @@ train_test_logr = function(feat_df,yr_i,size_i){
   pred3_v  = (pred1_v & pred2_v)
   train_df = feat_df[ pred3_v , ]
   # I should build a model from train_df.
-  
-  tail(train_df)
-  
-  # I should generate labels from pctlead:
-  
+  # So, I should generate labels from pctlead:
   train_df$labels = (train_df$pctlead > median(train_df$pctlead))
   
   # Now I should learn:
@@ -38,17 +34,13 @@ train_test_logr = function(feat_df,yr_i,size_i){
   # If the probability is below 0.49 I consider that a bearish prediction.
   
   # I should load test data
-  yr_test     = yr_i
-  yr_test_v   = strtoi(format(as.Date(feat_df$cdate),"%Y"))
-  pred_test_v = (yr_test_v == yr_test)
-  test_df     = feat_df[pred_test_v , ]
-  tail(test_df)
-  
-  predictions_v = predict(mymodel,test_df, type='response')
-  test_df$prediction = predictions_v
-  test_df$eff = sign(test_df$prediction-0.5) * test_df$pctlead
-  tail(test_df)
-  
+  yr_test            = yr_i
+  yr_test_v          = strtoi(format(as.Date(feat_df$cdate),"%Y"))
+  pred_test_v        = (yr_test_v == yr_test)
+  test_df            = feat_df[pred_test_v , ]
+  test_df$prediction = predict(mymodel,test_df, type='response') 
+  test_df$eff        = sign(test_df$prediction-0.5) * test_df$pctlead
+  test_df$accurate   = (test_df$eff >= 0)
   # I should write predictions to CSV
   csv_s = paste('predictions',yr_test,'.csv',sep='')
   write.csv(test_df,csv_s, row.names=FALSE)
@@ -64,8 +56,7 @@ for (yr_i in c(2000:2016)){
   print(pf_s)
 }
 
-# I should report effectiveness:
-
+# I should report effectiveness, accuracy:
 sum_eff_logr_f = 0
 sum_eff_long_f = 0
 sum_accuracy_i = 0
@@ -75,15 +66,13 @@ for (yr_i in c(2000:2016)){
   p_df = read.csv(csv_s)
   sum_eff_long_f = sum_eff_long_f + sum(p_df$pctlead)
   sum_eff_logr_f = sum_eff_logr_f + sum(p_df$eff)
-  acc_yr_v = (sign(sign(0.5-p_df$prediction) * p_df$pctlead) == 1)
-  sum_accuracy_i = sum_accuracy_i + sum(acc_yr_v)
-  sum_all_i      = sum_all_i + length(p_df$pctlead)
+  sum_accuracy_i = sum_accuracy_i +    sum(p_df$accurate)
+  sum_all_i      = sum_all_i      + length(p_df$accurate)
 }
 
 sum_eff_long_f
 sum_eff_logr_f
 
-head(p_df)
 sum_accuracy_i
 sum_all_i
 
