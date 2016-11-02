@@ -1,32 +1,3 @@
-~/ml4us/public/class08/lab.txt
-
-useradd fx1 -m -s /bin/bash -G sudo
-passwd  fx1
-ssh fx1@localhost
-
-I should install ruby 2.3.1
-See class02 Lab, How to get started with Linux?
-
-Or follow these steps:
-sudo apt-get install ruby ruby-dev
-cd ~fx1
-git clone https://github.com/rbenv/rbenv.git      .rbenv
-git clone https://github.com/rbenv/ruby-build.git .rbenv/plugins/ruby-build
-echo 'export PATH="${HOME}/.rbenv/bin:$PATH"' >> ~/.bashrc
-echo 'eval "$(rbenv init -)"'                 >> ~/.bashrc
-bash
-
-rbenv install 2.3.1; rbenv global  2.3.1; gem install bundler
-
-git clone https://github.com/danbikle/ml4us.git
-cd ml4us
-bundle install
-
-
-wget http://chromedriver.storage.googleapis.com/2.25/chromedriver_linux64.zip
-unzip chromedriver_linux64.zip
-mv chromedriver ~/.rbenv/shims/chromedriver
-
 # spec/features/truefx_spec.rb
 # Demo:
 # bin/rspec spec/features/truefx_spec.rb
@@ -34,7 +5,7 @@ mv chromedriver ~/.rbenv/shims/chromedriver
 # I should have executable:
 # chromedriver
 # in my path.
-# I put it here: ~/bin/chromedriver
+# I put it here: ~/.rbenv/shims/chromedriver
 
 require 'rails_helper'
 
@@ -79,6 +50,3 @@ describe 'This should start Chrome', :js => true do
     sleep 1
   end
 end
-
-
-
