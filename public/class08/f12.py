@@ -26,5 +26,8 @@ for slope_i in slopes_a:
   f10_df[col_s] = slope_sr
 print(f10_df.tail())
 
+# I should write to CSV file to be used later:
+f10_df.to_csv('fx3/feat.csv', float_format='%4.4f', index=False)
 
 'bye'
+
