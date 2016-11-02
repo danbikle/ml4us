@@ -1,10 +1,10 @@
-# f10.py
+# f11.py
 
 # This script should read and aggregate some forex data.
 
 import pandas as pd
 
-f0_df = pd.read_csv('small.csv', names=['pair','ts0','bid','ask'])
+f0_df = pd.read_csv('fx3/EURUSD-2016-09.csv', names=['pair','ts0','bid','ask'])
 
 f1_df       =  f0_df.copy()[['pair','ts0']]
 f1_df['cp'] = (f0_df.bid+f0_df.ask)/2
@@ -17,6 +17,6 @@ f3_df = f2_df.groupby(['ts']).cp.mean()
 print(f3_df.head())
 print(f3_df.tail())
 
-f3_df.to_csv('eur.csv', float_format='%4.6f')
+f3_df.to_csv('fx3/eur.csv', float_format='%4.6f')
 
 'bye'
