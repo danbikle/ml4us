@@ -1,5 +1,12 @@
 ~/ml4us/public/class08/lab.txt
 
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install autoconf bison build-essential libssl-dev libyaml-dev    \
+libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3  sqlite3 curl \
+libgdbm-dev libsqlite3-dev gitk postgresql postgresql-server-dev-all aptitude \
+libpq-dev emacs wget openssh-server ruby ruby-dev libbz2-dev linux-headers-$(uname -r) r-base r-base-dev
+
 useradd fx1 -m -s /bin/bash -G sudo
 passwd  fx1
 ssh fx1@localhost
