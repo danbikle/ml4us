@@ -1,8 +1,19 @@
 %h2 Class08 Answer:
-%h2 UNDER CONSTRUCTION
+%h2 Install chromedriver in ~fx1/.rbenv/shims/
 
-%p Check back later.
+%p For me this was an easy lab. 
+%p I typed some shell commands:
 
+.syntax
+  %pre
+    %code
+      cd ~fx1
+      wget http://chromedriver.storage.googleapis.com/2.25/chromedriver_linux64.zip
+      unzip chromedriver_linux64.zip
+      mv chromedriver ~/.rbenv/shims/chromedriver
+      bash
+      which chromedriver
+      chromedriver --help
 %p
   %a(href='class08#setup')
     Class08 Lab
