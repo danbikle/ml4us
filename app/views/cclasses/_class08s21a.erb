@@ -1,0 +1,36 @@
+<code class='python'>
+# f13.py
+
+# This script should learn and test.
+
+import numpy  as np
+import pandas as pd
+
+train_start_i = 50
+train_end_i   = 5050
+test_start_i  = 5052
+test_end_i    = 6156
+f13_df        = pd.read_csv('fx3/feat.csv')
+data_a        = np.array(f13_df)[:,3:]
+xtrain_a      = data_a[train_start_i:train_end_i]
+xtest_a       = data_a[test_start_i:test_end_i  ]
+ytrain_sr     = f13_df.piplead[train_start_i:train_end_i]
+ytest_sr      = f13_df.piplead[test_start_i:test_end_i]
+class_train_a = (ytrain_sr > 0.0)
+
+# I should learn
+from sklearn import linear_model
+logr_model    = linear_model.LogisticRegression()
+logr_model.fit(xtrain_a, class_train_a)
+
+# I should predict
+predictions_a = logr_model.predict_proba(xtest_a)[:,1]
+
+# I should report
+rpt_df = pd.DataFrame({'piplead':ytest_sr, 'prediction':predictions_a.tolist()})
+rpt_df['eff'] = np.sign(rpt_df.prediction - 0.5) * rpt_df.piplead
+print('Gain (in "pips") is:')
+print(np.sum(rpt_df.eff))
+
+'bye'
+</code>
