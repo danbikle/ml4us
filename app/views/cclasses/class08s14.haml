@@ -1,5 +1,5 @@
 %h2 Class08 Answer:
-%h2 Install chromedriver in ~fx1/.rbenv/shims/
+%h2 Install chromedriver in /home/fx1/bin/
 
 %p For me this was an easy lab. 
 %p I typed some shell commands:
@@ -10,7 +10,9 @@
       cd ~fx1
       wget http://chromedriver.storage.googleapis.com/2.25/chromedriver_linux64.zip
       unzip chromedriver_linux64.zip
-      mv chromedriver ~/.rbenv/shims/chromedriver
+      mkdir -p        ~/bin/
+      mv chromedriver ~/bin/
+      echo 'export PATH="${HOME}/bin:$PATH"' >> ~fx1/.bashrc
       bash
       which chromedriver
       chromedriver --help
