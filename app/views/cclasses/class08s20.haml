@@ -1,7 +1,38 @@
 %h2 Class08 Answer:
-%h2 UNDER CONSTRUCTION
+%h2 Transform some data into features
 
-%p Check back later.
+%p I did this lab and it required some knowledge.
+%p I typed some shell commands:
+
+.syntax
+  %pre
+    %code
+      cd ~fx1/ml4us/Downloads/
+      unzip EURUSD-2016-09.zip
+      mkdir fx3
+      mv EURUSD-2016-09.csv fx3/eur.csv
+
+%p Next, I wrote a python script:
+
+.syntax
+  %pre
+    =render 'class08s20a'
+
+%p Then, I installed Anaconda into the fx1 account:
+
+.syntax
+  %pre
+    %code
+      wget https://repo.continuum.io/archive/Anaconda3-4.2.0-Linux-x86_64.sh
+      bash Anaconda3-4.2.0-Linux-x86_64.sh
+      echo 'export PATH="${HOME}/anaconda3/bin:$PATH"' >> ~fx1/.bashrc
+      bash
+
+%p Next, I ran the python script:
+
+.syntax
+  %pre
+    %code python f12.py
 
 %p
   %a(href='class08#setup')
