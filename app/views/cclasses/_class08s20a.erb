@@ -1,34 +1,24 @@
 <code class='python'>
-# f12.py
+# f11.py
 
-# This script should generate features from csv data.
+# This script should read and aggregate some forex data.
 
 import pandas as pd
 
-f10_df = pd.read_csv('fx3/eur.csv', names=['ts','cp'])
+f0_df = pd.read_csv('fx3/EURUSD-2016-09.csv', names=['pair','ts0','bid','ask'])
 
-slopes_a = [2,3,4,5,6,7,8,9]
+f1_df       =  f0_df.copy()[['pair','ts0']]
+f1_df['cp'] = (f0_df.bid+f0_df.ask)/2
+ts1_l       = [ts[:14] for ts in f1_df.ts0]
+ts2_sr      = pd.to_datetime(ts1_l, utc=True)
+f1_df['ts'] = [5*60*int(int(ts.strftime("%s"))/5/60) for ts in ts2_sr]
+f2_df       = f1_df.copy()[['ts','cp']]
+print(f2_df.tail())
+f3_df = f2_df.groupby(['ts']).cp.mean()
+print(f3_df.head())
+print(f3_df.tail())
 
-# I should compute dependent variable, piplead:
-f10_df['piplead'] = (10000.0*(f10_df.cp.shift(-1) - f10_df.cp) / f10_df.cp).fillna(0)
-print(f10_df.head())
-
-# I should compute mvgavg-slope for each slope_i
-
-# ref:
-# http://www.ml4.us/cclasses/class03pd41
-# http://pandas.pydata.org/pandas-docs/stable/computation.html#rolling-windows
-# http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.rolling.html#pandas.DataFrame.rolling
-
-for slope_i in slopes_a:
-  rollx          = f10_df.rolling(window=slope_i)
-  col_s          = 'slope'+str(slope_i)
-  slope_sr       = 10000.0 * (rollx.mean().cp - rollx.mean().cp.shift(1))/rollx.mean().cp
-  f10_df[col_s] = slope_sr
-print(f10_df.tail())
-
-# I should write to CSV file to be used later:
-f10_df.to_csv('fx3/feat.csv', float_format='%4.4f', index=False)
+f3_df.to_csv('fx3/eur.csv', float_format='%4.6f')
 
 'bye'
 </code>

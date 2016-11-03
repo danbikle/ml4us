@@ -10,7 +10,7 @@
       cd ~fx1/ml4us/Downloads/
       unzip EURUSD-2016-09.zip
       mkdir fx3
-      mv EURUSD-2016-09.csv fx3/eur.csv
+      mv EURUSD-2016-09.csv fx3/
 
 %p Next, I wrote a python script:
 
@@ -32,7 +32,21 @@
 
 .syntax
   %pre
+    %code python f11.py
+
+%p And, I ran another python script:
+
+.syntax
+  %pre
     %code python f12.py
+
+%p which is listed below:
+
+.syntax
+  %pre
+    =render 'class08s20b'
+
+%p At this point I had data which Logistic Regression could learn from.
 
 %p
   %a(href='class08#setup')
