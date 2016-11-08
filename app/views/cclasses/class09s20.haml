@@ -3,6 +3,16 @@
 
 %p This lab required some knowledge.
 
+%p I knew the price data I get from truefx.com is too fine-grained.
+
+%p Many of the observations are spaced microseconds apart.
+
+%p I wanted to have observations spaced 5 minutes apart.
+
+%p My intent was to learn price behavior for each pair for a variety of holding periods.
+
+%p From a trading perspective, the holding period which interested me the most is one hour.
+
 %p The main idea I implement here is that for each pair I should create groups of observations which are spaced 5 minutes apart.
 
 %p Then I should use groupby() in Pandas to find mean of price for each group of observations.
@@ -29,6 +39,27 @@
   %a(href='https://github.com/danbikle/fx411/blob/master/script/agg_zip.py' target='x')
     https://github.com/danbikle/fx411/blob/master/script/agg_zip.py
   
+%p I ran the above script.
+
+%p It needed about 5.5 hours to process 9.3 GB of compressed price data.
+
+%p The resulting aggregated data consumed only 54 MB of space.
+
+%p A list of the aggregated data is displayed below:
+
+.syntax
+  %pre
+    =render 'class09s20b'
+
+%p I used tail to look at the very last file.
+
+.syntax
+  %pre
+    =render 'class09s20c'
+
+%p I can see that the last observation has a timestamp of Tue Nov  1 00:55:00 PDT 2016.
+
+%p The mean-price for USDJPY at that 5 minute boundry was 104.818039.
 
 %p
   %a(href='class09#setup')
