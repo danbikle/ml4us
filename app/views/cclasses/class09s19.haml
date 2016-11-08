@@ -8,6 +8,7 @@
   %pre
     %code
       cd ~fx411/fx411/
+      echo 'export PATH="/home/fx411/fx411/bin":$PATH' >> ~fx411/.bashrc
       bin/rspec spec/features/truefx_spec.rb
 
 %p A chromedriver browser came to life and logged into truefx.com
