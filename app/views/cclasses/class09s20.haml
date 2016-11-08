@@ -1,4 +1,3 @@
-under constr
 %h2 Class09 Answer:
 %h2 Aggregate Data
 
@@ -6,12 +5,30 @@ under constr
 
 %p The main idea I implement here is that for each pair I should create groups of observations which are spaced 5 minutes apart.
 
-%p Then I use groupby() in Pandas to find mean of price for each group of observations.
+%p Then I should use groupby() in Pandas to find mean of price for each group of observations.
+
+%p I started this lab with a simple shell command:
+
+.syntax
+  %pre
+    %code.bash mkdir -p ~fx411/csv/
+
+%p Next I wrote the script listed below:
 
 .syntax
   %pre
     =render 'class09s20a'
 
+%p A copy of the above script should be in the git repo at this location:
+
+%p ~fx411/fx411/script/agg_zip.py
+
+%p Also I should be able to see it here:
+
+%p
+  %a(href='https://github.com/danbikle/fx411/blob/master/script/agg_zip.py' target='x')
+    https://github.com/danbikle/fx411/blob/master/script/agg_zip.py
+  
 
 %p
   %a(href='class09#setup')
