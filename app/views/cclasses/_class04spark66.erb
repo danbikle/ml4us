@@ -106,7 +106,7 @@ predictions_df.createOrReplaceTempView("tab")
 spark.sql("SELECT SUM(pctlead) eff_lo FROM tab").show
 
 // Effectiveness of negative predictions:
-spark.sql("SELECT -SUM(pctlead) eff_np FROM tab WHERE prediction<0").show
+spark.sql("SELECT -SUM(pctlead) eff_np FROM tab WHERE prediction&lt;0").show
 
 // Effectiveness of positive predictions:
 spark.sql("SELECT SUM(pctlead) eff_pp FROM tab WHERE prediction>0").show
@@ -115,13 +115,13 @@ spark.sql("SELECT SUM(pctlead) eff_pp FROM tab WHERE prediction>0").show
 spark.sql("SELECT COUNT(Date) tpc FROM tab WHERE prediction>0 AND pctlead>0").show
 
 // True Negative Count:
-spark.sql("SELECT COUNT(Date) tnc FROM tab WHERE prediction<0 AND pctlead<0").show
+spark.sql("SELECT COUNT(Date) tnc FROM tab WHERE prediction&lt;0 AND pctlead&lt;0").show
 
 // False Positive Count:
-spark.sql("SELECT COUNT(Date) fpc FROM tab WHERE prediction>0 AND pctlead<0").show
+spark.sql("SELECT COUNT(Date) fpc FROM tab WHERE prediction>0 AND pctlead&lt;0").show
 
 // False Negative Count:
-spark.sql("SELECT COUNT(Date) fnc FROM tab WHERE prediction<0 AND pctlead>0").show
+spark.sql("SELECT COUNT(Date) fnc FROM tab WHERE prediction&lt;0 AND pctlead>0").show
 
 // prediction report:
 // predictions_df.select("Date","Close","pctlead","label","prediction").show(255)

@@ -25,7 +25,7 @@ Type :help for more information.
 
 scala> 
 scala> val textFile = sc.textFile("README.md")
-textFile: org.apache.spark.rdd.RDD[String] = README.md MapPartitionsRDD[1] at textFile at <console>:24
+textFile: org.apache.spark.rdd.RDD[String] = README.md MapPartitionsRDD[1] at textFile at &lt;console>:24
 
 scala> 
 scala> textFile.count()
@@ -37,7 +37,7 @@ res1: String = # Apache Spark
 
 scala> 
 scala> val linesWithSpark = textFile.filter(line => line.contains("Spark"))
-linesWithSpark: org.apache.spark.rdd.RDD[String] = MapPartitionsRDD[2] at filter at <console>:26
+linesWithSpark: org.apache.spark.rdd.RDD[String] = MapPartitionsRDD[2] at filter at &lt;console>:26
 
 scala> 
 scala> textFile.filter(line => line.contains("Spark")).count()
@@ -57,14 +57,14 @@ res4: Int = 22
 
 scala> 
 scala> val wordCounts = textFile.flatMap(line => line.split(" ")).map(word => (word, 1)).reduceByKey((a, b) => a + b)
-wordCounts: org.apache.spark.rdd.RDD[(String, Int)] = ShuffledRDD[8] at reduceByKey at <console>:27
+wordCounts: org.apache.spark.rdd.RDD[(String, Int)] = ShuffledRDD[8] at reduceByKey at &lt;console>:27
 
 scala> 
 scala> wordCounts.collect()
-res5: Array[(String, Int)] = Array((package,1), (this,1), (Version"](http://spark.apache.org/docs/latest/building-spark.html#specifying-the-hadoop-version),1), (Because,1), (Python,2), (cluster.,1), (its,1), ([run,1), (general,2), (have,1), (pre-built,1), (YARN,,1), (locally,2), (changed,1), (locally.,1), (sc.parallelize(1,1), (only,1), (Configuration,1), (This,2), (basic,1), (first,1), (learning,,1), ([Eclipse](https://cwiki.apache.org/confluence/display/SPARK/Useful+Developer+Tools#UsefulDeveloperTools-Eclipse),1), (documentation,3), (graph,1), (Hive,2), (several,1), (["Specifying,1), ("yarn",1), (page](http://spark.apache.org/documentation.html),1), ([params]`.,1), ([project,2), (prefer,1), (SparkPi,2), (<http://spark.apache.org/>,1), (engine,1), (version,1), (file,1), (documentation...
+res5: Array[(String, Int)] = Array((package,1), (this,1), (Version"](http://spark.apache.org/docs/latest/building-spark.html#specifying-the-hadoop-version),1), (Because,1), (Python,2), (cluster.,1), (its,1), ([run,1), (general,2), (have,1), (pre-built,1), (YARN,,1), (locally,2), (changed,1), (locally.,1), (sc.parallelize(1,1), (only,1), (Configuration,1), (This,2), (basic,1), (first,1), (learning,,1), ([Eclipse](https://cwiki.apache.org/confluence/display/SPARK/Useful+Developer+Tools#UsefulDeveloperTools-Eclipse),1), (documentation,3), (graph,1), (Hive,2), (several,1), (["Specifying,1), ("yarn",1), (page](http://spark.apache.org/documentation.html),1), ([params]`.,1), ([project,2), (prefer,1), (SparkPi,2), (&lt;http://spark.apache.org/>,1), (engine,1), (version,1), (file,1), (documentation...
 scala> 
 scala> linesWithSpark.cache()
-res6: linesWithSpark.type = MapPartitionsRDD[2] at filter at <console>:26
+res6: linesWithSpark.type = MapPartitionsRDD[2] at filter at &lt;console>:26
 
 scala> 
 scala> linesWithSpark.count()

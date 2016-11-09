@@ -15,8 +15,8 @@ prices_a = np.array(prices_df)
 
 # I should get all rows where column-0 > '2016-07'
 pred1_a  = (prices_a[:,0] > '2016-07')
-# I should get all rows where column-0 < '2016-08'
-pred2_a  = (prices_a[:,0] < '2016-08')
+# I should get all rows where column-0 &lt; '2016-08'
+pred2_a  = (prices_a[:,0] &lt; '2016-08')
 
 # I should slice out july:
 july_a   = prices_a[pred1_a & pred2_a]
