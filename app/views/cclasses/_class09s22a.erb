@@ -58,7 +58,6 @@ for trainsize_i in range(9000, 109000, 2000):
       train_df      = p0_df[train_start_i:train_end_i]
       train_df.to_csv('/tmp/train_df.csv', float_format='%4.4f')
       test_df       = p0_df[test_start_i:test_end_i]
-      #test_end_i   -= jump_i
       logr_model    = linear_model.LogisticRegression()
       xtrain_a      = np.array(train_df)[:,3:]
       xtest_a       = np.array(test_df)[:,3:]
