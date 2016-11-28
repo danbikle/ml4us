@@ -1,0 +1,35 @@
+%h2 Class01 Answer:
+%h2 Install Anaconda Python on Linux
+
+%p I did this lab and it was easy.
+
+%p If you want to do this lab, you should check if Anaconda is already installed.
+
+%p This shell command tells me if Anaconda is installed:
+
+.syntax
+  %pre
+    %code.bash ls -la ~/anaconda3/
+
+%p If Anaconda is installed, I should see something like this:
+
+.syntax
+  %pre
+    =render 'class01ana3'
+
+%p If I want to uninstall Anaconda I issue a shell command:
+
+.syntax
+  %pre
+    %code.bash rm -rf ~/anaconda3/
+
+%p If I want to install Anaconda I issue some shell commands:
+
+.syntax
+  %pre
+    =render 'class01ana2'
+
+%p
+  %a(href='class01#ana')
+    Class01 Lab
+

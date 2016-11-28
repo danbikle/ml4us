@@ -1,0 +1,9 @@
+<code class='bash'>
+cd ~
+rm -f Anaconda3-4.2.0-Linux-x86_64.sh
+wget https://repo.continuum.io/archive/Anaconda3-4.2.0-Linux-x86_64.sh
+bash Anaconda3-4.2.0-Linux-x86_64.sh
+mv anaconda3/bin/curl anaconda3/bin/curl_ana
+echo 'export PATH=${HOME}/anaconda3/bin:$PATH' >> ~/.bashrc
+bash
+</code>
