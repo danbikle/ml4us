@@ -10,19 +10,14 @@
 %p From that perspective, some enhancements to mlcl2 are easy to see:
 
 %ul
-  %li In slice_train_test.py, randomize rows read from iris.csv
-  %li In slice_train_test.py, read all columns instead of just f0, f1
-  %li In slice_train_test.py, encode iris_type column as integers: 0,1,2
-  %li cp learn.py to learn_predict_linr.py
-  %li In learn_predict_linr.py, I should learn from all independent variables: f0, f2, f3, iris_type_i
-  %li In learn_predict_linr.py, I should predict immediately after the model is ready
-  %li cp learn_predict_linr.py learn_predict_logr.py
-  %li Enhance learn_predict_logr.py so it classifies iris_type_i
-  %li cp compare.py rpt_accuracy.py
-  %li Enhance rpt_accuracy.py so it reports accuracy of learn_predict_logr.py
-  %li Use 3 colors visualize iris_type_i in 2D scatter plots of f0, f1, f2, f3
-  %li cp -p slice_learn_predict.bash slice_learn_predict2.bash
-  %li Enhance slice_learn_predict2.bash to call above enhanced scripts
+  %li I should randomize rows read from iris.csv
+  %li I should read all columns instead of just f0, f1
+  %li I should encode iris_type column as integers: 0,1,2
+  %li I should learn from all available variables instead of just f0
+  %li I should predict immediately after the model is ready
+  %li I should try to predict iris_type instead of f1 (classification instead of regression)
+  %li I should report accuracy of classification
+  %li I should use 3 colors visualize iris_type in 2D scatter plots of f0, f1, f2, f3
   
 %p
   %a(href='class01#mlcl2')
