@@ -11,10 +11,12 @@
       sudo passwd hal
       ssh -AY hal@localhost
       git clone https://github.com/danbikle/spy611v2
-      wget https://s3.amazonaws.com/assets.heroku.com/heroku-client/heroku-client.tgz
-      tar zxf heroku-client.tgz
-      echo 'export PATH=${HOME}/heroku-client/bin:${PATH}' >> ~hal/.bashrc
-      export PATH=${HOME}/heroku-client/bin:${PATH}
+      wget https://cli-assets.heroku.com/branches/stable/heroku-linux-amd64.tar.gz
+      tar zxf heroku-linux-amd64.tar.gz
+      echo 'export PATH=${HOME}/heroku/bin:$PATH' >> ~hal/.bashrc
+      bash
+      heroku auth:login
+      heroku status
       heroku status
       cd ~hal/spy611v2
       heroku create halapp123
