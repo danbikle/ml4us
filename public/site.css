@@ -57,3 +57,9 @@ body li{
   background-color: #DDDDDD; }
 
 .rotate90img>img{margin: 122px; display:block; width: 900px; transform: rotate(90deg);}
+
+div.grey_corners {
+    border-radius: 15px;
+    padding-left:  11px;
+    background-color: #DDDDDD;
+}
