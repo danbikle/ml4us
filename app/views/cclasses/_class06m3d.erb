@@ -1,0 +1,41 @@
+<code class='python'>
+# load_iris_model.py
+# This script should should load a model from JSON and HDF5.
+# Then it should use the model to predict class of some iris data.
+# Ref:
+# http://machinelearningmastery.com/save-load-keras-deep-learning-models/
+# blog.fastforwardlabs.com/post/139921712388/hello-world-in-keras-or-scikit-learn-versusa
+# https://github.com/transcranial/keras-js#usage
+# Demo:
+# ./keras_theano.bash load_iris_model.py
+
+from keras.models import Sequential
+from keras.layers import Dense
+from keras.models import model_from_json
+import numpy as np
+
+# load json and create model
+json_file = open('iris_model.json', 'r')
+
+loaded_model_json = json_file.read()
+json_file.close()
+loaded_model = model_from_json(loaded_model_json)
+
+# load weights into new model
+loaded_model.load_weights("iris_model.hdf5")
+print("Loaded model from disk")
+
+# last row in iris.csv:
+# 5.9,3.0,5.1,1.8,virginica
+# virginica was encoded to [0,1,0] when I called learn_iris.py
+
+xtest_l = [[5.9,3.0,5.1,1.8]]
+xtest_a = np.array(xtest_l)
+
+# I should predict class of xtest_a:
+prediction = loaded_model.predict(xtest_a)
+print('prediction:')
+print(prediction)
+
+'bye'
+</code>
