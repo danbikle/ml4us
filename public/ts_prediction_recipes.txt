@@ -63,11 +63,19 @@ Steps:
   For a test_yr, Steps:
     - copy test_yr-observations (about 252) from feat_df into test_yr_df
     - Declare x_test to be test_yr_df.pctlag1
-    - Declare y_test to be test_yr_df.pctlead
     - copy train_i-years of observations before test_yr from feat_df into train_df
     - Declare x_train to be train_df.pctlag1
     - Declare y_train to be train_df.pctlead
     - Create a Linear Regression model
     - Use model to "fit" straight line to x_train and y_train
-    
+    - Use the straight line to predict pctlead for each x_test
+    - Copy test_yr_df and predicted pctlead into predictions_df
+  Reporting:
+    - Use predictions_df.prediction and predictions_df.pctlead to calculate:
+      - Accuracy (How often the sign of the prediction is True)
+      - Effectiveness:
+        - Average gain of "up"   predictions
+        - Average gain of "down" predictions
+      - Compare Accuracy and Effectiveness to Accuracy and Effectiveness of "Long-Only" model
+
     
