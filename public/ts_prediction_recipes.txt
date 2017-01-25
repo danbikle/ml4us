@@ -7,7 +7,7 @@ Main idea:
   - Use the line to predict future prices from future dates.
 
 Ingredients:
-  - A list of dates and prices (Yahoo might work)
+  - A list of dates and prices (Default: S&P500, Yahoo might work)
   - A start-date and end-date            (From end-user)
   - A prediction-date after the end-date (From end-user)
   
@@ -29,4 +29,26 @@ Steps:
   - Calculate integer which corresponds to prediction_date:
     Integer is number of days prediction_date is after start_date
   - Use the straight line to predict price from prediction_date-integer
+
+
+The next prediction recipe I describe is called: "Pct-Lead versus Pct-Lag Regression"
+
+Main idea:
+  - Build a scatter-plot of Pct-Lead versus Pct-Lag observations
+  - Fit a straight line through the scatter-plot
+  - Use the line to predict Pct-Lead from Pct-Lag
+  - Collect many predictions for many previous years
+  - Report on accuracy and effectiveness of the many predictions
+  - Decide if I should trust Pct-Lead-prediction for today
+
+Ingredients:
+  - A list of dates and prices (Default: S&P500, Yahoo might work)
+  - A list of years to test (Default: [2010,2011,2012,2013,2014,2015,2016,2017]) 
+  - Integer number of years to learn from for each test-year (Default: 25)
+
+Steps:
+  - Get list of dates and prices into prices1_df
+  - Get list of years to test 
+  - Get Integer number of years to learn from for each test-year
+
   
