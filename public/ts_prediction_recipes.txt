@@ -1,0 +1,32 @@
+ts_prediction_recipes.txt
+
+The first time series prediction recipe I describe is called: "Price versus Date Regression".
+
+Main idea:
+  - Fit a straight line through a time-series of prices.
+  - Use the line to predict future prices from future dates.
+
+Ingredients:
+  - A list of dates and prices (Yahoo might work)
+  - A start-date and end-date            (From end-user)
+  - A prediction-date after the end-date (From end-user)
+  
+Expected Result:
+  - One prediction of a price at prediction-date
+
+Steps:
+  - Get list of dates and prices into prices1_df  (Yahoo might work)
+  - Get start_date, end_date, and prediction_date (From end-user)
+  - Get list of dates and prices into prices2_df between start_date and end_date 
+  - Create list of integers from prices2_df-dates:
+    - 0 (or 1) might correspond to earliest date
+  - Declare that the list of integers to be "X"
+  - Declare that the corresponding prices by "y"
+  - Create a Linear Regression model from a suitable API:
+    - my favorite: Python sklearn.linear_model.LinearRegression
+    - R has glm()
+  - Use model to "fit" straight line to X and y data
+  - Calculate integer which corresponds to prediction_date:
+    Integer is number of days prediction_date is after start_date
+  - Use the straight line to predict price from prediction_date-integer
+  
