@@ -5,7 +5,7 @@
 # I should have executable:
 # chromedriver
 # in my path.
-# I put it here: ~/bin/chromedriver
+# I put it here: ~/fx411/bin/chromedriver
 
 require 'rails_helper'
 
@@ -18,29 +18,27 @@ describe 'This should start Chrome', :js => true do
     find(:xpath, "//a[@href='?page=logina']").click
     sleep 1
     within("#login-form") do
-      fill_in 'USERNAME', with: 'bosmith1990'
+      fill_in 'USERNAME', with: 'bobsmithIV'
       sleep 1
-      fill_in 'PASSWORD', with: 'java4PYTHON'
+      fill_in 'PASSWORD', with: 'eurosDOLLASy3n'
       sleep 1
       click_on 'Login'
       sleep 1
     end
-    #months_s_a = ['JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE','JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER']
-    months_s_a = ['SEPTEMBER']
-    #months_i_a = ['01','02','03','04','05','06','07','08','09','10','11','12']
-    months_i_a = ['09']
-    m_i        = -1 # I should use this to count months in the loop below.
-    #years_a    = [2010,2011,2012,2013,2014,2015,2016]
-    years_a    = [2016]
-    #pairs_a    = ['AUDUSD','EURUSD','GBPUSD','USDCAD','USDJPY']
-    pairs_a    = ['EURUSD','USDJPY']
-    for month_s in months_s_a do
-      m_i += 1
-      for yr_i in years_a do
-        for pair in pairs_a do
-          p "#{ahost}/dev/data/#{yr_i}/#{month_s}-#{yr_i}/#{pair}-#{yr_i}-#{months_i_a[m_i]}.zip"
-          visit     "/dev/data/#{yr_i}/#{month_s}-#{yr_i}/#{pair}-#{yr_i}-#{months_i_a[m_i]}.zip"
-          sleep 60
+    years_a    = [2010,2011,2012,2013,2014,2015,2016,2017]
+    months_s_a = ['JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE','JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER']
+    pairs_a    = ['AUDUSD','EURUSD','GBPUSD','USDCAD','USDJPY']
+    for yr_i       in years_a    do
+      for month_s  in months_s_a do
+        for pair_s in pairs_a    do
+          click_link('Downloads')
+          sleep 2
+          click_link(String(yr_i))
+          sleep 2
+          click_link(month_s.capitalize)
+          sleep 2
+          click_link(pair_s)
+          sleep 33
         end
       end
     end
