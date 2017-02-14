@@ -1,0 +1,32 @@
+<code class='bash'>
+The steps listed below are used to describe class KerasService.get() method.
+Refer to:
+https://github.com/danbikle/keras11
+
+- Get tkr from end-user
+- Get yr2predict, yrs2train, feature names from end-user
+- Get CSV data from yahoo
+- Copy Date and Close into a DF
+- Sort the DF by Date
+- Rename Close to Price
+- Generate dependent variable:
+  - pctlead (for regression predictions)
+  - updown (for classification predictions)
+- Generate price based features:
+  - pctlagX
+  - slopeX
+- Generate date based features:
+  - dow (Day of Week: 1,2,3,4,5)
+  - moy (Month of Year: 1,2,3,4,5,6,7,8,9,10,11,12)
+  - Scale them by dividing by 100
+- Copy the features into feat_df
+- Use yr2predict to copy one year of test data from feat_df into test_yr_df
+- Use yr2predict, yrs2train to copy many years of training data from feat_df into train_df
+- Create a model from Keras
+- Fit the model to train_df
+- Predict observations in test_yr_df
+- Calculate Accuracy of predictions of test_yr_df
+- Calculate Effectiveness of predictions of test_yr_df
+- Save predictions to DB
+- Report results to end-user
+</code>
