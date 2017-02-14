@@ -17,7 +17,7 @@
   %li Why use SQLAlchemy?
   
   
-%h2#setup Lab (Setup)
+%h2 Lab (Setup)
 
 %ul
   %li Download:
@@ -44,7 +44,7 @@
   %pre
     =render 'class10s1'
 
-%h2#setup Lab (Demo 1)
+%h2 Lab (Demo 1)
 %p Run the first demo with a simple shell command:
 
 .syntax
@@ -53,7 +53,9 @@
       cd ~/keras11
       python import_keras11.py
 
-%h2#setup Lab (Demo 2)
+%p Q: What does this lab do?
+
+%h2 Lab (Demo 2)
 %p Run the next demo with these shell commands:
 
 .syntax
@@ -72,8 +74,37 @@
       cd ~/keras11
       bash -x curlem.bash
 
-%h2 UNDER CONSTRUCTION...
+%p Q: What does this lab do?
 
-  
-    
+%h2 Lab (Demo 3)
+%p Run the next demo with these shell commands:
+
+.syntax
+  %pre
+    %code
+      cd ~/keras11
+      python import_keras12.py
+
+%p Q: What does this lab do?
+
+%h2 Lab (Demo 4)
+%p Run the next demo with these shell commands:
+
+.syntax
+  %pre
+    %code
+      cd ~/keras11
+      \./flask12.bash
+
+%p The above shell command will start an API server.  Let the server run and start another shell.
+
+%p Run Demo 4:
+
+.syntax
+  %pre
+    %code
+      cd ~/keras11
+      curl localhost:5012/nnmodel/IBM/2017/3/2/3?features=pctlag1,slope2,dow,moy
+
+%p Q: What does this lab do?
 
