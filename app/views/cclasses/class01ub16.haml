@@ -25,6 +25,25 @@
   %li R
   %li Node.js
 
+%p On my laptop I clicked on ub16jan.ova which brought up an import GUI.
+
+%p After I imported ub16jan.ova into VirtualBox on my laptop, I ran three shell commands:
+
+.syntax
+  %pre
+    %code.bash
+      sudo apt-get update
+      sudo apt-get upgrade
+      sudo apt-get shutdown -r now
+
+%p The last command rebooted the ub16jan instance for me.
+
+%p After 3 minutes, ub16jan offered me a login screen.
+
+%p At the password prompt for ann I typed in 'a'.
+
+%p A minute later I saw the Ubuntu 16 desktop screen inside a VirtualBox window.
+
 %p
   %a(href='class01#lab')
     Class01 Lab
