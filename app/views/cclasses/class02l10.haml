@@ -187,7 +187,7 @@
 
 %ul
   %li
-    Create File (Be careful of vi)
+    Create File (Be careful of vi):
     .syntax
       %pre
         %code.bash
@@ -196,9 +196,10 @@
           date > file2.txt
           cat thatFile file2.txt > file3.txt
           vi    file3.txt
-          emacs file3.txt
           nano  file3.txt
           gedit file3.txt
+          emacs file3.txt
+    vi and nano are 'terminal' editors; gedit and emacs are 'GUI' editors with nice mouse support.
           
   %li
     Copy File
