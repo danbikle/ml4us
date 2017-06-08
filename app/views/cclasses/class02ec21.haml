@@ -32,27 +32,40 @@
 %img(src='/class02/ec2_16-07-06.png')
 %hr/
 %img(src='/class02/ec2_16-07-28.png')
+%hr/
+%img(src='/class02/ec2_16-07-52.png')
+%hr/
+%img(src='/class02/ec2_16-08-18.png')
+%hr/
+%img(src='/class02/ec2_16-09-19.png')
+%hr/
+%img(src='/class02/ec2_16-09-47.png')
+%hr/
+%img(src='/class02/ec2_16-12-05.png')
+%hr/
+%p Note the chmod command in the instructions below:
+%img(src='/class02/ec2_16-13-01.png')
+%hr/
+%img(src='/class02/ec2_16-13-40.png')
+%hr/
+%p The screen below is missing a shell command:
 
+.syntax
+  %pre
+    %code.bash chmod 400 ~/.ssh/bikle10.pem
+%p I used ssh to connect to my new EC2 instance:
+%img(src='/class02/ec2_16-19-03.png')
 %hr/
 
-%ul
-  
-  %li I used ssh to connect to my new EC2 instance:
-  %li
-    .syntax
-      %pre
-        =render 'class02ec23'
-  %li I do the above step from home; the network in room-K1 blocks outbound ssh connections.
-  %li I terminated the EC2 instance because I did not need it anymore:
-  %li
-    .syntax
-      %pre
-        =render 'class02ec24'
-  %li
-    %img(src='/class02/ec2k.png')
-  %li
-    %img(src='/class02/ec2l.png')
-  
+%p I terminated the EC2 instance because I did not need it anymore:
+%hr/
+%img(src='/class02/ec2_16-22-53.png')
+%hr/
+%img(src='/class02/ec2_16-23-14.png')
+%hr/
+
+%p I did the above step from home; the school-network blocks outbound ssh connections.
+
   
 %p
   %a(href='class02#lab')
