@@ -5,58 +5,37 @@
 
 %p I clicked this link:
 %p
-  %a(href='https://us-west-2.console.aws.amazon.com/ec2/v2/home?region=us-west-2' target='x')
-    https://us-west-2.console.aws.amazon.com/ec2/v2/home?region=us-west-2
-%p AWS might ask me to login.
-%p I should see something like this:
-%img(src='/class02/class02aws1b.png')
+  %a(href='https://console.aws.amazon.com' target='x')
+    https://console.aws.amazon.com
+  
 
-%p Next, I clicked the blue-Launch-Instance button.
+%p AWS might ask me to login.
+
+%p I clicked the EC2 link.
+
+%p I should see something like this:
+%img(src='/class02/ec2_16-03-53.png')
+
+%p Next, I clicked the blue button.
 
 %p I saw something like this:
-%img(src='/class02/class02ec2b.png')
+%img(src='/class02/ec2_16-04-52.png')
+
+%p I interacted with a series of pages:
+
+%img(src='/class02/ec2_16-05-19.png')
+%hr/
+%img(src='/class02/ec2_16-06-04.png')
+%hr/
+%img(src='/class02/ec2_16-06-32.png')
+%hr/
+%img(src='/class02/ec2_16-07-06.png')
+%hr/
+%img(src='/class02/ec2_16-07-28.png')
+
+%hr/
 
 %ul
-  %li In the middle of the page, I found Ubuntu and clicked its blue button.
-  %li I saw something like this:
-  %li
-    %img(src='/class02/ec2c.png')
-  %li I clicked the blue-review-launch-button, I saw something like this:
-  %li
-    %img(src='/class02/ec2d.png')
-    
-  %li I clicked the blue-launch-button, I saw something like this:
-  %li
-    %img(src='/class02/ec2e.png')
-    
-  %li I clicked the create-key control, I saw something like this:
-  %li
-    %img(src='/class02/ec2f.png')
-    
-  %li I clicked the download button, I saw something like this:
-  %li
-    %img(src='/class02/ec2g.png')
-  %li I copied ml4uskey.pem to ~/.ssh/
-  %li
-    .syntax
-      %pre
-        %code.bash
-          cp -p ~/Downloads/ml4uskey.pem  ~/.ssh/
-          chmod 600 ~/.ssh/ml4uskey.pem
-  %li I clicked the blue-launch-button, I saw something like this:
-  %li
-    %img(src='/class02/ec2h.png')
-  %li I waited a few minutes then I clicked the view-instances button, I saw something like this:
-  %li
-    %img(src='/class02/ec2i.png')
-  %li I looked for the public IP-address, I saw something like this:
-  %li
-    %img(src='/class02/ec2j.png')
-  %li I added an entry to this file: ~/.ssh/config
-  %li
-    .syntax
-      %pre
-        =render 'class02ec22'
   
   %li I used ssh to connect to my new EC2 instance:
   %li
