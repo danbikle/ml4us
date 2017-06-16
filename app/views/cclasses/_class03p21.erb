@@ -24,7 +24,11 @@ print('I predict the price 70 days after the first price to be:')
 print(yhat_f)
 
 print('Using scalars, I predict the price 70 days after the first price to be:')
-print(str(1938.78 + 1.24198 * 70.0))
+m       = 1.24198003
+x       = 70
+b       = 1938.78278
+yhat2_f = m*x + b
+print(yhat2_f)
 
 'bye'
 </code>

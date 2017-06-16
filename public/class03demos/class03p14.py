@@ -12,7 +12,6 @@ http://www.stat.purdue.edu/~jennings/stat514/stat512notes/topic3.pdf
 
 import numpy  as np
 
-
 beta_l = [[1.93878278e+03], [1.24198003e+00]]
 
 # The first column of X-matrix is always 1:
@@ -24,7 +23,11 @@ print('I predict the price 70 days after the first price to be:')
 print(yhat_f)
 
 print('Using scalars, I predict the price 70 days after the first price to be:')
-print(str(1938.78 + 1.24198 * 70.0))
+m       = 1.24198003
+x       = 70
+b       = 1938.78278
+yhat2_f = m*x + b
+print(yhat2_f)
 
 'bye'
 
