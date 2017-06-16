@@ -1,19 +1,21 @@
 <code class='python'>
-# class03p15.py
+"""
+class03p16.py
 
-# This script should plot a fitted line on top of the 2016 prices
-# ref:
-# http://www.ml4.us/class03/pdf1.png
-# http://www.stat.purdue.edu/~jennings/stat514/stat512notes/topic3.pdf
+This script should plot a fitted line on top of the 2016 prices
+ref:
+http://www.ml4.us/class03/pdf1.png
+http://www.stat.purdue.edu/~jennings/stat514/stat512notes/topic3.pdf
+"""
 
 import pandas as pd
 import numpy  as np
 import matplotlib.pyplot as plt
 
-csvfile   = 'http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC'
-cp_df     = pd.read_csv(csvfile).sort_values(['Date'])
-cp2016_sr = (cp_df.Date > '2016') & (cp_df.Date &lt; '2017')
-cp2016_df = cp_df[['Date','Close']][cp2016_sr]
+csvfile   = 'http://spy611.com/csv/allpredictions.csv'
+cp_df     = pd.read_csv(csvfile).sort_values(['cdate'])
+cp2016_sr = (cp_df.cdate > '2016') & (cp_df.cdate &lt; '2017')
+cp2016_df = cp_df[['cdate','cp']][cp2016_sr]
 
 def colvec(arylst):
     # This should help me create column vectors from arrays or lists:
@@ -23,7 +25,7 @@ x_a      = colvec(range(len(cp2016_df)))
 ones_l   = [1]*len(cp2016_df)
 ones_a   = colvec(ones_l)
 xvals_a  = np.hstack((ones_a,x_a))
-yvals_a  = colvec(cp2016_df.Close)
+yvals_a  = colvec(cp2016_df.cp)
 middle_a = np.linalg.pinv(np.matmul(xvals_a.T,xvals_a))
 rhs_a    = np.matmul(xvals_a.T,yvals_a)
 beta_a   = np.matmul(middle_a,rhs_a)
@@ -32,8 +34,8 @@ yhat_a   = np.matmul(x_in_a,beta_a)
 cp2016_df['yhat'] = yhat_a
 
 # To make a better plot I should convert X-values from integers to series of strings:
-cpdate2016_df = cp2016_df.set_index(['Date'])
-# I should plot Close (closing price), and fitted line:
+cpdate2016_df = cp2016_df.set_index(['cdate'])
+# I should plot cp (closing price), and fitted line:
 cpdate2016_df.plot.line(title="GSPC 2016")
 plt.show()
 
