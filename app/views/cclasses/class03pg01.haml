@@ -1,11 +1,30 @@
 %h2 Class03 Answer
 %h2 Use apt-get to install Postgres on Ubuntu 16.04
 
-%p I did this lab and it was easy:
+%p I did this lab in the ann account of my Ubuntu 16.04 host and it was easy.
+%p (Remember that class01 had a lab to install Ubuntu 16.04 on your laptop).
 
 .syntax
   %pre
     =render 'class03pg01a'
+
+%p The psql shell command above, gave me a psql prompt.
+%p I typed these Postgres commands at the psql prompt:
+
+.syntax
+  %pre
+    =render 'class03pg01b'
+
+%p Next, I remembered to exit from the postgres linux account by typing the shell command: exit
+
+%p Then, I wrote a shell script to 'wrap' the psql command for the ann account:
+
+.syntax
+  %pre
+    =render 'class03pg01c'
+
+%p I placed the above script in ~ann/bin/psql.bash
+
 %p
   %a(href='class03#lab')
     Class03 Lab
