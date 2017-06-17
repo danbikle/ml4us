@@ -1,22 +1,22 @@
 <code class='bash'>
-dan@pavlap:~/ml4us/public $ 
-dan@pavlap:~/ml4us/public $ ./psqlmad -af j.sql
-SELECT max(closep)     FROM
-  (SELECT cdate,closep FROM prices WHERE cdate > (SELECT MAX(cdate)-10 FROM prices)) iv;
-     max     
--------------
- 2190.149902
+ann=# 
+ann=# SELECT max(closep)     FROM
+ann-#   (SELECT cdate,closep FROM prices WHERE cdate > (SELECT MAX(cdate)-10 FROM prices)) iv;
+    max     
+------------
+ 155.179993
 (1 row)
 
-DROP   TABLE IF EXISTS prices2;
+ann=# DROP   TABLE IF EXISTS prices2;
+NOTICE:  table "prices2" does not exist, skipping
 DROP TABLE
-CREATE TABLE prices2 AS SELECT cdate,openp,closep FROM prices WHERE cdate > '2016-08-08';
-SELECT 11
-DROP   TABLE IF EXISTS prices3;
+ann=# CREATE TABLE prices2 AS SELECT cdate,openp,closep FROM prices WHERE cdate > '2016-08-08';
+SELECT 215
+ann=# DROP   TABLE IF EXISTS prices3;
+NOTICE:  table "prices3" does not exist, skipping
 DROP TABLE
-CREATE TABLE prices3 AS SELECT cdate,openp,closep, closep - openp AS diff FROM prices2;
-SELECT 11
-dan@pavlap:~/ml4us/public $ 
-dan@pavlap:~/ml4us/public $ 
-dan@pavlap:~/ml4us/public $ 
+ann=# CREATE TABLE prices3 AS SELECT cdate,openp,closep, closep - openp AS diff FROM prices2;
+SELECT 215
+ann=# 
+ann=#
 </code>
