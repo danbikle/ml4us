@@ -1,16 +1,18 @@
 <code class='python'>
-# class03pd21.py
+"""
+class03pd21.py
 
-# This script should mimic the SQL listed below:
+This script should mimic the SQL listed below:
 
-# SELECT max(closep)     FROM
-#   (SELECT cdate,closep FROM prices WHERE cdate > (SELECT MAX(cdate)-10 FROM prices)) iv;
-# 
-# DROP   TABLE IF EXISTS prices2;
-# CREATE TABLE prices2 AS SELECT cdate,openp,closep FROM prices WHERE cdate > '2016-08-08';
-# 
-# DROP   TABLE IF EXISTS prices3;
-# CREATE TABLE prices3 AS SELECT cdate,openp,closep, closep - openp AS diff FROM prices2;
+SELECT max(closep)     FROM
+  (SELECT cdate,closep FROM prices WHERE cdate > (SELECT MAX(cdate)-10 FROM prices)) iv;
+
+DROP   TABLE IF EXISTS prices2;
+CREATE TABLE prices2 AS SELECT cdate,openp,closep FROM prices WHERE cdate > '2016-08-08';
+
+DROP   TABLE IF EXISTS prices3;
+CREATE TABLE prices3 AS SELECT cdate,openp,closep, closep - openp AS diff FROM prices2;
+"""
 
 # SQL lacks the ability to get data from the web.
 # Pandas can get data from the web:
@@ -18,8 +20,8 @@
 import pandas as pd
 from datetime import datetime, timedelta
 
-prices_df = pd.read_csv('http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC')
-prices_df.columns = ['cdate_s','openp','highp','lowp','closep','volume','adjp']
+prices_df         = pd.read_csv('http://ml4.us/csv/ibm.csv')
+prices_df.columns = ['cdate_s', 'openp', 'highp', 'lowp', 'closep', 'adjp', 'volume']
 
 # Mimic
 # SELECT max(closep)     FROM
