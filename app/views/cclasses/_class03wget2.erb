@@ -1,25 +1,29 @@
 <code class='bash'>
 dan@h79:~/ml4/public/class03demos $ ./wgetibm.bash 
---2017-06-16 17:27:46--  http://ml4.us/csv/ibm.csv
+--2017-06-16 19:25:40--  http://ml4.us/csv/ibm.csv
 Resolving ml4.us (ml4.us)... 184.168.221.28
+Connecting to ml4.us (ml4.us)|184.168.221.28|:80... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: /csv/ibm.csv [following]
+--2017-06-16 19:25:40--  http://ml4.us/csv/ibm.csv
 Connecting to ml4.us (ml4.us)|184.168.221.28|:80... connected.
 HTTP request sent, awaiting response... 301 Moved Permanently
 Location: http://ml4.herokuapp.com/csv/ibm.csv [following]
---2017-06-16 17:27:46--  http://ml4.herokuapp.com/csv/ibm.csv
+--2017-06-16 19:25:40--  http://ml4.herokuapp.com/csv/ibm.csv
 Resolving ml4.herokuapp.com (ml4.herokuapp.com)... 54.243.158.73
 Connecting to ml4.herokuapp.com (ml4.herokuapp.com)|54.243.158.73|:80... connected.
 HTTP request sent, awaiting response... 200 OK
 Length: 957716 (935K) [text/csv]
 Saving to: ‘ibm.csv’
 
-ibm.csv             100%[===================>] 935.27K  1.78MB/s    in 0.5s    
+ibm.csv             100%[===================>] 935.27K  1.83MB/s    in 0.5s    
 
-2017-06-16 17:27:47 (1.78 MB/s) - ‘ibm.csv’ saved [957716/957716]
+2017-06-16 19:25:41 (1.83 MB/s) - ‘ibm.csv’ saved [957716/957716]
 
 DROP TABLE IF EXISTS prices;
 DROP TABLE
 CREATE TABLE prices(
-cdate   varchar
+cdate   date
 ,openp  numeric
 ,highp  numeric
 ,lowp   numeric
