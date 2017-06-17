@@ -1,2 +1,34 @@
 <code class='bash'>
+ann@ub16feb:~/ml4us/public/class03demos$ psql.bash
+psql (9.5.7)
+Type "help" for help.
+
+ann=# SELECT * FROM prices WHERE cdate = (SELECT MAX(cdate) FROM prices);
+   cdate    |   openp    |   highp    |    lowp    |   closep   |    adjp    | volume  
+------------+------------+------------+------------+------------+------------+---------
+ 2017-06-15 | 153.289993 | 154.690002 | 153.289993 | 154.220001 | 154.220001 | 4651700
+(1 row)
+
+ann=# SELECT cdate,closep FROM prices WHERE cdate = (SELECT MAX(cdate)-1 FROM prices);
+   cdate    |   closep   
+------------+------------
+ 2017-06-14 | 153.809998
+(1 row)
+
+ann=# 
+ann=# SELECT cdate,closep FROM prices WHERE cdate > (SELECT MAX(cdate)-10 FROM prices);
+   cdate    |   closep   
+------------+------------
+ 2017-06-06 | 152.369995
+ 2017-06-07 | 150.979996
+ 2017-06-08 | 152.100006
+ 2017-06-09 | 154.100006
+ 2017-06-12 | 155.179993
+ 2017-06-13 | 154.250000
+ 2017-06-14 | 153.809998
+ 2017-06-15 | 154.220001
+(8 rows)
+
+ann=# 
+ann=#
 </code>
