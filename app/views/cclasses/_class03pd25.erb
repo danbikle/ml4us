@@ -1,43 +1,51 @@
 <code class='sql'>
-dan@pavlap:~/ml4us/public $ 
-dan@pavlap:~/ml4us/public $ ./psqlmad -af j.sql
--- Copy rows from table to table:
-INSERT INTO prices3
-SELECT cdate,openp,closep, closep - openp AS diff FROM prices
-WHERE cdate = '2016-08-01';
-INSERT 0 1
--- Copy rows from table to table2 where rows not in table2 already:
-INSERT INTO prices3
-SELECT cdate,openp,closep, closep - openp AS diff FROM prices
-WHERE  cdate BETWEEN '2016-08-01' AND '2016-08-31'
-AND    cdate NOT IN (SELECT cdate FROM prices3);
-INSERT 0 5
--- Update all rows of a column:
-UPDATE prices3 SET diff = 0;
-UPDATE 17
--- rpt:
-SELECT * FROM prices3;
-   cdate    |    openp    |   closep    | diff 
-------------+-------------+-------------+------
- 2016-08-23 | 2187.810059 | 2186.899902 |    0
- 2016-08-22 | 2181.580078 | 2182.639893 |    0
- 2016-08-19 |  2184.23999 | 2183.870117 |    0
- 2016-08-18 | 2181.899902 |  2187.02002 |    0
- 2016-08-17 | 2177.840088 | 2182.219971 |    0
- 2016-08-16 |  2186.23999 | 2178.149902 |    0
- 2016-08-15 | 2186.080078 | 2190.149902 |    0
- 2016-08-12 |  2183.73999 | 2184.050049 |    0
- 2016-08-11 | 2177.969971 | 2185.790039 |    0
- 2016-08-10 | 2182.810059 |  2175.48999 |    0
- 2016-08-09 |  2182.23999 |  2181.73999 |    0
- 2016-08-01 | 2173.149902 | 2170.840088 |    0
- 2016-08-08 |  2183.76001 | 2180.889893 |    0
- 2016-08-05 | 2168.790039 | 2182.870117 |    0
- 2016-08-04 |  2163.51001 |     2164.25 |    0
- 2016-08-03 | 2156.810059 | 2163.790039 |    0
- 2016-08-02 | 2169.939941 | 2157.030029 |    0
-(17 rows)
 
-dan@pavlap:~/ml4us/public $ 
-dan@pavlap:~/ml4us/public $ 
+ann=# 
+ann=# INSERT INTO prices3
+ann-# SELECT cdate,openp,closep, closep - openp AS diff FROM prices
+ann-# WHERE cdate = '2016-08-01';
+INSERT 0 1
+ann=# 
+ann=# INSERT INTO prices3
+ann-# SELECT cdate,openp,closep, closep - openp AS diff FROM prices
+ann-# WHERE  cdate BETWEEN '2016-08-01' AND '2016-08-31'
+ann-# AND    cdate NOT IN (SELECT cdate FROM prices3);
+INSERT 0 5
+ann=# 
+ann=# UPDATE prices3 SET diff = 0;
+UPDATE 221
+ann=#
+ann=# -- The above NOT IN helps me prevent insert of duplicates:
+
+
+ann=# SELECT * FROM prices3 WHERE cdate BETWEEN '2016-08-01' AND '2016-09-01' ORDER BY cdate;
+   cdate    |   openp    |   closep   | diff 
+------------+------------+------------+------
+ 2016-08-01 | 155.089142 | 161.449997 |    0
+ 2016-08-02 | 155.687683 | 160.580002 |    0
+ 2016-08-03 | 154.587158 | 160.669998 |    0
+ 2016-08-04 | 155.291885 | 161.550003 |    0
+ 2016-08-05 | 156.392410 | 163.500000 |    0
+ 2016-08-08 | 158.453949 | 162.039993 |    0
+ 2016-08-09 | 157.957336 | 161.770004 |    0
+ 2016-08-10 | 157.928146 | 162.080002 |    0
+ 2016-08-11 | 157.986557 | 163.529999 |    0
+ 2016-08-12 | 158.901871 | 161.949997 |    0
+ 2016-08-15 | 158.132614 | 161.880005 |    0
+ 2016-08-16 | 156.876511 | 160.699997 |    0
+ 2016-08-17 | 156.740189 | 160.440002 |    0
+ 2016-08-18 | 156.662292 | 161.360001 |    0
+ 2016-08-19 | 156.613617 | 160.039993 |    0
+ 2016-08-22 | 155.795685 | 160.000000 |    0
+ 2016-08-23 | 156.117004 | 160.259995 |    0
+ 2016-08-24 | 155.688583 | 159.050003 |    0
+ 2016-08-25 | 154.821960 | 158.630005 |    0
+ 2016-08-26 | 154.705109 | 158.320007 |    0
+ 2016-08-29 | 154.656433 | 159.720001 |    0
+ 2016-08-30 | 155.561996 | 159.399994 |    0
+ 2016-08-31 | 155.464615 | 158.880005 |    0
+ 2016-09-01 | 154.159836 | 159.539993 |    0
+(24 rows)
+
+ann=# 
 </code>
