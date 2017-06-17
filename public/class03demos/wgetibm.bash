@@ -12,7 +12,7 @@ rm -f ibm.csv
 DROP TABLE IF EXISTS prices;
 
 CREATE TABLE prices(
-cdate   varchar
+cdate   date
 ,openp  numeric
 ,highp  numeric
 ,lowp   numeric
