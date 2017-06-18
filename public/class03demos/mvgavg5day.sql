@@ -1,0 +1,10 @@
+CREATE TABLE prices5 AS 
+SELECT
+cdate
+,closep
+,AVG(closep)OVER(ORDER BY cdate ROWS BETWEEN 4 PRECEDING AND CURRENT ROW) mvgavg5day
+FROM prices
+WHERE cdate > '2016-08-01'
+ORDER BY cdate;
+
+SELECT * FROM prices5 WHERE cdate BETWEEN '2016-08-01' AND '2016-08-31' ORDER BY cdate;
