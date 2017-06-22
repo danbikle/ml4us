@@ -7,14 +7,15 @@
   %pre
     %code.bash
       cd ~/Downloads/
-      wget http://d3kbcqa49mib13.cloudfront.net/spark-2.0.0-bin-hadoop2.7.tgz
+      rm -f spark-2.1.1-bin-hadoop2.7.tgz
+      wget https://d3kbcqa49mib13.cloudfront.net/spark-2.1.1-bin-hadoop2.7.tgz
 %p After the download, I ran some shell commands:
 .syntax
   %pre
     %code.bash
       cd ~
-      tar zxf ~/Downloads/spark-2.0.0-bin-hadoop2.7.tgz
-      ln -s spark-2.0.0-bin-hadoop2.7 spark
+      tar xf ~/Downloads/spark-2.1.1-bin-hadoop2.7.tgz
+      ln -s spark-2.1.1-bin-hadoop2.7 spark
       echo 'export PATH=${HOME}/spark/bin:$PATH' >> ~/.bashrc
       bash
       
