@@ -14,15 +14,15 @@ import org.apache.spark.ml.classification.LogisticRegression
 import org.apache.spark.ml.linalg.{Vector, Vectors}
 import org.apache.spark.ml.param.ParamMap
 import org.apache.spark.sql.Row
-import org.apache.spark.sql.functions._
+import sys.process._
 
 // I should get prices:
-import sys.process._
-"/usr/bin/curl -o /tmp/gspc.csv http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC"!
+"/usr/bin/curl -L ml4.us/csv/GSPC.csv -o /tmp/gspc.csv"!
 
 val sqlContext = new SQLContext(sc)
-
+  
 val dp10df = sqlContext.read.format("com.databricks.spark.csv").option("header","true").option("inferSchema","true").load("/tmp/gspc.csv")
+
 
 dp10df.createOrReplaceTempView("tab")
 
@@ -66,7 +66,7 @@ val dp14df=spark.sql(sqls);dp14df.createOrReplaceTempView("tab")
 
 // For Class Boundry, I should get avg of pctlead over training period.
 
-val training_period = " WHERE Date BETWEEN'1986-01-01'AND'2016-01-01' "
+val training_period = " WHERE Date BETWEEN'1986-01-01'AND'2015-12-31' "
 
 var sqls = "SELECT AVG(pctlead) FROM tab"++training_period
 
@@ -125,10 +125,10 @@ spark.sql("SELECT SUM(pctlead) eff_pp FROM tab WHERE prediction = 1.0").show
 spark.sql("SELECT COUNT(Date) tpc FROM tab WHERE prediction=1.0 AND pctlead>0").show
 
 // True Negative Count:
-spark.sql("SELECT COUNT(Date) tnc FROM tab WHERE prediction=0.0 AND pctlead&lt;0").show
+spark.sql("SELECT COUNT(Date) tnc FROM tab WHERE prediction=0.0 AND pctlead<0").show
 
 // False Positive Count:
-spark.sql("SELECT COUNT(Date) fpc FROM tab WHERE prediction=1.0 AND pctlead&lt;0").show
+spark.sql("SELECT COUNT(Date) fpc FROM tab WHERE prediction=1.0 AND pctlead<0").show
 
 // False Negative Count:
 spark.sql("SELECT COUNT(Date) fnc FROM tab WHERE prediction=0.0 AND pctlead>0").show
@@ -142,4 +142,5 @@ val eff = udf((pctlead:Float,prediction:Double)=> {if (prediction==1.0) pctlead 
 val p2df = predictions_df.withColumn("effectiveness",eff(col("pctlead"),col("prediction")))
 p2df.select("Date","Close","pctlead","effectiveness","label","prediction").show(255)
 
+// UNDER CONSTRUCTION
 </code>
