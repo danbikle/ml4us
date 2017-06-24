@@ -14,14 +14,15 @@ import org.apache.spark.ml.classification.LogisticRegression
 import org.apache.spark.ml.linalg.{Vector, Vectors}
 import org.apache.spark.ml.param.ParamMap
 import org.apache.spark.sql.Row
+import sys.process._
 
 // I should get prices:
-import sys.process._
-"/usr/bin/curl -o /tmp/gspc.csv http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC"!
+"/usr/bin/curl -L ml4.us/csv/GSPC.csv -o /tmp/gspc.csv"!
 
 val sqlContext = new SQLContext(sc)
-
+  
 val dp10df = sqlContext.read.format("com.databricks.spark.csv").option("header","true").option("inferSchema","true").load("/tmp/gspc.csv")
+
 
 dp10df.createOrReplaceTempView("tab")
 
