@@ -14,15 +14,15 @@ import org.apache.spark.ml.classification.LogisticRegression
 import org.apache.spark.ml.linalg.{Vector, Vectors}
 import org.apache.spark.ml.param.ParamMap
 import org.apache.spark.sql.Row
-import org.apache.spark.sql.functions._
+import sys.process._
 
 // I should get prices:
-import sys.process._
-"/usr/bin/curl -o /tmp/gspc.csv http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC"!
+"/usr/bin/curl -L ml4.us/csv/GSPC.csv -o /tmp/gspc.csv"!
 
 val sqlContext = new SQLContext(sc)
-
+  
 val dp10df = sqlContext.read.format("com.databricks.spark.csv").option("header","true").option("inferSchema","true").load("/tmp/gspc.csv")
+
 
 dp10df.createOrReplaceTempView("tab")
 
@@ -66,7 +66,7 @@ val dp14df=spark.sql(sqls);dp14df.createOrReplaceTempView("tab")
 
 // For Class Boundry, I should get avg of pctlead over training period.
 
-val training_period = " WHERE Date BETWEEN'1986-01-01'AND'2016-01-01' "
+val training_period = " WHERE Date BETWEEN'1986-01-01'AND'2016-12-31' "
 
 var sqls = "SELECT AVG(pctlead) FROM tab"++training_period
 
