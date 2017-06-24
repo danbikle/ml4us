@@ -6,18 +6,13 @@ The two points which interest me are the first trading day in 2016 and the most 
 mkdir -p ~/tmp/c3
 cd       ~/tmp/c3
 
-I should get prices from yahoo:
+I should get prices from ml4.us:
 
-TKRH='%5EGSPC'
-TKR='GSPC'
-rm -f ${TKR}.csv
+curl -L ml4.us/csv/GSPC.csv > /tmp/GSPC.csv
 
-wget --output-document=/tmp/${TKR}.csv http://ichart.finance.yahoo.com/table.csv?s=${TKRH}
-echo 'cdate,cp'                                           > ${TKR}2.csv
-grep -v Date /tmp/${TKR}.csv|awk -F, '{print $1 "," $5}' >> ${TKR}2.csv
+echo 'cdate,cp'                                         > GSPC2.csv
+grep -v Date /tmp/GSPC.csv|awk -F, '{print $1 "," $5}' >> GSPC2.csv
 
 I should plot all prices from 2016.
-
-
 
 </code>
