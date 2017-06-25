@@ -1,11 +1,13 @@
-# class03np15.py
+"""
+class03np15.py
 
-# This script should slice and dice
+This script should slice and dice
+"""
 
 import pandas as pd
 import numpy  as np
 
-prices_df = pd.read_csv('http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC')
+prices_df = pd.read_csv('http://ml4.us/csv/GSPC.csv')
 
 # I should do it the numpy way:
 prices_a = np.array(prices_df)
