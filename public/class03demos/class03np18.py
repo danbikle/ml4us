@@ -1,12 +1,14 @@
-# class03np18.py
+"""
+class03np18.py
 
-# This script should compute columns pctlag1 and pctlead from closep.
+This script should compute columns pctlag1 and pctlead from closep.
+"""
 
 import pandas as pd
 import numpy  as np
 
-prices_df = pd.read_csv('http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC')
-prices_df.columns = ['cdate_s','openp','highp','lowp','closep','volume','adjp']
+prices_df = pd.read_csv('http://ml4.us/csv/GSPC.csv')
+prices_df.columns = ['cdate_s','openp','highp','lowp','closep','adjp','volume']
 
 # I should get 2016 July and two columns.
 # I should do it the numpy way:
