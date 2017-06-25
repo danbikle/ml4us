@@ -6,6 +6,7 @@
 -- This script should Download S&amp;P 500 prices from Yahoo, load them into table called prices.
 
 -- Demo:
+-- curl -L ml4.us/csv/GSPC.csv > /tmp/gspc.csv
 -- ~ann/madlib_demos/psqlmad -af fillprices.sql
 
 DROP   TABLE IF EXISTS prices;
@@ -16,8 +17,8 @@ cdate   date
 ,highp  float
 ,lowp   float
 ,closep float
-,volume float
 ,adjp   float
+,volume float
 );
 
 COPY prices 
@@ -27,8 +28,8 @@ cdate
 ,highp  
 ,lowp   
 ,closep 
-,volume 
 ,adjp   
+,volume 
 )
 FROM '/tmp/gspc.csv' WITH CSV HEADER;
 </code>

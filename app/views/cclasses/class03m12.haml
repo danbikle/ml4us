@@ -7,7 +7,7 @@
   %pre
     %code.bash
       cd ~
-      curl http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC > /tmp/gspc.csv
+      curl -L ml4.us/csv/GSPC.csv > /tmp/gspc.csv
 
 %p Next, I wrote a SQL script:
 .syntax
@@ -29,5 +29,5 @@
 
 %hr/
 %p
-  %a(href='class03#lab')
+  %a(href='class03#madlib')
     Class03 Lab
