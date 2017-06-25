@@ -1,14 +1,20 @@
 <code class='bash'>
-# psy10.py
+"""
+psy10.py
 
-# psycopg2 demo
-# ref:
-# http://initd.org/psycopg/docs/usage.html
+psycopg2 demo
+ref:
+http://initd.org/psycopg/docs/usage.html
+
+if ModuleNotFoundError,
+Useful shell syntax:
+conda install psycopg2
+"""
 
 import psycopg2
 
 # Connect to an existing database
-conn = psycopg2.connect("dbname=madlib password=madlib user=madlib host=127.0.0.1")
+conn = psycopg2.connect("dbname=ann password=ann user=ann host=127.0.0.1")
 # Open a cursor to perform database operations
 cur = conn.cursor()
 
