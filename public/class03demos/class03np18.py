@@ -31,12 +31,12 @@ elem0     = cp_a[:1]
 # last cp:
 elem_last = cp_a[-1:]
 # duplicate elem_last at the end:
-lag1_a    = np.vstack((cp_a , elem_last))
+lead_a    = np.vstack((cp_a , elem_last))
 # duplicate elem0 at the start:
-lead_a    = np.vstack((elem0, cp_a     ))
+lag1_a    = np.vstack((elem0, cp_a     ))
 # Easy calculations:
-pctlag1   = 100 * ( cp_a - lag1_a[1:] ) / lag1_a[1:] 
-pctlead   = 100 * ( lead_a[:-1] - cp_a) / cp_a
+pctlag1   = 100 * ( cp_a - lag1_a[:-1] ) / lag1_a[:-1] 
+pctlead   = 100 * ( lead_a[1:] - cp_a) / cp_a
 # I should do what the Pandas script did:
 s1_a      = np.hstack((s1_a,pctlag1))
 s1_a      = np.hstack((s1_a,pctlead))
