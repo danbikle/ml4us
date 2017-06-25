@@ -21,12 +21,5 @@ s2_df = prices_df.iloc[5:11][['cdate_s','closep']]
 print(s2_df)
 # s1_df and s2_df should have same data.
 
-# I should do it the numpy way:
-prices_a = np.array(prices_df)
-s1_a = prices_a[5:11,[0,4]]
-print(s1_a)
-# Numpy is more constrained.
-# I should specify rows first, columns second.
-
 'bye'
 </code>
