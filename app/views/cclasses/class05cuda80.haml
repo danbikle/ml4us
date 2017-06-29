@@ -1,6 +1,8 @@
 %h2 Class05 Answer:
 %h2 Install Nvidia CUDA v8.0 Software
 
+%p Why do we want CUDA v8.0 ?
+
 %p I want to install Nvidia CUDA v8.0 Software because TensorFlow r1.2 asks for that.
 
 %p As of 2017-06-29, TensorFlow shows these instructions:
@@ -17,5 +19,16 @@
 %p I saw this:
 
 %img(src='/class05/cuda8a.png')
+
+%p In the above page I completed the pre-installation actions:
+
+.syntax
+  %pre
+    %code
+      lspci | grep -i nvidia
+      uname -m && cat /etc/*release
+      gcc --version
+      sudo apt-get install linux-headers-$(uname -r)
+      
 %hr/
 
