@@ -1,0 +1,21 @@
+%h2 Class05 Answer:
+%h2 Test TensorFlow
+
+%p First I ran a simple shell command:
+
+.syntax
+  %pre
+    %code.bash pip list |grep tensorflow
+
+%p Then, I created a simple Python script:
+
+import tensorflow as tf
+hello = tf.constant('Hello, TensorFlow!')
+sess  = tf.Session()
+print(sess.run(hello))
+
+%p And then I ran it.
+
+%p
+  %a(href='class05#gpu')
+    Class05 Lab
