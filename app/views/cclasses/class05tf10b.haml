@@ -9,10 +9,13 @@
 
 %p Then, I created a simple Python script:
 
-import tensorflow as tf
-hello = tf.constant('Hello, TensorFlow!')
-sess  = tf.Session()
-print(sess.run(hello))
+.syntax
+  %pre
+    %code.python
+      import tensorflow as tf
+      hello = tf.constant('Hello, TensorFlow!')
+      sess  = tf.Session()
+      print(sess.run(hello))
 
 %p And then I ran it.
 
