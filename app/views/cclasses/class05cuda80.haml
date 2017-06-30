@@ -92,6 +92,25 @@
   %pre
     %code.bash echo 'export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
     
+%p Next, I installed writeable samples with a simple shell command:
 
+.syntax
+  %pre
+    %code.bash /usr/local/cuda-8.0/bin/cuda-install-samples-8.0.sh /tmp
+
+%p Then, I compiled the samples:
+
+.syntax
+  %pre
+    %code.bash
+      cd /tmp/NVIDIA_CUDA-8.0_Samples/
+      make
+
+%p Next, I tried one of the samples:
+
+.syntax
+  %pre
+    =render 'class05cuda80dq'
+      
 %hr/
 
