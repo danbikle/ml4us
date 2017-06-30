@@ -1,19 +1,20 @@
+"""
 # demo13.py
 
-# This script should help me study ...
-# https://www.tensorflow.org/versions/r0.11/get_started/index.html
+# This script should help me visualize behavior of optimizer.minimize(loss)
 # Ref:
 # http://ml4.us/cclasses/class05tf18
 
 # Demo:
 # ~/anaconda3/bin/python demo13.py
+"""
 
 import tensorflow as tf
 import numpy      as np
 
 # Create phony x, y data points in NumPy, y = x * 0.1 + 0.3 + noise
 pts_i   = 20
-noise_a = 0.05*np.random.rand(pts_i)
+noise_a = 0.05*np.random.rand(pts_i) # Notice this.
 x_data  = np.random.rand(pts_i).astype(np.float32)
 y_data  = x_data * 0.1 + 0.3 + noise_a
 
@@ -28,9 +29,11 @@ y = W * x_data + b
 loss      = tf.reduce_mean(tf.square(y - y_data))
 optimizer = tf.train.GradientDescentOptimizer(0.5)
 train     = optimizer.minimize(loss)
+# I should visualize behavior of above call.
 
 # Before starting, initialize the variables.  We will 'run' this first.
-init = tf.initialize_all_variables()
+#init = tf.initialize_all_variables()
+init  = tf.global_variables_initializer() # better than above line.
 
 # Launch the graph.
 sess = tf.Session()
