@@ -86,11 +86,11 @@
   %pre
     %code.bash echo 'export PATH=/usr/local/cuda-8.0/bin:$PATH' >> ~/.bashrc
 
-%p I made another enhancement to .bashrc:
+%p Then, I made another enhancement to .bashrc:
 
 .syntax
-  .pre
-    .code.bash echo 'export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
+  %pre
+    %code.bash echo 'export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
     
 
 %hr/
