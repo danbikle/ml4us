@@ -1,0 +1,15 @@
+<code class='bash'>
+cd ~/Downloads/
+wget https://www.python.org/ftp/python/3.6.1/Python-3.6.1.tar.xz
+tar xf Python-3.6.1.tar.xz
+cd     Python-3.6.1/
+./configure --prefix=${HOME}/py36
+make
+make install
+cd ~/py36/bin/
+ln -s python3.6 python
+ln -s pip3.6 pip
+export PATH=${HOME}/py36/bin:$PATH
+which pip
+which python
+</code>
