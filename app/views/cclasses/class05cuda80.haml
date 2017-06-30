@@ -1,6 +1,8 @@
 %h2 Class05 Answer:
 %h2 Install Nvidia CUDA v8.0 Software
 
+%p I followed the steps in this page on my Ubuntu 16 laptop.
+
 %p Why do we want CUDA v8.0 ?
 
 %p I want to install Nvidia CUDA v8.0 Software because TensorFlow r1.2 asks for that.
@@ -52,7 +54,22 @@
 %p
   %a(href='https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64-deb' target='x')
     https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64-deb
-  
+
+%p Next I studied the content at this URL:
+%p
+  %a(href='http://docs.nvidia.com/cuda/cuda-installation-guide-linux/#ubuntu-installation' target='x')
+    http://docs.nvidia.com/cuda/cuda-installation-guide-linux/#ubuntu-installation
+
+%p I summarize that content into shell commands listed below:
+
+.syntax
+  %pre
+    %code.bash
+      sudo dpkg -i ~/Downloads/cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64.deb
+      sudo apt-get update
+      sudo apt-get install cuda
+
+%p I ran the above shell commands.
 
 %hr/
 
