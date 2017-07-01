@@ -1,63 +1,263 @@
 <code class='bash'>
-dan@acer1:~/tf4us/script $ 
-dan@acer1:~/tf4us/script $ ./backtest.bash
+ml4@ub100:~ $ 
+ml4@ub100:~ $ git clone https://github.com/danbikle/tf4us
+Cloning into 'tf4us'...
+remote: Counting objects: 644, done.        
+remote: Total 644 (delta 0), reused 0 (delta 0), pack-reused 644        
+Receiving objects: 100% (644/644), 9.42 MiB | 5.92 MiB/s, done.
+Resolving deltas: 100% (337/337), done.
+Checking connectivity... done.
+ml4@ub100:~ $ 
+ml4@ub100:~ $ cd tf4us
+ml4@ub100:~/tf4us $ cd script
+ml4@ub100:~/tf4us/script $ 
+ml4@ub100:~/tf4us/script $ ./backtest.bash
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 1241k  100 1241k    0     0  66390      0  0:00:19  0:00:19 --:--:--  269k
 Busy...
-Busy...
-Busy...
-Busy...
-Busy...
-Busy...
-Busy...
-Busy...
-Busy...
-Busy...
-Busy...
-Busy...
-Busy...
-Busy...
-Busy...
-Busy...
-Busy...
-csv_in: ../public/csv/backtest_all.csv
-Long-Only-Effectiveness: 72.9006
-Linear-Regression-Effectiveness: 67.7028
-Logistic-Regression-Effectiveness: 259.9937
-tf10-Effectiveness: 247.2776
-tf11-Effectiveness: 213.8936
-tf12-Effectiveness: 258.3948
-I tensorflow/stream_executor/dso_loader.cc:108] successfully opened CUDA library libcublas.so locally
-I tensorflow/stream_executor/dso_loader.cc:108] successfully opened CUDA library libcudnn.so locally
-I tensorflow/stream_executor/dso_loader.cc:108] successfully opened CUDA library libcufft.so locally
-I tensorflow/stream_executor/dso_loader.cc:108] successfully opened CUDA library libcuda.so locally
-I tensorflow/stream_executor/dso_loader.cc:108] successfully opened CUDA library libcurand.so locally
-I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:924] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
-I tensorflow/core/common_runtime/gpu/gpu_init.cc:102] Found device 0 with properties: 
-name: GeForce GTX 950M
-major: 5 minor: 0 memoryClockRate (GHz) 1.124
-pciBusID 0000:01:00.0
-Total memory: 2.00GiB
-Free memory: 1.50GiB
-I tensorflow/core/common_runtime/gpu/gpu_init.cc:126] DMA: 0 
-I tensorflow/core/common_runtime/gpu/gpu_init.cc:136] 0:   Y 
-I tensorflow/core/common_runtime/gpu/gpu_device.cc:806] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 950M, pci bus id: 0000:01:00.0)
-sess11 VERY busy ...
-I tensorflow/core/common_runtime/gpu/gpu_device.cc:806] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 950M, pci bus id: 0000:01:00.0)
-sess12 VERY busy ...
-I tensorflow/core/common_runtime/gpu/gpu_device.cc:806] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 950M, pci bus id: 0000:01:00.0)
+backtesting: 2000
+WARNING:tensorflow:From learn_tst_rpt.py:102: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
 Long-Only-Effectiveness:
-8.2018
+-10.077000000000002
 Linear-Regression-Effectiveness:
-10.515
+-0.48159999999999803
 Logistic-Regression-Effectiveness:
-19.4618
+57.2734
 tf10-Effectiveness:
-17.8846
-tf11-Effectiveness:
-12.5924
-tf12-Effectiveness:
-17.0036
-dan@acer1:~/tf4us/script $ 
-dan@acer1:~/tf4us/script $ 
-dan@acer1:~/tf4us/script $ 
-dan@acer1:~/tf4us/script $
+59.13800000000001
+Busy...
+backtesting: 2001
+WARNING:tensorflow:From learn_tst_rpt.py:102: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+Long-Only-Effectiveness:
+-8.317100000000003
+Linear-Regression-Effectiveness:
+-38.3053
+Logistic-Regression-Effectiveness:
+-13.540899999999995
+tf10-Effectiveness:
+-13.707499999999996
+Busy...
+backtesting: 2002
+WARNING:tensorflow:From learn_tst_rpt.py:102: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+Long-Only-Effectiveness:
+-20.491600000000005
+Linear-Regression-Effectiveness:
+13.478399999999995
+Logistic-Regression-Effectiveness:
+25.74199999999999
+tf10-Effectiveness:
+20.22639999999999
+Busy...
+backtesting: 2003
+WARNING:tensorflow:From learn_tst_rpt.py:102: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+Long-Only-Effectiveness:
+21.243100000000005
+Linear-Regression-Effectiveness:
+7.237100000000002
+Logistic-Regression-Effectiveness:
+6.423699999999995
+tf10-Effectiveness:
+11.770100000000003
+Busy...
+backtesting: 2004
+WARNING:tensorflow:From learn_tst_rpt.py:102: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+Long-Only-Effectiveness:
+8.723300000000002
+Linear-Regression-Effectiveness:
+-4.841300000000011
+Logistic-Regression-Effectiveness:
+10.688699999999994
+tf10-Effectiveness:
+9.429499999999997
+Busy...
+backtesting: 2005
+WARNING:tensorflow:From learn_tst_rpt.py:102: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+Long-Only-Effectiveness:
+5.9393
+Linear-Regression-Effectiveness:
+-6.180499999999992
+Logistic-Regression-Effectiveness:
+-0.1546999999999994
+tf10-Effectiveness:
+2.395500000000001
+Busy...
+backtesting: 2006
+WARNING:tensorflow:From learn_tst_rpt.py:102: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+Long-Only-Effectiveness:
+11.506199999999996
+Linear-Regression-Effectiveness:
+10.262799999999997
+Logistic-Regression-Effectiveness:
+15.904000000000005
+tf10-Effectiveness:
+11.658999999999999
+Busy...
+backtesting: 2007
+WARNING:tensorflow:From learn_tst_rpt.py:102: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+Long-Only-Effectiveness:
+3.4161000000000006
+Linear-Regression-Effectiveness:
+10.738100000000003
+Logistic-Regression-Effectiveness:
+25.092900000000004
+tf10-Effectiveness:
+32.537500000000016
+Busy...
+backtesting: 2008
+WARNING:tensorflow:From learn_tst_rpt.py:102: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+Long-Only-Effectiveness:
+-35.541399999999996
+Linear-Regression-Effectiveness:
+18.841400000000007
+Logistic-Regression-Effectiveness:
+24.04140000000001
+tf10-Effectiveness:
+14.47960000000001
+Busy...
+backtesting: 2009
+WARNING:tensorflow:From learn_tst_rpt.py:102: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+Long-Only-Effectiveness:
+23.226699999999987
+Linear-Regression-Effectiveness:
+-11.6307
+Logistic-Regression-Effectiveness:
+5.357700000000004
+tf10-Effectiveness:
+8.6299
+Busy...
+backtesting: 2010
+WARNING:tensorflow:From learn_tst_rpt.py:102: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+Long-Only-Effectiveness:
+13.184099999999997
+Linear-Regression-Effectiveness:
+17.60289999999998
+Logistic-Regression-Effectiveness:
+14.775899999999982
+tf10-Effectiveness:
+18.196099999999976
+Busy...
+backtesting: 2011
+WARNING:tensorflow:From learn_tst_rpt.py:102: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+Long-Only-Effectiveness:
+3.122399999999996
+Linear-Regression-Effectiveness:
+11.882600000000004
+Logistic-Regression-Effectiveness:
+18.9984
+tf10-Effectiveness:
+21.573400000000003
+Busy...
+backtesting: 2012
+WARNING:tensorflow:From learn_tst_rpt.py:102: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+Long-Only-Effectiveness:
+14.38069999999999
+Linear-Regression-Effectiveness:
+17.170100000000005
+Logistic-Regression-Effectiveness:
+12.138499999999997
+tf10-Effectiveness:
+10.407099999999996
+Busy...
+backtesting: 2013
+WARNING:tensorflow:From learn_tst_rpt.py:102: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+Long-Only-Effectiveness:
+23.12599999999999
+Linear-Regression-Effectiveness:
+3.0927999999999964
+Logistic-Regression-Effectiveness:
+2.189000000000006
+tf10-Effectiveness:
+2.8871999999999978
+Busy...
+backtesting: 2014
+WARNING:tensorflow:From learn_tst_rpt.py:102: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+Long-Only-Effectiveness:
+12.287000000000003
+Linear-Regression-Effectiveness:
+-1.9836000000000016
+Logistic-Regression-Effectiveness:
+18.773800000000012
+tf10-Effectiveness:
+7.458799999999999
+Busy...
+backtesting: 2015
+WARNING:tensorflow:From learn_tst_rpt.py:102: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+Long-Only-Effectiveness:
+-1.028999999999994
+Linear-Regression-Effectiveness:
+10.304600000000002
+Logistic-Regression-Effectiveness:
+16.157999999999994
+tf10-Effectiveness:
+12.312399999999995
+Busy...
+backtesting: 2016
+WARNING:tensorflow:From learn_tst_rpt.py:102: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+Long-Only-Effectiveness:
+12.3442
+Linear-Regression-Effectiveness:
+13.9878
+Logistic-Regression-Effectiveness:
+19.349399999999996
+tf10-Effectiveness:
+14.910400000000003
+Busy...
+backtesting: 2017
+WARNING:tensorflow:From learn_tst_rpt.py:102: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+Long-Only-Effectiveness:
+7.6430000000000025
+Linear-Regression-Effectiveness:
+-0.4227999999999995
+Logistic-Regression-Effectiveness:
+5.063399999999997
+tf10-Effectiveness:
+5.446599999999998
+csv_in: ../public/csv/backtest_all.csv
+Long-Only-Effectiveness: 84.68599999999996
+Linear-Regression-Effectiveness: 70.75279999999991
+Logistic-Regression-Effectiveness: 264.9447000000004
+tf10-Effectiveness: 249.75000000000023
+ml4@ub100:~/tf4us/script $ 
+ml4@ub100:~/tf4us/script $ 
+ml4@ub100:~/tf4us/script $ 
 </code>
