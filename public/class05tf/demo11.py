@@ -1,8 +1,13 @@
-# demo11.py
+"""
+demo11.py
 
-# This script should compare TensorFlow to scikit-learn
-# Demo:
-# python demo11.py
+This script should compare TensorFlow to scikit-learn
+# Ref:
+# http://ml4.us/cclasses/class05tf13
+
+Demo:
+python demo11.py
+"""
 
 import tensorflow as tf
 import numpy as np
@@ -24,7 +29,8 @@ optimizer = tf.train.GradientDescentOptimizer(0.5)
 train = optimizer.minimize(loss)
 
 # Before starting, initialize the variables.  We will 'run' this first.
-init = tf.initialize_all_variables()
+#init = tf.initialize_all_variables()
+init  = tf.global_variables_initializer() # better than above line.
 
 # Launch the graph.
 sess = tf.Session()
