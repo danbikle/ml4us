@@ -20,15 +20,15 @@
 
 cd `dirname $0`
 
-# I should get prices from Yahoo:
+# I should get prices:
 ./curl_gspc.bash
 
-# I should compute features from the prices:
+# I should compute features from the prices (and dates):
 python genf.py SLOPES='[2,3,4,5,6,7,8,9]'
 # The above call should give me feat.csv
 
 # I should learn, test, and report:
-./keras_theano.bash learn_tst_rpt.py TRAINSIZE=25 TESTYEAR=2016
+./keras_tensorflow.bash learn_tst_rpt.py TRAINSIZE=25 TESTYEAR=2017
 
 exit
 </code>
