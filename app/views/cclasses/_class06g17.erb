@@ -20,7 +20,7 @@
 
 cd `dirname $0`
 
-# I should get prices from Yahoo:
+# I should get prices:
 ./curl_gspc.bash
 
 # I should compute features from the prices:
@@ -34,7 +34,7 @@ for (( yr=2000; yr&lt;=${thisyr}; yr++ ))
 do
     echo Busy...
     echo backtesting: $yr
-    ./keras_theano.bash learn_tst_rpt.py TRAINSIZE=25 TESTYEAR=$yr
+    ./keras_tensorflow.bash learn_tst_rpt.py TRAINSIZE=25 TESTYEAR=$yr
 done
 
 exit
