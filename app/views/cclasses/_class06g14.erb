@@ -1,25 +1,29 @@
 <code class='python'>
-# learn_tst_rpt.py
+"""
+learn_tst_rpt.py
 
-# This script should learn from observations in feat.csv
+This script should learn from observations in feat.csv
 
-# Then it should test its learned models on observations later than the training observations.
+Then it should test its learned models on observations later than the training observations.
 
-# Next it should report effectiveness of the models.
+Next it should report effectiveness of the models.
 
-# Demo:
-# ./keras_theano.bash learn_tst_rpt.py TRAINSIZE=25 TESTYEAR=2016
+Demo:
+./keras_theano.bash learn_tst_rpt.py TRAINSIZE=25 TESTYEAR=2016
 
-# Above demo will train from 25 years of observations and predict each day of 2016
+Above demo will train from 25 years of observations and predict each day of 2016
+"""
 
 import numpy  as np
 import pandas as pd
 import pdb
 
-# I should use epoch_i to push model training harder.
-# A large epoch_i gives a model which is accurate on the training data.
-# A small epoch_i gives me a model quicker.
-epoch_i = 400
+# I should specify params for fit().
+# I should use epochs_i to push model training harder.
+# A large epochs_i gives a model which is accurate on the training data.
+# A small epochs_i gives me a model quicker.
+epochs_i     = 128
+batch_size_i = 256 # Smaller is better but slower
 
 # I should check cmd line args
 import sys
@@ -89,7 +93,7 @@ keras1_model.add(Activation('relu'))
 keras1_model.add(Dense(output_i))
 keras1_model.add(Activation('softmax'))
 keras1_model.compile(loss='categorical_crossentropy', optimizer='adam')
-keras1_model.fit(xtrain_a, ytrain1h_a, batch_size=1, nb_epoch=epoch_i)
+keras1_model.fit(xtrain_a, ytrain1h_a, batch_size=batch_size_i, epochs=epochs_i)
 # It should be able to predict now:
 keras1_a = keras1_model.predict(xtest_a)[:,1]
 
@@ -106,7 +110,7 @@ keras2_model.add(Dropout(0.2))
 keras2_model.add(Dense(output_i))
 keras2_model.add(Activation('softmax'))
 keras2_model.compile(loss='categorical_crossentropy', optimizer='adam')
-keras2_model.fit(xtrain_a, ytrain1h_a, batch_size=1, nb_epoch=epoch_i)
+keras2_model.fit(xtrain_a, ytrain1h_a, batch_size=batch_size_i, epochs=epochs_i)
 # It should be able to predict now:
 keras2_a = keras2_model.predict(xtest_a)[:,1]
 
