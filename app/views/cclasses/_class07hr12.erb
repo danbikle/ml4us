@@ -33,7 +33,7 @@ Type 'q()' to quit R.
 > 
 > get_prices = function(){
 +   # I should get GSPC dates and prices:
-+   gspc0_df = read.csv('http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC')
++   gspc0_df = read.csv('http://tkrprice.herokuapp.com/static/gspc.csv')
 +   # I should order by Date:
 +   gspc1_df = gspc0_df[order(gspc0_df$Date),]
 +   # I should only use Date and Closing Price:
