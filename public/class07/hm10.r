@@ -26,6 +26,3 @@ png('hm10.png',width=800, units='px', pointsize=22, height=1100)
 heatmap(nba_x, Rowv=NA, Colv=NA, scale="column")
 
 dev.off()
-
-
-

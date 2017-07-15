@@ -17,7 +17,7 @@
 # install.packages("gplots", repos="http://cran.us.r-project.org")
 
 # # I should get GSPC dates and prices:
-# gspc0_df = read.csv('http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC')
+# gspc0_df = read.csv('http://tkrprice.herokuapp.com/static/gspc.csv')
 # 
 # # I should identify each row by Date instead of an integer:
 # # row.names(gspc0_df) = gspc0_df$Date
