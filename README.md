@@ -1,6 +1,6 @@
 # README
 
-This app serves training content to students.
+This app serves ML training content to students.
 
 I followed these steps to install ml4.us on my laptop.
 
