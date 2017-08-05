@@ -27,7 +27,15 @@
       https://drive.google.com/file/d/0Bx3iDDAtxxI4TEZwSkZRYVhpYm8
   %li Import the above OVA file
   %li Login as ann [ pass is 'a' ]
-  %li See if you can connect to Postgres using psql
+  %li See if you can connect to Postgres using psql.
+  %li Install some packages with conda:
+  %li
+    .syntax
+      %pre
+        %code.bash
+	  conda install flask-restful -c conda-forge
+	  conda install psycopg2
+	  conda install sqlalchemy
   %li Clone this repo:
   %li
     %a(href='https://github.com/danbikle/keras11' target='x')
