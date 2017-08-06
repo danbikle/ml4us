@@ -21,10 +21,10 @@
 
 %ul
   %li Download:
-  %li ub16may2b.ova (Ubuntu 16.04 VirtualBox Instance 8.2 GB):
+  %li ub16jul21.ova (Ubuntu 16.04 VirtualBox Instance 10 GB):
   %li
-    %a(href='https://drive.google.com/file/d/0Bx3iDDAtxxI4TEZwSkZRYVhpYm8' target='x')
-      https://drive.google.com/file/d/0Bx3iDDAtxxI4TEZwSkZRYVhpYm8
+    %a(href='https://drive.google.com/file/d/0Bx3iDDAtxxI4MmNNLXM4RTZvYTA' target='x')
+      https://drive.google.com/file/d/0Bx3iDDAtxxI4MmNNLXM4RTZvYTA
   %li Import the above OVA file
   %li Login as ann [ pass is 'a' ]
   %li See if you can connect to Postgres using psql.
@@ -34,8 +34,7 @@
       %pre
         %code.bash
           conda install flask-restful -c conda-forge
-          conda install psycopg2
-          conda install sqlalchemy
+          conda install psycopg2 sqlalchemy keras
   %li Clone this repo:
   %li
     %a(href='https://github.com/danbikle/keras11' target='x')
