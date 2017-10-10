@@ -18,7 +18,7 @@ import org.apache.spark.sql.functions._
 
 // I should get prices:
 import sys.process._
-"/usr/bin/curl -o /tmp/gspc.csv http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC"!
+"/usr/bin/curl -o /tmp/gspc.csv http://tkrprice.herokuapp.com/static/gspc.csv"!
 
 val sqlContext = new SQLContext(sc)
 
