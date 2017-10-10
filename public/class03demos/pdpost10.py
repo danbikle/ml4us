@@ -4,8 +4,9 @@
 
 import pandas as pd
 
-prices_df = pd.read_csv('http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC')
-prices_df.columns = ['cdate','openp','highp','lowp','closep','volume','adjp']
+prices_df = pd.read_csv('http://tkrprice.herokuapp.com/static/gspc.csv')
+
+prices_df.columns = ['cdate','openp','highp','lowp','closep','adjp','volume']
 
 # Ref:
 # http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.to_sql.html
