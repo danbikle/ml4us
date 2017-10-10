@@ -6,7 +6,7 @@
 import pandas as pd
 import numpy  as np
 
-prices_df = pd.read_csv('http://ichart.finance.yahoo.com/table.csv?s=%5EGSPC')
+prices_df = pd.read_csv('http://tkrprice.herokuapp.com/static/gspc.csv')
 prices_a  = np.array(prices_df)
 
 # I should print the first 9 rows to help me see the NumPy Array:
