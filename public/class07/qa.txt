@@ -46,4 +46,23 @@ How does R compare to Scala?
   - For Big data, Scala (with Spark) is better
 
 What is an R package?
+  - An R package is like a Python package
+  - It is a collection of code I can add to my R installation
+  - It is usually written by a developer to extend R to solve a problem
 
+How to install an R package?
+  - I install an R package with an R command called: install.packages()
+  - Demo: install.packages('ISLR', repos='http://cran.us.r-project.org')
+  - Languages Python, Node.js, and Ruby use shell commands to install packages
+  - So R is different
+  
+How to use an R package?
+  - Demo:
+    library(ISLR)
+    ls("package:ISLR")
+    names(Auto)
+    names(Smarket)
+    google ISLR r-project CRAN
+    https://github.com/cran/ISLR
+    
+    
