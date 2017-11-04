@@ -1,0 +1,34 @@
+What is R?
+
+R is an open source language which offers some features similar to a proprietary language from Bell Labs called: "S".
+
+more info:
+https://en.wikipedia.org/wiki/R_(programming_language)
+
+How to install R?
+
+sudo apt-get install r-base r-base-dev
+
+Which installs R under /usr/lib/R/ rather than under /home/
+which is different than how we install:
+  - Python
+  - Ruby
+  - Java
+  - Node.js
+We install the above four languages under /home/
+because it allows us flexibilty when we encounter language related problems.
+
+How to run R?
+
+I know of these ways:
+  - I type the R shell command and then interact with the CLI
+  - I create an R script and run it with R -f script.r
+  - I intertact with R studio
+  - I can use Shiny
+  - I can use Jupyter
+
+Why use R?
+  - R is popular
+  - R is easy to learn and use (compared to C, C++, Java, JavaScript)
+  - R has many useful packages and examples
+  - 
