@@ -31,4 +31,19 @@ Why use R?
   - R is popular
   - R is easy to learn and use (compared to C, C++, Java, JavaScript)
   - R has many useful packages and examples
-  - 
+  - R can do both ML and Data Visualization
+  - R can be used for learning ML, DataVis, Statistics, Probability
+
+How does R compare to Python?
+  - Python is better
+
+How does R compare to Ruby?
+  - For web-tech, Ruby is better
+  - For ML, DataVis, Statistics, and Probability, R is better
+
+How does R compare to Scala?
+  - For small data, R is better
+  - For Big data, Scala (with Spark) is better
+
+What is an R package?
+
