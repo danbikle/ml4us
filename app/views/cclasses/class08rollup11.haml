@@ -61,6 +61,24 @@
 
 %p On your laptop, the above commands might take 20 or 30 minutes.
 
+%p When I ran the above commands on my laptop, the zip folder had observations going back to 2010.
+
+%p I used a few lines of simple Python-Pandas calls to inspect the first zip file:
+
+.syntax
+  %pre
+    =render 'class08rollup11b'
+    
+%p
+  It appears the data has no column headings.
+%p
+  I used a Pandas parameter named: 'names' to add my headings:
+  
+.syntax
+  %pre
+    =render 'class08rollup11c'
+    
+  
 %p
   %a(href='class08#rollup')
     Class08 Lab (Pandas Staged Rollup)
