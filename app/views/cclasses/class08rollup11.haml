@@ -11,6 +11,8 @@
   %a(href='https://drive.google.com/drive/folders/1jMFSP-_wTtt5rtdtQuQdtPQr6087xz6K' target='x')
     https://drive.google.com/drive/folders/1jMFSP-_wTtt5rtdtQuQdtPQr6087xz6K
 
+%p The 5 files are large, so the download might take an hour or two.
+
 %p The names are listed below:
 .syntax
   %pre
@@ -32,7 +34,17 @@
 .syntax
   %pre
     =render 'class08rollup11a'
-
+%p At this point I had my 5 tar files in my Downloads folder.
+%p I moved them to the right place:
+.syntax
+  %pre
+    %code
+      cd ~/Downloads/
+      mv audusd.tar ~/rollup/data/forex_tarfiles/
+      mv eurusd.tar ~/rollup/data/forex_tarfiles/
+      mv gbpusd.tar ~/rollup/data/forex_tarfiles/
+      mv usdcad.tar ~/rollup/data/forex_tarfiles/
+      mv usdjpy.tar ~/rollup/data/forex_tarfiles/
 %p
   %a(href='class08#rollup')
     Class08 Lab (Pandas Staged Rollup)
