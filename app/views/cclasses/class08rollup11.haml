@@ -123,6 +123,51 @@
   %pre
     =render 'class08rollup11g'
 
+%p The above script needed 15 minutes to run on my laptop.
+
+%p The output folder was smaller than the input folder:
+
+.syntax
+  %pre
+    =render 'class08rollup11h'
+
+%p Using the bzip2 shell command, I inspected the first and last files in the output folder:
+
+.syntax
+  %pre
+    =render 'class08rollup11i'
+
+%p If you got this far on your laptop, you should keep going
+
+%p I see the files in csv1m to be the second stage of a 3 stage rollup
+
+%p To start on the third stage, inspect this script:
+
+%p
+  %a(href='https://github.com/danbikle/rollup/blob/master/python/rollup5m.py' target='x')
+    https://github.com/danbikle/rollup/blob/master/python/rollup5m.py
+
+%p Next, run the above script with these shell commands:
+
+.syntax
+  %pre
+    =render 'class08rollup11j'
+
+%p I ran the above script and saw some output which is displayed below:
+
+.syntax
+  %pre
+    =render 'class08rollup11k'
+
+%p Notice that rollup5m.py had a duration of about 4 minutes.
+
+%p Also notice that the output files are not compressed:
+
+.syntax
+  %pre
+    =render 'class08rollup11l'
+
+%p So, that completes this lab which shows how to 'roll-up' sub-second Forex data into five-minute observations of prices.
 
 %p
   %a(href='class08#rollup')
