@@ -46,5 +46,21 @@
       mv usdcad.tar ~/rollup/data/forex_tarfiles/
       mv usdjpy.tar ~/rollup/data/forex_tarfiles/
 %p
+  Next, I un-tared the zip files from the tar files into a folder called: 'zip':
+
+.syntax
+  %pre
+    %code
+      mkdir -p ~/rollup/data/zip
+      cd       ~/rollup/data/zip
+      tar xf ~/rollup/data/forex_tarfiles/audusd.tar
+      tar xf ~/rollup/data/forex_tarfiles/eurusd.tar
+      tar xf ~/rollup/data/forex_tarfiles/gbpusd.tar
+      tar xf ~/rollup/data/forex_tarfiles/usdcad.tar
+      tar xf ~/rollup/data/forex_tarfiles/usdjpy.tar
+
+%p On your laptop, the above commands might take 20 or 30 minutes.
+
+%p
   %a(href='class08#rollup')
     Class08 Lab (Pandas Staged Rollup)
