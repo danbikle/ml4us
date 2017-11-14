@@ -77,8 +77,30 @@
 .syntax
   %pre
     =render 'class08rollup11c'
+
+%p You should try the above Python-Pandas calls on your laptop.
+
+%p If you see something similar to what I display above, then you are on the right track.
+
+%p Next, run the script listed below which should roll-up prices from micro-second observations to one-second observations.
+
+.syntax
+  %pre
+    =render 'class08rollup11d'
+
+%p The script should write the rolled-up prices to this folder:
+.syntax
+  %pre
+    %code ~/rollup/data/csv1s/
     
-  
+%p I ran the above script on my laptop and it needed 92 minutes to complete.
+
+%p I used three shell commands to inspect the output:
+
+.syntax
+  %pre
+    =render 'class08rollup11e'
+
 %p
   %a(href='class08#rollup')
     Class08 Lab (Pandas Staged Rollup)
