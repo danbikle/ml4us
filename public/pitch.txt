@@ -1,0 +1,39 @@
+~/ml4/public/pitch.txt
+
+Hello People,
+
+I invite you to attend my class:
+
+Build Machine Learning Applications with Linux, Python, and Spark
+
+This class is unique due to its dual nature.
+
+We focus on both Machine Learning technology AND Application Development.
+
+The type of ML-applications we develop are web-applications and REST API servers.
+
+The Web frameworks we study are Ruby on Rails, Flask, and Flask-RESTful.
+
+The Machine Learning technology we study mostly focuses on preparing
+and feeding observations of training data to the API layers of popular
+ML-frameworks: Scikit-Learn, TensorFlow, Keras, Keras-js, Spark MLlib, R-glm, and Postgres-MADlib.
+
+Often we rely on ML-frameworks to build predictive models and then generate either predictions or forecasts from newer data.
+
+For the ML APIs we use these languages: Python, JavaScript, Scala, and SQL.
+
+Next we rely on the Web-technology to help the end-user consume and visualize predictions or forecasts.
+
+The class meets ten times on Saturdays 10am to 2pm.
+
+The winter session starts on Dec 9 and ends Feb 17.
+
+The cost is $439.
+
+Location: Bldg-F, Room F4, Santa Clara Adult Ed. 1840 Benton St. 95050
+Which is near Scott Blvd. and El Camino
+
+Registration Link: 
+https://register.asapconnected.com/CourseDetail.aspx?CourseId=109653&ext=1
+
+If you have questions contact me: bikle101:gmail [ Dan Bikle ]
