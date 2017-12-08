@@ -1,10 +1,15 @@
 ~/ml4/public/pitch.txt
 
+Subject: South Bay 10 Week Machine Learning/Applications Class $439
+
 Hello People,
 
 I invite you to attend my class:
 
 Build Machine Learning Applications with Linux, Python, and Spark
+
+Registration Link: 
+https://register.asapconnected.com/CourseDetail.aspx?CourseId=109653&ext=1
 
 This class is unique due to its dual nature.
 
@@ -14,9 +19,7 @@ The type of ML-applications we develop are web-applications and REST API servers
 
 The Web frameworks we study are Ruby on Rails, Flask, and Flask-RESTful.
 
-The Machine Learning technology we study mostly focuses on preparing
-and feeding observations of training data to the API layers of popular
-ML-frameworks: Scikit-Learn, TensorFlow, Keras, Keras-js, Spark MLlib, R-glm, and Postgres-MADlib.
+The Machine Learning technology we study mostly focuses on preparing and feeding observations of training data to the API layers of popular ML-frameworks: Scikit-Learn, TensorFlow, Keras, Keras-js, Spark MLlib, R-glm, and Postgres-MADlib.
 
 Often we rely on ML-frameworks to build predictive models and then generate either predictions or forecasts from newer data.
 
@@ -32,8 +35,5 @@ The cost is $439.
 
 Location: Bldg-F, Room F4, Santa Clara Adult Ed. 1840 Benton St. 95050
 Which is near Scott Blvd. and El Camino
-
-Registration Link: 
-https://register.asapconnected.com/CourseDetail.aspx?CourseId=109653&ext=1
 
 If you have questions contact me: bikle101:gmail [ Dan Bikle ]
