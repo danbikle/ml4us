@@ -39,3 +39,47 @@ urfnc
 // I should assign anonymous func to a val:
 val theirfnc = (aparam: Int) => "I am non-anonymous!"
 theirfnc(99)
+
+// I can use brakets:
+def somefnc(myparam: Int): Int = {
+  myparam * 2
+}
+somefnc(4)
+
+// I should declare anon func with brackets:
+{
+  i_param: Int =>
+    println("I am anonymous, in brackets")
+    i_param + 9
+}
+
+// Another way I should declare anon func with brackets:
+{
+  (j_param: Int) =>
+    println("I am anonymous, in brackets")
+    j_param + 5
+}
+
+
+// I should create partially applied function using underscore:
+def addem(p1: Int, p2: Int): Int = p1 + p2
+
+val nothrfunc = addem(3, _: Int)
+nothrfunc(4) // should return 7
+
+/* I should demo curried functions.
+This is an idea which allows me to transform single function
+with multiple args
+into multiple funcs
+with one arg.
+*/
+
+def mult2(m1: Int)(m2: Int): Int = m1 * m2
+mult2(7)(3) // 2 args
+val two_infront = mult2(2)(_: Int)
+two_infront(6) // 1 arg
+val three_inback = mult2(_: Int)(3)
+three_inback(5) // 1 arg
+
+// I should demo how to use anon func via a call to map:
+List(0,1,2,3,4).map {param => param*2}
