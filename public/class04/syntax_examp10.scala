@@ -101,3 +101,5 @@ vart_fnc(9F)
 vart_fnc(9D)
 vart_fnc(0xF)
 vart_fnc(Integer.parseInt("0101", 2))
+
+// Next topics: classes, inheritance, traits
