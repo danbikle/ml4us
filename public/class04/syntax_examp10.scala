@@ -83,3 +83,21 @@ three_inback(5) // 1 arg
 
 // I should demo how to use anon func via a call to map:
 List(0,1,2,3,4).map {param => param*2}
+
+/* I should demo how to use anon func via a call to map.
+Sometimes I add parens to help me see param: */
+List(0,1,2,3,5).map {(param) => param*3}
+
+// I should demo variable-length args:
+def varfnc(params: Int*) = params.map {(param) => param*2}
+varfnc(0,3,2,5)
+
+// I should demo variable-types. I should use T by convention:
+def vart_fnc[T](somenum: T) = println(s"hello ${somenum}")
+vart_fnc(3)
+vart_fnc(-3.9)
+vart_fnc("Dan")
+vart_fnc(9F)
+vart_fnc(9D)
+vart_fnc(0xF)
+vart_fnc(Integer.parseInt("0101", 2))
