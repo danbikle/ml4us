@@ -1,12 +1,12 @@
 1 + 2
 1 > 4
 
-// val makes one immutable
-val one = 1
-
 // var makes x is mutable
 var x = 1 + one
 x = 3
+
+// val makes one immutable
+val one = 1
 
 // define func which takes 1 arg of type Int and returns an Int
 def addOne(m: Int): Int = m + 1
