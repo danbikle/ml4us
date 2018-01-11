@@ -10,7 +10,11 @@
 
 %p I ran the example by copying the syntax into a file: /tmp/ml_examp1.scala
 
-%p Then I enhanced some of the method calls so they did not span lines.
+%p Then I added one small, yet significant enhancement.
+
+%p I enclosed all the syntax within curly-braces.
+
+%p The curly-braces help spark-shell "see" expressions which span multiple lines.
 
 %p For example, this call:
 
@@ -18,11 +22,7 @@
   %pre
     =render 'class04spark13'
 
-%p Becomes, this call:
-
-.syntax
-  %pre
-    =render 'class04spark22'
+%p Will confuse spark-shell because the call spans two lines instead of one.
 
 %p The resulting file looks like this:
 
