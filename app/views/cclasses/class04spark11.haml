@@ -94,31 +94,6 @@
   %pre
     =render 'class04sbt1'
 
-
-%p Next, I created a shell script in ~/bin/sbt
-
-.syntax
-  %pre
-    =render 'class04spark17'
-
-%p I ran these shell commands:
-
-.syntax
-  %pre
-    %code.bash chmod u+x ~/bin/sbt
-    echo 'export PATH=${HOME}/bin:$PATH' >> ~/.bashrc
-    bash
-%p Then, I used wget to get a jar file from the web:
-
-.syntax
-  %pre
-    %code.bash
-      cd ~/bin/
-      rm -f sbt-launch.jar
-      wget https://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/sbt-launch/0.13.12/sbt-launch.jar
-
-%p Those three steps installed sbt for me.
-
 %p Next, I ran simple shell commands:
 
 .syntax
@@ -136,7 +111,7 @@
 %p Next, I ran simple shell commands:
 
 .syntax
-  %pre
+  %pre.sbar999
     %code.bash
       ls -la
       ls -la target/
@@ -146,7 +121,7 @@
 %p I saw this:
 
 .syntax
-  %pre
+  %pre.sbar999
     =render 'class04spark19'
 
 %p That seemed to go well so I tried the next example listed in the quick-start:

@@ -1,30 +1,47 @@
 <code class='bash'>
-dan@a78:~/spark10 $ ls -la
-total 24
-drwxrwxr-x  5 dan dan 4096 Jun 22 17:29 .
-drwxr-xr-x 47 dan dan 4096 Jun 22 17:12 ..
--rw-rw-r--  1 dan dan  135 Jun 22 17:18 build.sbt
-drwxrwxr-x  3 dan dan 4096 Jun 22 17:29 project
-drwxrwxr-x  3 dan dan 4096 Jun 22 17:07 src
-drwxrwxr-x  5 dan dan 4096 Jun 22 17:29 target
-dan@a78:~/spark10 $ 
-dan@a78:~/spark10 $ ls -la target/
-total 20
-drwxrwxr-x 5 dan dan 4096 Jun 22 17:29 .
-drwxrwxr-x 5 dan dan 4096 Jun 22 17:29 ..
-drwxrwxr-x 4 dan dan 4096 Jun 22 17:29 resolution-cache
-drwxrwxr-x 3 dan dan 4096 Jun 22 17:29 scala-2.11
-drwxrwxr-x 4 dan dan 4096 Jun 22 17:29 streams
-dan@a78:~/spark10 $ 
-dan@a78:~/spark10 $ ls -la target/scala-2.11/
+dan@h80:~/spark10 $ ls -la
+total 28
+drwxrwxr-x  6 dan dan 4096 Jan 11 18:22 .
+drwxr-xr-x 46 dan dan 4096 Jan 11 18:06 ..
+-rw-rw-r--  1 dan dan  137 Jan 11 17:45 build.sbt
+drwxrwxr-x  3 dan dan 4096 Jan 11 18:12 project
+drwxrwxr-x  2 dan dan 4096 Jan 11 18:22 spark-warehouse
+drwxrwxr-x  3 dan dan 4096 Jan 11 17:46 src
+drwxrwxr-x  4 dan dan 4096 Jan 11 18:13 target
+dan@h80:~/spark10 $ 
+dan@h80:~/spark10 $ 
+dan@h80:~/spark10 $ 
+
+
+
+dan@h80:~/spark10 $ ls -la target/
 total 16
-drwxrwxr-x 3 dan dan 4096 Jun 22 17:29 .
-drwxrwxr-x 5 dan dan 4096 Jun 22 17:29 ..
-drwxrwxr-x 2 dan dan 4096 Jun 22 17:29 classes
--rw-rw-r-- 1 dan dan 3626 Jun 22 17:29 simple-project_2.11-1.0.jar
-dan@a78:~/spark10 $ 
-dan@a78:~/spark10 $ ~/spark/bin/spark-submit --class "SimpleApp" --master local[4] target/scala-2.11/simple-project_2.11-1.0.jar
-Lines with a: 38, Lines with b: 43
-dan@a78:~/spark10 $ 
-dan@a78:~/spark10 $
+drwxrwxr-x 4 dan dan 4096 Jan 11 18:13 .
+drwxrwxr-x 6 dan dan 4096 Jan 11 18:22 ..
+drwxrwxr-x 4 dan dan 4096 Jan 11 18:13 scala-2.11
+drwxrwxr-x 4 dan dan 4096 Jan 11 18:12 streams
+dan@h80:~/spark10 $ 
+dan@h80:~/spark10 $ 
+dan@h80:~/spark10 $ 
+
+
+
+dan@h80:~/spark10 $ ls -la target/scala-2.11/
+total 20
+drwxrwxr-x 4 dan dan 4096 Jan 11 18:13 .
+drwxrwxr-x 4 dan dan 4096 Jan 11 18:13 ..
+drwxrwxr-x 2 dan dan 4096 Jan 11 18:13 classes
+drwxrwxr-x 5 dan dan 4096 Jan 11 18:13 resolution-cache
+-rw-rw-r-- 1 dan dan 3691 Jan 11 18:13 simple-project_2.11-1.0.jar
+dan@h80:~/spark10 $ 
+dan@h80:~/spark10 $ 
+dan@h80:~/spark10 $ 
+
+
+
+dan@h80:~/spark10 $ ~/spark/bin/spark-submit --class "SimpleApp" --master local[4] target/scala-2.11/simple-project_2.11-1.0.jar
+Lines with a: 39, Lines with b: 44
+dan@h80:~/spark10 $ 
+dan@h80:~/spark10 $ 
+dan@h80:~/spark10 $ 
 </code>
