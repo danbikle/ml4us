@@ -1,2 +1,4 @@
 metastore_db
 derby.log
+*/metastore_db
+*/derby.log
