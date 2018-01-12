@@ -1,14 +1,12 @@
-<code class='bash'></code>
-
-<code class='scala'>
-/* ~/sparkapps/logr10/logr12.scala
+<code class='bash'>{
+/* ~/sparkapps/logr10/logr12j.scala
 This script should download prices and predict daily direction of GSPC.
 It should generate a label which I assume to be dependent on price calculations.
 A label should classify an observation as down or up. Down is 0.0, up is 1.0.
 It should generate independent features from slopes of moving averages of prices.
 It should create a Logistic Regression model from many years of features.
 Demo:
-spark-shell -i logr12.scala
+spark-shell -i logr12j.scala
 */
 
 import org.apache.spark.sql.SQLContext
@@ -23,8 +21,12 @@ import sys.process._
 
 val sqlContext = new SQLContext(sc)
   
-val dp10df = sqlContext.read.format("com.databricks.spark.csv").option("header","true").option("inferSchema","true").load("/tmp/gspc.csv")
-
+val dp10df = sqlContext
+  .read
+  .format("com.databricks.spark.csv")
+  .option("header","true")
+  .option("inferSchema","true")
+  .load("/tmp/gspc.csv")
 
 dp10df.createOrReplaceTempView("tab")
 
@@ -36,11 +38,11 @@ var sqls="SELECT Date,Close,LEAD(Close,1)OVER(ORDER BY Date) leadp FROM tab ORDE
 
 val dp11df=spark.sql(sqls);dp11df.createOrReplaceTempView("tab")
 
-var sqls="SELECT Date,Close,100*(leadp-Close)/Close pctlead FROM tab ORDER BY Date"
+sqls="SELECT Date,Close,100*(leadp-Close)/Close pctlead FROM tab ORDER BY Date"
 
 val dp12df=spark.sql(sqls);dp12df.createOrReplaceTempView("tab")
 
-var sqls = "SELECT Date, Close, pctlead"
+sqls = "SELECT Date, Close, pctlead"
 sqls=sqls++",AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) AS mavg2"
 sqls=sqls++",AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 3 PRECEDING AND CURRENT ROW) AS mavg3"
 sqls=sqls++",AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 4 PRECEDING AND CURRENT ROW) AS mavg4"
@@ -53,7 +55,7 @@ sqls=sqls++" FROM tab ORDER BY Date"
 
 val dp13df=spark.sql(sqls);dp13df.createOrReplaceTempView("tab")
 
-var sqls = "SELECT Date, Close, pctlead"
+sqls = "SELECT Date, Close, pctlead"
 sqls=sqls++",(mavg2-LAG(mavg2,1)OVER(ORDER BY Date))/mavg2 AS slp2 "
 sqls=sqls++",(mavg3-LAG(mavg3,1)OVER(ORDER BY Date))/mavg3 AS slp3 "
 sqls=sqls++",(mavg3-LAG(mavg4,1)OVER(ORDER BY Date))/mavg3 AS slp4 "
@@ -70,7 +72,7 @@ val dp14df=spark.sql(sqls);dp14df.createOrReplaceTempView("tab")
 
 val training_period = " WHERE Date BETWEEN'1986-01-01'AND'2015-12-31' "
 
-var sqls = "SELECT AVG(pctlead) FROM tab"++training_period
+sqls = "SELECT AVG(pctlead) FROM tab"++training_period
 
 val class_df = spark.sql(sqls)
 
@@ -86,11 +88,43 @@ val dp15df = dp14df.withColumn("label",pctlead2label(col("pctlead")))
 
 // I should copy slp-values into Vectors.dense():
 
-val fill_vec = udf((slp2:Float,slp3:Float,slp4:Float,slp5:Float,slp6:Float,slp7:Float,slp8:Float,slp9:Float)=> {Vectors.dense(slp2,slp3,slp4,slp5,slp6,slp7,slp8,slp9)})
+val fill_vec = udf((
+  slp2:Float
+  ,slp3:Float
+  ,slp4:Float
+  ,slp5:Float
+  ,slp6:Float
+  ,slp7:Float
+  ,slp8:Float
+  ,slp9:Float
+  )=> {Vectors.dense(
+  slp2
+  ,slp3
+  ,slp4
+  ,slp5
+  ,slp6
+  ,slp7
+  ,slp8
+  ,slp9
+  )
+  }
+)
 
-val dp16df = dp15df.withColumn("features",fill_vec(col("slp2"),col("slp3"),col("slp4"),col("slp5"),col("slp6"),col("slp7"),col("slp8"),col("slp9")))
+val dp16df = dp15df.withColumn("features"
+,fill_vec(
+  col("slp2")
+  ,col("slp3")
+  ,col("slp4")
+  ,col("slp5")
+  ,col("slp6")
+  ,col("slp7")
+  ,col("slp8")
+  ,col("slp9")
+  )
+)
 
 dp16df.show
 
 // UNDER CONSTRUCTION
+}
 </code>
