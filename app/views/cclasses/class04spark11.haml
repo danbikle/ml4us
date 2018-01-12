@@ -60,15 +60,16 @@
 .syntax
   %pre
     %code.bash mkdir ~/spark10
-%p Then I created a file named ~/spark10/simple.sbt:
+%p Then I created a file named ~/spark10/build.sbt:
 
 .syntax
   %pre
     %code.bash
       name := "Simple Project"
       version := "1.0"
-      scalaVersion := "2.11.7"
-      libraryDependencies += "org.apache.spark" %% "spark-core" % "2.1.1"
+      scalaVersion := "2.11.8"
+      libraryDependencies += "org.apache.spark" %% "spark-sql" % "2.2.1"
+
 
 %p Then I created a file named ~/spark10/src/main/scala/SimpleApp.scala
 .syntax
