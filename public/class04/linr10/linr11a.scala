@@ -167,4 +167,29 @@ val eff = udf((pctlead:Float,prediction:Double)=> {if (prediction>0) pctlead els
 // prediction report:
 val p2df = predictions_df.withColumn("effectiveness",eff(col("pctlead"),col("prediction")))
 p2df.select("Date","Close","pctlead","effectiveness","label","prediction").show(255)
+
+// I should report in a way which is consistent with the python script linr11a.py:
+// I should get Linear Regression Accuracy:
+sqls = "SELECT COUNT(Date) pc FROM tab WHERE (prediction>0 AND pctlead>0)OR(prediction<=0 AND pctlead<=0)"
+
+val pc_df = spark.sql(sqls)
+
+pc_df.show
+
+val poscount_i = pc_df.first()(0).asInstanceOf[Long]
+
+println(poscount_i)
+
+sqls = "SELECT COUNT(Date) rcount FROM tab"
+
+val rc_df = spark.sql(sqls)
+
+rc_df.show
+
+val rcount_i = rc_df.first()(0).asInstanceOf[Long]
+
+println(rcount_i)
+println("Linear Regression Accuracy:")
+println(poscount_i.toFloat/rcount_i)
+
 }

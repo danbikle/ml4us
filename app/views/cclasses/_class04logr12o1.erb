@@ -56,7 +56,7 @@ class_boundry_f = train_df.pctlead.mean()
 labels_sr = train_df.pctlead > class_boundry_f
 
 # I should Create train_a from train_df
-train_a         = np.array(train_df)
+train_a = np.array(train_df)
 
 # I should Use LogisticRegression to fit model to train_a
 linr_model = linear_model.LogisticRegression()
