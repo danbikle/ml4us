@@ -65,7 +65,7 @@ linr_model.fit(x_a, y_a)
 
 # I should Predict observations in test_a
 x_test_a      = test_a[:,2:]
-pdb.set_trace()
+
 bool_a        = linr_model.predict(x_test_a)
 predictions_a = linr_model.predict_proba(x_test_a)
 
@@ -73,5 +73,38 @@ predictions_a = linr_model.predict_proba(x_test_a)
 rpt_df               = test_df[['Date','pctlead']].copy()
 rpt_df['prediction'] = predictions_a[:,1].tolist()
 
+# I should calculate +1 if accurate else -1:
+pred_eff_sr = np.sign(rpt_df.pctlead * (rpt_df.prediction-0.5))
+# I should work towards accuracy calculation:
+acc_sr      = (pred_eff_sr    > 0).astype('int')
+acc_lo_sr   = (rpt_df.pctlead > 0).astype('int')
+
+# I should count true-pos, false-pos, etc...:
+tp_i = rpt_df.loc[(rpt_df.prediction >= 0.5) & (rpt_df.pctlead > 0)].Date.count()
+fp_i = rpt_df.loc[(rpt_df.prediction >= 0.5) & (rpt_df.pctlead < 0)].Date.count()
+# true-neg, false-neg:
+tn_i = rpt_df.loc[(rpt_df.prediction < 0.5) & (rpt_df.pctlead < 0)].Date.count()
+fn_i = rpt_df.loc[(rpt_df.prediction < 0.5) & (rpt_df.pctlead > 0)].Date.count()
+
+# effectiveness of Long-Only is easy to get:
+eff_lo_f = rpt_df.pctlead.sum()
+
+# I should get effectiveness of negative predictions:
+eff_np_f = -rpt_df.loc[rpt_df.prediction <  0.5].pctlead.sum()
+# I should get effectiveness of positive predictions:
+eff_pp_f =  rpt_df.loc[rpt_df.prediction >= 0.5].pctlead.sum()
+
+print('Logistic Regression Accuracy:', 100.0*acc_sr.sum()/acc_sr.count(),'%')
+print('Long Only Accuracy:', 100.0*acc_lo_sr.sum()/acc_lo_sr.count(),'%')
+
+print('True Positive Count:', tp_i)
+print('False Positive Count:',fp_i)
+
+print('True Negative Count:', tn_i)
+print('False Negative Count:',fn_i)
+
+print('Effectiveness of Negative Predictions:',eff_np_f)
+print('Effectiveness of Positive Predictions:',eff_pp_f)
+print('Effectiveness of Long-Only-Model:',     eff_lo_f)
 
 'bye'
