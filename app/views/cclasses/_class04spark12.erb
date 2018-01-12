@@ -1,102 +1,154 @@
 <code class='bash'>
-dan@a78:~ $ 
-dan@a78:~ $ cd ~/spark
-dan@a78:~/spark $
+dan@h80:~ $ 
+dan@h80:~ $ 
+dan@h80:~ $ cd ~/spark
+dan@h80:~/spark $ 
+dan@h80:~/spark $ ls -la
+total 112
+drwxrwxr-x 12 dan dan  4096 Nov 24 15:31 .
+drwxr-xr-x 43 dan dan  4096 Jan 11 12:52 ..
+drwxrwxr-x  2 dan dan  4096 Nov 24 15:31 bin
+drwxrwxr-x  2 dan dan  4096 Jan 11 04:42 conf
+drwxrwxr-x  5 dan dan  4096 Nov 24 15:31 data
+drwxrwxr-x  4 dan dan  4096 Nov 24 15:31 examples
+drwxrwxr-x  2 dan dan 12288 Nov 24 15:31 jars
+-rw-rw-r--  1 dan dan 17881 Nov 24 15:31 LICENSE
+drwxrwxr-x  2 dan dan  4096 Nov 24 15:31 licenses
+-rw-rw-r--  1 dan dan 24645 Nov 24 15:31 NOTICE
+drwxrwxr-x  8 dan dan  4096 Nov 24 15:31 python
+drwxrwxr-x  3 dan dan  4096 Nov 24 15:31 R
+-rw-rw-r--  1 dan dan  3809 Nov 24 15:31 README.md
+-rw-rw-r--  1 dan dan   128 Nov 24 15:31 RELEASE
+drwxrwxr-x  2 dan dan  4096 Nov 24 15:31 sbin
+drwxrwxr-x  2 dan dan  4096 Nov 24 15:31 yarn
+dan@h80:~/spark $ 
+dan@h80:~/spark $ 
 
 
 
-dan@a78:~/spark $ bin/spark-shell
-Spark context Web UI available at http://192.168.1.78:4040
-Spark context available as 'sc' (master = local[*], app id = local-1498175577126).
+dan@h80:~/spark $ bin/spark-shell
+Spark context Web UI available at http://192.168.1.80:4041
+Spark context available as 'sc' (master = local[*], app id = local-1515715964418).
 Spark session available as 'spark'.
 Welcome to
       ____              __
      / __/__  ___ _____/ /__
     _\ \/ _ \/ _ `/ __/  '_/
-   /___/ .__/\_,_/_/ /_/\_\   version 2.1.1
+   /___/ .__/\_,_/_/ /_/\_\   version 2.2.1
       /_/
          
-Using Scala version 2.11.8 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_131)
+Using Scala version 2.11.8 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_152)
 Type in expressions to have them evaluated.
 Type :help for more information.
 
-scala>
+scala> 
+scala> 
+scala> 
 
 
 
 scala> val textFile = sc.textFile("README.md")
 textFile: org.apache.spark.rdd.RDD[String] = README.md MapPartitionsRDD[1] at textFile at &lt;console>:24
 scala> 
+scala> 
+scala> 
 
 
 
 scala> textFile.count()
-res0: Long = 104
+res0: Long = 103
+scala> 
+scala> 
+scala> 
 
 
 
 scala> textFile.first()
 res1: String = # Apache Spark
-
+scala> 
+scala> 
+scala> 
 
 
 scala> val linesWithSpark = textFile.filter(line => line.contains("Spark"))
-linesWithSpark: org.apache.spark.rdd.RDD[String] = MapPartitionsRDD[4] at filter at &lt;console>:26
+linesWithSpark: org.apache.spark.rdd.RDD[String] = MapPartitionsRDD[2] at filter at &lt;console>:26
+scala> 
+scala> 
+scala> 
 
 
 
 scala> textFile.filter(line => line.contains("Spark")).count()
 res2: Long = 20
+scala> 
+scala> 
+scala> 
 
 
 
 scala> textFile.map(line => line.split(" ").size).reduce((a, b) => if (a > b) a else b)
 res3: Int = 22
-
+scala> 
+scala> 
+scala> 
 
 
 scala> import java.lang.Math
 import java.lang.Math
+scala> 
+scala> 
+scala> 
 
 
 
 scala> textFile.map(line => line.split(" ").size).reduce((a, b) => Math.max(a, b))
 res4: Int = 22
+scala> 
+scala> 
+scala> 
 
 
 
 scala> val wordCounts = textFile.flatMap(line => line.split(" ")).map(word => (word, 1)).reduceByKey((a, b) => a + b)
-wordCounts: org.apache.spark.rdd.RDD[(String, Int)] = ShuffledRDD[10] at reduceByKey at &lt;console>:27
+wordCounts: org.apache.spark.rdd.RDD[(String, Int)] = ShuffledRDD[8] at reduceByKey at &lt;console>:27
+scala> 
+scala> 
+scala> 
 
 
 
 scala> wordCounts.collect()
-res5: Array[(String, Int)] = Array((package,1), (this,1),
-(Version"](http://spark.apache.org/docs/latest/building-spark.html#specifying-the-hadoop-version),1),
-(Because,1), (Python,2),
-(page](http://spark.apache.org/documentation.html).,1), (cluster.,1),
-(its,1), ([run,1), (general,3), (have,1), (pre-built,1), (YARN,,1),
-([http://spark.apache.org/developer-tools.html](the,1), (changed,1),
-(locally,2), (sc.parallelize(1,1), (only,1), (locally.,1),
-(several,1), (This,2), (basic,1), (Configuration,1), (learning,,1),
-(documentation,3), (first,1), (graph,1), (Hive,2), (info,1),
-(["Specifying,1), ("yarn",1), ([params]`.,1), ([project,1),
-(prefer,1), (SparkPi,2), (&lt;http://spark.apache.org/>,1), (engine,1),
-(version,1), (file,1), (documentation,,1), (MASTER,1), (example,3),
-(["Parallel,1), (are...
-
-
+res5: Array[(String, Int)] = Array((package,1), (this,1), (Version"](http://spark.apache.org/docs/latest/building-spark.html#specifying-the-hadoop-version),1), (Because,1), (Python,2), (page](http://spark.apache.org/documentation.html).,1), (cluster.,1), (its,1), ([run,1), (general,3), (have,1), (pre-built,1), (YARN,,1), (locally,2), (changed,1), (locally.,1), (sc.parallelize(1,1), (only,1), (several,1), (This,2), (basic,1), (Configuration,1), (learning,,1), (documentation,3), (first,1), (graph,1), (Hive,2), (info,1), (["Specifying,1), ("yarn",1), ([params]`.,1), ([project,1), (prefer,1), (SparkPi,2), (&lt;http://spark.apache.org/>,1), (engine,1), (version,1), (file,1), (documentation,,1), (MASTER,1), (example,3), (["Parallel,1), (are,1), (params,1), (scala>,1), (DataFrames,,1), (provides,...
+scala> 
+scala> 
+scala> 
 
 scala> linesWithSpark.cache()
-res6: linesWithSpark.type = MapPartitionsRDD[4] at filter at &lt;console>:26
+res6: linesWithSpark.type = MapPartitionsRDD[2] at filter at &lt;console>:26
+scala> 
+scala> 
+scala> 
 
 
 
 scala> linesWithSpark.count()
 res7: Long = 20
+scala> 
+scala> 
+scala> 
 
 
 
 scala> linesWithSpark.count()
 res8: Long = 20
+scala> 
+scala> 
+scala> 
+
+
+
+scala> :quit
+dan@h80:~/spark $ 
+dan@h80:~/spark $ 
+dan@h80:~/spark $ 
 </code>
