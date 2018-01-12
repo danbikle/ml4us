@@ -57,3 +57,32 @@ linr_model.fit(x_a, y_a)
 x_test_a      = test_a[:,2:]
 predictions_a = linr_model.predict(x_test_a)
 
+# I should Report accuracy and effectiveness of predictions
+rpt_df               = test_df[['Date','pctlead']].copy()
+rpt_df['prediction'] = predictions_a.tolist()
+pred_eff_sr          = np.sign(rpt_df.pctlead * rpt_df.prediction)
+acc_sr    = (pred_eff_sr    > 0).astype('int')
+acc_lo_sr = (rpt_df.pctlead > 0).astype('int')
+tp_i = rpt_df.loc[(rpt_df.prediction > 0) & (rpt_df.pctlead > 0)].Date.count()
+fp_i = rpt_df.loc[(rpt_df.prediction > 0) & (rpt_df.pctlead < 0)].Date.count()
+
+tn_i = rpt_df.loc[(rpt_df.prediction < 0) & (rpt_df.pctlead < 0)].Date.count()
+fn_i = rpt_df.loc[(rpt_df.prediction < 0) & (rpt_df.pctlead > 0)].Date.count()
+
+eff_lo_f = rpt_df.pctlead.sum()
+
+eff_np_f = -rpt_df.loc[rpt_df.prediction < 0].pctlead.sum()
+eff_pp_f =  rpt_df.loc[rpt_df.prediction > 0].pctlead.sum()
+
+print('Linear Regression Accuracy:', 100.0*acc_sr.sum()/acc_sr.count(),'%')
+print('Long Only Accuracy:', 100.0*acc_lo_sr.sum()/acc_lo_sr.count(),'%')
+
+print('True Positive Count:', tp_i)
+print('False Positive Count:',fp_i)
+
+print('True Negative Count:', tn_i)
+print('False Negative Count:',fn_i)
+
+print('Effectiveness of Negative Predictions:',eff_np_f)
+print('Effectiveness of Positive Predictions:',eff_pp_f)
+print('Effectiveness of Long-Only-Model:',     eff_lo_f)
