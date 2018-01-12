@@ -1,12 +1,12 @@
 <code class='scala'>
-/* ~/sparkapps/linr10/linr11.scala
+{
+/*
+~/ml4/public/class04/linr10/linr11a.scala
 This script should download prices and predict daily direction of GSPC.
-It should generate a label which I assume to be dependent on price calculations.
-A label should classify an observation as down or up. Down is 0.0, up is 1.0.
 It should generate independent features from slopes of moving averages of prices.
 It should create a Linear Regression model from many years of features.
 Demo:
-spark-shell -i linr11.scala
+spark-shell -i linr11a.scala
 */
 
 import org.apache.spark.sql.SQLContext
@@ -14,7 +14,6 @@ import org.apache.spark.ml.regression.LinearRegression
 import org.apache.spark.ml.linalg.{Vector, Vectors}
 import org.apache.spark.ml.param.ParamMap
 import org.apache.spark.sql.Row
-import org.apache.spark.sql.functions._
 import sys.process._
 
 // I should declare training_period, test_period
@@ -26,24 +25,32 @@ val test_period     = " WHERE Date BETWEEN'2016-01-01'AND'2017-01-01' "
 "/usr/bin/curl -L ml4.us/csv/GSPC.csv -o /tmp/gspc.csv"!
 
 val sqlContext = new SQLContext(sc)
-
-val dp10df = sqlContext.read.format("com.databricks.spark.csv").option("header","true").option("inferSchema","true").load("/tmp/gspc.csv")
+  
+val dp10df = sqlContext
+  .read
+  .format("com.databricks.spark.csv")
+  .option("header","true")
+  .option("inferSchema","true")
+  .load("/tmp/gspc.csv")
 
 dp10df.createOrReplaceTempView("tab")
 
 spark.sql("SELECT COUNT(Date),MIN(Date),MAX(Date),MIN(Close),MAX(Close)FROM tab").show
 
-// I should compute a label I can use to classify observations.
+// I should declare a dependent variable: "pctlead".
+// If it truely is dependent that makes it predictable.
 
 var sqls="SELECT Date,Close,LEAD(Close,1)OVER(ORDER BY Date) leadp FROM tab ORDER BY Date"
 
 val dp11df=spark.sql(sqls);dp11df.createOrReplaceTempView("tab")
 
-var sqls="SELECT Date,Close,100*(leadp-Close)/Close pctlead FROM tab ORDER BY Date"
+sqls="SELECT Date,Close,100*(leadp-Close)/Close pctlead FROM tab ORDER BY Date"
 
 val dp12df=spark.sql(sqls);dp12df.createOrReplaceTempView("tab")
 
-var sqls = "SELECT Date, Close, pctlead"
+// I should now collect features AKA independent variables.
+
+sqls = "SELECT Date, Close, pctlead"
 sqls=sqls++",AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) AS mavg2"
 sqls=sqls++",AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 3 PRECEDING AND CURRENT ROW) AS mavg3"
 sqls=sqls++",AVG(Close)OVER(ORDER BY Date ROWS BETWEEN 4 PRECEDING AND CURRENT ROW) AS mavg4"
@@ -57,8 +64,8 @@ sqls=sqls++" FROM tab ORDER BY Date"
 val dp13df=spark.sql(sqls);dp13df.createOrReplaceTempView("tab")
 
 // In Linear Regression, I should use pctlead as the label:
-
-var sqls = "SELECT Date, Close, pctlead, pctlead label             "
+  
+sqls = "SELECT Date, Close, pctlead, pctlead label "
 sqls=sqls++",(mavg2-LAG(mavg2,1)OVER(ORDER BY Date))/mavg2 AS slp2 "
 sqls=sqls++",(mavg3-LAG(mavg3,1)OVER(ORDER BY Date))/mavg3 AS slp3 "
 sqls=sqls++",(mavg3-LAG(mavg4,1)OVER(ORDER BY Date))/mavg3 AS slp4 "
@@ -71,10 +78,44 @@ sqls=sqls++" FROM tab ORDER BY Date"
 
 val dp15df=spark.sql(sqls)
 
-val fill_vec = udf((slp2:Float,slp3:Float,slp4:Float,slp5:Float,slp6:Float,slp7:Float,slp8:Float,slp9:Float)=> {Vectors.dense(slp2,slp3,slp4,slp5,slp6,slp7,slp8,slp9)})
+// I should copy slp-values into Vectors.dense():
 
-val dp16df = dp15df.withColumn("features",fill_vec(col("slp2"),col("slp3"),col("slp4"),col("slp5"),col("slp6"),col("slp7"),col("slp8"),col("slp9")))
+val fill_vec = udf((
+  slp2:Float
+  ,slp3:Float
+  ,slp4:Float
+  ,slp5:Float
+  ,slp6:Float
+  ,slp7:Float
+  ,slp8:Float
+  ,slp9:Float
+  )=> {Vectors.dense(
+  slp2
+  ,slp3
+  ,slp4
+  ,slp5
+  ,slp6
+  ,slp7
+  ,slp8
+  ,slp9
+  )
+  }
+)
 
+val dp16df = dp15df.withColumn("features"
+,fill_vec(
+  col("slp2")
+  ,col("slp3")
+  ,col("slp4")
+  ,col("slp5")
+  ,col("slp6")
+  ,col("slp7")
+  ,col("slp8")
+  ,col("slp9")
+  )
+)
+
+// I should gather observations to learn from:
 dp16df.createOrReplaceTempView("tab")
 
 // I should create a LinearRegression instance. This instance is an 'Estimator'.
@@ -121,12 +162,11 @@ spark.sql("SELECT COUNT(Date) fpc FROM tab WHERE prediction>0 AND pctlead&lt;0")
 // False Negative Count:
 spark.sql("SELECT COUNT(Date) fnc FROM tab WHERE prediction&lt;0 AND pctlead>0").show
 
-// prediction report:
-// predictions_df.select("Date","Close","pctlead","label","prediction").show(255)
-
 // eff logic
 val eff = udf((pctlead:Float,prediction:Double)=> {if (prediction>0) pctlead else -pctlead})
 
+// prediction report:
 val p2df = predictions_df.withColumn("effectiveness",eff(col("pctlead"),col("prediction")))
 p2df.select("Date","Close","pctlead","effectiveness","label","prediction").show(255)
+}
 </code>
