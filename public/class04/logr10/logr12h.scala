@@ -1,12 +1,12 @@
 {
-/* ~/sparkapps/logr10/logr12g.scala
+/* ~/sparkapps/logr10/logr12h.scala
 This script should download prices and predict daily direction of GSPC.
 It should generate a label which I assume to be dependent on price calculations.
 A label should classify an observation as down or up. Down is 0.0, up is 1.0.
 It should generate independent features from slopes of moving averages of prices.
 It should create a Logistic Regression model from many years of features.
 Demo:
-spark-shell -i logr12g.scala
+spark-shell -i logr12h.scala
 */
 
 import org.apache.spark.sql.SQLContext
@@ -66,9 +66,23 @@ sqls=sqls++",(mavg3-LAG(mavg8,1)OVER(ORDER BY Date))/mavg3 AS slp8 "
 sqls=sqls++",(mavg3-LAG(mavg9,1)OVER(ORDER BY Date))/mavg3 AS slp9 "
 sqls=sqls++" FROM tab ORDER BY Date"
 
-val dp14df=spark.sql(sqls)
+val dp14df=spark.sql(sqls);dp14df.createOrReplaceTempView("tab")
 
-dp14df.show
+// For Class Boundry, I should get avg of pctlead over training period.
+
+val training_period = " WHERE Date BETWEEN'1986-01-01'AND'2015-12-31' "
+
+sqls = "SELECT AVG(pctlead) FROM tab"++training_period
+
+val class_df = spark.sql(sqls)
+
+val class_boundry = class_df.first()(0).asInstanceOf[Double]
+
+class_df.show
+
+println("class_boundry: ")
+
+println(class_boundry)
 
 // UNDER CONSTRUCTION
 }
