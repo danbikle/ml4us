@@ -9,7 +9,7 @@ spark-shell -i linr11a.scala
 */
 
 import org.apache.spark.sql.SQLContext
-import org.apache.spark.ml.classification.LogisticRegression
+import org.apache.spark.ml.regression.LinearRegression
 import org.apache.spark.ml.linalg.{Vector, Vectors}
 import org.apache.spark.ml.param.ParamMap
 import org.apache.spark.sql.Row
@@ -62,7 +62,9 @@ sqls=sqls++" FROM tab ORDER BY Date"
 
 val dp13df=spark.sql(sqls);dp13df.createOrReplaceTempView("tab")
 
-sqls = "SELECT Date, Close, pctlead"
+// In Linear Regression, I should use pctlead as the label:
+  
+sqls = "SELECT Date, Close, pctlead, pctlead label "
 sqls=sqls++",(mavg2-LAG(mavg2,1)OVER(ORDER BY Date))/mavg2 AS slp2 "
 sqls=sqls++",(mavg3-LAG(mavg3,1)OVER(ORDER BY Date))/mavg3 AS slp3 "
 sqls=sqls++",(mavg3-LAG(mavg4,1)OVER(ORDER BY Date))/mavg3 AS slp4 "
@@ -73,8 +75,96 @@ sqls=sqls++",(mavg3-LAG(mavg8,1)OVER(ORDER BY Date))/mavg3 AS slp8 "
 sqls=sqls++",(mavg3-LAG(mavg9,1)OVER(ORDER BY Date))/mavg3 AS slp9 "
 sqls=sqls++" FROM tab ORDER BY Date"
 
-val dp14df=spark.sql(sqls);dp14df.createOrReplaceTempView("tab")
+val dp15df=spark.sql(sqls)
 
-// For Class Boundry, I should get avg of pctlead over training period.
+// I should copy slp-values into Vectors.dense():
 
+val fill_vec = udf((
+  slp2:Float
+  ,slp3:Float
+  ,slp4:Float
+  ,slp5:Float
+  ,slp6:Float
+  ,slp7:Float
+  ,slp8:Float
+  ,slp9:Float
+  )=> {Vectors.dense(
+  slp2
+  ,slp3
+  ,slp4
+  ,slp5
+  ,slp6
+  ,slp7
+  ,slp8
+  ,slp9
+  )
+  }
+)
+
+val dp16df = dp15df.withColumn("features"
+,fill_vec(
+  col("slp2")
+  ,col("slp3")
+  ,col("slp4")
+  ,col("slp5")
+  ,col("slp6")
+  ,col("slp7")
+  ,col("slp8")
+  ,col("slp9")
+  )
+)
+
+// I should gather observations to learn from:
+dp16df.createOrReplaceTempView("tab")
+
+// I should create a LinearRegression instance. This instance is an 'Estimator'.
+
+val lr = new LinearRegression()
+
+lr.setMaxIter(1234).setRegParam(0.01)
+
+// I should gather observations to learn from:
+dp16df.createOrReplaceTempView("tab")
+
+val train_df = spark.sql("SELECT * FROM tab"++training_period)
+
+/*I should fit a LinearRegression model to observations.
+This uses the parameters stored in lr.*/
+
+val model1 = lr.fit(train_df)
+
+val test_df = spark.sql("SELECT * FROM tab"++test_period)
+
+/* I should predict. It is convenient that predictions_df will contain a copy of test_df.*/
+
+val predictions_df = model1.transform(test_df)
+predictions_df.createOrReplaceTempView("tab")
+
+// Long-only effectiveness:
+spark.sql("SELECT SUM(pctlead) eff_lo FROM tab").show
+
+// Effectiveness of negative predictions:
+spark.sql("SELECT -SUM(pctlead) eff_np FROM tab WHERE prediction<0").show
+
+// Effectiveness of positive predictions:
+spark.sql("SELECT SUM(pctlead) eff_pp FROM tab WHERE prediction>0").show
+
+// True Positive Count:
+spark.sql("SELECT COUNT(Date) tpc FROM tab WHERE prediction>0 AND pctlead>0").show
+
+// True Negative Count:
+spark.sql("SELECT COUNT(Date) tnc FROM tab WHERE prediction<0 AND pctlead<0").show
+
+// False Positive Count:
+spark.sql("SELECT COUNT(Date) fpc FROM tab WHERE prediction>0 AND pctlead<0").show
+
+// False Negative Count:
+spark.sql("SELECT COUNT(Date) fnc FROM tab WHERE prediction<0 AND pctlead>0").show
+
+// eff logic
+val eff = udf((pctlead:Float,prediction:Double)=> {if (prediction>0) pctlead else -pctlead})
+
+// prediction report:
+val p2df = predictions_df.withColumn("effectiveness",eff(col("pctlead"),col("prediction")))
+p2df.select("Date","Close","pctlead","effectiveness","label","prediction").show(255)
 }
