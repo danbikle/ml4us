@@ -1,6 +1,6 @@
 <code class='bash'>
-dan@pavlap:~/spark $ 
-dan@pavlap:~/spark $ bin/spark-submit examples/src/main/r/dataframe.R
+dan@h80:~/spark $ 
+dan@h80:~/spark $ ./bin/spark-submit examples/src/main/r/dataframe.R
 Loading required package: methods
 
 Attaching package: ‘SparkR’
@@ -14,7 +14,13 @@ The following objects are masked from ‘package:base’:
     as.data.frame, colnames, colnames&lt;-, drop, intersect, rank, rbind,
     sample, subset, summary, transform, union
 
+Warning message:
+package ‘SparkR’ was built under R version 3.4.2 
+Spark package found in SPARK_HOME: /home/dan/spark
 Java ref type org.apache.spark.sql.SparkSession id 1 
+Warning message:
+In Filter(nzchar, unlist(strsplit(input, ",|\\s"))) :
+  bytecode version mismatch; using eval
 root
  |-- name: string (nullable = true)
  |-- age: double (nullable = true)
@@ -23,6 +29,7 @@ root
  |-- name: string (nullable = true)
     name
 1 Justin
-dan@pavlap:~/spark $ 
-dan@pavlap:~/spark $
+dan@h80:~/spark $ 
+dan@h80:~/spark $ 
+dan@h80:~/spark $ 
 </code>
