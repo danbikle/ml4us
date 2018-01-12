@@ -88,7 +88,27 @@ val dp15df = dp14df.withColumn("label",pctlead2label(col("pctlead")))
 
 // I should copy slp-values into Vectors.dense():
 
-val fill_vec = udf((slp2:Float,slp3:Float,slp4:Float,slp5:Float,slp6:Float,slp7:Float,slp8:Float,slp9:Float)=> {Vectors.dense(slp2,slp3,slp4,slp5,slp6,slp7,slp8,slp9)})
+val fill_vec = udf((
+  slp2:Float
+  ,slp3:Float
+  ,slp4:Float
+  ,slp5:Float
+  ,slp6:Float
+  ,slp7:Float
+  ,slp8:Float
+  ,slp9:Float
+  )=> {Vectors.dense(
+  slp2
+  ,slp3
+  ,slp4
+  ,slp5
+  ,slp6
+  ,slp7
+  ,slp8
+  ,slp9
+  )
+  }
+)
 
 val dp16df = dp15df.withColumn("features"
 ,fill_vec(
