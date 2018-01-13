@@ -1,65 +1,19 @@
 <code class='bash'>
-dan@h80:~/ml4/public/class04/linr10 $ spark-shell -i linr11a.scala
-Spark context Web UI available at http://192.168.1.80:4043
-Spark context available as 'sc' (master = local[*], app id = local-1515739926349).
-Spark session available as 'spark'.
+scala> :load linr11a.scala
 Loading linr11a.scala...
 warning: there was one deprecation warning; re-run with -deprecation for details
 warning: there was one feature warning; re-run with -feature for details
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-100 1252k  100 1252k    0     0  1304k      0 --:--:-- --:--:-- --:--:-- 2403k
+100 1252k  100 1252k    0     0  1486k      0 --:--:-- --:--:-- --:--:-- 2269k
 +-----------+-------------------+-------------------+----------+----------+
 |count(Date)|          min(Date)|          max(Date)|min(Close)|max(Close)|
 +-----------+-------------------+-------------------+----------+----------+
 |      17116|1950-01-03 00:00:00|2018-01-09 00:00:00|     16.66|2753.52002|
 +-----------+-------------------+-------------------+----------+----------+
 
-+------------------+
-|            eff_lo|
-+------------------+
-|12.343645501383794|
-+------------------+
-
-+-----------------+
-|           eff_np|
-+-----------------+
-|2.967312612732386|
-+-----------------+
-
-+------------------+
-|            eff_pp|
-+------------------+
-|15.310958114116183|
-+------------------+
-
-+---+
-|tpc|
-+---+
-|100|
-+---+
-
-+---+
-|tnc|
-+---+
-| 35|
-+---+
-
-+---+
-|fpc|
-+---+
-| 85|
-+---+
-
-+---+
-|fnc|
-+---+
-| 32|
-+---+
-
+Predictions Report:
 +-------------------+-----------+--------------------+-------------+--------------------+--------------------+
 |               Date|      Close|             pctlead|effectiveness|               label|          prediction|
 +-------------------+-----------+--------------------+-------------+--------------------+--------------------+
@@ -317,17 +271,59 @@ warning: there was one feature warning; re-run with -feature for details
 |2016-12-30 00:00:00|2238.830078|  0.8486575281753026|   0.84865755|  0.8486575281753026| 0.09076776349683113|
 +-------------------+-----------+--------------------+-------------+--------------------+--------------------+
 
+Linear Regression Accuracy:
+0.53571427
+Long Only Accuracy:
+0.52380955
+True Positive Count:
++---+
+|tpc|
++---+
+|100|
++---+
 
-Welcome to
-      ____              __
-     / __/__  ___ _____/ /__
-    _\ \/ _ \/ _ `/ __/  '_/
-   /___/ .__/\_,_/_/ /_/\_\   version 2.2.1
-      /_/
-         
-Using Scala version 2.11.8 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_152)
-Type in expressions to have them evaluated.
-Type :help for more information.
+False Positive Count:
++---+
+|fpc|
++---+
+| 85|
++---+
+
+True Negative Count:
++---+
+|tnc|
++---+
+| 35|
++---+
+
+False Negative Count:
++---+
+|fnc|
++---+
+| 32|
++---+
+
+Effectiveness of negative predictions:
++-----------------+
+|           eff_np|
++-----------------+
+|2.967312612732386|
++-----------------+
+
+Effectiveness of positive predictions:
++------------------+
+|            eff_pp|
++------------------+
+|15.310958114116183|
++------------------+
+
+Effectiveness of Long-Only-Model:
++------------------+
+|            eff_lo|
++------------------+
+|12.343645501383794|
++------------------+
+
 
 scala>
 scala>

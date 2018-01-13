@@ -1,5 +1,4 @@
-<code class='scala'>
-{
+<code class='scala'>{
 /*
 ~/ml4/public/class04/linr10/linr11a.scala
 This script should download prices and predict daily direction of GSPC.
@@ -141,32 +140,66 @@ val test_df = spark.sql("SELECT * FROM tab"++test_period)
 val predictions_df = model1.transform(test_df)
 predictions_df.createOrReplaceTempView("tab")
 
-// Long-only effectiveness:
-spark.sql("SELECT SUM(pctlead) eff_lo FROM tab").show
-
-// Effectiveness of negative predictions:
-spark.sql("SELECT -SUM(pctlead) eff_np FROM tab WHERE prediction&lt;0").show
-
-// Effectiveness of positive predictions:
-spark.sql("SELECT SUM(pctlead) eff_pp FROM tab WHERE prediction>0").show
-
-// True Positive Count:
-spark.sql("SELECT COUNT(Date) tpc FROM tab WHERE prediction>0 AND pctlead>0").show
-
-// True Negative Count:
-spark.sql("SELECT COUNT(Date) tnc FROM tab WHERE prediction&lt;0 AND pctlead&lt;0").show
-
-// False Positive Count:
-spark.sql("SELECT COUNT(Date) fpc FROM tab WHERE prediction>0 AND pctlead&lt;0").show
-
-// False Negative Count:
-spark.sql("SELECT COUNT(Date) fnc FROM tab WHERE prediction&lt;0 AND pctlead>0").show
-
 // eff logic
 val eff = udf((pctlead:Float,prediction:Double)=> {if (prediction>0) pctlead else -pctlead})
 
 // prediction report:
 val p2df = predictions_df.withColumn("effectiveness",eff(col("pctlead"),col("prediction")))
+
+println("Predictions Report:")
 p2df.select("Date","Close","pctlead","effectiveness","label","prediction").show(255)
+
+// I should report in a way which is consistent with the python script linr11a.py:
+
+// I should get Linear Regression Accuracy:
+sqls = "SELECT COUNT(Date) pc FROM tab WHERE (prediction>0 AND pctlead>0)OR(prediction&lt;=0 AND pctlead&lt;=0)"
+
+val pc_df = spark.sql(sqls)
+
+val poscount_i = pc_df.first()(0).asInstanceOf[Long]
+
+sqls = "SELECT COUNT(Date) rcount FROM tab"
+
+val rc_df = spark.sql(sqls)
+
+val rcount_i = rc_df.first()(0).asInstanceOf[Long]
+
+println("Linear Regression Accuracy:")
+println(poscount_i.toFloat/rcount_i)
+
+// I should get Long-Only Accuracy:
+sqls = "SELECT COUNT(Date) upcount FROM tab WHERE pctlead>0"
+
+val upcount_df = spark.sql(sqls)
+val upcount_i  = upcount_df.first()(0).asInstanceOf[Long]
+
+println("Long Only Accuracy:")
+println(upcount_i.toFloat/rcount_i)
+
+val tp_df = spark.sql("SELECT COUNT(Date) tpc FROM tab WHERE prediction>0 AND pctlead>0")
+println("True Positive Count:")
+tp_df.show
+
+val fp_df = spark.sql("SELECT COUNT(Date) fpc FROM tab WHERE prediction>0 AND pctlead&lt;0")
+println("False Positive Count:")
+fp_df.show
+
+val tn_df = spark.sql("SELECT COUNT(Date) tnc FROM tab WHERE prediction&lt;=0 AND pctlead&lt;=0")
+println("True Negative Count:")
+tn_df.show
+
+val fn_df = spark.sql("SELECT COUNT(Date) fnc FROM tab WHERE prediction&lt;=0 AND pctlead>0")
+println("False Negative Count:")
+fn_df.show
+
+println("Effectiveness of negative predictions:")
+spark.sql("SELECT -SUM(pctlead) eff_np FROM tab WHERE prediction&lt;=0").show
+
+println("Effectiveness of positive predictions:")
+spark.sql("SELECT SUM(pctlead) eff_pp FROM tab WHERE prediction>0").show
+
+println("Effectiveness of Long-Only-Model:")
+spark.sql("SELECT SUM(pctlead) eff_lo FROM tab").show
+
 }
 </code>
