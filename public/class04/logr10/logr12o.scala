@@ -147,29 +147,6 @@ val test_df = spark.sql("SELECT * FROM tab"++test_period)
 val predictions_df = model1.transform(test_df)
 predictions_df.createOrReplaceTempView("tab")
 
-/*
-// Long-only effectiveness:
-spark.sql("SELECT SUM(pctlead) eff_lo FROM tab").show
-
-// Effectiveness of negative predictions:
-spark.sql("SELECT -SUM(pctlead) eff_np FROM tab WHERE prediction = 0.0").show
-
-// Effectiveness of positive predictions:
-spark.sql("SELECT SUM(pctlead) eff_pp FROM tab WHERE prediction = 1.0").show
-
-// True Positive Count:
-spark.sql("SELECT COUNT(Date) tpc FROM tab WHERE prediction=1.0 AND pctlead>0").show
-
-// True Negative Count:
-spark.sql("SELECT COUNT(Date) tnc FROM tab WHERE prediction=0.0 AND pctlead<0").show
-
-// False Positive Count:
-spark.sql("SELECT COUNT(Date) fpc FROM tab WHERE prediction=1.0 AND pctlead<0").show
-
-// False Negative Count:
-spark.sql("SELECT COUNT(Date) fnc FROM tab WHERE prediction=0.0 AND pctlead>0").show
-*/
-
 // eff logic
 val eff = udf((pctlead:Float,prediction:Double)=> {if (prediction==1.0) pctlead else -pctlead})
 

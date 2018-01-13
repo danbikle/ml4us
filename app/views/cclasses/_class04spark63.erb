@@ -148,34 +148,61 @@ val test_df = spark.sql("SELECT * FROM tab"++test_period)
 val predictions_df = model1.transform(test_df)
 predictions_df.createOrReplaceTempView("tab")
 
-// Long-only effectiveness:
-spark.sql("SELECT SUM(pctlead) eff_lo FROM tab").show
-
-// Effectiveness of negative predictions:
-spark.sql("SELECT -SUM(pctlead) eff_np FROM tab WHERE prediction = 0.0").show
-
-// Effectiveness of positive predictions:
-spark.sql("SELECT SUM(pctlead) eff_pp FROM tab WHERE prediction = 1.0").show
-
-// True Positive Count:
-spark.sql("SELECT COUNT(Date) tpc FROM tab WHERE prediction=1.0 AND pctlead>0").show
-
-// True Negative Count:
-spark.sql("SELECT COUNT(Date) tnc FROM tab WHERE prediction=0.0 AND pctlead&lt;0").show
-
-// False Positive Count:
-spark.sql("SELECT COUNT(Date) fpc FROM tab WHERE prediction=1.0 AND pctlead&lt;0").show
-
-// False Negative Count:
-spark.sql("SELECT COUNT(Date) fnc FROM tab WHERE prediction=0.0 AND pctlead>0").show
-
 // eff logic
 val eff = udf((pctlead:Float,prediction:Double)=> {if (prediction==1.0) pctlead else -pctlead})
 
 // prediction report:
+println("Logistic Regression Predictions:")
 val p2df = predictions_df.withColumn("effectiveness",eff(col("pctlead"),col("prediction")))
 p2df.select("Date","Close","pctlead","effectiveness","label","prediction").show(255)
 
-// Done
+println("Logistic Regression Accuracy:")
+sqls = """
+  SELECT
+  tpc,tnc,allc
+  ,100*(tpc+tnc)/allc accuracy
+  FROM (SELECT 1 one1,COUNT(Date) tpc FROM tab WHERE prediction > 0 AND pctlead > 0)
+      ,(SELECT 1 one2,COUNT(Date) tnc FROM tab WHERE prediction &lt; 1 AND pctlead &lt; 0)
+      ,(SELECT 1 one3,COUNT(Date) allc  FROM tab)
+  -- I should prevent Spark cartesian-product complaint:
+  WHERE one1 = one2 AND one1 = one3
+  """
+spark.sql(sqls).show
+
+
+println("Long Only Accuracy:")
+sqls = """
+  SELECT
+  truec
+  ,allc
+  ,100*truec/allc accuracy
+  FROM (SELECT 1 one1,COUNT(Date) truec FROM tab WHERE pctlead > 0)
+      ,(SELECT 1 one2,COUNT(Date) allc  FROM tab)
+  -- I should prevent Spark cartesian-product complaint:
+  WHERE one1 = one2
+  """
+spark.sql(sqls).show
+
+println("True Positive Count:")
+spark.sql("SELECT COUNT(Date) tpc FROM tab WHERE prediction=1.0 AND pctlead > 0").show
+
+println("False Positive Count:")
+spark.sql("SELECT COUNT(Date) fpc FROM tab WHERE prediction=1.0 AND pctlead &lt; 0").show
+
+println("True Negative Count:")
+spark.sql("SELECT COUNT(Date) tnc FROM tab WHERE prediction=0.0 AND pctlead &lt; 0").show
+
+println("False Negative Count:")
+spark.sql("SELECT COUNT(Date) fnc FROM tab WHERE prediction=0.0 AND pctlead > 0").show
+
+println("Effectiveness of Negative Predictions:")
+spark.sql("SELECT -SUM(pctlead) eff_np FROM tab WHERE prediction = 0.0").show
+
+println("Effectiveness of Positive Predictions:")
+spark.sql("SELECT SUM(pctlead) eff_pp FROM tab WHERE prediction = 1.0").show
+
+println("Effectiveness of Long-Only-Model:")
+spark.sql("SELECT SUM(pctlead) eff_lo FROM tab").show
+
 }
 </code>
