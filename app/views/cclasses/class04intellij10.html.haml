@@ -20,14 +20,25 @@
   %pre
     %code.bash
       cd ~/Downloads
-      wget https://download-cf.jetbrains.com/idea/ideaIC-2017.3.2.tar.gz
+      wget https://download-cf.jetbrains.com/idea/ideaIC-2017.3.2-no-jdk.tar.gz
 
 %p If you want, you can download it from their webpage:
 
 %p
   %a(href='https://www.jetbrains.com/idea/download/#section=linux' target='x')
     https://www.jetbrains.com/idea/download/#section=linux
-  
+
+%p Next I issued some shell commands to install it:
+
+.syntax
+  %pre
+    =render 'class04intellij12'
+
+%p Next, I started it with a shell command:
+
+.syntax
+  %pre
+    %code.bash ~/idea/bin/idea.sh
 
 %hr/
 
