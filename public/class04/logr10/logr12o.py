@@ -1,5 +1,5 @@
 """
-~/ml4/public/class04/logr10/logr12o.py.py
+~/ml4/public/class04/logr10/logr12o.py
 
 This script should implement the same ML idea as logr12o.py.scala:
 
