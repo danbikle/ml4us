@@ -1,3 +1,13 @@
+
+"""
+demo13.py
+
+This script should help me visualize behavior of optimizer.minimize(loss)
+Ref:
+http://ml4.us/cclasses/class05tf18
+
+Demo:
+~/anaconda3/bin/python demo13.py
 """
 # demo13.py
 
@@ -72,8 +82,8 @@ dw_l.append(0.0)
 db_l.append(0.0)
 dl_l.append(0.0)
 # I should collect dL/dW, dL/db:
-gw_a = np.array(dl_l)/np.array(dw_l)
-gb_a = np.array(dl_l)/np.array(db_l)
+gw_a = np.array(dl_l)/(0.00001+np.array(dw_l))
+gb_a = np.array(dl_l)/(0.00001+np.array(db_l))
 gw_l = gw_a.tolist()
 gb_l = gb_a.tolist()
 
