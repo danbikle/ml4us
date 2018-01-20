@@ -1,4 +1,3 @@
-
 """
 demo13.py
 
@@ -8,15 +7,6 @@ http://ml4.us/cclasses/class05tf18
 
 Demo:
 ~/anaconda3/bin/python demo13.py
-"""
-# demo13.py
-
-# This script should help me visualize behavior of optimizer.minimize(loss)
-# Ref:
-# http://ml4.us/cclasses/class05tf18
-
-# Demo:
-# ~/anaconda3/bin/python demo13.py
 """
 
 import tensorflow as tf
