@@ -1,17 +1,18 @@
 <code class='python'>
 """
-# demo13.py
+demo13.py
 
-# This script should help me visualize behavior of optimizer.minimize(loss)
-# Ref:
-# http://ml4.us/cclasses/class05tf18
+This script should help me visualize behavior of optimizer.minimize(loss)
+Ref:
+http://ml4.us/cclasses/class05tf18
 
-# Demo:
-# ~/anaconda3/bin/python demo13.py
+Demo:
+~/anaconda3/bin/python demo13.py
 """
 
 import tensorflow as tf
 import numpy      as np
+import pandas     as pd
 
 # Create phony x, y data points in NumPy, y = x * 0.1 + 0.3 + noise
 pts_i   = 20
@@ -73,12 +74,11 @@ dw_l.append(0.0)
 db_l.append(0.0)
 dl_l.append(0.0)
 # I should collect dL/dW, dL/db:
-gw_a = np.array(dl_l)/np.array(dw_l)
-gb_a = np.array(dl_l)/np.array(db_l)
+gw_a = np.array(dl_l)/(0.00001+np.array(dw_l))
+gb_a = np.array(dl_l)/(0.00001+np.array(db_l))
 gw_l = gw_a.tolist()
 gb_l = gb_a.tolist()
 
-import pandas as pd
 opt_d           = {'W':w_l}
 opt_df          = pd.DataFrame(opt_d)
 opt_df['b']     = b_l
