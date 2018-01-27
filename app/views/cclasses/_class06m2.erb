@@ -1,6 +1,5 @@
-<code class='python'>
-"""
-learn_iris.py
+<code class='python'>"""
+learn_iris_enh.py
 
 This script should should learn from iris.csv and then create files which describe a model.
 Later, that model should be served to browsers.
@@ -10,7 +9,7 @@ blog.fastforwardlabs.com/post/139921712388/hello-world-in-keras-or-scikit-learn-
 https://github.com/transcranial/keras-js#usage
 
 Demo:
-./keras_theano.bash learn_iris.py
+./keras_tensorflow.bash learn_iris.py
 """
 
 import pandas as pd
@@ -41,6 +40,10 @@ for y_s in y:
   else:
     ytrain_l.append([0,0,1])
 
+# Keras wants each y-val to be np.array:
+ytrain_a_l = [np.array(some_l) for some_l in ytrain_l]
+# Keras wants those arrays to be in a np.array:
+ytrain_a   = np.array(ytrain_a_l)
 # I should use Keras API to create a 2 layer neural network model:
 iris_model = Sequential()
 iris_model.add(Dense(4, input_shape=(4,)))
@@ -51,16 +54,16 @@ iris_model.add(Dense(5))
 iris_model.add(Activation('relu'))
 # Enhancement finished.
 
-iris_model.add(Dense(3))
+iris_model.add(Dense(3))  
 iris_model.add(Activation('softmax'))
 iris_model.compile(loss='categorical_crossentropy', optimizer='adam')
-iris_model.fit(xtrain_a, ytrain_l, batch_size=batch_size_i, epochs=epochs_i)
+iris_model.fit(xtrain_a, ytrain_a, batch_size=batch_size_i, epochs=epochs_i)
 # Above call should push loss to below 0.10
 
 # It should be able to predict now:
-print(iris_model.predict(xtrain_a[5:8]),     ytrain_l[5:8])     # setosa
-print(iris_model.predict(xtrain_a[55:58]),   ytrain_l[55:58])   # virginica
-print(iris_model.predict(xtrain_a[105:108]), ytrain_l[105:108]) # versicolor
+print(iris_model.predict(xtrain_a[5:8]),     ytrain_a[5:8])     # setosa
+print(iris_model.predict(xtrain_a[55:58]),   ytrain_a[55:58])   # virginica
+print(iris_model.predict(xtrain_a[105:108]), ytrain_a[105:108]) # versicolor
 print('The above predictions should be very accurate.')
 print('Why? Because I am predicting 9 observations from training data.')
 
