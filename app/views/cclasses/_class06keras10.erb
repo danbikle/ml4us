@@ -1,37 +1,56 @@
 <code class='bash'>
-ann@ub16jul:~$ conda install keras
-Fetching package metadata .........
+ann@d79:~ $ python
+Python 3.6.3 |Anaconda, Inc.| (default, Oct 13 2017, 12:02:49) 
+[GCC 7.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import keras
+Traceback (most recent call last):
+  File "&lt;stdin>", line 1, in &lt;module>
+ModuleNotFoundError: No module named 'keras'
+>>> 
+ann@d79:~ $ 
+ann@d79:~ $ conda install keras
+Fetching package metadata ...........
 Solving package specifications: .
 
 Package plan for installation in environment /home/ann/anaconda3:
 
 The following NEW packages will be INSTALLED:
 
-    keras:       2.0.2-py36_0     
-    libgpuarray: 0.6.8-0          
-    libprotobuf: 3.2.0-0          
-    mako:        1.0.6-py36_0     
-    protobuf:    3.2.0-py36_0     
-    pygpu:       0.6.8-py36_0     
-    tensorflow:  1.1.0-np112py36_0
-    theano:      0.9.0-py36_0     
+    keras:                  2.1.3-py36_0              
+    libprotobuf:            3.4.1-h5b8497f_0          
+    markdown:               2.6.9-py36_0              
+    protobuf:               3.4.1-py36h306e679_0      
+    tensorflow:             1.4.1-0                   
+    tensorflow-base:        1.4.1-py36hd00c003_2      
+    tensorflow-tensorboard: 0.1.5-py36_0              
 
 The following packages will be UPDATED:
 
-    conda:       4.3.21-py36_0     --> 4.3.22-py36_0
+    anaconda:               5.0.1-py36hd30a520_1       --> custom-py36hbbc8b67_0
+    conda:                  4.3.30-py36h5d9f9f4_0      --> 4.4.8-py36_0         
+    pycosat:                0.6.2-py36h1a0ea17_1       --> 0.6.3-py36h0a5515d_0 
+
+The following packages will be DOWNGRADED:
+
+    bleach:                 2.0.0-py36h688b259_0       --> 1.5.0-py36_0         
+    html5lib:               0.999999999-py36h2cfc398_0 --> 0.9999999-py36_0     
 
 Proceed ([y]/n)? 
 
-libgpuarray-0. 100% || Time: 0:00:00   3.35 MB/s
-libprotobuf-3. 100% || Time: 0:00:00   7.26 MB/s
-mako-1.0.6-py3 100% || Time: 0:00:00  10.34 MB/s
-protobuf-3.2.0 100% || Time: 0:00:00   7.93 MB/s
-pygpu-0.6.8-py 100% || Time: 0:00:00   8.72 MB/s
-tensorflow-1.1 100% || Time: 0:00:03   7.98 MB/s
-theano-0.9.0-p 100% || Time: 0:00:00   8.28 MB/s
-conda-4.3.22-p 100% || Time: 0:00:00   8.94 MB/s
-keras-2.0.2-py 100% || Time: 0:00:00  10.85 MB/s
-ann@ub16jul:~$
-ann@ub16jul:~$
-ann@ub16jul:~$
+libprotobuf-3. 100% || Time: 0:00:00   7.93 MB/s
+anaconda-custo 100% || Time: 0:00:00  14.77 MB/s
+markdown-2.6.9 100% || Time: 0:00:00  16.46 MB/s
+pycosat-0.6.3- 100% || Time: 0:00:00  18.99 MB/s
+html5lib-0.999 100% || Time: 0:00:00  14.25 MB/s
+protobuf-3.4.1 100% || Time: 0:00:00   7.60 MB/s
+bleach-1.5.0-p 100% || Time: 0:00:00  18.81 MB/s
+tensorflow-bas 100% || Time: 0:00:04   8.11 MB/s
+tensorflow-ten 100% || Time: 0:00:00   8.40 MB/s
+tensorflow-1.4 100% || Time: 0:00:00   2.93 MB/s
+keras-2.1.3-py 100% || Time: 0:00:00   9.47 MB/s
+conda-4.4.8-py 100% || Time: 0:00:00   8.99 MB/s
+ann@d79:~ $ 
+ann@d79:~ $ 
+ann@d79:~ $ 
 </code>
