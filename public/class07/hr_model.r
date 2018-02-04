@@ -54,7 +54,7 @@ create_model = function(yr_i, size_i) {
 
 # I should use a loop to create many models:
 model_size_i = 25 # years
-for (yr_i in c(2000:2017))
+for (yr_i in c(2000:2018))
 {
   fn_s = create_model(yr_i,model_size_i)
   print(fn_s)
