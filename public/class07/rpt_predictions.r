@@ -190,7 +190,8 @@ my_hm_rpt = function(pred_df, yr_i){
   my_hm(pred5_x, fn_s)
 }
 
-my_hm_rpt(predictions_df, 2017)
-# my_hm_rpt(predictions_df, 2018)
+for (yr_i in c(2000:2017)){
+  my_hm_rpt(predictions_df, yr_i)
+}
 
 'bye'
