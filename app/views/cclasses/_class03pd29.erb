@@ -21,7 +21,7 @@ prices_df.columns = ['cdate_s', 'openp', 'highp', 'lowp', 'closep', 'adjp', 'vol
 
 # I should setup prices3_df:
 pred1a_sr  = prices_df.cdate_s > '2016-08-08'
-pred1b_sr  = prices_df.cdate_s < '2016-09-01'
+pred1b_sr  = prices_df.cdate_s &lt; '2016-09-01'
 pred1_sr   = (pred1a_sr & pred1b_sr)
 prices3_df = prices_df.copy()[['cdate_s','openp','closep']][pred1_sr]
 prices3_df['diff'] = prices3_df.closep - prices3_df.openp

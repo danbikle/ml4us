@@ -30,7 +30,7 @@ myr        = prices5_df.rolling(window=5)
 prices5_df['mvgavg5day'] = myr.mean().closep
 pred_sr    = (prices5_df.cdate_s > '2016-08-01')
 prices5_df =  prices5_df[pred_sr]
-pred2_sr   = (prices5_df.cdate_s >= '2016-08-01') & (prices5_df.cdate_s <= '2016-08-31')
+pred2_sr   = (prices5_df.cdate_s >= '2016-08-01') & (prices5_df.cdate_s &lt;= '2016-08-31')
 print(prices5_df[pred2_sr])
 'bye'
 </code>

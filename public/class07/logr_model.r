@@ -51,7 +51,7 @@ train_test_logr = function(feat_df,yr_i,size_i){
 feat_df = read.csv('feat.csv')
 size_i  = 25
 
-for (yr_i in c(2000:2016)){
+for (yr_i in c(2000:2018)){
   pf_s = train_test_logr(feat_df,yr_i,size_i)
   print(pf_s)
 }
@@ -62,7 +62,7 @@ sum_eff_logr_f      = 0
 sum_long_accuracy_i = 0
 sum_accuracy_i      = 0
 sum_all_i           = 0
-for (yr_i in c(2000:2016)){
+for (yr_i in c(2000:2018)){
   csv_s = paste('predictions',yr_i,'.csv',sep='')
   p_df = read.csv(csv_s)
   sum_eff_long_f      = sum_eff_long_f + sum(p_df$pctlead)
