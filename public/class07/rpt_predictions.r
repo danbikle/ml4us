@@ -153,7 +153,7 @@ my_hm(pred2018c_x, fn_s)
 
 dev.off()
 
-fn_s         = 'heuristic_model.png'
+fn_s = 'heuristic_model.png'
 
 row.names(pred2018a_df) = pred2018a_df$cdate
 
@@ -171,8 +171,16 @@ my_hm(pred2018e_x, fn_s)
 dev.off()
 
 my_hm_rpt = function(pred_df, yr_i){
-  fn_s  = paste('long_only', yr_i, '.png', sep='')
-  fn_s
+  fn_s    = paste('long_only', yr_i, '.png', sep='')
+  dateolder = paste(yr_i  ,'-01-01', sep='')
+  datenewer = paste(yr_i+1,'-01-01', sep='')
+  # I should setup some data for heatmap.2
+  pred1_v  = (as.Date(pred_df$cdate) > dateolder)
+  pred2_v  = (as.Date(pred_df$cdate) < datenewer)
+  pred3_v  = pred1_v & pred2_v
+  pred1_df = pred_df[pred3_v , c('cdate','pctlead', 'effectiveness') ]
+  pred2_df = pred1_df[order(pred1_df$pctlead),]
+  pred2_df
 }
 
 my_hm_rpt(predictions_df, 2018)
