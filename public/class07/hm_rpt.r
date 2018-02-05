@@ -5,7 +5,7 @@
 # - Long-Only Model
 
 # Demo:
-# R -f rpt_predictions.r
+# R -f hm_rpt.r
 
 my_hm = function(in_x, fn_s){
   # This function should wrap heatmap.2()
