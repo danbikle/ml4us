@@ -57,4 +57,10 @@ pred2018a_df = predictions_df[pred3_v , c('cdate','pctlead') ]
 pred2018b_df = pred2018a_df[order(pred2018a_df$pctlead),]
 pred2018b_df
 
+# I should convert pred2018b_df to a matrix:
+row.names(pred2018b_df) = pred2018b_df$cdate
+pred2018b_x             = data.matrix(pred2018b_df)
+pred2018b_x
+pred2018b_x[ , 2 ]
+
 'bye'
