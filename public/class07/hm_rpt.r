@@ -1,0 +1,126 @@
+# hm_rpt.r
+
+# This script should help us visualize effectiveness of two types of models:
+# - Heuristic Model
+# - Long-Only Model
+
+# Demo:
+# R -f rpt_predictions.r
+
+my_hm = function(in_x, fn_s){
+  # This function should wrap heatmap.2()
+  # I should create vectors full of color strings:
+  library(gplots)
+  col5_v  = rainbow(5, start=0, end=2/6)
+  row_i   = length(in_x)
+  col60_v = rainbow(row_i, start=0, end=2/6)
+
+  # I should prep the layout for the heatmap.
+
+  # A default heatmap layout has 4 things:
+  # - Color Key, which is like a legend
+  # - Column Dendrogram, which I usually dont want
+  # - Row Dendrogram,    which I usually dont want
+  # - Heatmap,           which I always want
+  # A default heatmap layout is controlled by 4 integers: 4,3,2,1
+  # I use variables instead of integers:
+  colorKey_i  = 4
+  colDendro_i = 3
+  rowDendro_i = 2
+  heatmap_i   = 1
+  # I like to add margins and each margin needs an integer:
+  margin_left5_i = 5
+  margin_left6_i = 6
+
+  # I want the layout to look like this:
+  # -----------------------------------------------
+  # | margin_left5 | colorKey | colDendro(unused) |
+  # | margin_left6 | heatmap  | rowDendro(unused) |
+  # -----------------------------------------------
+
+  # I should use above integers to create a layout_matrix:
+  lmat_x = rbind(c(margin_left5_i, colorKey_i, colDendro_i)
+                ,c(margin_left6_i, heatmap_i,  rowDendro_i))
+
+  lmat_x
+
+  # The above layout has 2 rows and 3 columns.
+  # I should specify height of each row:
+  row1height_f = 1.8
+  row2height_f = 45.0
+  lhei_v       = c(row1height_f,row2height_f)
+  # I should specify width of each column:
+  col1width_f = 1.0
+  col2width_f = 9.0
+  col3width_f = 2.0
+  lwid_v      = c(col1width_f, col2width_f, col3width_f)
+
+  # I should specify available colors and how they sort:
+  color_v = rev(rainbow(30, start = 0/6, end = 4/6))
+  png(fn_s, width=999, height=7600)
+  
+  # I should have everything now:
+  heatmap.2(x=in_x, Rowv=NULL,Colv=NULL,
+    ,col    = color_v
+    ,scale  ="none"
+    ,margins=c(20.0,1.0) # ("margin.Y", "margin.X")
+    ,trace='none' # turns off unneeded trace lines inside the heat map
+    ,symkey      =FALSE 
+    ,symbreaks   =FALSE 
+    ,dendrogram  ='none'
+    ,density.info='histogram' 
+    ,denscol     ="black"
+    ,keysize     =1
+    # For color-key at the top:
+    #( "bottom.margin", "left.margin", "top.margin", "right.margin" )
+    ,key.par =list(mar=c(3.5,0,3,1))
+    ,lmat    =lmat_x, lhei=lhei_v, lwid=lwid_v
+    ,cexCol  =2.5
+    ,cexRow  =1.7
+    # I should separate the cells:
+    ,sepwidth = c(0.05, 0.1)
+    ,rowsep   = c(1:row_i)
+    ,colsep   = c(1:2)
+    ,xlab     = fn_s
+    ,cellnote = round(in_x,1)
+    ,notecol  = 'black'
+    ,notecex  = 1.8
+  )
+  dev.off()
+}
+
+my_hm_rpt = function(pred_df, yr_i){
+  row.names(pred_df) = pred_df$cdate
+  fn_s      = paste('long_only', yr_i, '.png', sep='')
+  dateolder = paste(yr_i  ,'-01-01', sep='')
+  datenewer = paste(yr_i+1,'-01-01', sep='')
+  # I should setup some data for heatmap.2
+  pred1_v  = (as.Date(pred_df$cdate) > dateolder)
+  pred2_v  = (as.Date(pred_df$cdate) < datenewer)
+  pred3_v  = pred1_v & pred2_v
+  pred1_df = pred_df[pred3_v , c('pctlead', 'pctlead') ]
+  pred2_df = pred1_df[order(pred1_df$pctlead),]
+  pred2_x  = data.matrix(pred2_df)
+  colnames(pred2_x) = c('pctlead', 'effectiveness')
+  # I should see the matrix fed to the heatmap:
+  pred2_x
+  my_hm(pred2_x, fn_s)
+  
+  fn_s     = paste('heuristic_model', yr_i, '.png', sep='')
+  pred4_df = pred_df[pred3_v , c('pctlead', 'effectiveness') ]
+  pred5_df = pred4_df[order(pred4_df$effectiveness),]
+  pred5_x  = data.matrix(pred5_df)
+  # I should see the matrix fed to the heatmap:
+  pred5_x
+  my_hm(pred5_x, fn_s)
+}
+
+# I should read predictions.csv
+predictions_df = read.csv('predictions.csv')
+predictions_df$effectiveness = sign(predictions_df$prediction) * predictions_df$pctlead
+
+for (yr_i in c(2000:2017)){
+  my_hm_rpt(predictions_df, yr_i)
+}
+
+'bye'
