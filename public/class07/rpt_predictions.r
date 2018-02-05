@@ -49,4 +49,12 @@ accuracy_f   = 100.0 * true_count_i / all_count_i
 print('model accuracy:')
 print(accuracy_f)
 
+# I should setup some data for heatmap.2
+pred1_v      = (as.Date(predictions_df$cdate) > '2018-01-01')
+pred2_v      = (as.Date(predictions_df$cdate) < '2019-01-01')
+pred3_v      = pred1_v & pred2_v
+pred2018a_df = predictions_df[pred3_v , c('cdate','pctlead') ]
+pred2018b_df = pred2018a_df[order(pred2018a_df$pctlead),]
+pred2018b_df
+
 'bye'
