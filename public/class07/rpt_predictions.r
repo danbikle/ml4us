@@ -59,7 +59,6 @@ my_hm = function(in_x, fn_s){
   # This function should wrap heatmap.2()
   # I should create vectors full of color strings:
   library(gplots)
-
   col5_v  = rainbow(5, start=0, end=2/6)
   row_i   = length(in_x)
   col60_v = rainbow(row_i, start=0, end=2/6)
@@ -96,7 +95,7 @@ my_hm = function(in_x, fn_s){
   # The above layout has 2 rows and 3 columns.
   # I should specify height of each row:
   row1height_f = 1.8
-  row2height_f = 5.0
+  row2height_f = 45.0
   lhei_v       = c(row1height_f,row2height_f)
   # I should specify width of each column:
   col1width_f = 1.0
@@ -106,6 +105,7 @@ my_hm = function(in_x, fn_s){
 
   # I should specify available colors and how they sort:
   color_v = rev(rainbow(30, start = 0/6, end = 4/6))
+  png(fn_s, width=999, height=7600)
   
   # I should have everything now:
   heatmap.2(x=in_x, Rowv=NULL,Colv=NULL,
@@ -134,6 +134,7 @@ my_hm = function(in_x, fn_s){
     ,notecol  = 'black'
     ,notecex  = 1.8
   )
+  dev.off()
 }
 
 fn_s         = 'long_only.png'
@@ -144,14 +145,10 @@ pred2018b_x             = data.matrix(pred2018b_df)
 pred2018c_x             = pred2018b_x[ , c(2,2)]
 colnames(pred2018c_x)   = c('effectiveness', 'pctlead')
 
-png(fn_s, width=999, height=1600)
-
 # I should see the matrix fed to the heatmap:
 pred2018c_x
 
-my_hm(pred2018c_x, fn_s)
-
-dev.off()
+#my_hm(pred2018c_x, fn_s)
 
 fn_s = 'heuristic_model.png'
 
@@ -161,28 +158,39 @@ pred2018d_df = pred2018a_df[order(pred2018a_df$effectiveness),]
 pred2018d_x = data.matrix(pred2018d_df)
 pred2018e_x = pred2018d_x[ , c(3,2)]
 
-png(fn_s, width=999, height=1600)
-
 # I should see the matrix fed to the heatmap:
 pred2018e_x
 
-my_hm(pred2018e_x, fn_s)
+#my_hm(pred2018e_x, fn_s)
 
-dev.off()
 
 my_hm_rpt = function(pred_df, yr_i){
-  fn_s    = paste('long_only', yr_i, '.png', sep='')
+  row.names(pred_df) = pred_df$cdate
+  fn_s      = paste('long_only', yr_i, '.png', sep='')
   dateolder = paste(yr_i  ,'-01-01', sep='')
   datenewer = paste(yr_i+1,'-01-01', sep='')
   # I should setup some data for heatmap.2
   pred1_v  = (as.Date(pred_df$cdate) > dateolder)
   pred2_v  = (as.Date(pred_df$cdate) < datenewer)
   pred3_v  = pred1_v & pred2_v
-  pred1_df = pred_df[pred3_v , c('cdate','pctlead', 'effectiveness') ]
+  pred1_df = pred_df[pred3_v , c('pctlead', 'pctlead') ]
   pred2_df = pred1_df[order(pred1_df$pctlead),]
-  pred2_df
+  pred2_x  = data.matrix(pred2_df)
+  colnames(pred2_x) = c('pctlead', 'effectiveness')
+  # I should see the matrix fed to the heatmap:
+  pred2_x
+  my_hm(pred2_x, fn_s)
+  
+  fn_s     = paste('heuristic_model', yr_i, '.png', sep='')
+  pred4_df = pred_df[pred3_v , c('pctlead', 'effectiveness') ]
+  pred5_df = pred4_df[order(pred4_df$effectiveness),]
+  pred5_x  = data.matrix(pred5_df)
+  # I should see the matrix fed to the heatmap:
+  pred5_x
+  my_hm(pred5_x, fn_s)
 }
 
-my_hm_rpt(predictions_df, 2018)
+my_hm_rpt(predictions_df, 2017)
+# my_hm_rpt(predictions_df, 2018)
 
 'bye'
