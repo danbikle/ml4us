@@ -53,33 +53,15 @@ print(accuracy_f)
 pred1_v      = (as.Date(predictions_df$cdate) > '2018-01-01')
 pred2_v      = (as.Date(predictions_df$cdate) < '2019-01-01')
 pred3_v      = pred1_v & pred2_v
-pred2018a_df = predictions_df[pred3_v , c('cdate','pctlead') ]
-pred2018b_df = pred2018a_df[order(pred2018a_df$pctlead),]
-pred2018b_df
+pred2018a_df = predictions_df[pred3_v , c('cdate','pctlead', 'effectiveness') ]
 
-# I should convert pred2018b_df to a matrix:
-row.names(pred2018b_df) = pred2018b_df$cdate
-pred2018b_x             = data.matrix(pred2018b_df)
-pred2018b_x
-pred2018c_x           = pred2018b_x[ , c(2,2)]
-colnames(pred2018c_x) = c('effectiveness', 'pctlead')
-
-row_i = length(pred2018c_x)
-
-name_s = 'long_only'
-fn_s   = paste(name_s, 'png', sep='.')
-
-png(fn_s, width=999, height=1600)
-
-# I should see the matrix fed to the heatmap:
-pred2018c_x
-
-my_hm = function(in_x, name_s){
+my_hm = function(in_x, fn_s){
   # This function should wrap heatmap.2()
   # I should create vectors full of color strings:
   library(gplots)
 
   col5_v  = rainbow(5, start=0, end=2/6)
+  row_i   = length(in_x)
   col60_v = rainbow(row_i, start=0, end=2/6)
 
   # I should prep the layout for the heatmap.
@@ -148,14 +130,51 @@ my_hm = function(in_x, name_s){
     ,rowsep   = c(1:row_i)
     ,colsep   = c(1:2)
     ,xlab     = fn_s
-    ,cellnote = round(pred2018c_x,1)
+    ,cellnote = round(in_x,1)
     ,notecol  = 'black'
     ,notecex  = 1.8
   )
 }
 
-my_hm(pred2018c_x, name_s)
+fn_s         = 'long_only.png'
+pred2018b_df = pred2018a_df[order(pred2018a_df$pctlead),]
+# I should convert pred2018b_df to a matrix:
+row.names(pred2018b_df) = pred2018b_df$cdate
+pred2018b_x             = data.matrix(pred2018b_df)
+pred2018c_x             = pred2018b_x[ , c(2,2)]
+colnames(pred2018c_x)   = c('effectiveness', 'pctlead')
+
+png(fn_s, width=999, height=1600)
+
+# I should see the matrix fed to the heatmap:
+pred2018c_x
+
+my_hm(pred2018c_x, fn_s)
 
 dev.off()
+
+fn_s         = 'heuristic_model.png'
+
+row.names(pred2018a_df) = pred2018a_df$cdate
+
+pred2018d_df = pred2018a_df[order(pred2018a_df$effectiveness),]
+pred2018d_x = data.matrix(pred2018d_df)
+pred2018e_x = pred2018d_x[ , c(3,2)]
+
+png(fn_s, width=999, height=1600)
+
+# I should see the matrix fed to the heatmap:
+pred2018e_x
+
+my_hm(pred2018e_x, fn_s)
+
+dev.off()
+
+my_hm_rpt = function(pred_df, yr_i){
+  fn_s  = paste('long_only', yr_i, '.png', sep='')
+  fn_s
+}
+
+my_hm_rpt(predictions_df, 2018)
 
 'bye'
