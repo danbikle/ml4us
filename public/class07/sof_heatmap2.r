@@ -8,6 +8,10 @@
 
 library(gplots)
 png('sof_heatmap2.png',width=900, height=1600)
+
+# I should see the matrix fed to the heatmap:
+matrix(rnorm(20*10), nrow=10)
+
 heatmap.2(x=matrix(rnorm(20*10), nrow=10), Rowv=NULL,Colv=NULL, 
           col = rev(rainbow(20*10, start = 0/6, end = 4/6)), 
           scale="none",

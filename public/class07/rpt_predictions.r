@@ -61,6 +61,96 @@ pred2018b_df
 row.names(pred2018b_df) = pred2018b_df$cdate
 pred2018b_x             = data.matrix(pred2018b_df)
 pred2018b_x
-pred2018b_x[ , 2 ]
+pred2018c_x = pred2018b_x[ , c(2,2)]
+
+row_i = length(pred2018c_x)
+
+# I should create vectors full of color strings:
+library(gplots)
+
+col5_v  = rainbow(5, start=0, end=2/6)
+col60_v = rainbow(row_i, start=0, end=2/6)
+
+# I should prep the layout for the heatmap.
+
+# A default heatmap layout has 4 things:
+# - Color Key, which is like a legend
+# - Column Dendrogram, which I usually dont want
+# - Row Dendrogram,    which I usually dont want
+# - Heatmap,           which I always want
+# A default heatmap layout is controlled by 4 integers: 4,3,2,1
+# I use variables instead of integers:
+colorKey_i  = 4
+colDendro_i = 3
+rowDendro_i = 2
+heatmap_i   = 1
+# I like to add margins and each margin needs an integer:
+margin_left5_i = 5
+margin_left6_i = 6
+
+# I want the layout to look like this:
+# -----------------------------------------------
+# | margin_left5 | colorKey | colDendro(unused) |
+# | margin_left6 | heatmap  | rowDendro(unused) |
+# -----------------------------------------------
+
+# I should use above integers to create a layout_matrix:
+lmat_x = rbind(c(margin_left5_i, colorKey_i, colDendro_i)
+              ,c(margin_left6_i, heatmap_i,  rowDendro_i))
+
+lmat_x
+
+# The above layout has 2 rows and 3 columns.
+# I should specify height of each row:
+row1height_f = 0.8
+row2height_f = 5.0
+lhei_v       = c(row1height_f,row2height_f)
+# I should specify width of each column:
+col1width_f = 1.0
+col2width_f = 10.0
+col3width_f = 1.0
+lwid_v      = c(col1width_f, col2width_f, col3width_f)
+
+# I should specify available colors and how they sort:
+color_v = rev(rainbow(30, start = 0/6, end = 4/6))
+
+png('rpt_predictions.png',width=900, height=1600)
+
+# I should see the matrix fed to the heatmap:
+pred2018c_x
+
+heatmap.2(x=pred2018c_x, Rowv=NULL,Colv=NULL,
+  ,col    = color_v
+  ,scale  ="none"
+  ,margins=c(25.0,0.0) # ("margin.Y", "margin.X")
+  ,trace='none' # turns off unneeded trace lines inside the heat map
+  ,symkey      =FALSE 
+  ,symbreaks   =FALSE 
+  ,dendrogram  ='none'
+  ,density.info='histogram' 
+  ,denscol     ="black"
+  ,keysize     =1
+  # For color-key at the top:
+  #( "bottom.margin", "left.margin", "top.margin", "right.margin" )
+  ,key.par =list(mar=c(3.5,0,3,0))
+  ,lmat=rbind(c(5, 4, 2), c(6, 1, 3)), lhei=c(2.5, 5), lwid=c(1, 10, 1)
+)
+#   
+#   ,lmat    =lmat_x, lhei=lhei_v, lwid=lwid_v
+# )
+#   ,cexCol  =2.0
+#   ,cexRow  =2.0
+#   # I should separate the cells:
+#   ,sepcolor='white'
+#   ,sepwidth=c(0.1, 0.1)
+#   ,rowsep  =c(1:row_i)
+#   ,colsep  =c(1:2)
+#   ,xlab    = 'Effectiveness Color Map Visualization'
+#   ,cellnote = round(pred2018c_x,1)
+#   ,notecol  = 'black'
+#   ,notecex  = 1.8
+# )
+
+dev.off()
 
 'bye'
