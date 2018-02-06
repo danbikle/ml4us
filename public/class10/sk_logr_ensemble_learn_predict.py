@@ -67,5 +67,6 @@ for col_iwant_l in col_iwant_l_l:
 predictions2_df = pd.concat(predictions_l)
 # I should groupby cdate and average prediction
 predictions_gb = predictions2_df.groupby('cdate').mean()
-
+# I should create a rpt_df with these columns:
+# cdate, closep, pctlead, prediction, effectiveness
 'bye'
