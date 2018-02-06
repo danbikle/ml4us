@@ -31,7 +31,7 @@ for yr_i in range(2016,lastyr2predict_i+1):
     linr_model = linear_model.LinearRegression()
     linr_model.fit(x_a,y_a)
     xtest_a       = test_a[:,1:]
-    predictions_a = linr_model.predict(xtest_a)
+    predictions_a = linr_model.predict(xtest_a)[:,0]
     predictions_df = test_df.copy()
     predictions_df['prediction'] = predictions_a.tolist()
     print(predictions_df[['cdate','prediction']].tail())
