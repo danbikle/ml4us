@@ -49,8 +49,8 @@ model_l = [cp_sr.iloc[0]]
 for row_i in range(len_i-1):
     cp     = cp_sr.iloc[row_i]
     cpnext = cp_sr.iloc[row_i+1]
-    cpdelt = cpnext - cp
-    modeldelt = np.sign(predictions_df.prediction.iloc[row_i])*cpdelt
+    cpdelt = np.abs(cpnext - cp)
+    modeldelt = np.sign(predictions_df.effectiveness.iloc[row_i])*cpdelt
     model_l.append(model_l[row_i]+modeldelt)
 
 plot0_df['Model'] = model_l
