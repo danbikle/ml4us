@@ -7,16 +7,21 @@ Demo:
 python sk_linr_learn_predict.py
 """
 
+import os
 import pdb
 import pandas as pd
 import numpy  as np
 from sklearn import linear_model
 
+# I should prep for a new csv file
+fn_s = 'sk_linr_predictions.csv'
+os.system('rm -f '+fn_s)
+
 feat_df = pd.read_csv('feat.csv')
 train_i = 20 # amount of training years
 # I should loop through some years I want to predict:
 lastyr2predict_i = 2017
-for yr_i in range(2016,lastyr2predict_i+1):
+for yr_i in range(2010,lastyr2predict_i+1):
     yr_begin_i    = yr_i - train_i
     trainstart_sr = feat_df.cdate > str(yr_begin_i)
     trainend_sr   = feat_df.cdate < str(yr_i)
@@ -33,9 +38,13 @@ for yr_i in range(2016,lastyr2predict_i+1):
     xtest_a        = test_a[:,1:]
     predictions_a  = linr_model.predict(xtest_a)
     predictions_df = test_df[['cdate','closep','pctlead']].copy()
-    predictions_df['prediction'] = predictions_a[:,0].tolist()
+    predictions_df['prediction']    = predictions_a[:,0].tolist()
     predictions_df['effectiveness'] = np.sign(predictions_df.prediction)*predictions_df.pctlead
-    print(predictions_df.tail())
-    predictions_df.to_csv('sk_linr_predictions.csv', float_format='%4.4f', index=False)
+    # if file exists I should append else write (with header)
+    if os.path.isfile(fn_s):
+        with open(fn_s, 'a') as fh:
+            predictions_df.to_csv(fh, float_format='%4.4f', index=False, header=False)
+    else:
+        predictions_df.to_csv(fn_s, float_format='%4.4f', index=False)
 
 'bye'
