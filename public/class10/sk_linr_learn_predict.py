@@ -20,20 +20,20 @@ for yr_i in range(2016,lastyr2predict_i+1):
     yr_begin_i    = yr_i - train_i
     trainstart_sr = feat_df.cdate > str(yr_begin_i)
     trainend_sr   = feat_df.cdate < str(yr_i)
-    train_sr      = trainstart_sr & trainend_sr
-    train_df      = feat_df[train_sr]
-    test_sr       = feat_df.cdate.str.match(str(yr_i))
-    test_df       = feat_df[test_sr]
-    train_a = np.array(train_df)[:,[2,4,5,6]]
-    test_a  = np.array(test_df)[ :,[2,4,5,6]]
-    x_a = train_a[:,1:]
-    y_a = train_a[:,0].reshape((-1,1))
+    train_sr   = trainstart_sr & trainend_sr
+    train_df   = feat_df[train_sr]
+    test_sr    = feat_df.cdate.str.match(str(yr_i))
+    test_df    = feat_df[test_sr]
+    train_a    = np.array(train_df)[:,[2,4,5,6]]
+    test_a     = np.array(test_df)[ :,[2,4,5,6]]
+    x_a        = train_a[:,1:]
+    y_a        = train_a[:,0].reshape((-1,1))
     linr_model = linear_model.LinearRegression()
     linr_model.fit(x_a,y_a)
-    xtest_a       = test_a[:,1:]
-    predictions_a = linr_model.predict(xtest_a)[:,0]
+    xtest_a        = test_a[:,1:]
+    predictions_a  = linr_model.predict(xtest_a)
     predictions_df = test_df.copy()
-    predictions_df['prediction'] = predictions_a.tolist()
+    predictions_df['prediction'] = predictions_a[:,0].tolist()
     print(predictions_df[['cdate','prediction']].tail())
 
 'bye'
