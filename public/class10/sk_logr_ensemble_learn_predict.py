@@ -39,7 +39,9 @@ train_i     = train_i_l[3]
 # I should loop through some years I want to predict:
 firstyr2predict_i = 2010
 lastyr2predict_i  = 2017
-for yr_i in range(firstyr2predict_i,lastyr2predict_i+1):
+predictions_l     = [] # should collect predictions_df
+for train_i in train_i_l:
+  for yr_i in range(firstyr2predict_i,lastyr2predict_i+1):
     yr_begin_i    = yr_i - train_i
     trainstart_sr = feat_df.cdate > str(yr_begin_i)
     trainend_sr   = feat_df.cdate < str(yr_i)
@@ -55,14 +57,14 @@ for yr_i in range(firstyr2predict_i,lastyr2predict_i+1):
     logr_model.fit(x_a,y_a)
     xtest_a        = test_a[:,1:]
     predictions_a  = logr_model.predict_proba(xtest_a)
-    predictions_df = test_df[['cdate','closep','pctlead']].copy()
-    predictions_df['prediction']    = predictions_a[:,1].tolist()
-    predictions_df['effectiveness'] = np.sign(predictions_df.prediction-0.5)*predictions_df.pctlead
-    # if file exists I should append else write (with header)
-    if os.path.isfile(fn_s):
-        with open(fn_s, 'a') as fh:
-            predictions_df.to_csv(fh, float_format='%4.4f', index=False, header=False)
-    else:
-        predictions_df.to_csv(fn_s, float_format='%4.4f', index=False)
+    predictions_df = test_df[['cdate']].copy()
+    predictions_df['prediction'] = predictions_a[:,1].tolist()
+    # I should save predictions so I can average them:
+    predictions_l.append(predictions_df)
+
+# In pandas how to concatenate dataframe?
+predictions2_df = pd.concat(predictions_l)
+# I should groupby cdate and average prediction
+predictions_gb = predictions2_df.groupby('cdate').mean()
 
 'bye'
