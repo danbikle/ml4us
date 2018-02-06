@@ -31,5 +31,8 @@ print(longonly_eff)
 print('model_eff/longonly_eff:')
 print(model_eff/longonly_eff)
 
+
+plot0_df = predictions_df[:-1][['cdate','closep']]
+
 'bye'
 
