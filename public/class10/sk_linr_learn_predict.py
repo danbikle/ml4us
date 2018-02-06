@@ -18,7 +18,25 @@ fn_s = 'sk_linr_predictions.csv'
 os.system('rm -f '+fn_s)
 
 feat_df = pd.read_csv('feat.csv')
-train_i = 20 # amount of training years
+# I should visualize some feature navigators:
+# cdate,closep,pctlead,updown       3
+#,pctlag1,pctlag2,pctlag3,pctlag4   7
+#,pctlag5,pctlag6,pctlag7,pctlag8  11
+# ,pctlag12,pctlag16,slope2,slope3 15
+# ,slope4,slope5,slope6,slope7     19
+# ,slope8,slope9,dow,moy           23
+# I dont want all the above columns:
+col_iwant_l = [2,4,6,11,15,19,22,23]
+# which are these:
+# pctlead
+# pctlag1
+# pctlag3
+# pctlag8
+# slope3
+# dow
+# moy
+
+train_i = 25 # amount of training years
 # I should loop through some years I want to predict:
 lastyr2predict_i = 2017
 for yr_i in range(2010,lastyr2predict_i+1):
@@ -26,11 +44,11 @@ for yr_i in range(2010,lastyr2predict_i+1):
     trainstart_sr = feat_df.cdate > str(yr_begin_i)
     trainend_sr   = feat_df.cdate < str(yr_i)
     train_sr   = trainstart_sr & trainend_sr
-    train_df   = feat_df[train_sr]
+    train_df   = feat_df.loc[train_sr]
     test_sr    = feat_df.cdate.str.match(str(yr_i))
-    test_df    = feat_df[test_sr]
-    train_a    = np.array(train_df)[:,[2,4,5,6]]
-    test_a     = np.array(test_df)[ :,[2,4,5,6]]
+    test_df    = feat_df.loc[test_sr]
+    train_a    = np.array(train_df.iloc[:,col_iwant_l])
+    test_a     = np.array(test_df.iloc[ :,col_iwant_l])
     x_a        = train_a[:,1:]
     y_a        = train_a[:,0].reshape((-1,1))
     linr_model = linear_model.LinearRegression()
