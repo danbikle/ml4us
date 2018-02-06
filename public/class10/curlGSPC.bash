@@ -4,6 +4,8 @@
 
 # This script should curl GSPC prices.
 
-curl https://tkrprice.herokuapp.com/static/CSV/GSPC.csv  > GSPC.csv
+set -x
+
+curl 'https://tkrprice.herokuapp.com/static/CSV/history/^GSPC.csv'  > GSPC.csv
 
 exit
