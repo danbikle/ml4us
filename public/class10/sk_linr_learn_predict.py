@@ -32,8 +32,10 @@ for yr_i in range(2016,lastyr2predict_i+1):
     linr_model.fit(x_a,y_a)
     xtest_a        = test_a[:,1:]
     predictions_a  = linr_model.predict(xtest_a)
-    predictions_df = test_df.copy()
+    predictions_df = test_df[['cdate','closep','pctlead']].copy()
     predictions_df['prediction'] = predictions_a[:,0].tolist()
-    print(predictions_df[['cdate','prediction']].tail())
+    predictions_df['effectiveness'] = np.sign(predictions_df.prediction)*predictions_df.pctlead
+    print(predictions_df.tail())
+    predictions_df.to_csv('sk_linr_predictions.csv', float_format='%4.4f', index=False)
 
 'bye'
