@@ -4,21 +4,26 @@ rpt_predictions.py
 This script should report effectiveness of predictions.
 
 Demo:
-python rpt_predictions.py
+python rpt_predictions.py sk_linr_predictions.csv
 """
 
 import os
 import pdb
+import sys
 import pandas as pd
 import numpy  as np
 
-fn_s = 'sk_linr_predictions.csv'
+if len(sys.argv) > 1:
+    fn_s = sys.argv[1] #'sk_linr_predictions.csv'
+else:
+    fn_s = 'sk_linr_predictions.csv'
+
 predictions_df = pd.read_csv(fn_s)
-predictions_df.tail()
+longonly_eff   = np.sum(predictions_df.pctlead)
+model_eff      = np.sum(predictions_df.effectiveness)
 
-longonly_eff = np.sum(predictions_df.pctlead)
-model_eff    = np.sum(predictions_df.effectiveness)
-
+print('Reporting on predictions in this file:')
+print(fn_s)
 print('model_eff:')
 print(model_eff)
 print('longonly_eff:')
