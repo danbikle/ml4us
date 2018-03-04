@@ -1,0 +1,26 @@
+~/ml4/public/meetup_pitch2018_0308.txt
+
+sub: Class Intro: ML Applications [ Linux, Python, Spark, Keras, Rails, Flask ]
+
+This 2hr Meetup introduces a 40 hr class:
+
+Build Machine Learning Applications
+
+https://register.asapconnected.com/CourseDetail.aspx?CourseId=109653&ext=1
+
+In the Meetup we study both the syllabus and class content.
+
+The class itself meets on 10 Saturdays for 4 hours each [10am-2pm].
+
+Mar 10 through May 19.
+
+So total class time is 40 hours.
+
+A typical class is half lecture, half lab.
+
+Each class is $43 so total cost is $430.
+
+The Meetup is free.
+
+In the Meetup we cover some technical content so bring your laptop.
+
