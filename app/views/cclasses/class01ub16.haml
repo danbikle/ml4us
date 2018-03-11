@@ -25,9 +25,23 @@
   %li R
   %li Node.js
 
-%p On my laptop I clicked on ub16_201712a.ova which brought up an import GUI.
+%p On my laptop I clicked on ub16_2018_0206.ova which brought up an import GUI.
 
-%p After I imported it into VirtualBox on my laptop, I ran three shell commands:
+%p The GUI is a little tricky but not that bad.
+
+%p After I start the import it should finish in 10 or 20 minutes.
+
+%p After import, I should click the green start button.
+
+%p So, I did that.
+
+%p After 3 minutes, it offered me a login screen.
+
+%p At the password prompt for ann I typed in 'a'.
+
+%p A minute later I saw the Ubuntu 16 desktop screen inside a VirtualBox window.
+
+%p After I saw the desktop, I ran three shell commands:
 
 .syntax
   %pre
@@ -38,11 +52,29 @@
 
 %p The last command rebooted the new Ubuntu instance for me.
 
-%p After 3 minutes, it offered me a login screen.
+%p Sometimes the command:
+.syntax
+  %pre
+    %code.bash
+      sudo apt-get update
+%p will fail because of an Ubuntu-locking bug.
 
-%p At the password prompt for ann I typed in 'a'.
+%p The easiest way to work-around this Ubuntu-bug is to wait 10, 30, or 60 minutes.
+%p Before you do that, however, try to connect your browser to google.com which will give the network-stack a little poke.
 
-%p A minute later I saw the Ubuntu 16 desktop screen inside a VirtualBox window.
+%p After the poke, try this command again:
+.syntax
+  %pre
+    %code.bash
+      sudo apt-get update
+
+%p If that fails, wait 10, 30, or 60 minutes.
+
+%p If that fails to fix the problem, then apt-get update and upgrade are broken on your VirtualBox.
+
+%p If the VirtualBox instance is for training, I ignore the update-upgrade-problem.
+
+%p If the broken VirtualBox instance is for production, I seek professional help.
 
 %p
   %a(href='class01#lab')
