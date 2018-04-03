@@ -2,7 +2,7 @@
 %h2 On Linux install Oracle Java.
 
 %p
-  To install Java, I need to download jdk-8u152-linux-x64.tar.gz from Oracle:
+  To install Java, I need to download jdk-8u162-linux-x64.tar.gz from Oracle:
 
 %p
   %a(href='http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html' target='x')
@@ -16,8 +16,8 @@
   %pre
     %code.bash
       cd ~
-      tar xf ~/Downloads/jdk-8u152-linux-x64.tar.gz
-      ln -s jdk1.8.0_152 jdk
+      tar xf ~/Downloads/jdk-8u162-linux-x64.tar.gz
+      ln -s jdk1.8.0_162 jdk
       echo 'export JAVA_HOME=${HOME}/jdk'       >> ~/.bashrc
       echo 'export PATH=${JAVA_HOME}/bin:$PATH' >> ~/.bashrc
       bash
