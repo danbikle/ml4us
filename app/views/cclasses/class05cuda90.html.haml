@@ -1,0 +1,98 @@
+%h2 Class05 Answer:
+%h2 Install Nvidia CUDA Toolkit 9.0 Software
+
+%p I followed the steps in this page on my Ubuntu 16 laptop.
+
+%p Why do we want CUDA Toolkit 9.0 ?
+
+%p I want to install Nvidia CUDA Toolkit 9.0 Software because TensorFlow r1.7 asks for that.
+
+%p As of 2017-06-29, TensorFlow shows these instructions:
+
+%img(src='/class05/tf17cuda.png')
+%hr/
+%p I found the above instructions at this URL:
+%p
+  %a(href='https://www.tensorflow.org/install/install_linux' target='x')
+    https://www.tensorflow.org/install/install_linux
+  
+%p Next I studied the content at this URL:
+
+%p
+  %a(href='http://docs.nvidia.com/cuda/cuda-installation-guide-linux/#axzz4VZnqTJ2A' target='x')
+    http://docs.nvidia.com/cuda/cuda-installation-guide-linux/#axzz4VZnqTJ2A
+
+%p I saw this:
+
+%img(src='/class05/cuda9a.png')
+
+%p In the above page I completed the pre-installation actions:
+
+.syntax
+  %pre
+    %code
+      lspci | grep -i nvidia
+      uname -m && cat /etc/*release
+      gcc --version
+      sudo apt-get install linux-headers-$(uname -r)
+%p The above page asked me to choose an installation method.
+%p It asked me to specify my choice at this URL:
+%p
+  %a(href='https://developer.nvidia.com/cuda-downloads' target='x')
+    https://developer.nvidia.com/cuda-downloads
+%p At the above URL, after a bit of thought, I made my choice.
+%p Then, I captured a screen-shot of my choices:
+
+%img(src='/class05/cudaDL91.png')
+%hr/
+
+%p I downloaded the base installer via the button at the bottom.
+
+%p The link of that button is listed below:
+%p
+  %a(href='https://developer.nvidia.com/compute/cuda/9.1/Prod/local_installers/cuda-repo-ubuntu1604-9-1-local_9.1.85-1_amd64' target='x')
+    https://developer.nvidia.com/compute/cuda/9.1/Prod/local_installers/cuda-repo-ubuntu1604-9-1-local_9.1.85-1_amd64
+
+%p Next I studied the content at this URL:
+%p
+  %a(href='http://docs.nvidia.com/cuda/cuda-installation-guide-linux/#ubuntu-installation' target='x')
+    http://docs.nvidia.com/cuda/cuda-installation-guide-linux/#ubuntu-installation
+
+%p I summarize that content into shell commands listed below:
+
+.syntax
+  %pre
+    %code.bash
+      sudo dpkg -i ~/Downloads/cuda-repo-ubuntu1604-9-1-local_9.1.85-1_amd64
+      sudo apt-key add /var/cuda-repo-9-1-local/7fa2af80.pub
+      sudo apt-get update
+      sudo apt-get install cuda
+
+%p I ran the above shell commands.
+
+%p Next I studied the content at this URL:
+
+%p
+  %a(href='http://docs.nvidia.com/cuda/cuda-installation-guide-linux/#post-installation-actions' target='x')
+    http://docs.nvidia.com/cuda/cuda-installation-guide-linux/#post-installation-actions
+
+%p I enhanced ~/.bashrc so that PATH contains:
+.syntax
+  %pre
+    %code.bash /usr/local/cuda-9.1/bin
+%p With this shell command:
+.syntax
+  %pre
+    %code.bash echo 'export PATH=/usr/local/cuda-9.1/bin:$PATH' >> ~/.bashrc
+
+%p Then, I made another enhancement to .bashrc:
+
+.syntax
+  %pre
+    %code.bash echo 'export LD_LIBRARY_PATH=/usr/local/cuda-9.1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
+    
+
+%p
+  %a(href='class05#gpu')
+    Class05 Lab
+
