@@ -176,7 +176,16 @@
     .syntax
       %pre
         %code val linesWithSpark = textFile.filter(line => line.contains("Spark"))
-
+  %li Above, how to describe the syntax inside filter()?
+  %li Above, have you encountered Python syntax which does something similar?
+  %li Can you describe the general algorithm: "Map-Reduce"?
+  %li In Scala how is map() different than flatMap()?
+  %li Can you translate the syntax below into English?
+  %li
+    .syntax
+      %pre
+        %code val wordCounts = textFile.flatMap(line => line.split(" ")).map(word => (word, 1)).reduceByKey((a, b) => a + b)
+  %li In Scala what does the .collect()-method do?
 %p
   %a(href='class04#spark')
     Class04 Lab
