@@ -79,17 +79,17 @@
 %p I enhanced ~/.bashrc so that PATH contains:
 .syntax
   %pre
-    %code.bash /usr/local/cuda-9.1/bin
+    %code.bash /usr/local/cuda/bin
 %p With this shell command:
 .syntax
   %pre
-    %code.bash echo 'export PATH=/usr/local/cuda-9.1/bin:$PATH' >> ~/.bashrc
+    %code.bash echo 'export PATH=/usr/local/cuda/bin:$PATH' >> ~/.bashrc
 
 %p Then, I made another enhancement to .bashrc:
 
 .syntax
   %pre
-    %code.bash echo 'export LD_LIBRARY_PATH=/usr/local/cuda-9.1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
+    %code.bash echo 'export LD_LIBRARY_PATH=/usr/local/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
     
 
 %p
