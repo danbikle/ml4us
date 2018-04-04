@@ -1,0 +1,63 @@
+%h2 Class05 Answer:
+%h2 Install Nvidia cuDNN v7.1 Software
+
+%p I started this exercise by studying this page:
+
+%p
+  %a(href='https://www.tensorflow.org/install/install_linux#nvidia_requirements_to_run_tensorflow_with_gpu_support' target='x')
+    https://www.tensorflow.org/install/install_linux#nvidia_requirements_to_run_tensorflow_with_gpu_support
+
+%p Which led me to this page:
+
+%p
+  %a(href='https://developer.nvidia.com/cudnn' target='x')
+    https://developer.nvidia.com/cudnn
+  
+%p I clicked on the Download-button.
+
+%p That led me to a registration page; so I registered.
+
+%p Next, I logged-in.
+
+%p I saw several download links.
+
+%p I clicked this one:
+
+%p Download cuDNN v7.1 (Jan 20, 2017), for CUDA 8.0
+
+%p It offered more links.
+
+%p I clicked this one: 'cuDNN v7.1 Library for Linux'
+
+%p Which had this URL:
+%p
+  %a(href='https://developer.nvidia.com/compute/machine-learning/cudnn/secure/v7.1/prod_20161129/8.0/cudnn-8.0-linux-x64-v7.1-tgz' target='x')
+    https://developer.nvidia.com/compute/machine-learning/cudnn/secure/v7.1/prod_20161129/8.0/cudnn-8.0-linux-x64-v7.1-tgz
+  
+%p After the download I saw this file:
+
+.syntax
+  %pre
+    =render 'class05cudnn10a'
+
+%p Next I ran some shell commands to install cuDNN:
+
+.syntax
+  %pre
+    %code.bash
+      cd ~/Downloads/
+      tar xf cudnn-8.0-linux-x64-v7.1.tgz
+      ls -la
+      ls -la cuda/
+      sudo rsync -av cuda/include/ /usr/local/cuda-8.0/include/
+      sudo rsync -av cuda/lib64/   /usr/local/cuda-8.0/lib64/
+
+%p Next I installed libcupti-dev:
+
+.syntax
+  %pre
+    %code.bash sudo apt-get install libcupti-dev
+    
+%p
+  %a(href='class05#gpu')
+    Class05 Lab
