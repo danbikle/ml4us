@@ -76,6 +76,11 @@
   %a(href='http://docs.nvidia.com/cuda/cuda-installation-guide-linux/#post-installation-actions' target='x')
     http://docs.nvidia.com/cuda/cuda-installation-guide-linux/#post-installation-actions
 
+%p I enhanced ~/.bashrc with a CUDA_HOME variable:
+.syntax
+  %pre
+    %code.bash echo 'export CUDA_HOME=/usr/local/cuda' >> ~/.bashrc
+
 %p I enhanced ~/.bashrc so that PATH contains:
 .syntax
   %pre
