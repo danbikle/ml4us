@@ -15,7 +15,8 @@ For example I could have a model-1 which attempts to describe the price of IBM.
 And I could have model-2 which wants to describe the temperature of San Jose.
 
 If R2 from model-2-predictions is larger than R2 from model-1-predictions,
-then model-2 is more accurate and perhaps "better".
+then model-2 is more accurate and perhaps "better" (ignoring the fact that
+the price of IBM might be mostly random and the temperature of San Jose is mostly predictable).
 
 The formula for R-Squared is this:
 
