@@ -1,10 +1,10 @@
 """
-demo1.py
+demo2.py
 
 This script should demonstrate calculation of R-Squared AKA R2.
 
 demo:
-~/anaconda3/bin/python -i demo1.py
+~/anaconda3/bin/python -i demo2.py
 """
 
 import pandas as pd
@@ -12,15 +12,16 @@ import numpy  as np
 import sklearn
 from sklearn import linear_model
 
-# I should create a Data Frame with three observations:
-obs_df = pd.DataFrame({'x1':[10,20,30],'x2':[10,20,30], 'y':[100,200,300]})
+# I should create a Data Frame with three observations.
+# y of last observation deviates by 1%:
+obs_df = pd.DataFrame({'x1':[10,20,30],'x2':[10,20,30], 'y':[100,200,303]})
 # I should now have this DataFrame:
 '''
 >>> obs_df
    x1  x2    y
 0  10  10  100
 1  20  20  200
-2  30  30  300
+2  30  30  303
 '''
 
 x_a = np.array(obs_df[['x1','x2']])
@@ -38,7 +39,7 @@ y_a = obs_df.y
 >>> y_a
 0    100
 1    200
-2    300
+2    303
 Name: y, dtype: int64
 '''
 
@@ -54,7 +55,7 @@ yhat_a = linr_mod.predict(x_a)
 # I should now have this Numpy Array:
 '''
 >>> yhat_a
-array([ 100.,  200.,  300.])
+array([  99.5,  201. ,  302.5])
 '''
 
 # I should use sklearn to calculate R-Squared:
@@ -63,7 +64,7 @@ r2sklearn_f = sklearn.metrics.r2_score(y_a, yhat_a)
 # I should see:
 '''
 >>> r2sklearn_f
-1.0
+0.999927205668
 '''
 
 # I should use ISLR ch3 formula to calculate R-Squared:
@@ -74,8 +75,9 @@ myr2_f = 1 - rss_f/tss_f
 # I should see:
 '''
 >>> myr2_f
-1.0
+0.999927205668252
 '''
+# myr2_f should be near r2sklearn_f
 
 print('obs_df:')
 print(obs_df)
