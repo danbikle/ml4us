@@ -6,9 +6,9 @@ The two points which interest me are the first trading day in 2016 and the most 
 mkdir -p ~/tmp/c3
 cd       ~/tmp/c3
 
-I should get prices from ml4.us:
+I should get prices from ml4.herokuapp.com:
 
-curl -L ml4.us/csv/GSPC.csv > /tmp/GSPC.csv
+curl -L ml4.herokuapp.com/csv/GSPC.csv > /tmp/GSPC.csv
 
 echo 'cdate,cp'                                         > GSPC2.csv
 grep -v Date /tmp/GSPC.csv|awk -F, '{print $1 "," $5}' >> GSPC2.csv
