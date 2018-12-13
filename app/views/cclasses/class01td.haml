@@ -21,8 +21,8 @@
 
 %p
   This page:
-  %a(href='http://www.ml4.us/cclasses/class01td' target='x')
-    http://www.ml4.us/cclasses/class01td
+  %a(href='http://ml4.herokuapp.com/cclasses/class01td' target='x')
+    http://ml4.herokuapp.com/cclasses/class01td
   should describe TDD.
 
 %p After I wrote the page, the above test switched from False to True.
@@ -36,13 +36,13 @@
   For some applications, I will transform the English statement into syntax which
   alerts me if a piece of software starts failing.
 %p For example I could start with this English statement:
-%p Everyday at 2pm the page http://www.ml4.us/cclasses/class01td should return a status of 200.
+%p Everyday at 2pm the page http://ml4.herokuapp.com/cclasses/class01td should return a status of 200.
 
 %p I might then transform that English into software which uses syntax like this:
 
 .syntax
   %pre
-    %code.bash /usr/bin/curl --head http://www.ml4.us/cclasses/class01td|head -1
+    %code.bash /usr/bin/curl --head http://ml4.herokuapp.com/cclasses/class01td|head -1
 
 %p I see those as the big ideas behind TDD.
 
