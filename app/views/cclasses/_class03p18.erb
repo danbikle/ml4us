@@ -4,7 +4,7 @@ class03p13.py
 
 This script should use Linear Algebra to find beta of a fitted line.
 ref:
-http://www.ml4.us/class03/pdf1.png
+http://ml4.herokuapp.com/class03/pdf1.png
 http://www.stat.purdue.edu/~jennings/stat514/stat512notes/topic3.pdf
 """
 
@@ -21,7 +21,7 @@ def colvec(arylst):
     return np.array(arylst).reshape((len(arylst),1))
 
 # Study bottom of this image:
-# http://www.ml4.us/class03/pdf1.png
+# http://ml4.herokuapp.com/class03/pdf1.png
 # Y is easy to get, I should get Y first.
 # I should transform the prices into a column vector of y-values:
 yvals_a = colvec(cp2016_df.cp)
@@ -44,7 +44,7 @@ lhs_a = np.linalg.pinv(np.matmul(xvals_a.T,xvals_a))
 rhs_a    = np.matmul(xvals_a.T,yvals_a)
 
 beta_a   = np.matmul(lhs_a,rhs_a)
-# refer to http://www.ml4.us/class03/pdf1.png
+# refer to http://ml4.herokuapp.com/class03/pdf1.png
 
 print('Beta for a line fitted to the GSPC prices is this:')
 print(beta_a)
