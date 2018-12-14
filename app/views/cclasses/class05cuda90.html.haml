@@ -34,7 +34,7 @@
       lspci | grep -i nvidia
       uname -m && cat /etc/*release
       gcc --version
-      sudo apt-get install linux-headers-$(uname -r)
+      sudo apt install linux-headers-$(uname -r)
 %p The above page asked me to choose an installation method.
 %p It asked me to specify my choice at this URL:
 %p
@@ -65,8 +65,8 @@
     %code.bash
       sudo dpkg -i ~/Downloads/cuda-repo-ubuntu1604-9-1-local_9.1.85-1_amd64.deb
       sudo apt-key add /var/cuda-repo-9-1-local/7fa2af80.pub
-      sudo apt-get update
-      sudo apt-get install cuda
+      sudo apt update
+      sudo apt install cuda
 
 %p I ran the above shell commands.
 

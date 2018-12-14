@@ -392,7 +392,7 @@
     .syntax
       %pre
         %code.bash
-          sudo apt-get install postgresql
+          sudo apt install postgresql
           sudo passwd postgres
   %li
     List User
@@ -429,18 +429,18 @@
     Update Packages
     .syntax
       %pre
-        %code.bash sudo apt-get update
+        %code.bash sudo apt update
   %li
     Upgrade Packages
     .syntax
       %pre
-        %code.bash sudo apt-get upgrade
+        %code.bash sudo apt upgrade
         
   %li
     Install Packages
     .syntax
       %pre
-        %code.bash sudo apt-get install aptitude
+        %code.bash sudo apt install aptitude
                 
   %li
     List Packages
@@ -451,7 +451,7 @@
           aptitude search perl6
           aptitude search perl7
 
-%p Any software which is installed with apt-get (or aptitude) should behave well.
+%p Any software which is installed with apt (or aptitude) should behave well.
 
 %p I see that software as permanently attached to my Linux instance.
 
@@ -801,7 +801,7 @@
 %p It is easy to install:
 .syntax
   %pre
-    %code.bash sudo apt-get install openssh-server
+    %code.bash sudo apt install openssh-server
 
 %p Sometimes I will reboot the instance after I install openssh-server:
 .syntax
