@@ -26,7 +26,7 @@ SELECT yr, COUNT(yr) FROM prices4 GROUP BY yr ORDER BY COUNT(yr);
 import pandas as pd
 from datetime import datetime
 
-prices_df         = pd.read_csv('http://ml4.us/csv/ibm.csv')
+prices_df         = pd.read_csv('http://ml4.herokuapp.com/csv/ibm.csv')
 prices_df.columns = ['cdate_s', 'openp', 'highp', 'lowp', 'closep', 'adjp', 'volume']
 
 # Mimic
