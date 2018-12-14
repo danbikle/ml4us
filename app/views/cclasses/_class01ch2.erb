@@ -4,7 +4,7 @@ mkdir -p Downloads bin
 cd Downloads
 curl http://chromedriver.storage.googleapis.com/2.35/chromedriver_linux64.zip > chromedriver_linux64.zip
 unzip chromedriver_linux64.zip
-cp -p chromedriver ~/bin
+cp -p chromedriver ~/bin/
 echo 'export PATH=${HOME}/bin:$PATH' >> ~/.bashrc
 bash
 chromedriver --help
