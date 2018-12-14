@@ -4,7 +4,7 @@
 
 This script should implement the same ML idea as logr12o.scala:
 
-- Read ml4.us/csv/GSPC.csv into DataFrame
+- Read ml4.herokuapp.com/csv/GSPC.csv into DataFrame
 - Generate dependent variable: "pctlead"
 - Collect independent variables: slp2, ... slp9
 - Create train_df        from a filter: 1986-01-01 until 2016-01-01
@@ -25,7 +25,7 @@ import numpy  as np
 import pdb
 from sklearn import linear_model
 
-# I should Read ml4.us/csv/GSPC.csv into DataFrame
+# I should Read ml4.herokuapp.com/csv/GSPC.csv into DataFrame
 gspc_df = pd.read_csv('https://ml4.herokuapp.com/csv/GSPC.csv')
 
 # I should Generate dependent variable: "pctlead"

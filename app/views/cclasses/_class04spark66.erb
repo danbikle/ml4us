@@ -21,7 +21,7 @@ val training_period = " WHERE Date BETWEEN'1986-01-01'AND'2016-01-01' "
 val test_period     = " WHERE Date BETWEEN'2016-01-01'AND'2017-01-01' "
 
 // I should get prices:
-"/usr/bin/curl -L ml4.us/csv/GSPC.csv -o /tmp/gspc.csv"!
+"/usr/bin/curl -L ml4.herokuapp.com/csv/GSPC.csv -o /tmp/gspc.csv"!
 
 val sqlContext = new SQLContext(sc)
   
