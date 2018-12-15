@@ -603,52 +603,76 @@
     Create All Permissions of /home/bob/.bashrc
     .syntax
       %pre
-        %code.bash chmod 777 /home/bob/.bashrc
+        %code.bash
+          chmod 777 /home/bob/.bashrc
+          chmod a=rwx /home/bob/.bashrc
   %li
     Delete All Permissions of /home/bob/.bashrc
     .syntax
       %pre
-        %code.bash chmod 000 /home/bob/.bashrc
+        %code.bash
+          chmod 000 /home/bob/.bashrc
+          chmod a-rwx /home/bob/.bashrc
   %li
     Create Proper Permissions of /home/bob/.bashrc
     .syntax
       %pre
-        %code.bash chmod 644 /home/bob/.bashrc
+        %code.bash
+          chmod 644 /home/bob/.bashrc
+          chmod a-rwx /home/bob/.bashrc
+          chmod u=rw  /home/bob/.bashrc
   %li
     Update /home/bob/ to disable public readable
     .syntax
       %pre
-        %code.bash chmod 750 /home/bob/
+        %code.bash
+          chmod 750 /home/bob/
+          chmod o-r /home/bob/
+          
   %li#grouppermissions
     Update /home/bob/ to disable group readable
     .syntax
       %pre
-        %code.bash chmod 700 /home/bob/
+        %code.bash
+          chmod 700 /home/bob/
+          chmod g-r /home/bob/
+          
   %li
     Update /home/bob/ to disable bob readable
     .syntax
       %pre
-        %code.bash chmod 000 /home/bob/
+        %code.bash
+          chmod u-r /home/bob/
+
+          
   %li
     Update /home/bob/ to enable bob writeable and readable
     .syntax
       %pre
-        %code.bash chmod 700 /home/bob/
+        %code.bash
+          chmod 700 /home/bob/
+          chmod u+rw /home/bob/
+          
   %li
     Update /home/bob/jdk/bin/java to disable bob executable
     .syntax
       %pre
-        %code.bash chmod 644 /home/bob/jdk/bin/java
+        %code.bash
+          chmod u-x /home/bob/jdk/bin/java
+          
   %li
     Update /home/bob/jdk/bin/java to enable bob executable
     .syntax
       %pre
-        %code.bash chmod 744 /home/bob/jdk/bin/java
+        %code.bash
+          chmod u+x /home/bob/jdk/bin/java
+          
   %li#publicpermissions
     Update /home/bob/jdk/bin/java to enable public executable
     .syntax
       %pre
-        %code.bash chmod 755 /home/bob/jdk/bin/java
+        %code.bash
+          chmod o+x /home/bob/jdk/bin/java
 
 %p#sudo Linux always has a user named root who has many privileges.
 
