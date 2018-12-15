@@ -465,6 +465,8 @@
   %li Java
   %li Node.js
 
+%p For example, assume we want to setup an account named bob.
+
 %p Syntax to install bob's copy of Python is listed below:
 .syntax
   %pre
@@ -474,13 +476,11 @@
       ssh -AY bob@localhost
       rm -f Anaconda3-5.3.1-Linux-x86_64.sh
       wget https://repo.continuum.io/archive/Anaconda3-5.3.1-Linux-x86_64.sh
-      bash Anaconda3-5.3.1-Linux-x86_64.sh
+      bash Anaconda3-5.3.1-Linux-x86_64.sh -b
       mv anaconda3/bin/curl anaconda3/bin/curl_ana
       echo 'export PATH=${HOME}/anaconda3/bin:$PATH' >> ~/.bashrc
       bash
-      conda install -c conda-forge tensorflow
       python
-      
 
           
 %p Syntax to install bob's copy of Ruby 2.3.1 is listed below:
@@ -490,19 +490,19 @@
     =render 'class01ova2'
 
 %p
-  To install Java, bob needs to download jdk-8u131-linux-x64.tar.gz from Oracle:
+  To install Java, bob needs to download jdk-8u192-linux-x64.tar.gz from Oracle:
 %p
   %a(href='http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html' target='x')
     http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
   
 
-%p Syntax to install bob's copy of Java is listed below:
+%p Syntax to install bob's copy of Java is listed below, assuming jdk-8u192-linux-x64.tar.gz has been downloaded to ~bob/Downloads/
 .syntax
   %pre
     %code.bash
       ssh -AY bob@localhost
-      tar zxf ~/Downloads/jdk-8u131-linux-x64.tar.gz
-      ln -s jdk1.8.0_131 jdk
+      tar zxf ~/Downloads/jdk-8u192-linux-x64.tar.gz
+      ln -s  jdk1.8.0_192 jdk
       echo 'export JAVA_HOME=${HOME}/jdk'       >> ~/.bashrc
       echo 'export PATH=${JAVA_HOME}/bin:$PATH' >> ~/.bashrc
       bash
