@@ -54,68 +54,6 @@
   
 %p
   I followed the instructions in that page.
-%p While following the instructions, I noticed that the "VM Instances" page needed a long time to load.
-%p So, be ready for that poor behavior.
-
-%p One deviation I made from the instructions was from the "Create an instance" page.
-%p Near the bottom of that page I clicked the link to copy my public SSH key from my laptop.
-%p My intent was to ease my ability to ssh into the GCP-Instance from a shell in my laptop.
-%p The text I mouse-copied into the GCP SSH-key-form came from this file:
-%p ~/.ssh/id_rsa.pub
-%p It looks like this:
-.syntax
-  %pre
-    %code
-      ssh-rsa
-      AAAAB3NzaC1yc2EAAAADAQABAAABAQC8cbLxnaqPPznHz9DgMq
-      xg38LPxRTRT1qjyQH0cGEHHtHVYHgPdCNvW++0ArCuJVxiQ7fx
-      XvK2cYThurYozSkI6uwxVSPBoJgsLmLPvhc+JshDHi7SgtWl4b
-      8JZlnL5dMPQNo61p/qGmqZpKxXYJanY0zN4WnB17vlnVFhXL2j
-      3U3YKvifIC8a6gRKitG+XFGmj5sZKbJuqbnfhD93ytcRGV+rEM
-      VipYAl2XBs27K0VGwK+u3NOOerWXjRrgqIo9Frk7C4rps/dMYd
-      56QKxnVumr24TUJ0TlymsCYkhD9qDHyJHxGTyN5BAzUpryphd7
-      QDLZn+Rdrm4Ssu8/jclLPH
-      dan@ubu42
-
-%p GCP quickly launched an instance: 35.226.218.244
-
-%p I connected to it using an ssh shell command from my laptop:
-
-.syntax
-  %pre
-    =render 'gcp100a'
-
-%p One puzzling bit of behavior is: "How did GCP know that I wanted a Linux account named dan?"
-
-%p My guess is that it pulled "dan" from the gmail account I was logged in with.
-
-%p Next I ran some shell commands in my GCP account to verify that it behaved well:
-
-
-.syntax
-  %pre
-    =render 'gcp100b'
-
-%p So I have just given you a very quick summary on how to start a Linux instance on GCP.
-
-%p Review:
-
-%ul
-  %li
-    I got my credit card
-  %li
-    I did login to my gmail account
-  %li
-    I visited:
-  %li
-    %a(href='https://cloud.google.com/compute/docs/quickstart-linux' target='x')
-      https://cloud.google.com/compute/docs/quickstart-linux
-  %li
-    I followed those instructions
-  %li
-    I mouse-copied in my ~/.ssh/id_rsa.pub
-  %li
-    ssh dan@35.226.218.244
 
 %p
   %a(href='class02#hw1') Class02
