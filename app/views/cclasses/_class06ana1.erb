@@ -1,9 +1,9 @@
 <code class='bash'>
 cd ~ann
 rm -rf anaconda3
-rm -f Anaconda3-5.0.1-Linux-x86_64.sh
-wget https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh
-bash Anaconda3-5.0.1-Linux-x86_64.sh
+rm -f Anaconda3-5.3.1-Linux-x86_64.sh
+wget https://repo.continuum.io/archive/Anaconda3-5.3.1-Linux-x86_64.sh
+bash Anaconda3-5.3.1-Linux-x86_64.sh -b
 mv anaconda3/bin/curl anaconda3/bin/curl_ana
 echo 'export PATH="${HOME}/anaconda3/bin:$PATH"' >> ~ann/.bashrc
 bash
