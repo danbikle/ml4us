@@ -1,0 +1,91 @@
+<pre>
+Linear Algebra teaches us about three types of objects:
+Scalar, Vector, Matrix.
+
+A Scalar is simple; it is just a number.
+
+For example, here is a Scalar: 1.1
+
+A Vector is a collection of scalars.
+
+A vector can be a row vector or a column vector.
+
+If I don't know what kind of vector I have, I assume my vector is a column vector.
+
+Here is a representation of a row vector made from three scalars:
+
+[ 1.1 1.2 -4.8 ]
+
+A Matrix is a collection of vectors.
+
+A matrix can be built from row vectors or column vectors.
+
+Also a matrix can be built directly from scalars.
+
+Here is a representation of a matrix created from two row vectors:
+
+[
+1.1 1.2 -4.8 
+1.1 1.2 -4.8 
+]
+
+I can use numpy to represent both vectors and matrices:
+
+import numpy as np
+
+vector_a = np.array([1.1, 1.2, -4.8 ])
+matrix_a = np.array([vector_a,vector_a])
+
+I can use numpy to simulate vector addition:
+
+sum_a = vector_a + vector_a
+
+I can use numpy to simulate matrix addition:
+
+msum_a = matrix_a + matrix_a
+
+I can use numpy to simulate vector product which should give me a scalar:
+
+vprod_a = np.matmul(vector_a, vector_a)
+
+I can use numpy to simulate vector, matrix product which should give me a vector:
+
+vmprod_a = np.matmul(vector_a, matrix_a)
+
+The above numpy statement will fail which is consistent with the rules of Linear Algebra.
+
+The rules say that the vector_a on the left needs 2 columns
+because matrix_a has 2 rows.
+
+I can use the numpy shape attribute to see the number of rows and columns:
+
+vshape = vector_a.shape
+mshape = matrix_a.shape
+
+The above expressions tell me that vector_a has 3 rows.
+
+When I created vector_a I did not specify what kind of vector I wanted.
+
+So, numpy gave me a column vector.
+
+Also I see that matrix_a has 2 rows and 3 columns.
+
+So I see that the number of columns in matrix_a match the row count in vector_a.
+
+So, this expression should succeed:
+
+mvprod_a = np.matmul(matrix_a, vector_a)
+
+Also, matrix, vector multiplication can be visualized:
+
+https://www.google.com/search?tbm=isch&q=matrix+vector+multiplication
+
+I use this English phrase to help me remember multiplication:
+
+"I should match ROWS on left with COLUMNS on right."
+
+So, if I have a vector on the right, it needs to be a column vector.
+
+</pre>
+
+
