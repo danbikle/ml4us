@@ -55,5 +55,73 @@
 %p
   I followed the instructions in that page.
 
+%p At then end of that effort I followed their instructions to delete my instance.
+
+%p I collected some screenshots.
+
+%img(src='/class02/gcp10.png')
+%hr/
+%img(src='/class02/gcp11.png')
+%hr/
+
+%img(src='/class02/gcp12.png')
+%hr/
+
+%p Next I pressed the blue-create button to create another instance:
+
+%img(src='/class02/gcp13.png')
+%hr/
+
+%img(src='/class02/gcp14.png')
+%hr/
+
+%img(src='/class02/gcp15.png')
+%hr/
+
+%p Google quickly created a new instance and I started Bash on it with the SSH link:
+
+%img(src='/class02/gcp16.png')
+%hr/
+
+%p I created an account named ann with this syntax:
+
+.syntax
+  %pre
+    %code sudo useradd -m -s /bin/bash -G sudo ann
+
+%p Then I located my public key on my laptop:
+
+.syntax
+  %pre
+    %code cat ~/.ssh/id_rsa.pub
+
+%p Next, in the new ann account, I created ~ann/.ssh/authorized_keys:
+
+.syntax
+  %pre
+    %code
+      sudo apt install vim
+      sudo mkdir ~ann/.ssh/
+      sudo vim   ~ann/.ssh/authorized_keys
+
+%p With my mouse, I copy-pasted ~/.ssh/id_rsa.pub from my laptop into ~ann/.ssh/authorized_keys
+
+%p I set permissions on ~ann/.ssh/authorized_keys
+
+.syntax
+  %pre
+    %code
+      sudo chmod 700 ~/ann/.ssh/
+      sudo chmod 600 ~/ann/.ssh/authorized_keys
+      sudo chown -R ann ~/ann/.ssh/
+
+%p I connected to the ann account from my laptop:
+
+.syntax
+  %pre
+    %code ssh ann@35.31.4.56
+
+%p It worked. Yay!
+
 %p
   %a(href='class02#hw1') Class02
