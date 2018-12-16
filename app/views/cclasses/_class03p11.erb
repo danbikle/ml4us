@@ -3,14 +3,17 @@
 class03p10.py
 
 This script should use Pandas to plot prices of GSPC for 2016.
+
+Demo:
+python class03p10.py
 """
 
 import pandas as pd
 import matplotlib.pyplot as plt
 
-csvfile = 'http://spy611.herokuapp.com/csv/allpredictions.csv'
+csvfile_s = 'http://spy611.herokuapp.com/csv/allpredictions.csv'
 # Goog: In pandas how to sort a dataframe?
-cp_df = pd.read_csv(csvfile).sort_values(['cdate'])
+cp_df = pd.read_csv(csvfile_s).sort_values(['cdate'])
 # Goog: In pandas how to filter?
 cp2016_sr = (cp_df.cdate > '2016') & (cp_df.cdate &lt; '2017')
 cp2016_df = cp_df[['cdate','cp']][cp2016_sr]
