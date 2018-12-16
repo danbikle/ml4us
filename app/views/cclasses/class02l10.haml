@@ -693,7 +693,7 @@
   %pre
     %code.bash usermod -G sudo bob
 
-%p#su I have three ways to login as root:
+%p#su I have several ways to login as root:
 .syntax
   %pre
     %code.bash su
@@ -707,6 +707,13 @@
 .syntax
   %pre
     %code.bash ssh root@localhost
+    
+%p These also work:
+.syntax
+  %pre
+    %code.bash
+      sudo -i
+      sudo -s
     
 %p Also I can use su to login as bob:
 .syntax
