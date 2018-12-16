@@ -11,6 +11,8 @@
       sudo passwd abe
       ssh -AY abe@localhost
       ls -la ~abe/
+      sudo ls -la /root
+      chmod 700 ~abe/
       sudo passwd root
       ssh-keygen -t rsa
       sudo useradd -m -s /bin/bash -G sudo ann
