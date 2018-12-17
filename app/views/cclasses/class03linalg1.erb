@@ -7,7 +7,7 @@ Scalar, Vector, Matrix.
 
 A Scalar is simple; it is just a number.
 
-For example, here is a Scalar: 1.1
+For example, here is a Scalar: 3.2
 
 A Vector is a collection of scalars.
 
@@ -33,7 +33,7 @@ Here is a representation of a matrix created from two row vectors:
 ]
 
 I can use NumPy arrays to represent both vectors and matrices:
-</pre>
+
 <div class='syntax'><pre><code>
 import numpy as np
 
@@ -41,35 +41,36 @@ vector_a = np.array([1.1, 1.2, -4.8 ])
 matrix_a = np.array([vector_a,vector_a])
 
 </code></pre></div>
-<pre class='pre_green'>
+
 I can use NumPy to simulate vector addition:
 <div class='syntax'><pre><code>
 sum_a = vector_a + vector_a
 
 </code></pre></div>
-<pre class='pre_green'>
+
 I can use NumPy to simulate matrix addition:
 <div class='syntax'><pre><code>
 msum_a = matrix_a + matrix_a
 
 </code></pre></div>
-<pre class='pre_green'>
+
 I can use NumPy to simulate vector product which should give me a scalar:
 <div class='syntax'><pre><code>
 vprod_a = np.matmul(vector_a, vector_a)
 
 </code></pre></div>
-<pre class='pre_green'>
+
 I can use NumPy to simulate vector, matrix product which should give me an error:
 <div class='syntax'><pre><code>
 vmprod_a = np.matmul(vector_a, matrix_a)
 
 </code></pre></div>
-<pre class='pre_green'>
+
 The above NumPy statement will fail, which is consistent with the rules of Linear Algebra.
 
 The rules say that the vector_a on the left needs 2 columns
 because matrix_a has 2 rows.
+But vector_a is a column vector so it has only 1 column.
 
 I can use the NumPy shape attribute to see the number of rows and columns:
 <div class='syntax'><pre><code>
@@ -78,7 +79,7 @@ mshape = matrix_a.shape
 # Notice that .shape is an attribute, not a method.
 
 </code></pre></div>
-<pre class='pre_green'>
+
 The above expressions tell me that vector_a has 3 rows.
 
 When I created vector_a I did not specify what kind of vector I wanted.
@@ -95,7 +96,7 @@ mvprod_a = np.matmul(matrix_a, vector_a)
 # mvprod_a and matrix_a should have same number of rows.
 
 </code></pre></div>
-<pre class='pre_green'>
+
 Also, matrix, vector multiplication can be visualized:
 
 <a href='https://www.google.com/search?tbm=isch&q=matrix+vector+multiplication' target='x'>
