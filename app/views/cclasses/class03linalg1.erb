@@ -224,9 +224,6 @@ https://www.google.com/search?q=with+python+matplotlib+how+to+do+scatterplot
 </a>
 
 With google, I studied the above question and I offer more syntax:
-
-<pre class='pre_green'>
-I start this discussion with some syntax:
 <div class='syntax'><pre><code>
 import matplotlib.pyplot as plt
 plt.plot([x0, x1], [y0, y1], 'bo')
@@ -247,15 +244,23 @@ I can see from the plot that when x is 0, y is 1, so b is 1.
 And I know that m is (y1 - y0) / (x1 - x0) is 0.5.
 
 Next I add a third point which is near (x1, y1):
-
+<div class='syntax'><pre><code>
 x2 = 1.10
 y2 = 1.48
 
-I plot:
+</code></pre></div>
 
+I plot:
+<div class='syntax'><pre><code>
 import matplotlib.pyplot as plt
 plt.plot([x0, x1, x2], [y0, y1, y2], 'bo')
 plt.show()
+
+</code></pre></div>
+
+I saw this:
+
+<img src='/class03/scatter2.png' />
 
 I want to fit a line to the three points.
 
