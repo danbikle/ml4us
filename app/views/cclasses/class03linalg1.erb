@@ -40,40 +40,45 @@ import numpy as np
 vector_a = np.array([1.1, 1.2, -4.8 ])
 matrix_a = np.array([vector_a,vector_a])
 
-</div></pre></div>
+</code></pre></div>
 <pre class='pre_green'>
 I can use NumPy to simulate vector addition:
 <div class='syntax'><pre><code>
 sum_a = vector_a + vector_a
 
-</div></pre></div>
+</code></pre></div>
 <pre class='pre_green'>
 I can use NumPy to simulate matrix addition:
 <div class='syntax'><pre><code>
 msum_a = matrix_a + matrix_a
 
-</div></pre></div>
+</code></pre></div>
 <pre class='pre_green'>
 I can use NumPy to simulate vector product which should give me a scalar:
 <div class='syntax'><pre><code>
 vprod_a = np.matmul(vector_a, vector_a)
 
-</div></pre></div>
+</code></pre></div>
 <pre class='pre_green'>
 I can use NumPy to simulate vector, matrix product which should give me an error:
-
+<div class='syntax'><pre><code>
 vmprod_a = np.matmul(vector_a, matrix_a)
 
-The above NumPy statement will fail which is consistent with the rules of Linear Algebra.
+</code></pre></div>
+<pre class='pre_green'>
+The above NumPy statement will fail, which is consistent with the rules of Linear Algebra.
 
 The rules say that the vector_a on the left needs 2 columns
 because matrix_a has 2 rows.
 
 I can use the NumPy shape attribute to see the number of rows and columns:
-
+<div class='syntax'><pre><code>
 vshape = vector_a.shape
 mshape = matrix_a.shape
+# Notice that .shape is an attribute, not a method.
 
+</code></pre></div>
+<pre class='pre_green'>
 The above expressions tell me that vector_a has 3 rows.
 
 When I created vector_a I did not specify what kind of vector I wanted.
@@ -85,9 +90,12 @@ Also I see that matrix_a has 2 rows and 3 columns.
 So I see that the number of columns in matrix_a match the row count in vector_a.
 
 So, this expression should succeed:
-
+<div class='syntax'><pre><code>
 mvprod_a = np.matmul(matrix_a, vector_a)
+# mvprod_a and matrix_a should have same number of rows.
 
+</code></pre></div>
+<pre class='pre_green'>
 Also, matrix, vector multiplication can be visualized:
 
 <a href='https://www.google.com/search?tbm=isch&q=matrix+vector+multiplication' target='x'>
@@ -98,7 +106,7 @@ https://www.google.com/search?tbm=isch&q=matrix+vector+multiplication
 <br />
 I use this English phrase to help me remember multiplication:
 
-"I should match ROWS on left with COLUMNS on right."
+"I should match each ROW on left with a COLUMN on right."
 
 The above phrase is easy to remember; this phrase describes the operation:
 
@@ -109,9 +117,7 @@ The above phrase is easy to remember; this phrase describes the operation:
   - Copy sum into new row of a column vector.
 
 So, if I have a vector on the right, it needs to be a column vector.
-
 </pre>
-
 <hr />
 
 <h1>A Straight Line</h1>
