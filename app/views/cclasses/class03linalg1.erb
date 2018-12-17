@@ -236,7 +236,10 @@ linr_model.fit(x_l, y_l)
 m = linr_model.coef_
 b = linr_model.intercept_
 
+When I ran the above syntax on my laptop, sklearn gave me these values for m and b:
 
+m == array([0.46216216])
+b == 1.0031531531531532
 </pre>
 
 <hr />
@@ -286,16 +289,32 @@ Now, I can offer some NumPy syntax to fit a line to a scatter plot of three poin
 
 import numpy as np
 
-x0 = 0.0
-y0 = 1.0
-x1 = 1.0
-y1 = 1.5
-x2 = 1.10
-y2 = 1.48
+x0 = 0.0;  y0 = 1.0
+x1 = 1.0;  y1 = 1.5
+x2 = 1.10; y2 = 1.48
 
-x_a = np.array([1,1,1], [x0, x1, x2]).reshape(3,2)
-y_a = np.array([y0, y1, y2]).reshape(3,1)
+one_l = [1, 1, 1]
+x_l   = [x0, x1, x2]
+one_a = np.array(one_l).reshape(3,1)
+tmp_a = np.array(x_l).reshape(3,1)
+x_a   = np.append(one_a, tmp_a, 1) # s.b. 3 rows and 2 col
+y_a   = np.array([y0, y1, y2]).reshape(3,1)
 
+lhs_a = np.linalg.pinv(np.matmul(x_a.T, x_a))
+rhs_a = np.matmul(x_a.T, y_a)
+w_a   = np.matmul(lhs_a, rhs_a)
 
+After I ran the above syntax on my laptop, NumPy gave me this value for w_a:
+
+>>> w_a
+array([[1.00315315],
+       [0.46216216]])
+>>> 
+
+When I compare w_a to linr_model from sklearn,
+w_a[0] == linr_model.intercept_
+w_a[1] == linr_model.coef_
+
+And, I am satisfied that Linear Algebra can fit a line to a scatter plot as well as sklearn.
 
 </pre>
