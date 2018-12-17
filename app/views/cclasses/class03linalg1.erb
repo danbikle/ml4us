@@ -180,7 +180,7 @@ In fact b is the 0th member of w.
 
 <hr />
 
-<h1>A Scatter Plot</h1>
+<h1>A Scatter Plot + sklearn</h1>
 <pre class='pre_green'>
 
 I start this discussion with some syntax:
@@ -235,6 +235,59 @@ y_l = [y0,   y1,  y2 ]
 linr_model.fit(x_l, y_l)
 m = linr_model.coef_
 b = linr_model.intercept_
+
+
+</pre>
+
+<hr />
+
+<h1>Use Linear Algebra to fit a line to a Scatter Plot</h1>
+<pre class='pre_green'>
+
+We can use Linear Algebra to fit a line to a Scatter Plot.
+
+In Linear Algebra, a line is describe with this simple expression:
+
+y = Xw
+
+Since we have the scatter plot, we know what both y and X are.
+
+In the Scalar world, it would be easy to find w:
+
+w = y / X
+
+In the world of Linear Algebra the answer is not so simple.
+
+One reason for this is that division of a vector by a matrix is not defined.
+
+I propose we ask google a question:
+<a href='https://www.google.com/search?q=with+Linear+Algebra+how+to+fit+a+line+to+scatter+plot' target='x'>
+https://www.google.com/search?q=with+Linear+Algebra+how+to+fit+a+line+to+scatter+plot
+</a>
+
+I found an expression which the author claims to be a solution for w:
+
+<img src='/class03/wsoln.png'>
+<br />
+X' is called: "X Transpose".
+
+If X is a row vector then X' is a column vector made from the elements of X.
+
+Or just visualize X' to be X rotated 90 degrees.
+
+If X is a matrix, then X' is made from row vectors rotated into column vectors.
+
+X raised to the -1 is called: "Inverse of X".
+
+Calculating the Inverse of X is not always easy, but NumPy offers a method called pinv() which
+gives us a good approximation.
+
+Now, I can offer some NumPy syntax to fit a line to a scatter plot of three points:
+
+import numpy as np
+
+
+
 
 
 </pre>
