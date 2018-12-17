@@ -32,35 +32,35 @@ Here is a representation of a matrix created from two row vectors:
 1.1 1.2 -4.8 
 ]
 
-I can use numpy arrays to represent both vectors and matrices:
+I can use NumPy arrays to represent both vectors and matrices:
 
 import numpy as np
 
 vector_a = np.array([1.1, 1.2, -4.8 ])
 matrix_a = np.array([vector_a,vector_a])
 
-I can use numpy to simulate vector addition:
+I can use NumPy to simulate vector addition:
 
 sum_a = vector_a + vector_a
 
-I can use numpy to simulate matrix addition:
+I can use NumPy to simulate matrix addition:
 
 msum_a = matrix_a + matrix_a
 
-I can use numpy to simulate vector product which should give me a scalar:
+I can use NumPy to simulate vector product which should give me a scalar:
 
 vprod_a = np.matmul(vector_a, vector_a)
 
-I can use numpy to simulate vector, matrix product which should give me an error:
+I can use NumPy to simulate vector, matrix product which should give me an error:
 
 vmprod_a = np.matmul(vector_a, matrix_a)
 
-The above numpy statement will fail which is consistent with the rules of Linear Algebra.
+The above NumPy statement will fail which is consistent with the rules of Linear Algebra.
 
 The rules say that the vector_a on the left needs 2 columns
 because matrix_a has 2 rows.
 
-I can use the numpy shape attribute to see the number of rows and columns:
+I can use the NumPy shape attribute to see the number of rows and columns:
 
 vshape = vector_a.shape
 mshape = matrix_a.shape
@@ -69,7 +69,7 @@ The above expressions tell me that vector_a has 3 rows.
 
 When I created vector_a I did not specify what kind of vector I wanted.
 
-So, numpy gave me a column vector.
+So, NumPy gave me a column vector.
 
 Also I see that matrix_a has 2 rows and 3 columns.
 
@@ -103,9 +103,12 @@ So, if I have a vector on the right, it needs to be a column vector.
 
 </pre>
 
+<hr />
+
 <h1>A Straight Line</h1>
-<pre>
-I start this discussion with some numpy syntax:
+<pre class='pre_green'>
+
+I start this discussion with some NumPy syntax:
 
 import numpy as np
 
@@ -172,5 +175,34 @@ why does b disappear?
 Answer:
 The term b gets "hidden" inside of the vector w.
 In fact b is the 0th member of w.
+
+</pre>
+
+<hr />
+
+<h1>A Scatter Plot</h1>
+<pre class='pre_green'>
+
+I start this discussion with some syntax:
+
+x0 = 0.0
+y0 = 1.0
+
+x1 = 1.0
+y1 = 1.5
+
+p0_l = [x0, y0]
+p1_l = [x1, y1]
+
+Next, I propose we ask google a question:
+<a href='https://www.google.com/search?q=with+python+matplotlib+how+to+do+scatterplot' target='x'>
+https://www.google.com/search?q=with+python+matplotlib+how+to+do+scatterplot
+</a>
+
+I offer more syntax:
+
+import matplotlib
+
+
 
 </pre>
