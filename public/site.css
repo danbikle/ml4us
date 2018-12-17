@@ -13,6 +13,12 @@ body p{
     font-weight: bold;
 }
 
+pre.pre_green {
+    font-size: 1.5rem;
+    line-height: 1.2;
+    color: #003300;
+    font-weight: bold;
+}
 
 body a:hover{ color: #BB0000; }
 

@@ -1,4 +1,7 @@
-<pre>
+<h1>Simple Linear Algebra + NumPy</h1>
+
+<pre class='pre_green'>
+
 Linear Algebra teaches us about three types of objects:
 Scalar, Vector, Matrix.
 
@@ -29,7 +32,7 @@ Here is a representation of a matrix created from two row vectors:
 1.1 1.2 -4.8 
 ]
 
-I can use numpy to represent both vectors and matrices:
+I can use numpy arrays to represent both vectors and matrices:
 
 import numpy as np
 
@@ -48,7 +51,7 @@ I can use numpy to simulate vector product which should give me a scalar:
 
 vprod_a = np.matmul(vector_a, vector_a)
 
-I can use numpy to simulate vector, matrix product which should give me a vector:
+I can use numpy to simulate vector, matrix product which should give me an error:
 
 vmprod_a = np.matmul(vector_a, matrix_a)
 
@@ -100,4 +103,20 @@ So, if I have a vector on the right, it needs to be a column vector.
 
 </pre>
 
+<h1>A Straight Line</h1>
+<pre>
+I start this discussion with some numpy syntax:
 
+import numpy as np
+
+w0 = 1.01 # Im a scalar
+w1 = 0.51 # Im a scalar
+
+w_a = np.array([w0, w1]) # Im a column vector
+
+x0 = 1 # Im an integer scalar
+x1 = 0.7 # Im a scalar
+
+x_a = np.array([x0, x1]).reshape(1,2) # Im a row vector
+
+</pre>
