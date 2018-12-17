@@ -191,17 +191,42 @@ y0 = 1.0
 x1 = 1.0
 y1 = 1.5
 
-p0_l = [x0, y0]
-p1_l = [x1, y1]
-
 Next, I propose we ask google a question:
 <a href='https://www.google.com/search?q=with+python+matplotlib+how+to+do+scatterplot' target='x'>
 https://www.google.com/search?q=with+python+matplotlib+how+to+do+scatterplot
 </a>
 
-I offer more syntax:
+I studied the above question and I offer more syntax:
 
-import matplotlib
+import matplotlib.pyplot as plt
+plt.plot([x0, x1], [y0, y1], 'bo')
+plt.show()
+
+The scatter plot has only two points so I know it is easy to fit a line to the points.
+
+I know the line has the form: y = mx + b
+
+I can see from the plot that when x is 0, y is 1, so b is 1.
+
+And I know that m is (y1 - y0) / (x1 - x0) is 0.5.
+
+Next I add a third point which is near (x1, y1):
+
+x2 = 1.10
+y2 = 1.48
+
+I plot:
+
+import matplotlib.pyplot as plt
+plt.plot([x0, x1, x2], [y0, y1, y2], 'bo')
+plt.show()
+
+I want to fit a line to the three points.
+
+I know that m will be less than 0.5 and near 0.5.
+And b will probably be greater than 1 but near 1.
+
+I can use syntax we learned earlier to find m and b:
 
 
 
