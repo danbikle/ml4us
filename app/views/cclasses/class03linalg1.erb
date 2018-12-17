@@ -119,4 +119,58 @@ x1 = 0.7 # Im a scalar
 
 x_a = np.array([x0, x1]).reshape(1,2) # Im a row vector
 
+I represent Linear Algebra straight line expression:
+
+y_a = np.matmul(x_a, w_a)
+
+I represent Scalar Algebra straight line expression:
+
+m = w1
+b = w0
+
+y_f = m*x1 + b
+
+I should now see that the scalar expression:
+
+y = mx + b
+
+can be written as
+
+y = w0 + w1 * x
+
+which can be written as
+
+y = w0 * 1 + w1 * x
+
+which can be written as a Linear Algebra expression:
+
+y = X * w
+
+where X is a matrix which looks like this:
+
+[ 1 x1 ]
+
+and w is a column vector which looks like this:
+
+[
+w0
+w1
+]
+
+Question:
+
+The scalar expression for a straight line is this:
+
+y = mx + b
+
+and the linear algebra expression for a straight line is this:
+
+y = Xw
+
+why does b disappear?
+
+Answer:
+The term b gets "hidden" inside of the vector w.
+In fact b is the 0th member of w.
+
 </pre>
