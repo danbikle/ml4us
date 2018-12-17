@@ -223,11 +223,18 @@ plt.show()
 
 I want to fit a line to the three points.
 
-I know that m will be less than 0.5 and near 0.5.
+I can see from the plot that m will be less than 0.5 and near 0.5.
 And b will probably be greater than 1 but near 1.
 
-I can use syntax we learned earlier to find m and b:
+I can use syntax we learned in class01 to find m and b:
 
+from sklearn import linear_model
+linr_model = linear_model.LinearRegression()
+x_l = [[x0],[x1],[x2]]
+y_l = [y0,   y1,  y2 ]
+linr_model.fit(x_l, y_l)
+m = linr_model.coef_
+b = linr_model.intercept_
 
 
 </pre>
