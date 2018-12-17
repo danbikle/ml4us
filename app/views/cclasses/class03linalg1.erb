@@ -1,5 +1,8 @@
 <h1>Simple Linear Algebra + NumPy</h1>
 
+<p>
+This page contains 3 languages: English, Math, and NumPy.  Sometimes the Math looks similar to the NumPy.
+</p>
 <pre class='pre_green'>
 
 Linear Algebra teaches us about three types of objects:
@@ -125,7 +128,7 @@ So, if I have a vector on the right, it needs to be a column vector.
 <pre class='pre_green'>
 
 I start this discussion with some NumPy syntax:
-
+<div class='syntax'><pre><code>
 import numpy as np
 
 w0 = 1.01 # Im a scalar
@@ -138,18 +141,24 @@ x1 = 0.7 # Im a scalar
 
 x_a = np.array([x0, x1]).reshape(1,2) # Im a row vector
 
-I represent Linear Algebra straight line expression:
+</code></pre></div>
 
+I represent Linear Algebra straight line expression:
+<div class='syntax'><pre><code>
 y_a = np.matmul(x_a, w_a)
 
-I represent Scalar Algebra straight line expression:
+</code></pre></div>
 
+I represent Scalar Algebra straight line expression:
+<div class='syntax'><pre><code>
 m = w1
 b = w0
 
 y_f = m*x1 + b
 
-I should now see that the scalar expression:
+</code></pre></div>
+
+I should now see that the mathematical scalar expression:
 
 y = mx + b
 
@@ -197,26 +206,37 @@ In fact b is the 0th member of w.
 <hr />
 
 <h1>A Scatter Plot + sklearn</h1>
+
 <pre class='pre_green'>
-
 I start this discussion with some syntax:
-
+<div class='syntax'><pre><code>
 x0 = 0.0
 y0 = 1.0
 
 x1 = 1.0
 y1 = 1.5
 
+</code></pre></div>
+
 Next, I propose we ask google a question:
 <a href='https://www.google.com/search?q=with+python+matplotlib+how+to+do+scatterplot' target='x'>
 https://www.google.com/search?q=with+python+matplotlib+how+to+do+scatterplot
 </a>
 
-I studied the above question and I offer more syntax:
+With google, I studied the above question and I offer more syntax:
 
+<pre class='pre_green'>
+I start this discussion with some syntax:
+<div class='syntax'><pre><code>
 import matplotlib.pyplot as plt
 plt.plot([x0, x1], [y0, y1], 'bo')
 plt.show()
+
+</code></pre></div>
+
+I ran the above code and saw this:
+
+<img src='/class03/scatter1.png' />
 
 The scatter plot has only two points so I know it is easy to fit a line to the points.
 
