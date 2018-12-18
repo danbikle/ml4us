@@ -19,7 +19,7 @@ import numpy  as np
 csvfile_s  = 'http://spy611.com/csv/allpredictions.csv'
 cp_df      = pd.read_csv(csvfile_s).sort_values(['cdate'])
 cp2016_sr  = (cp_df.cdate > '2016') & (cp_df.cdate &lt; '2017')
-cp2016_df  = cp_df[['cdate','cp']][cp2016_sr]
+cp2016_df  = cp_df[['cdate','cp']].loc[cp2016_sr]
 daycount_i = cp2016_df.index.size
 
 def colvec(arylst):
