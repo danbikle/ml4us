@@ -66,5 +66,4 @@ cpdate2016_df.plot.line(title="GSPC 2016")
 
 plt.show()
 
-
 'bye'
