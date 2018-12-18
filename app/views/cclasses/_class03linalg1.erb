@@ -1,0 +1,438 @@
+<h1>Simple Linear Algebra + NumPy</h1>
+
+<p>
+This discussion contains 3 languages: English, Math, and NumPy.  Sometimes the Math looks similar to the NumPy.
+</p>
+<pre class='pre_green'>
+
+Linear Algebra teaches us about three types of objects:
+Scalar, Vector, Matrix.
+
+A Scalar is simple; it is just a number.
+
+For example, here is a Scalar: 3.2
+
+A Vector is a collection of scalars.
+
+A vector can be a row vector or a column vector.
+
+If I don't know what kind of vector I have, I assume my vector is a column vector.
+
+Here is a representation of a row vector made from three scalars:
+
+[ 1.1 1.2 -4.8 ]
+
+A Matrix is a collection of vectors.
+
+A matrix can be built from row vectors or column vectors.
+
+Also a matrix can be built directly from scalars.
+
+Here is a representation of a matrix created from two row vectors:
+
+[
+1.1 1.2 -4.8 
+1.1 1.2 -4.8 
+]
+
+I can use NumPy arrays to represent both vectors and matrices:
+
+<div class='syntax'><pre><code>
+import numpy as np
+
+vector_a = np.array([1.1, 1.2, -4.8 ])
+matrix_a = np.array([vector_a,vector_a])
+
+</code></pre></div>
+
+I can use NumPy to simulate vector addition:
+<div class='syntax'><pre><code>
+sum_a = vector_a + vector_a
+
+</code></pre></div>
+
+I can use NumPy to simulate matrix addition:
+<div class='syntax'><pre><code>
+msum_a = matrix_a + matrix_a
+
+</code></pre></div>
+
+I can use NumPy to simulate vector product which should give me a scalar:
+<div class='syntax'><pre><code>
+vprod_a = np.matmul(vector_a, vector_a)
+
+</code></pre></div>
+
+I can use NumPy to simulate vector, matrix product which should give me an error:
+<div class='syntax'><pre><code>
+vmprod_a = np.matmul(vector_a, matrix_a)
+
+</code></pre></div>
+
+The above NumPy statement will fail, which is consistent with the rules of Linear Algebra.
+
+The rules say that the vector_a on the left needs 2 columns
+because matrix_a has 2 rows.
+But vector_a is a column vector so it has only 1 column.
+
+I can use the NumPy shape attribute to see the number of rows and columns:
+<div class='syntax'><pre><code>
+vshape = vector_a.shape
+mshape = matrix_a.shape
+# Notice that .shape is an attribute, not a method.
+
+</code></pre></div>
+
+The above expressions tell me that vector_a has 3 rows.
+
+When I created vector_a I did not specify what kind of vector I wanted.
+
+So, NumPy gave me a column vector.
+
+Also I see that matrix_a has 2 rows and 3 columns.
+
+So I see that the number of columns in matrix_a match the row count in vector_a.
+
+So, this expression should succeed:
+<div class='syntax'><pre><code>
+mvprod_a = np.matmul(matrix_a, vector_a)
+# mvprod_a and matrix_a should have same number of rows.
+
+</code></pre></div>
+
+Also, matrix, vector multiplication can be visualized:
+
+<a href='https://www.google.com/search?tbm=isch&q=matrix+vector+multiplication' target='x'>
+https://www.google.com/search?tbm=isch&q=matrix+vector+multiplication
+</a>
+<br />
+<img src='/class03/linalg2.png' />
+<br />
+I use this English phrase to help me remember multiplication:
+
+"I should match each ROW on left with a COLUMN on right."
+
+The above phrase is easy to remember; this phrase describes the operation:
+
+  - Rotate each row on the left to match the column on the right.
+  - I will see that columns on left should match rows on right.
+  - Multiply each member.
+  - Sum all products.
+  - Copy sum into new row of a column vector.
+
+So, if I have a vector on the right, it needs to be a column vector.
+</pre>
+<hr />
+
+<h1>A Straight Line</h1>
+<pre class='pre_green'>
+
+I start this discussion with some NumPy syntax:
+<div class='syntax'><pre><code>
+import numpy as np
+
+w0 = 1.01 # Im a scalar
+w1 = 0.51 # Im a scalar
+
+w_a = np.array([w0, w1]) # Im a column vector
+
+x0 = 1 # Im an integer scalar
+x1 = 0.7 # Im a scalar
+
+x_a = np.array([x0, x1]).reshape(1,2) # Im a row vector
+
+</code></pre></div>
+
+I represent Linear Algebra straight line expression:
+<div class='syntax'><pre><code>
+y_a = np.matmul(x_a, w_a)
+
+</code></pre></div>
+
+I represent Scalar Algebra straight line expression:
+<div class='syntax'><pre><code>
+m = w1
+b = w0
+
+y_f = m*x1 + b
+
+</code></pre></div>
+
+I should now see that the mathematical scalar expression:
+
+y = mx + b
+
+can be written as
+
+y = w0 + w1 * x
+
+which can be written as
+
+y = w0 * 1 + w1 * x
+
+which can be written as a Linear Algebra expression:
+
+y = X * w
+
+where X is a matrix which looks like this:
+
+[ 1 x1 ]
+
+and w is a column vector which looks like this:
+
+[
+w0
+w1
+]
+
+Question:
+
+The scalar expression for a straight line is this:
+
+y = mx + b
+
+and the linear algebra expression for a straight line is this:
+
+y = Xw
+
+why does b disappear?
+
+Answer:
+The term b gets "hidden" inside of the vector w.
+In fact b is the 0th member of w.
+
+</pre>
+
+<hr />
+
+<h1>A Scatter Plot + sklearn</h1>
+
+<pre class='pre_green'>
+I start this discussion with some syntax:
+<div class='syntax'><pre><code>
+x0 = 0.0
+y0 = 1.0
+
+x1 = 1.0
+y1 = 1.5
+
+</code></pre></div>
+
+Next, I propose we ask google a question:
+<a href='https://www.google.com/search?q=with+python+matplotlib+how+to+do+scatterplot' target='x'>
+https://www.google.com/search?q=with+python+matplotlib+how+to+do+scatterplot
+</a>
+
+With google, I studied the above question and I offer more syntax:
+<div class='syntax'><pre><code>
+import matplotlib.pyplot as plt
+plt.scatter([x0, x1], [y0, y1])
+plt.show()
+
+</code></pre></div>
+
+I ran the above code and saw this:
+
+<img src='/class03/scatter1.png' />
+
+The scatter plot has only two points so I know it is easy to fit a line to the points.
+
+I know the line has the form: y = mx + b
+
+I can see from the plot that when x is 0, y is 1, so b is 1.
+
+And I know that m is (y1 - y0) / (x1 - x0) is 0.5.
+
+I can use matplotlib to display a line through the two points:
+
+<div class='syntax'><pre><code>
+import matplotlib.pyplot as plt
+x0 = 0.0
+y0 = 1.0
+x1 = 1.0
+y1 = 1.5
+
+plt.scatter([x0, x1], [y0, y1])
+plt.plot(   [x0, x1], [y0, y1])
+plt.show()
+
+</code></pre></div>
+
+I ran the above code and saw this:
+
+<img src='/class03/scatter1b.png' />
+
+Next I add a third point which is near (x1, y1):
+<div class='syntax'><pre><code>
+x2 = 1.10
+y2 = 1.48
+
+</code></pre></div>
+
+I plot:
+<div class='syntax'><pre><code>
+import matplotlib.pyplot as plt
+plt.scatter([x0, x1, x2], [y0, y1, y2])
+plt.show()
+
+</code></pre></div>
+
+I saw this:
+
+<img src='/class03/scatter2.png' />
+
+I want to fit a line to the three points.
+
+The third point should act like a magnet.
+
+It should attract the straight line away from the second point.
+
+So, that logic tells me that m will be less than 0.5 and near 0.5.
+And b will probably be greater than 1 but near 1.
+
+I can use syntax we learned in class01 to find m and b:
+<div class='syntax'><pre><code>
+from sklearn import linear_model
+linr_model = linear_model.LinearRegression()
+x_l = [[x0],[x1],[x2]]
+y_l = [y0,   y1,  y2 ]
+linr_model.fit(x_l, y_l)
+m = linr_model.coef_
+b = linr_model.intercept_
+
+</code></pre></div>
+
+When I ran the above syntax on my laptop, sklearn gave me these values for m and b:
+
+m == array([0.46216216])
+b == 1.0031531531531532
+
+I wrote syntax to show the line:
+
+<div class='syntax'><pre><code>
+from sklearn import linear_model
+import matplotlib.pyplot as plt
+x0 = 0.0
+y0 = 1.0
+x1 = 1.0
+y1 = 1.5
+x2 = 1.10
+y2 = 1.48
+plt.scatter([x0, x1, x2], [y0, y1, y2])
+
+m = 0.462
+b = 1.003
+
+yhat_l = [ m*x_f + b for x_f in[x0, x1, x2] ]
+plt.plot([x0, x1, x2], yhat_l)
+plt.show()
+</code></pre></div>
+
+I saw this:
+
+<img src='/class03/scatter2b.png' />
+
+</pre>
+
+<hr />
+
+<h1>Use Linear Algebra to fit a line to a Scatter Plot</h1>
+<pre class='pre_green'>
+
+We can use Linear Algebra to fit a line to a Scatter Plot.
+
+In Linear Algebra, I describe a line with this simple expression:
+
+y = Xw
+
+Since we have the scatter plot, we know what both y and X are.
+
+In the Scalar world, I find w with Scalar Algebra:
+
+w = y / X
+
+In the world of Linear Algebra the finding w is difficult.
+
+One reason for this is that division of a vector by a matrix is not defined.
+
+I propose we ask google a question:
+<a href='https://www.google.com/search?q=with+Linear+Algebra+how+to+fit+a+line+to+scatter+plot' target='x'>
+https://www.google.com/search?q=with+Linear+Algebra+how+to+fit+a+line+to+scatter+plot
+</a>
+
+I studied results from google.
+
+Now, I claim this to be a Linear Algebra solution for w:
+
+w = <img src='/class03/wsoln.png'>
+<br />
+X' is called: "X Transpose".
+
+What is "X Transpose"?
+
+I explain:
+
+  - If X is a row vector then X' is a column vector made from the elements of X.
+
+  - Or just visualize X' to be X rotated 90 degrees.
+
+  - If X is a matrix, then X' is made from row vectors rotated into column vectors.
+  - The first row becomes the first column.
+  - The second row becomes the second column...
+
+X raised to the -1 is called: "Inverse of X".
+
+What is "Inverse of X"?
+
+I suggest you ask Google:
+<a href='http://www.google.com/search?tbm=isch&q=In+Linear+Algebra+what+is+inverse+of+matrix' target='x'>
+http://www.google.com/search?tbm=isch&q=In+Linear+Algebra+what+is+inverse+of+matrix
+</a>
+
+A better question:
+
+How to calculate "Inverse of X"?
+
+Calculating the Inverse of X is not always easy,
+but NumPy offers a method called pinv() which gives us a good approximation.
+
+Now, I can offer some NumPy syntax to fit a line to a scatter plot of three points:
+<div class='syntax'><pre><code>
+import numpy  as np
+import pandas as pd
+x0 = 0.0;  y0 = 1.0
+x1 = 1.0;  y1 = 1.5
+x2 = 1.10; y2 = 1.48
+
+# It is easy to build a NumPy array from rows.
+# But,
+# To build a NumPy array from columns,
+# I first create a Pandas DF from columns,
+# then convert the DF to array:
+
+col0_l = [1, 1, 1]
+col1_l = [x0, x1, x2]
+my_df = pd.DataFrame({'col0': col0_l, 'col1': col1_l})
+x_a   = np.array(my_df)
+y_a   = np.array([y0, y1, y2]).reshape(3,1)
+
+lhs_a = np.linalg.pinv(np.matmul(x_a.T, x_a))
+rhs_a = np.matmul(x_a.T, y_a)
+w_a   = np.matmul(lhs_a, rhs_a)
+
+</code></pre></div>
+
+After I ran the above syntax on my laptop, NumPy gave me this value for w_a:
+
+>>> w_a
+array([[1.00315315],
+       [0.46216216]])
+>>> 
+
+When I compare w_a to linr_model from sklearn,
+w_a[0] == linr_model.intercept_
+w_a[1] == linr_model.coef_
+
+And, I am satisfied that Linear Algebra can fit a line to a scatter plot as well as sklearn.
+
+</pre>
