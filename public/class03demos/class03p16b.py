@@ -1,5 +1,5 @@
 """
-class03p16.py
+class03p16b.py
 
 This script should plot a fitted line on top of the 2016 prices.
 
@@ -54,17 +54,12 @@ cp2016_df['yhat'] = yhat_a
 cpdate2016_df = cp2016_df.set_index(['cdate'])
 # I should plot cp (closing price), and fitted line:
 cpdate2016_df.plot.line(title="GSPC 2016")
+plt.xticks([-50.,   0.,  50., 100., 150., 200., 250., 300.], ['','Jan','Mar','May','Jul','Sep','Dec',''], rotation=-45)
+# plt.show()
 
 # If X-axis is missing labels, I should experiment with plt.xticks():
-# plt.xticks(some_tuple_orlist, another_tuple_orlist, rotation=45) 
+# plt.xticks(range(some_integer), some_tuple_orlist, rotation=45) 
 # Ref:
 # https://stackoverflow.com/questions/49180822/missing-textual-labels-along-x-axis-when-using-matplotlib-line-plot-with-data
-
-# xticks1_l = [-50.,   0.,  50., 100., 150., 200., 250., 300.]
-# xticks2_l = ['','Jan','Mar','May','Jul','Sep','Dec','']
-# plt.xticks(xticks1_l, xticks2_l, rotation=-45)
-
-plt.show()
-
 
 'bye'
