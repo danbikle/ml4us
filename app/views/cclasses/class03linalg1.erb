@@ -226,7 +226,7 @@ https://www.google.com/search?q=with+python+matplotlib+how+to+do+scatterplot
 With google, I studied the above question and I offer more syntax:
 <div class='syntax'><pre><code>
 import matplotlib.pyplot as plt
-plt.plot([x0, x1], [y0, y1], 'bo')
+plt.scatter([x0, x1], [y0, y1])
 plt.show()
 
 </code></pre></div>
@@ -243,6 +243,25 @@ I can see from the plot that when x is 0, y is 1, so b is 1.
 
 And I know that m is (y1 - y0) / (x1 - x0) is 0.5.
 
+I can use matplotlib to display a line through the two points:
+
+<div class='syntax'><pre><code>
+import matplotlib.pyplot as plt
+x0 = 0.0
+y0 = 1.0
+x1 = 1.0
+y1 = 1.5
+
+plt.scatter([x0, x1], [y0, y1])
+plt.plot(   [x0, x1], [y0, y1])
+plt.show()
+
+</code></pre></div>
+
+I ran the above code and saw this:
+
+<img src='/class03/scatter1b.png' />
+
 Next I add a third point which is near (x1, y1):
 <div class='syntax'><pre><code>
 x2 = 1.10
@@ -253,7 +272,7 @@ y2 = 1.48
 I plot:
 <div class='syntax'><pre><code>
 import matplotlib.pyplot as plt
-plt.plot([x0, x1, x2], [y0, y1, y2], 'bo')
+plt.scatter([x0, x1, x2], [y0, y1, y2])
 plt.show()
 
 </code></pre></div>
@@ -287,6 +306,32 @@ When I ran the above syntax on my laptop, sklearn gave me these values for m and
 
 m == array([0.46216216])
 b == 1.0031531531531532
+
+I wrote syntax to show the line:
+
+<div class='syntax'><pre><code>
+from sklearn import linear_model
+import matplotlib.pyplot as plt
+x0 = 0.0
+y0 = 1.0
+x1 = 1.0
+y1 = 1.5
+x2 = 1.10
+y2 = 1.48
+plt.scatter([x0, x1, x2], [y0, y1, y2])
+
+m = 0.462
+b = 1.003
+
+yhat_l = [ m*x_f + b for x_f in[x0, x1, x2] ]
+plt.plot([x0, x1, x2], yhat_l)
+plt.show()
+</code></pre></div>
+
+I saw this:
+
+<img src='/class03/scatter2b.png' />
+
 </pre>
 
 <hr />
@@ -296,17 +341,17 @@ b == 1.0031531531531532
 
 We can use Linear Algebra to fit a line to a Scatter Plot.
 
-In Linear Algebra, a line is describe with this simple expression:
+In Linear Algebra, I describe a line with this simple expression:
 
 y = Xw
 
 Since we have the scatter plot, we know what both y and X are.
 
-In the Scalar world, it would be easy to find w:
+In the Scalar world, I find w with Scalar Algebra:
 
 w = y / X
 
-In the world of Linear Algebra the answer is not so simple.
+In the world of Linear Algebra the finding w is difficult.
 
 One reason for this is that division of a vector by a matrix is not defined.
 
