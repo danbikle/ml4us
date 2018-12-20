@@ -15,7 +15,7 @@ prices_df.columns = ['cdate_s','openp','highp','lowp','closep','adjp','volume']
 
 # I should get 2016 July and two columns:
 pred_sr = (prices_df.cdate_s > '2016-07') & (prices_df.cdate_s < '2016-08')
-s1_df   = prices_df[pred_sr][['cdate_s','closep']]
+s1_df   = prices_df.loc[pred_sr][['cdate_s','closep']]
 print(s1_df)
 
 'bye'
