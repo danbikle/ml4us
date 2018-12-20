@@ -1,7 +1,10 @@
 """
 class03pd47.py
 
-This script should slice and dice
+This script should slice and dice.
+
+Demo:
+python class03pd47.py
 """
 
 import pandas as pd
@@ -14,23 +17,5 @@ prices_df.columns = ['cdate_s','openp','highp','lowp','closep','adjp','volume']
 pred_sr = (prices_df.cdate_s > '2016-07') & (prices_df.cdate_s < '2016-08')
 s1_df   = prices_df[pred_sr][['cdate_s','closep']]
 print(s1_df)
-
-# I should do it the numpy way:
-prices_a = np.array(prices_df)
-
-# I should get all rows where column-0 > '2016-07'
-pred1_a  = (prices_a[:,0] > '2016-07')
-# I should get all rows where column-0 < '2016-08'
-pred2_a  = (prices_a[:,0] < '2016-08')
-
-# I should combine the two predicates:
-preds_a = pred1_a & pred2_a
-
-# I should slice out july:
-july_a   = prices_a[preds_a]
-
-# I should get all rows and get columns 0 and 4:
-s1_a     = july_a[:,[0,4]]
-print(s1_a)
 
 'bye'
