@@ -1,7 +1,11 @@
 """
 class03pd45.py
 
-This script should slice and dice
+This script should demonstrate flexibility to locate iloc[]
+when I want to slice and dice.
+
+Demo:
+python class03pd45.py
 """
 
 import pandas as pd
