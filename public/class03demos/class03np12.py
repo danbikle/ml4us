@@ -2,12 +2,15 @@
 class03np12.py
 
 Create a NumPy Array From Pandas DataFrame of GSPC prices.
+
+Demo:
+python class03np12.py
 """
 
 import pandas as pd
 import numpy  as np
 
-prices_df = pd.read_csv('http://ml4.us/csv/GSPC.csv')
+prices_df = pd.read_csv('https://ml4.herokuapp.com/csv/GSPC.csv')
 prices_a  = np.array(prices_df)
 
 # Sort the array by date string:
