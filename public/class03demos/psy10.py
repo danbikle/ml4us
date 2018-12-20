@@ -5,9 +5,21 @@ psycopg2 demo
 ref:
 http://initd.org/psycopg/docs/usage.html
 
+Demo:
+python psycopg2 demo
+
 if ModuleNotFoundError,
 Useful shell syntax:
 conda install psycopg2
+
+Possibly useful Postgres syntax:
+
+sudo su - postgres
+/usr/bin/psql -aP pager=no
+
+create role ann with login superuser password 'ann';
+create database ann;
+\q
 """
 
 import psycopg2
