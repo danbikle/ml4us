@@ -2,12 +2,15 @@
 class03pd46.py
 
 This script should slice and dice
+
+Demo:
+python class03pd46.py
 """
 
 import pandas as pd
 import numpy  as np
 
-prices_df = pd.read_csv('http://ml4.us/csv/GSPC.csv')
+prices_df = pd.read_csv('https://ml4.herokuapp.com/csv/GSPC.csv')
 
 # I should do it the numpy way:
 prices_a = np.array(prices_df)
