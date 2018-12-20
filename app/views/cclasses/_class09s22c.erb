@@ -4,7 +4,7 @@ rpt09.py
 
 This script should report on data in this download:
 
-http://learn4.us/class09predictions.tar.bz2
+https://ml4.herokuapp.com/class09predictions.tar.bz2
 
 Demo:
 ~/anaconda3/bin/python rpt09.py
@@ -17,7 +17,7 @@ import pdb
 import re
 
 # I should get the download:
-shellcmd_s = '/usr/bin/curl -L learn4.us/class09predictions.tar.bz2 > /tmp/class09predictions.tar.bz2'
+shellcmd_s = '/usr/bin/curl -L ml4.herokuapp.com/class09predictions.tar.bz2 > /tmp/class09predictions.tar.bz2'
 print('Busy with this:')
 print(shellcmd_s)
 os.system(shellcmd_s)
