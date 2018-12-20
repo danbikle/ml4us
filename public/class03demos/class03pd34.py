@@ -20,7 +20,7 @@ SELECT COUNT(*) FROM prices3;
 
 import pandas as pd
 
-prices_df         = pd.read_csv('http://ml4.us/csv/ibm.csv')
+prices_df         = pd.read_csv('https://ml4.herokuapp.com/csv/ibm.csv')
 prices_df.columns = ['cdate_s', 'openp', 'highp', 'lowp', 'closep', 'adjp', 'volume']
 
 # I should setup prices3_df:

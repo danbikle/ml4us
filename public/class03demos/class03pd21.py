@@ -19,7 +19,7 @@ CREATE TABLE prices3 AS SELECT cdate,openp,closep, closep - openp AS diff FROM p
 import pandas as pd
 from datetime import datetime, timedelta
 
-prices_df         = pd.read_csv('http://ml4.us/csv/ibm.csv')
+prices_df         = pd.read_csv('https://ml4.herokuapp.com/csv/ibm.csv')
 prices_df.columns = ['cdate_s', 'openp', 'highp', 'lowp', 'closep', 'adjp', 'volume']
 
 # Mimic

@@ -7,7 +7,7 @@ This script should slice and dice
 import pandas as pd
 import numpy  as np
 
-prices_df = pd.read_csv('http://ml4.us/csv/GSPC.csv')
+prices_df = pd.read_csv('https://ml4.herokuapp.com/csv/GSPC.csv')
 prices_df.columns = ['cdate_s','openp','highp','lowp','closep','adjp','volume']
 
 # I should get 2 columns and rows 5 through 11:

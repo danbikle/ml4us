@@ -15,7 +15,7 @@ Pandas can get data from the web.
 
 import pandas as pd
 
-prices_df = pd.read_csv('http://ml4.us/csv/ibm.csv')
+prices_df = pd.read_csv('https://ml4.herokuapp.com/csv/ibm.csv')
 
 # Mimic
 # SELECT COUNT(cdate) FROM prices;

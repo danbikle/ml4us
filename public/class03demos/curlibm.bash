@@ -6,7 +6,7 @@
 
 cd /tmp/
 rm -f ibm.csv
-/usr/bin/wget http://ml4.us/csv/ibm.csv
+/usr/bin/wget https://ml4.herokuapp.com/csv/ibm.csv
 
 /usr/bin/psql -aP pager=no<<EOF
 DROP TABLE IF EXISTS prices;
