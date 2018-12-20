@@ -2,6 +2,9 @@
 class03np18.py
 
 This script should compute columns pctlag1 and pctlead from closep.
+
+Demo:
+python class03np18.py
 """
 
 import pandas as pd
