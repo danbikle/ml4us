@@ -2,6 +2,9 @@
 pct_laglead.py
 
 This script should compute columns pctlag1 and pctlead from closep.
+
+Demo:
+python pct_laglead.py
 """
 
 import pandas as pd
@@ -11,7 +14,7 @@ prices_df.columns = ['cdate_s','openp','highp','lowp','closep','adjp','volume']
 
 # I should get 2016 July and two columns:
 pred_sr = (prices_df.cdate_s > '2016-07') & (prices_df.cdate_s < '2016-08')
-s1_df   = prices_df[pred_sr][['cdate_s','closep']]
+s1_df   = prices_df.loc[pred_sr][['cdate_s','closep']]
 
 pctlead = 100 * (s1_df.closep.shift(-1) - s1_df.closep) / s1_df.closep
 pctlag1 = 100 * (s1_df.closep - s1_df.closep.shift(1)) / s1_df.closep.shift(1)
