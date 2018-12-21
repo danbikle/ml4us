@@ -3,6 +3,10 @@
 
 %p This is an easy lab.
 
+%p First though, know that the shell commands below should run on the host.
+
+%p Avoid the mistake of trying to run virtualbox inside of virtualbox.
+
 %p The shell commands I use to start an Ubuntu virtualbox look like this:
 
 .syntax
@@ -10,8 +14,13 @@
     %code.bash
       vboxmanage list vms
       vboxmanage startvm ub16_201712a
+%p If your host is a windows laptop, I doubt that I can run shell commands.
 
-%p After I start it, I can login to it with syntax like this:
+%p Also, if your host is windows it makes sense to avoid this lab.
+
+%p Most windows users do not use ssh.
+
+%p Anyway, after I start the guest, I can login to it with syntax like this:
 
 .syntax
   %pre
