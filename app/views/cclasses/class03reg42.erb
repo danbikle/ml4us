@@ -15,12 +15,19 @@ I usually start by picking a Linux distribution.
 
 During that decision I usually pick Ubuntu 16.04 which is supported by Canonical until April 2021.
 
+Next, which account should own the software of the app?
+
 I have established a convention that I should create a new linux account for each app that I create.
 
 To follow that convention, I created an account named reg42 using the shell commands listed below:
 
 sudo useradd -m -s /bin/bash -G sudo reg42
 sudo passwd reg42
+
+Next, which languages will my app depend on?
+
+Well, reg4.us should be a loosely coupled web app which relies on Python to generate Machine Learning predictions.
+And, reg4.us will rely on Rails 5.2.x to serve the predictions to browsers.
 
 under construction
 
