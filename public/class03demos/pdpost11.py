@@ -1,10 +1,15 @@
-# pdpost10.py
+"""
+pdpost11.py
 
-# This script should copy gspc prices from web into a Postgres table.
+This script should copy gspc prices from web into a Postgres table.
+
+Demo:
+python pdpost11.py
+"""
 
 import pandas as pd
 
-prices_df = pd.read_csv('http://tkrprice.herokuapp.com/static/gspc.csv')
+prices_df = pd.read_csv('https://tkrprice.herokuapp.com/static/gspc.csv')
 
 prices_df.columns = ['cdate','openp','highp','lowp','closep','adjp','volume']
 

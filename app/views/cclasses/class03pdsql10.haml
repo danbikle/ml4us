@@ -11,33 +11,27 @@
 %p If I have Postgres installed, this is an easy lab.
 %p If I don't have Postgres installed, I install it with the help from the instructions at the URL listed below:
 %p
-  %a(href='https://github.com/danbikle/madlib_demos/blob/master/madlib_installation_steps.txt' target='x')
-    https://github.com/danbikle/madlib_demos/blob/master/madlib_installation_steps.txt
-
-%p Another way to get a copy of Postgres running on my laptop is to use this VirtualBox instance:
-
-%p
-  %a(href='https://drive.google.com/file/d/0Bx3iDDAtxxI4YlVKZVJsLWtXMTg' target='x')
-    madlib2016a.ova
+  %a(href='https://ml4.herokuapp.com/cclasses/class03pg01' target='x')
+    https://ml4.herokuapp.com/cclasses/class03pg01
 
 %p After I installed Postgres, using the above instructions, I wrote this script:
 
 .syntax
   %pre
-    =render 'class03pdsql11'
+    =render 'class03pdpost11'
 
 %p When I ran the above script I saw this:
 
 .syntax
   %pre
-    =render 'class03pdsql12'
+    =render 'class03pdpost11out'
 
 %p The above script does these tasks:
 %ul
   %li
     Load
-    %a(href='http://tkrprice.herokuapp.com/static/gspc.csv' target='x')
-      http://tkrprice.herokuapp.com/static/gspc.csv
+    %a(href='https://tkrprice.herokuapp.com/static/gspc.csv' target='x')
+      https://tkrprice.herokuapp.com/static/gspc.csv
     into a DataFrame: prices_df
   %li Creates a SQLAlchemy engine to connect Pandas to Postgres
   %li Copies almost 17,000 rows from prices_df into table: prices
