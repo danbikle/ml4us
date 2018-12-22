@@ -23,11 +23,31 @@ To follow that convention, I created an account named reg42 using the shell comm
 
 sudo useradd -m -s /bin/bash -G sudo reg42
 sudo passwd reg42
+ssh -AY reg42@localhost
 
 Next, which languages will my app depend on?
 
 Well, reg4.us should be a loosely coupled web app which relies on Python to generate Machine Learning predictions.
 And, reg4.us will rely on Rails 5.2.x to serve the predictions to browsers.
+
+On my laptop, after I created the reg42 account and logged into it, I issued these shell commands to install Python:
+
+wget https://repo.anaconda.com/archive/Anaconda3-5.3.1-Linux-x86_64.sh
+bash Anaconda3-5.3.1-Linux-x86_64.sh -b
+mv ~/anaconda3/bin/curl ~/anaconda3/bin/curl_ana
+echo 'export PATH="${HOME}/anaconda3/bin:$PATH"' >> ~/.bashrc
+
+Next I used these shell commands to install Ruby and Rails:
+
+cd ~
+curl -L ml4.herokuapp.com/.gemrc > .gemrc
+git clone https://github.com/rbenv/rbenv.git      .rbenv
+git clone https://github.com/rbenv/ruby-build.git .rbenv/plugins/ruby-build
+echo 'export PATH="${HOME}/.rbenv/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(rbenv init -)"'                 >> ~/.bashrc
+bash
+
+rbenv install 2.5.3; rbenv global  2.5.3; gem install bundler
 
 under construction
 
