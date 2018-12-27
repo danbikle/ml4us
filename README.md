@@ -26,7 +26,7 @@ echo 'eval "$(rbenv init -)"'               >> ~/.bashrc
 bash
 ```
 
-* Then I issued some shell commands to install Ruby 2.3.1 into my home folder:
+* Then I issued shell commands to install Ruby 2.3.1 into my home folder:
 
 ```bash
 rbenv install 2.3.1
