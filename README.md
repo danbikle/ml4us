@@ -42,7 +42,7 @@ cd ~
 git clone https://github.com/danbikle/ml4us
 ```
 
-* Then I installed all of the Ruby software (called Gems) needed by ml4.us:
+* Then I installed all of the Ruby software (called Gems) needed to run the repo locally in my Linux host:
 
 ```bash
 cd ~/ml4us
