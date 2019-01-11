@@ -46,6 +46,6 @@ git clone https://github.com/danbikle/ml4us
 
 ```bash
 cd ~/ml4us
-bundle install
+bundle
 ```
 
