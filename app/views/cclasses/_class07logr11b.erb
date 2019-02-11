@@ -1,0 +1,94 @@
+<code class='python'>
+"""
+logr_model.py
+
+This script should create a logistic regression model.
+
+Ref:
+https://ml4.herokuapp.com/cclasses/class07logr10
+
+Demo:
+python logr_model.py
+"""
+
+import pandas as pd
+import numpy  as np
+from sklearn import linear_model
+
+def train_test_logr(feat_df, yr_i, size_i):
+  """
+  This function should train and then test using Logistic Regression and data in feat_df.
+  """
+  # I should use yr_i to compute end, start:
+  yr_train_end_i   = yr_i
+  yr_train_start_i = yr_i - size_i
+  # I should constrain the training data.
+  yr_train_start_s = str(yr_train_start_i)
+  yr_train_end_s = str(yr_train_end_i)
+  cdate_sr = feat_df.cdate
+  pred1_sr = (cdate_sr > yr_train_start_s)
+  pred2_sr = (cdate_sr &lt; yr_train_end_s)
+  pred3_sr = (pred1_sr & pred2_sr)
+  train_df = feat_df.loc[pred3_sr].copy()
+  labels_sr = (train_df.pctlead > np.median(train_df.pctlead))
+  labels_a  = np.array(labels_sr)
+  # Now I should learn:
+  # mymodel = glm(labels ~ pctlag1 + moy + dow, data=train_df, family='binomial')
+  logr_model = linear_model.LogisticRegression()
+  x_a = np.array(train_df[['pctlag1','moy','dow']])
+  logr_model.fit(x_a,labels_a)
+  # I should load test data
+  yr_test_s = str(yr_i)
+  test_b_sr = feat_df.cdate.str.contains(yr_test_s)
+  test_df   = feat_df.loc[test_b_sr].copy()
+  xtest_a   = np.array(test_df[['pctlag1', 'moy', 'dow']])
+  predictions_a = logr_model.predict_proba(xtest_a)[:,1]
+  test_df['prediction'] = predictions_a.tolist()
+  test_df['eff']        = np.sign(test_df.prediction-0.5) * test_df.pctlead
+  test_df['accurate']   = (test_df.eff >= 0).astype('int')
+  # I should write predictions to CSV
+  csv_s = 'predictions'+yr_test_s+'.csv'
+  test_df.to_csv(csv_s, float_format='%4.4f', index=False)
+  return csv_s
+
+feat_df = pd.read_csv('feat.csv')
+size_i  = 25
+
+for yr_i in range(2000,2018+1):
+  pf_s = train_test_logr(feat_df,yr_i,size_i)
+  print(pf_s)
+
+  
+# I should report effectiveness, accuracy:
+sum_eff_long_f      = 0
+sum_eff_logr_f      = 0
+sum_long_accuracy_i = 0
+sum_accuracy_i      = 0
+sum_all_i           = 0
+for yr_i in range(2000,2018+1):
+  csv_s = 'predictions'+str(yr_i)+'.csv'
+  p_df  = pd.read_csv(csv_s)
+  sum_eff_long_f      = sum_eff_long_f + p_df.pctlead.sum()
+  sum_eff_logr_f      = sum_eff_logr_f + p_df.eff.sum()
+  sum_long_accuracy_i = sum_long_accuracy_i + p_df.pctlead.loc[p_df.pctlead > 0].size
+  sum_accuracy_i      = sum_accuracy_i + p_df.accurate.sum()
+  sum_all_i           = sum_all_i      + p_df.cdate.size
+
+print('Long-Only Effectiveness:')
+print(sum_eff_long_f)
+
+print('Logistic-Regression Effectiveness:')
+print(sum_eff_logr_f)
+
+print('Long-Only Accuracy:')
+acc_long_f = 100.0 * sum_long_accuracy_i / sum_all_i
+print(acc_long_f)
+
+print('Logistic-Regression Accuracy:')
+acc_logr_f = 100.0 * sum_accuracy_i / sum_all_i
+print(acc_logr_f)
+
+
+'bye'
+
+</code>

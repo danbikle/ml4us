@@ -1,0 +1,40 @@
+<code class='python'>
+"""
+genf.py
+
+This script should generate feat.csv from gspc.csv
+
+Demo:
+python genf.py
+tail feat.csv
+"""
+
+import numpy  as np
+import pandas as pd
+
+# I should read date sorted prices from a csv:
+price_df = pd.read_csv('http://tkrprice.herokuapp.com/static/gspc.csv')[['Date','Close']]
+price_df.columns = ['cdate','cprice']
+
+# I should generate features:
+cp_sr      = price_df.cprice
+feat_df    = price_df.copy()
+pctlead_sr = (100 * (cp_sr.shift(-1) - cp_sr) / cp_sr).fillna(0)
+pctlag1_sr = pctlead_sr.shift(1).fillna(0)
+
+feat_df['pctlead'] = pctlead_sr
+feat_df['pctlag1'] = pctlag1_sr
+
+# I should get moy:
+cdate_sr = price_df.cdate
+feat_df['moy'] = cdate_sr.str[5:7].astype('int')
+
+# I should get dow:
+feat_df['dow'] = pd.to_datetime(cdate_sr).map(lambda dt: dt.strftime('%w'))
+
+# I should save my work:
+feat_df.to_csv('feat.csv', float_format='%4.4f', index=False)
+
+'bye'
+
+</code>
