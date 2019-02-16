@@ -7,8 +7,8 @@
 .syntax
   %pre
     %code
-      mkdir -p ~fx1/Downloads/
-      cd       ~fx1/Downloads/
+      mkdir -p ~fx2/Downloads/
+      cd       ~fx2/Downloads/
       unzip EURUSD-2016-09.zip
       mkdir fx3
       mv EURUSD-2016-09.csv fx3/
@@ -19,14 +19,14 @@
   %pre
     =render 'class08s20a'
 
-%p Then, I installed Anaconda into the fx1 account:
+%p Then, I installed Anaconda into the fx2 account:
 
 .syntax
   %pre
     %code
       wget https://repo.continuum.io/archive/Anaconda3-5.3.1-Linux-x86_64.sh
       bash Anaconda3-5.3.1-Linux-x86_64.sh -b
-      echo 'export PATH="${HOME}/anaconda3/bin:$PATH"' >> ~fx1/.bashrc
+      echo 'export PATH="${HOME}/anaconda3/bin:$PATH"' >> ~fx2/.bashrc
       mv ~/anaconda3/bin/curl ~/anaconda3/bin/curl_ana
       bash
 
