@@ -1,0 +1,153 @@
+%h1 Class08
+%p In Class08 we Machine Learn Forex Data
+
+%h2 Topics:
+%ul
+  %li Forex Market
+  %li Forex Data
+  %li Forex Predictions
+  %li Product Management of Forex Prediction Site
+
+%h2 Questions:
+%ul
+  %li What is Forex?
+  %li Where to get Forex Data?
+  %li What does Forex Data look like?
+  %li How to get features from Forex Data?
+  %li How to get predictions from Forex features?
+  %li Who might be interested in Forex predictions?
+
+%h2#setup Lab (Setup)
+%ul
+  %li Update Ubuntu
+  %li
+    %a(href='/cclasses/class08s10b') Answer
+  %li Enhance Ubuntu
+  %li
+    %a(href='/cclasses/class08s11b') Answer
+  %li If above update or enhancement fail, work-around failure with this download:
+  %li ub16_2018_0206.ova (Ubuntu 16.04 VirtualBox Instance 13 GB):
+  %li
+    %a(href='https://drive.google.com/file/d/10p1W7kqzxE69jODhUzcb-qi-osN4htO-' target='x')
+      https://drive.google.com/file/d/10p1W7kqzxE69jODhUzcb-qi-osN4htO-
+
+  %li Create Linux Account: fx2
+  %li
+    %a(href='/cclasses/class08s12b') Answer
+
+  %li Install Ruby in ~fx2/.rbenv
+  %li
+    %a(href='/cclasses/class08s13b') Answer
+
+  %li clone https://github.com/danbikle/railsfx
+  %li
+    %a(href='/cclasses/class08s15b') Answer
+
+  %li Run bundle install in ~fx2/railsfx
+  %li
+    %a(href='/cclasses/class08s16b') Answer
+
+  %li Get account at truefx.com
+  %li
+    %a(href='/cclasses/class08s17') Answer
+  %li Memorize username and password.
+  %li Set env variables: TRUEFX_USER, TRUEFX_PASS to username and password.
+  %li I usually set them inside .bashrc like this:
+  %li
+    .syntax
+      %pre
+        %code
+          export TRUEFX_USER=danster2k
+          export TRUEFX_PASS=SJCnot_SF0
+
+  %li Enhance ~fx2/railsfx/test/system/get_tfx_data_test.rb
+  %li
+    %a(href='/cclasses/class08s18b') Answer
+
+%h2#setup Old Lab (Setup) SKIP THIS LAB but study it if you want
+%ul
+  %li Update Ubuntu
+  %li
+    %a(href='/cclasses/class08s10') Answer
+
+  %li Enhance Ubuntu
+  %li
+    %a(href='/cclasses/class08s11') Answer
+  %li If above update or enhancement fail, work-around failure with this download:
+  %li ub16_2018_0206.ova (Ubuntu 16.04 VirtualBox Instance 13 GB):
+  %li
+    %a(href='https://drive.google.com/file/d/10p1W7kqzxE69jODhUzcb-qi-osN4htO-' target='x')
+      https://drive.google.com/file/d/10p1W7kqzxE69jODhUzcb-qi-osN4htO-
+
+  %li Create Linux Account: fx1
+  %li
+    %a(href='/cclasses/class08s12') Answer
+
+  %li Install Ruby in ~fx1/.rbenv
+  %li
+    %a(href='/cclasses/class08s13') Answer
+
+  %li Install chromedriver in /home/fx1/bin/chromedriver
+  %li
+    %a(href='/cclasses/class08s14') Answer
+
+  %li clone https://github.com/danbikle/ml4us
+  %li
+    %a(href='/cclasses/class08s15') Answer
+
+  %li Run bundle install in ~fx1/ml4us/
+  %li
+    %a(href='/cclasses/class08s16') Answer
+
+  %li Get account at truefx.com
+  %li
+    %a(href='/cclasses/class08s17') Answer
+
+  %li Enhance ~fx1/ml4us/spec/features/truefx_spec.rb
+  %li
+    %a(href='/cclasses/class08s18') Answer
+  %li Get data from truefx.com
+  %li
+    %a(href='/cclasses/class08s19') Answer
+
+%h2#op Lab (operation)
+%ul
+    
+  %li Transform some data into features
+  %li
+    %a(href='/cclasses/class08s20') Answer
+    
+  %li Learn from the features
+  %li Generate predictions
+  %li Report effectiveness of predictions
+  %li
+    %a(href='/cclasses/class08s21') Answers
+
+  %li
+    Enhance the above scripts:
+    %ul
+      %li Backtest more pairs (AUD/USD, GBP/USD, USD/CAD, USD/JPY)
+      %li Backtest more Year/Month Combinations
+  %li Figure out a way to get real-time prices
+  %li
+    Build an app which:
+    %ul
+      %li Convinces me that you have effective models
+      %li Issues timely predictions from real-time prices
+      
+%h2#rollup Lab (Pandas Staged Rollup)
+%ul
+  %li Study this repository:
+  %li
+    %a(href='https://github.com/danbikle/rollup' target='x')
+      https://github.com/danbikle/rollup
+  %li Clone it to the right place
+  %li
+    %a(href='/cclasses/class08rollup') Answer
+  %li Describe why this repo is useful
+  %li
+    %a(href='/cclasses/class08rollup10') Answer
+  %li Operate the scripts in the above repo
+  %li
+    %a(href='/cclasses/class08rollup11') Answer
+  

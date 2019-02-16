@@ -8,5 +8,5 @@ install: --env-shebang
 :verbose: true
 update: --env-shebang
 :sources: 
-- http://rubygems.org
-- http://gems.github.com
+- https://rubygems.org
+- https://gems.github.com
